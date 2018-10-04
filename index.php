@@ -131,35 +131,35 @@ installed. If you have project source code in those directories
 <p class="bodytext">&nbsp;</p><pre>java -version</pre><p class="bodytext">&nbsp;</p>
 <p class="bodytext">If Java is installed, Java version information appears.
 </p>
-<p class="def-button"> 				<a href="https://web.archive.org/web/20130130211140/http://java.com/en/" target="_blank">Download Java</a> 			</p>
+<p class="def-button"> 				<a href="https://www.java.com/en/download/" target="_blank">Download Java</a> 			</p>
 <h4> 								Note: 							</h4>
-<p class="bodytext"> 								If you are using a 64-bit version of Windows, you will need to download Java&nbsp;from <a href="https://web.archive.org/web/20130130211140/http://www.java.com/en/download/manual.jsp" target="_blank">http://www.java.com/en/download/manual.jsp</a>.&nbsp;You
+<p class="bodytext"> 								If you are using a 64-bit version of Windows, you will need to download Java&nbsp;from <a href="https://www.java.com/en/download/" target="_blank">https://www.java.com/en/download/</a>.&nbsp;You
  MUST do this in Internet Explorer. Other browsers do not show the 
-64-bit Jave Runtime Environment installer. From here, follow the 
+64-bit Java Runtime Environment installer. From here, follow the 
 instructions for&nbsp;"Windows 7, XP Offline (64-bit)". You can also 
-download it directly from&nbsp;<a href="https://web.archive.org/web/20130130211140/http://javadl.sun.com/webapps/download/AutoDL?BundleId=47155" target="_blank">http://javadl.sun.com/webapps/download/AutoDL?BundleId=47155</a>.
+download it directly from&nbsp;<a href="https://www.java.com/en/download/faq/java_win64bit.xml" target="_blank">https://www.java.com/en/download/faq/java_win64bit.xml</a>.
 </p>
 <h3>Install VirtualBox</h3>
 <p class="bodytext"> 					The webOS emulator is built on VirtualBox™, 
 virtual machine software that you can download free from Oracle®. 
 VirtualBox is required before installing the HP webOS SDK. <b>Note:</b> The webOS emulator now runs&nbsp;on Virtualbox 4.0 and&nbsp;4.1.
 </p>
-<p class="def-button"> 					<a href="https://web.archive.org/web/20130130211140/http://www.virtualbox.org/wiki/Download_Old_Builds_4_0" target="_blank">Download VirtualBox</a></p>
+<p class="def-button"> 					<a href="https://www.virtualbox.org/wiki/Download_Old_Builds" target="_blank">Download VirtualBox</a></p>
 <h3>Install the HP webOS SDK for Windows</h3>
   <ol>
     <li>Download the appropriate Windows SDK installer (Windows Vista and Windows 7 only): 					
-  <p><a class="def-button" href="https://1drv.ms/u/s!Av5IQUxnr8DUjN4DdfeLRwQglBA31A">     Download</a>&nbsp; SDK/PDK for 32-bit machines. </p> 
-  <p><a class="def-button" href="https://1drv.ms/u/s!Av5IQUxnr8DUjN4B4tMmRI--EZeddQ">      Download</a>&nbsp; SDK/PDK for 64-bit machines. </p>	</li> 					
+  <p><a class="def-button" href="https://1drv.ms/u/s!Av5IQUxnr8DUjN4DdfeLRwQglBA31A" target="_tab">     Download</a>&nbsp; SDK/PDK for 32-bit machines. </p> 
+  <p><a class="def-button" href="https://1drv.ms/u/s!Av5IQUxnr8DUjN4B4tMmRI--EZeddQ" target="_tab">      Download</a>&nbsp; SDK/PDK for 64-bit machines. </p>	</li> 					
   <li>Ensure VirtualBox is not running before starting the webOS SDK Installer. 					</li> 					<li>Double-click the webOS SDK Installer file. 					</li><li>Proceed through the licensing agreements.</li><li>Click "Finish" to complete the installation.</li> 				</ol><h3>Download the CodeSourcery Toolchain (PDK only)</h3>
 <p class="bodytext">Perform this step only if you intend to do plug-in or other C/C++ development.
 </p>
 <p class="bodytext">If not already installed, download the CodeSourcery 
 Toolchain—Sourcery G++ Lite for ARM GNU/Linux.&nbsp;You can download 
-this from the    <a href="https://web.archive.org/web/20130130211140/http://www.codesourcery.com/" target="_blank">CodeSourcery</a>&nbsp;website.
+this from the    <a href="http://www.codesourcery.com/" target="_blank">CodeSourcery</a>&nbsp;website.
 </p>
 <p class="bodytext">To download the CodeSourcery Toolchain, go to:
 </p>
-<p class="bodytext"><a href="https://web.archive.org/web/20130130211140/https://sourcery.mentor.com/sgpp/lite/arm/portal/subscription3057" target="_blank">https://sourcery.mentor.com/sgpp/lite/arm/portal/subscription3057</a>
+<p class="bodytext"><a href="https://sourcery.mentor.com/sgpp/lite/arm/portal/subscription3057" target="_blank">https://sourcery.mentor.com/sgpp/lite/arm/portal/subscription3057</a>
 </p>
 <p class="bodytext">Click on the "Sourcery G++ Lite 2009q1-203" link, and download the&nbsp;Windows Installer.
 </p>
@@ -172,9 +172,9 @@ who&nbsp;run into the following problems:</p><ul class="def-list"><li>C++ except
 machine software that you can download free from Oracle®. VirtualBox is 
 required before installing the HP webOS SDK. <b>Note:</b> The emulator now supports&nbsp;VirtualBox 4.0 and&nbsp;4.1.
 </p>
-<p class="def-button"><a href="https://web.archive.org/web/20130130211140/http://www.virtualbox.org/wiki/Download_Old_Builds_4_0" target="_blank">Download VirtualBox</a></p>
+<p class="def-button"><a href="https://www.virtualbox.org/wiki/Download_Old_Builds" target="_blank">Download VirtualBox</a></p>
 <h3><br>Download the SDK/PDK disk image file</h3>
-<p class="def-button"><a href="https://web.archive.org/web/20130130211140/https://cdn.downloads.palm.com/sdkdownloads/3.0.5.676/sdkBinaries/Palm_webOS_SDK.3.0.5.676.dmg" target="_blank">Download SDK/PDK</a></p>
+<p class="def-button"><a href="https://1drv.ms/u/s!Av5IQUxnr8DUjN4Eqq0T0WWYOWuZ8g" target="_blank">Download SDK/PDK</a></p>
 <h3><br>Uninstall any existing SDK/PDK installations</h3></div><a id="c23382"></a><div class="note important">         <div class="inner">                                                                <div class="content">                                                                           <h4>Warning:       </h4>
                                                                         
                                                          <p>                      <strong>SAVE YOUR DATA!         </strong>—Uninstalling
@@ -222,7 +222,7 @@ register the repository key before doing the update.  If there is an
 issue with using the Ubuntu repository, you can also download and 
 install VirtualBox manually here:&nbsp;<span style="color: blue; text-decoration: underline; "><a href="https://web.archive.org/web/20130130211140/http://www.virtualbox.org/wiki/Download_Old_Builds_4_0" target="_blank">http://www.virtualbox.org/wiki/Download_Old_Builds_4_0</a></span>.
 </p>
-<p class="bodytext">Click <a href="https://web.archive.org/web/20130130211140/http://www.virtualbox.org/wiki/Linux_Downloads" target="_blank">here</a> to go directly to the VirtualBox Linux page. 
+<p class="bodytext">Click <a href="http://www.virtualbox.org/wiki/Linux_Downloads" target="_blank">here</a> to go directly to the VirtualBox Linux page. 
 </p>
 <h3>Install ia32-libs (on 64-bit systems only)</h3><div class="padding"><p class="nomargin">If you are installing on a 64-bit system, perform the following additional step before installation:</p>
 <pre>sudo apt-get install ia32-libs</pre>
@@ -240,7 +240,13 @@ install VirtualBox manually here:&nbsp;<span style="color: blue; text-decoration
 </div></div><a id="c39896"></a><h2>Other Emulator Images</h2><a id="c39926"></a><div class="csc-textpic-text"><p class="bodytext">It
  is sometimes necessary to test your software on other versions of 
 webOS. Use the links below to download VMDKs for these versions. (Be 
-sure to right-click and use "Save As..." to save these as binaries.)</p><ul class="def-list"><li><a href="https://web.archive.org/web/20130130211140/https://cdn.downloads.palm.com/sdkdownloads/emulator-images/SDK%201.3.5.368.vmdk.zip" target="_blank">1.3.5</a></li><li><a href="https://web.archive.org/web/20130130211140/https://cdn.downloads.palm.com/sdkdownloads/emulator-images/SDK%201.4.0.420.vmdk.zip" target="_blank">1.4.0</a></li><li><a href="https://web.archive.org/web/20130130211140/https://cdn.downloads.palm.com/sdkdownloads/emulator-images/SDK%201.4.1.427.vmdk.zip" target="_blank">1.4.1</a></li><li><a href="https://web.archive.org/web/20130130211140/https://cdn.downloads.palm.com/sdkdownloads/emulator-images/SDK%201.4.5.465.vmdk.zip" target="_blank">1.4.5</a></li><li><a href="https://web.archive.org/web/20130130211140/https://cdn.downloads.palm.com/sdkdownloads/emulator-images/SDK%202.1.0.519.vmdk.zip" target="_blank">2.1.0</a></li><li><a href="https://web.archive.org/web/20130130211140/https://cdn.downloads.palm.com/sdkdownloads/emulator-images/SDK-2210.vmdk.zip" target="_blank">2.2.0</a>&nbsp;(Pre<sup>3</sup>&nbsp;format only)</li><li><a href="https://web.archive.org/web/20130130211140/https://cdn.downloads.palm.com/sdkdownloads/emulator-images/SDK-2222.vmdk.zip" target="_blank">2.2.4</a> (Pre2 and Pre<sup>3</sup> format)</li></ul><p class="bodytext">Once
+sure to right-click and use "Save As..." to save these as binaries.)</p><ul class="def-list"><li><a href="https://web.archive.org/web/20130130211140/https://cdn.downloads.palm.com/sdkdownloads/emulator-images/SDK%201.3.5.368.vmdk.zip" target="_blank">1.3.5</a></li>
+<li><a href="https://web.archive.org/web/20130130211140/https://cdn.downloads.palm.com/sdkdownloads/emulator-images/SDK%201.4.0.420.vmdk.zip" target="_blank">1.4.0</a></li>
+<li><a href="https://web.archive.org/web/20130130211140/https://cdn.downloads.palm.com/sdkdownloads/emulator-images/SDK%201.4.1.427.vmdk.zip" target="_blank">1.4.1</a></li>
+<li><a href="https://1drv.ms/u/s!Av5IQUxnr8DUjN1_mS4My43gmlpVaA" target="_blank">1.4.5</a></li>
+<li><a href="https://web.archive.org/web/20130130211140/https://cdn.downloads.palm.com/sdkdownloads/emulator-images/SDK%202.1.0.519.vmdk.zip" target="_blank">2.1.0</a></li>
+<li><a href="https://web.archive.org/web/20130130211140/https://cdn.downloads.palm.com/sdkdownloads/emulator-images/SDK-2210.vmdk.zip" target="_blank">2.2.0</a>&nbsp;(Pre<sup>3</sup>&nbsp;format only)</li>
+<li><a href="https://1drv.ms/u/s!Av5IQUxnr8DUjN4ALoKmE2Os_p8tqg" target="_blank">2.2.4</a> (Pre2 and Pre<sup>3</sup> format)</li></ul><p class="bodytext">Once
  you have downloaded the zip file, you will need to "install" the image 
 using the palm-emulator command from the command line. For example:
 </p>
