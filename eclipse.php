@@ -95,197 +95,28 @@ $palmdownloadserver="23.4.17.24"
 <div id="content" class="col-content">
     
 
-    <div class="default-content article-content"><a id="c23262"></a>
-    <div class="csc-textpic-text"><h2 class="intro">Downloading and Installing the 3.0.5&nbsp;SDK and PDK</h2>
-<p class="bodytext"><img src="assets/RTEmagicC_ref-sdk.png" alt="" width="118" height="117" align="right">The HP webOS 3.0.5 SDK (<a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/api/release-notes.html">release notes here</a>)&nbsp;contains
- the libraries necessary to do both JavaScript development and C/C++ 
-development. For JavaScript development, the SDK includes the command 
-line tools needed to package, download, and debug applications, as well 
-as sample code, reference code, and reference documentation. For C/C++ 
-development, the SDK also includes the Plug-in Development Kit (PDK), 
-which includes a GCC compiler, SDL and OpenGL code libraries, project 
-templates, sample source code, scripts, utilities, documents. You will 
-be given an opportunity to opt out of installing the PDK during the 
-installation process.
+    <div class="default-content article-content"><a id="c19192"></a><div class="csc-textpic-text"><h2 class="intro">Developing with the Eclipse™ IDE </h2>
+<p class="intro">HP provides plug-ins to the Eclipse IDE to facilitate webOS application development. Eclipse is a popular Integrated Development Environment (IDE) that is applicable to many languages and programming techniques. Eclipse's architecture allows plug-ins to provide custom capabilies within the IDE. The Palm plug-in adds the capability to create app and scene frameworks automatically, and to load and run the app on either a device or the emulator.</p>
+<p class="intro">Prior to installing Eclipse and the plug-ins, you need to install the HP webOS SDK and the webOS emulator. If you have not done this yet, go to the SDK download page and click on &quot;Download SDK&quot; to be taken to the correct page for your platform. Be sure to follow the instructions in order, or the emulator may not work correctly. </p>
+<p class="bodytext">This document contains the following sections: </p><ul class="def-list"><li>     <a href="/web/20131031072322/https://developer.palm.com/content/resources/develop/developing_with_the_eclipse_ide.html#InstallingEclipsewiththeSDK-InstallingEclipseandthePlugIns">Installing Eclipse and the webOS Plug-In     </a>   </li>      <li>     <a href="/web/20131031072322/https://developer.palm.com/content/resources/develop/developing_with_the_eclipse_ide.html#InstallingEclipsewiththeSDK-InstallingAptanaPlugIn">Installing the Aptana Plug-In     </a>   </li>      <li>     <a href="/web/20131031072322/https://developer.palm.com/content/resources/develop/developing_with_the_eclipse_ide.html#InstallingEclipsewiththeSDK-UsingEclipsewiththePlugIns">Using Eclipse with the Plug-Ins     </a>   </li>      <li>     <a href="/web/20131031072322/https://developer.palm.com/content/resources/develop/developing_with_the_eclipse_ide.html#InstallingEclipsewiththeSDK-StayUpdated">Stay Updated     </a>   </li>      <li>     <a href="/web/20131031072322/https://developer.palm.com/content/resources/develop/developing_with_the_eclipse_ide.html#InstallingEclipsewiththeSDK-dev_mode">Enabling Developer Mode     </a>   </li>  </ul></div><a id="c19202"></a><h2>Installing Eclipse and the webOS Plug-In </h2><div class="csc-textpic-text"><p class="bodytext">This section describes how to install and update Eclipse. </p></div><a id="c19212"></a><div class="note notes"><div class="inner"> 						<div class="content"> 							<h4>Note:</h4> 							 							<p>If you are using an earlier version of Eclipse, you must upgrade to Eclipse 3.5 at minimum to get the new plug-ins for webOS development.</p> 						</div> 					</div></div>
+<a id="c19222"></a><h5>Install Eclipse   </h5><div class="csc-textpic-text"><ol><li>Download the latest version of Eclipse <a href="https://web.archive.org/web/20131031072322/http://eclipse.org/downloads/" target="_blank">here</a>. The correct version is Eclipse IDE for JavaScript Web Developers. Download the appropriate version for your operating system and extract to any location. Eclipse will run from the extracted folder.</li><li>Start Eclipse.</li>      <li>When prompted for a workspace location, accept the default (     /home/YOUR_USER_NAME/workspace     )        </li>  </ol></div><a id="c19232"></a><div class="note notes"><div class="inner"> 						<div class="content"> 							<h4>Note:</h4> 							 							<p>The workspace location must be an absolute path with no spaces.</p> 						</div> 					</div></div>
+<a id="c19242"></a><h5>Find and install updates   </h5><div class="csc-textpic-text"><ol><li>Select      <strong>Help &gt; Install New Software</strong>.</li>      <li>In the <strong>Available Software</strong> dialog, click      <strong>Add...</strong></li>      <li>In the      <strong>Location     </strong> field, type&nbsp;https://cdn.downloads.palm.com/sdkdownloads/eclipse/update-site/site.xml, and then click      <strong>OK.</strong> (If you are unable to connect to this site, see the Local download instructions below.)<strong> </strong></li>      <li>Open the new site in the list, expand      <strong>Palm webOS SDK</strong>, and the click the      <strong>Palm webOS SDK     </strong> check box.</li>      <li>Click      <strong>Install... &nbsp; &nbsp;&nbsp;</strong> and accept the license agreements.</li><li>When the <strong>Install</strong> dialog comes up, make sure Palm webOS SDK is selected, and click <strong>Finish</strong>.</li>      <li>Restart Eclipse when prompted.</li>  </ol></div><a id="c19252"></a><h2>Installing the Aptana Plug-In </h2><div class="csc-textpic-text"><p class="bodytext">To improve the development experience, HP recommends installing the    <a href="https://web.archive.org/web/20131031072322/http://www.aptana.com/">Aptana Studio   </a> plug-in.  The Aptana plug-in provides HTML, JavaScript, and CSS functionality to Eclipse.  
 </p>
-<p class="bodytext">You can install the SDK on Windows, OS X, and Ubuntu
- Linux host PCs. For C/C++ development, the SDK integrates with Visual 
-Studio on Windows, and Xcode on OS X, although you can use command-line 
-tools if you prefer. (App templates are currently only available for 
-Xcode 3.6 and earlier.)
+<p class="bodytext">To install Aptana after installing Eclipse, go to    <a href="https://web.archive.org/web/20131031072322/http://www.aptana.com/" target="_blank">www.aptana.com</a> and Click on the &quot;Download Aptana Studio 3&quot; link. On the &quot;Download&quot; page, select &quot;Eclipse Plug-in Version&quot; and then follow the instructions given.<a name="InstallingEclipsewiththeSDK-UsingEclipsewiththePlugIns" title="InstallingEclipsewiththeSDK-UsingEclipsewiththePlugIns"></a>   </p></div><a id="c19262"></a><h2>Using Eclipse with the Plug-Ins </h2><div class="csc-textpic-text"><p class="bodytext">This section describes how to run Eclipse and use the debug launch configuration. </p></div><a id="c19272"></a><h3>Starting Eclipse </h3><div class="csc-textpic-text"><p class="bodytext">Follow these instructions to start Eclipse:  </p><ul><li>Linux: At the command prompt, type      eclipse</li>      <li>Mac: In the Eclipse folder (inside the Applications folder), double-click      <strong>Eclipse</strong></li>      <li>Windows: Find and open          eclipse.exe      (its location depends on where you installed Eclipse)</li>  </ul></div><a id="c19282"></a><h3>Selecting the webOS Perspective </h3><div class="csc-textpic-text"><p class="bodytext">Eclipse has several perspectives, or views, from which to choose. You want to work in the webOS perspective.</p></div><a id="c19292"></a><h5>Select the perspective   </h5><div class="csc-textpic-text"><ol><li>Select      <strong>Window &gt; Open Perspective &gt; Other...</strong></li>      <li>Select      <strong>webOS</strong>, and then click      <strong>OK</strong></li>  </ol></div><a id="c19302"></a><h3>Generating a webOS Application </h3><div class="csc-textpic-text"><p class="bodytext">This section includes the following procedures: </p><ul><li>     <a href="/web/20131031072322/https://developer.palm.com/content/resources/develop/developing_with_the_eclipse_ide.html#InstallingEclipsewiththeSDK-CreateApp">Create a new webOS application     </a>   </li>      <li>     <a href="/web/20131031072322/https://developer.palm.com/content/resources/develop/developing_with_the_eclipse_ide.html#InstallingEclipsewiththeSDK-AddScene">Add a scene to the application     </a>   </li>      <li>     <a href="/web/20131031072322/https://developer.palm.com/content/resources/develop/developing_with_the_eclipse_ide.html#InstallingEclipsewiththeSDK-StartApp">Start the application     </a>   </li>      <li>     <a href="/web/20131031072322/https://developer.palm.com/content/resources/develop/developing_with_the_eclipse_ide.html#InstallingEclipsewiththeSDK-DebugApp">Debug an application     </a>   </li>  </ul></div><a id="c19312"></a><div class="note notes"><div class="inner"> 						<div class="content"> 							<h4>Note:</h4> 							 							<p>You can also use the New Mojo application icon in the Workbench toolbar to create an application or scene.</p> 						</div> 					</div></div>
+<a id="c19322"></a><h5>Create a new webOS application   </h5><div class="csc-textpic-text"><ol><li>Select      <strong>File &gt; New &gt; Basic Application</strong></li>      <li>In the      <strong>Project Name     </strong> field, type a name and the following:          <ul><li>Title        </li>              <li>Vendor       </li>              <li>Id        </li>              <li>Version       </li>          </ul></li>      <li>Click      <strong>Finish</strong></li>  </ol></div><a id="c19332"></a><h5>Add a scene to the application   </h5><div class="csc-textpic-text"><ol><li>Select      <strong>File &gt; New &gt; Basic Scene</strong></li>      <li>Select the project</li>      <li>In the      <strong>Name     </strong> field, type the name of the scene, and then click      <strong>Finish</strong></li>  </ol></div><a id="c19342"></a><h5>Start the application   </h5><div class="csc-textpic-text"><ol><li>Select      <strong>Run &gt; Run Configurations...</strong></li>      <li>Select      <strong>Mojo Application</strong>, and then click the      <strong>New launch configuration     </strong> icon.</li>      <li>In the      <strong>Name     </strong> field, type the name.</li>      <li>Click the      <strong>Project     </strong> arrow to select the project.</li>      <li>Click the      <strong>Target     </strong> arrow and select one of the following:          <ul><li>         <strong>Palm Emulator</strong>, if you are using the emulator.</li>              <li>         <strong>Palm Device</strong>, if you are using a device (ensure the device is in          Developer Mode).</li>          </ul></li>      <li>Click      <strong>Run.</strong></li>  </ol></div><a id="c19352"></a><div class="note notes"><div class="inner"> 						<div class="content"> 							<h4>Note:</h4> 							 							<p>A launch shortcut is also available. Select the project and <strong>Run &gt; Run As &gt; Mojo Application</strong>. If you previously created a launch configuration, that target is used. Otherwise, a dialog box pops up so you can select a target.</p> 						</div> 					</div></div>
+<a id="c19362"></a><h5>Debug an application </h5><div class="csc-textpic-text"><ol><li>Select      <strong>Run &gt; Debug Configurations.</strong></li>      <li>Select      <strong>Mojo Application</strong>, and then click the      <strong>New launch configuration     </strong> icon.</li>      <li>In the      <strong>Name     </strong> field, type the name.</li>      <li>Click the      <strong>Project     </strong> arrow to select the project.</li>      <li>Click the      <strong>Target     </strong> arrow and select one of the following:     <ul><li>         <strong>Palm Emulator</strong>, if you are using the emulator.</li>            <li>         <strong>Palm Device</strong>, if you are using a device.</li>        </ul></li>         <li>In the      <strong>Debug Options     </strong> area, select one of the following:     <ul><li>         <strong>Inspectable</strong>, which makes the application's DOM available to the Palm Inspector. This is equivalent to the following command:<br/><pre>palm-launch -i &lt;appid&gt;</pre>              </li>            <li>         <strong>Mojo debugging</strong>, which enables debug logging in the Mojo framework. This is equivalent to the following command:<br/><pre>palm-launch -p &quot;{mojoConfig: {debuggingEnabled:true}}&quot;&lt;appid&gt;</pre></li>        </ul></li>         <li>Click      <strong>Debug.</strong></li>     </ol></div><a id="c19372"></a><div class="note notes"><div class="inner"> 						<div class="content"> 							<h4>Note:</h4> 							 							<p>A launch shortcut is also available. Select the project and <strong>Run &gt; Debug As &gt; Mojo Application</strong>. If you previously created a launch configuration, that target is used. Otherwise, a dialog box pops up so you can select a target.</p> 						</div> 					</div></div>
+<a id="c19382"></a><h2>Stay Updated </h2><div class="csc-textpic-text"><p class="bodytext">When new Eclipse plug-ins are available (currently you are notified through email), you can install them through the Eclipse Update Manager as follows: </p><ol><li>Select      <strong>Help &gt; Check for Updates</strong>.</li>      <li>Select      <strong>Palm webOS SDK     </strong> and click      <strong>Update...</strong></li>      <li>Click      <strong>Install     </strong> and accept the license agreements.</li>      <li>Restart Eclipse when prompted.</li>  </ol></div><a id="c19392"></a><h2>Enabling Developer Mode   </h2><div class="csc-textpic-text"><p class="bodytext">To install and test applications on a HP webOS device, you need to enable Developer mode on the device. </p></div><a id="c19402"></a><div class="note notes"><div class="inner"> 						<div class="content"> 							<h4>Note:</h4> 							 							<p>Locking the phone with a PIN does not protect data on the device in Developer mode. When Developer mode is enabled, it is possible to use tools such as novaterm to access the device through the USB even if the phone is locked.</p> 						</div> 					</div></div>
+<a id="c19412"></a><h3>Enable Developer mode, webOS 1.0-1.4.5    </h3><div class="csc-textpic-text"><ol><li>In Card view or in the Launcher application, type the following:          <div class="inline_code">upupdowndownleftrightleftrightbastart     </div>      </li>      <li>Tap the resulting      <strong>Developer Mode Enabler     </strong> icon.   </li>      <li>In the application, move the      <strong>Developer Mode     </strong> slider to the      <strong>On     </strong> position.   </li>      <li>Tap      <strong>Reset the Device     </strong>.     <br/> When reset is complete, Developer mode is enabled.   </li>  </ol></div><a id="c19422"></a><h3>Enable Developer mode, webOS 2.0 and 3.0</h3><div class="csc-textpic-text"><ol><li>Go to the phone app.&nbsp;</li><li>On a GSM phone, press &quot;#*DEVMODE#&quot;, followed by the call button. On a CDMA phone or the TouchPad, press &quot;##DEVMODE#&quot;. (If the device is GSM, and there is no SIM card, a screen may be displayed instructing you to install one. Just begin typing the &quot;#*&quot; and the phone app will appear.) </li><li>The Developer Mode scene will be displayed.</li><li>Select &quot;On&quot;. You will be prompted to re-boot the device. </li></ol><p class="bodytext">Note that the DEVMODE code is only for unactivated devices. It provides a way of bypassing activation and first use, and putting the device into developer mode at the same time.
 </p>
-<p class="infobox"><b>Note: </b>PDK development is now supported for Linux. See the Linux download section below for more information.</p>
-<p class="bodytext">The SDK tools are also command-line based, but if you prefer to use an integrated development environment (IDE), HP provides a <a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/develop/developing_with_the_eclipse_ide.html">webOS plug-in for the Eclipse IDE</a>.
+<p class="bodytext">If you are using an activated device, from card view (that is, no apps active), type the following (from the TouchPad, click in the Just Type area to bring up the virtual keyboard):
 </p>
-<p class="bodytext">Ready to get to work? Click below on your platform of choice to download:</p><ul class="def-list">    <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/develop/sdk_pdk_download.html#windows">Windows</a></li>    <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/develop/sdk_pdk_download.html#osx">OS X</a></li>    <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/develop/sdk_pdk_download.html#linux">Ubuntu Linux</a></li> </ul><div class="hr"></div></div><div style="height:20px;"><!-- --></div><a id="c23272"></a><h2>Installing the SDK and PDK on a Windows PC        </h2><div class="csc-textpic-text"><p class="bodytext"><a name="windows"></a>
+<p class="bodytext">&nbsp;</p><pre>upupdowndownleftrightleftrightbastart</pre><p class="bodytext">&nbsp;</p>
+<p class="bodytext">Alternatively, you can use:
 </p>
-<h3>Uninstall any existing SDK or PDK installations</h3></div><a id="c23292"></a><div class="note important">         <div class="inner"> 
-  <div class="content">  
-     <h4>Warning:</h4>
-     <p><strong>SAVE YOUR DATA!</strong>—Uninstalling the SDK and PDK will delete the directories in which they are 
-      installed. If you have project source code in those directories <strong>it will be deleted!</strong></p>
-    <p>Your project source should <strong>not</strong> be stored in the SDK or PDK installation directories.</p>
-</div>                                                 </div>  </div>
-<a id="c28502"></a><div class="csc-textpic-text"><ol>
-  <li>Uninstall the previous SDK (if present) using the Windows <i>Add/Remove Program</i> control panel. 	</li> 
-  <li>Uninstall the previous PDK (if present) by running <i>c:\Program Files\Palm\PDK\uninstallpdk.exe.</i> 
-  <ul class="def-list"> 
-    <li>When prompted, make sure you also un-install the Novacom driver. 	</li> 
-  </ul>	</li> </ol>
-  <h3>Install Java</h3>
-<p class="nomargin">Download and install the latest version of Java™.<br>To verify that Java is installed, go to the Command Prompt and type:</p>
-<p class="bodytext">&nbsp;</p><pre>java -version</pre><p class="bodytext">&nbsp;</p>
-<p class="bodytext">If Java is installed, Java version information appears.
-</p>
-<p class="def-button"> 				<a href="https://www.java.com/en/download/" target="_blank">Download Java</a> 			</p>
-<h4> 								Note: 							</h4>
-<p class="bodytext"> 	If you are using a 64-bit version of Windows, you will need to download Java&nbsp;from <a href="https://www.java.com/en/download/" target="_blank">https://www.java.com/en/download/</a>.&nbsp;You
- MUST do this in Internet Explorer. Other browsers do not show the 
-64-bit Java Runtime Environment installer. From here, follow the 
-instructions for&nbsp;"Windows 7, XP Offline (64-bit)". You can also 
-download it directly from&nbsp;<a href="https://www.java.com/en/download/faq/java_win64bit.xml" target="_blank">https://www.java.com/en/download/faq/java_win64bit.xml</a>.
-</p>
-<h3>Install VirtualBox</h3>
-<p class="bodytext"> 					The webOS emulator is built on VirtualBox™, 
-virtual machine software that you can download free from Oracle®. 
-VirtualBox is required before installing the HP webOS SDK. <b>Note:</b> The webOS emulator now runs&nbsp;on Virtualbox 4.0 and&nbsp;4.1.
-</p>
-<p class="def-button"> 					<a href="https://www.virtualbox.org/wiki/Download_Old_Builds" target="_blank">Download VirtualBox</a></p>
-<h3>Install the HP webOS SDK for Windows</h3>
-  <ol>
-    <li>Download the appropriate Windows SDK installer (Windows Vista and Windows 7 only): 					
-  <p><a class="def-button" href="https://1drv.ms/u/s!Av5IQUxnr8DUjN4DdfeLRwQglBA31A" target="_tab">     Download</a>&nbsp; SDK/PDK for 32-bit machines. </p> 
-  <p><a class="def-button" href="https://1drv.ms/u/s!Av5IQUxnr8DUjN4B4tMmRI--EZeddQ" target="_tab">      Download</a>&nbsp; SDK/PDK for 64-bit machines. </p>	</li> 					
-  <li>Ensure VirtualBox is not running before starting the webOS SDK Installer. 					</li> 					
-  <li>Double-click the webOS SDK Installer file. 					</li>
-  <li>Proceed through the licensing agreements.</li><li>Click "Finish" to complete the installation.</li> 				</ol>
-  <h3>Download the CodeSourcery Toolchain (PDK only)</h3>
-<p class="bodytext">Perform this step only if you intend to do plug-in or other C/C++ development.
-</p>
-<p class="bodytext">If not already installed, download the CodeSourcery 
-Toolchain—Sourcery G++ Lite for ARM GNU/Linux.&nbsp;You can download 
-this from the    <a href="http://www.codesourcery.com/" target="_blank">CodeSourcery</a>&nbsp;website.
-</p>
-<p class="bodytext">To download the CodeSourcery Toolchain, go to:
-</p>
-<p class="bodytext"><a href="https://sourcery.mentor.com/sgpp/lite/arm/portal/subscription3057" target="_blank">https://sourcery.mentor.com/sgpp/lite/arm/portal/subscription3057</a>
-</p>
-<p class="bodytext">Click on the "Sourcery G++ Lite 2009q1-203" link, and download the&nbsp;Windows Installer.
-</p>
-<p class="bodytext">If you have problems with this version, you can also
- try version 2007q3-51.&nbsp;This is an older version for developers 
-who&nbsp;run into the following problems:</p><ul class="def-list"><li>C++ exception handling — Unresolved links to versioned symbols.</li><li><span class="inline_code">_libc_csu_init/fini</span> calls — Unresolved links to versioned symbols.</li><li><span class="inline_code">__isoc99_sscanf</span>  — Symbol added in GLIBC 2.7 that gets used for calls to <span class="inline_code">sscanf</span> unless you use <span class="inline_code">_USE_GNU</span>
- in your code. This issue also requires a header file change and can not
- be fixed with just changing libraries. This is also true of other <span class="inline_code">__isoc99</span> calls.</li></ul><h3>Verify the SDK Installation</h3><ol> 					<li>Start the webOS emulator. 					</li> 					<li>Click OK to dismiss the dialog boxes. 					</li> 					<li>Create or choose a directory to use as your development workspace. 					</li> 					<li>Open a Command Prompt window, and then type: 						<pre> palm-generate  </pre> 						<p> 							to verify that the tools are installed: 						</p> 						<ul class="def-list"> 							<li>If help information appears, the tools are correctly installed. 							</li> 							<li>If palm-generate is not recognized as a command, the tools are not correctly installed. 							</li> 							<li>If java is not recognized as a command, Java is not correctly installed 							</li> 						</ul> 					</li> 					<li>Exit both the Command Prompt window and the emulator.</li> 				</ol><div class="hr"></div></div><div style="height:20px;"><!-- --></div><a id="c23352"></a><h2>Installing the SDK and PDK on a Mac        </h2><div class="csc-textpic-text"><p class="bodytext"><a name="osx"></a></p></div><a id="c23362"></a><div class="csc-textpic-text"><h3><br>Install VirtualBox™ </h3>
-<p class="bodytext">The webOS emulator is built on VirtualBox, virtual 
-machine software that you can download free from Oracle®. VirtualBox is 
-required before installing the HP webOS SDK. <b>Note:</b> The emulator now supports&nbsp;VirtualBox 4.0 and&nbsp;4.1.
-</p>
-<p class="def-button"><a href="https://www.virtualbox.org/wiki/Download_Old_Builds" target="_blank">Download VirtualBox</a></p>
-<h3><br>Download the SDK/PDK disk image file</h3>
-<p class="def-button"><a href="https://1drv.ms/u/s!Av5IQUxnr8DUjN4Eqq0T0WWYOWuZ8g" target="_blank">Download SDK/PDK</a></p>
-<h3><br>Uninstall any existing SDK/PDK installations</h3></div><a id="c23382"></a><div class="note important">
-  <div class="inner">
-    <div class="content"> 
-      <h4>Warning:</h4>
-      <p><strong>SAVE YOUR DATA!
-      </strong>—Uninstalling
- the SDK and PDK will delete the directories in which they are 
-installed. If you have project source code in those directories         
- <strong>it will be deleted!         </strong>       </p>         
- <p>Your project source should          <strong>not         </strong> be stored in the SDK or PDK installation directories.       </p>  </div> 
-</div>  </div>
-<a id="c23392"></a><div class="csc-textpic-text"><ol> 	
-  <li>Open the Mac disk image file.</li> 	
-  <li>Double  click the <i>uninstall-previous-sdk.command</i> script.</li> 	
-  <li>Answer “yes”  when prompted.</li> 	
-  <li>Enter your admin  password when prompted.</li> </ol>
-  <h3><br>Install the HP webOS SDK/PDK for Mac</h3><ol> 	
-    <li>Ensure VirtualBox is not running before starting the webOS SDK Installer.</li> 	
-    <li>Open the Mac disk image file if you haven't already.</li> 	
-    <li>Double-click the webOS SDK Installer file and follow the instructions. </li> 	
-    <li>During installation, you will be given the option to install the PDK as well. <i>Note that this option is selected by default.</i></li> </ol>
-    <p class="bodytext">Once the SDK is installed:</p><ul class="def-list"> 			
-      <li>The webOS emulator becomes available in the Applications folder.</li> 			
-      <li>The webOS command-line tools become available from the Terminal.</li> 		
-    </ul><p class="bodytext">We
- recommend that OS X users run the ssh-key-init  script for each device 
-they use. This avoids being requested for a password when files are 
-transferred to the device using a shell.</p><div class="hr"></div></div>
-<div style="height:20px;"><!-- --></div><a id="c28522"></a>
-<h2>Installing the SDK on Ubuntu Linux</h2>
-<div class="csc-textpic-text"><p class="bodytext"><a name="linux"></a></p></div>
-<a id="c28542"></a><div class="csc-textpic-text"><p class="infobox"><b>A note about PDK development on Linux:</b>
- The current SDK for Linux includes headers and libraries needed to do 
-PDK development for the device and for the emulator. It also includes an
- arm-gcc toolchain for compiling applications for the device. If you are
- running a 32-bit i686 Linux desktop, you should be able to use the 
-standard&nbsp;g++ compiler. (On x64 Linux, the native desktop toolchain 
-will generate x64 code, which will not work in the emulator.)</p>
-<h3>Update the Package Repository Information</h3><ol> 	<li> 		<p>Update the Package Repository Information to /etc/apt/sources.list:</p>          		<p>If you are using 10.04 (Lucid Lynx):</p> 		         <pre>deb http://download.virtualbox.org/virtualbox/debian lucid non-free</pre> 		<p>If you are installing on 9.04 (Jaunty Jackalope):</p> 		<pre>deb http://download.virtualbox.org/virtualbox/debian jaunty non-free</pre> 	</li> 	<li> 		<p>Download and register the Oracle® public key for apt-secure: </p> 		<pre>wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -</pre> 	</li> 	<li> 		<p>Refresh the package index files: </p> 		<pre>sudo apt-get update</pre> 	</li> </ol><h3>Install Java™</h3>
-<p class="bodytext">Download and install the Oracle Java Runtime 
-Environment (JRE). The SDK is incompatible with the default Ubuntu GNU 
-Compiler for Java (GCJ). Example: 
-</p>
-<p class="bodytext">&nbsp;</p><pre>sudo apt-get install sun-java6-jre</pre><p class="bodytext">&nbsp;</p>
-<p class="bodytext">From time to time, typically after installing Ubuntu
- system updates, the default Java setting can get changed to something 
-other than sun-java6. Ensure that sun-java6-jre is set as the default by
- typing 'sudo update-alternatives --config java', and select 
-'/usr/lib/jvm/java-6-sun/jre/bin/java' if it is not already starred as 
-the default. This may need to be done again in the future if the 
-palm-emulator stops working or tells you that the default Java setting 
-is not correct.
-</p>
-<h3>Install VirtualBox </h3>
-<p class="bodytext">The webOS emulator is built on VirtualBox™, virtual 
-machine software that you can download free from Oracle. VirtualBox is 
-required before installing the HP webOS SDK. <b>Note:</b> The webOS emulator now&nbsp;supports VirtualBox 4.0 and&nbsp;4.1. 
-</p>
-<h5>Installing or Upgrading VirtualBox</h5><ol> 	<li> 		<p>If you are 
-upgrading from a previous version of VirtualBox, follow the instructions
- to "Uninstall the webOS Emulator and Virtual Machine" on <a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/develop/uninstalling_the_sdk_and_pdk.html">this page</a>.</p> 	</li> 	<li> 		<p>Install&nbsp;version 4.0&nbsp;of VirtualBox (optionally, you can install 4.1):</p> 		<pre>sudo apt-get install virtualbox-4.0</pre> 	</li> </ol><p class="bodytext"><b>Note:</b>
- If virtualbox-ose is installed (or suggested) instead of 
-virtualbox-4.0, this is a sign that apt-get did not properly parse the 
-packages from download.virtualbox.org and is instead trying to pull an 
-old VirtualBox 1.5 binary from Ubuntu's own repositories. Make sure to 
-register the repository key before doing the update.  If there is an 
-issue with using the Ubuntu repository, you can also download and 
-install VirtualBox manually here:&nbsp;<span style="color: blue; text-decoration: underline; "><a href="https://web.archive.org/web/20130130211140/http://www.virtualbox.org/wiki/Download_Old_Builds_4_0" target="_blank">http://www.virtualbox.org/wiki/Download_Old_Builds_4_0</a></span>.
-</p>
-<p class="bodytext">Click <a href="http://www.virtualbox.org/wiki/Linux_Downloads" target="_blank">here</a> to go directly to the VirtualBox Linux page. 
-</p>
-<h3>Install ia32-libs (on 64-bit systems only)</h3><div class="padding"><p class="nomargin">If you are installing on a 64-bit system, perform the following additional step before installation:</p>
-<pre>sudo apt-get install ia32-libs</pre>
-<p class="nomargin">If you happen to have installed palm-novacom before installing ia32-libs, then you must restart palm-novacomd:</p>
-<pre>sudo stop palm-novacomd<br>sudo start palm-novacomd</pre></div><h3>Install the SDK for Linux</h3>
-<p class="def-button"><a href="https://1drv.ms/u/s!Av5IQUxnr8DUjN4Gcj3d5y4dLHwKRQ" target="_blank">Download Novacom - 32-bit</a></p>
-<p class="def-button"><a href="https://1drv.ms/u/s!Av5IQUxnr8DUjN4FYpKlaCyGz5wYvA" target="_blank">Download Novacom - 64-bit</a></p>
-<p class="bodytext"><b>and</b>
-</p>
-<p class="def-button"><a href="https://1drv.ms/u/s!Av5IQUxnr8DUjN4MY-1s_XNL3ninqQ.deb" target="_blank">Download SDK</a></p><div class="padding">If you are installing on a 32-bit system, perform the following steps to install the SDK:
-<pre>sudo dpkg -i palm-sdk_3.0.5-svn528736-pho676_i386.deb<br>sudo dpkg -i palm-novacom_1.0.80_i386.deb 	</pre>
-<p class="nomargin">If you are installing on a 64-bit system, perform the following steps to install the SDK:</p>
-<pre>sudo dpkg -i --force-architecture palm-sdk_3.0.5-svn528736-pho676_i386.deb<br>sudo dpkg -i --force-architecture palm-novacom_1.0.80_amd64.deb 	</pre>
-<b>Note:</b> If you experience installation issues, try a clean install. To uninstall, follow the <link 4172="">uninstall instructions.
-</div></div><a id="c39896"></a><h2>Other Emulator Images</h2><a id="c39926"></a><div class="csc-textpic-text"><p class="bodytext">It
- is sometimes necessary to test your software on other versions of 
-webOS. Use the links below to download VMDKs for these versions. (Be 
-sure to right-click and use "Save As..." to save these as binaries.)</p><ul class="def-list">
-<li><a href="https://1drv.ms/u/s!Av5IQUxnr8DUjN4HKKXvhe6vFg15rQ" target="_blank">1.3.5</a></li>
-<li><a href="https://1drv.ms/u/s!Av5IQUxnr8DUjN4KBCzdCrwztZR1Sw" target="_blank">1.4.0</a></li>
-<li><a href="https://1drv.ms/u/s!Av5IQUxnr8DUjN4J8VBdsWqrlm8nmQ" target="_blank">1.4.1</a></li>
-<li><a href="https://1drv.ms/u/s!Av5IQUxnr8DUjN1_mS4My43gmlpVaA" target="_blank">1.4.5</a></li>
-<li><a href="https://1drv.ms/u/s!Av5IQUxnr8DUjN4IkNP1rxZrMujPFw" target="_blank">2.1.0</a></li>
-<li><a href="https://1drv.ms/u/s!Av5IQUxnr8DUjN4L5f9TVEbmmU2dxQ" target="_blank">2.2.0</a>&nbsp;(Pre<sup>3</sup>&nbsp;format only)</li>
-<li><a href="https://1drv.ms/u/s!Av5IQUxnr8DUjN4ALoKmE2Os_p8tqg" target="_blank">2.2.4</a> (Pre2 and Pre<sup>3</sup> format)</li></ul><p class="bodytext">Once
- you have downloaded the zip file, you will need to "install" the image 
-using the palm-emulator command from the command line. For example:
-</p>
-<p class="bodytext">&nbsp;</p><pre>palm-emulator --install "~/Downloads/SDK 2.1.0.519.vmdk.zip"</pre><p class="bodytext">&nbsp;</p>
-<p class="bodytext"><b>Note:</b> To avoid the letterbox bar that will show on the Pre<sup>3</sup>&nbsp;if your app retains it's Pre/Pre2-based aspect ratio, add the following to your index.html:
-</p>
-<p class="bodytext">&nbsp;</p><pre>&lt;meta name='viewport' content='height=device-height'&gt;</pre></div></div>
+<p class="bodytext">&nbsp;</p><pre>webos20090606</pre><p class="bodytext">&nbsp;</p>
+<p class="bodytext">The &quot;Developer Mode&quot; app will come up. Toggle Developer Mode to &quot;On&quot;. The app will dim for a moment, and then Developer Mode will be set. </p></div></div>
+
+    
 
 </div>
 
@@ -295,13 +126,7 @@ using the palm-emulator command from the command line. For example:
 <div class="col-aside">
     <div class="sidebox">
         <h3>Contents</h3>
-        <ol class="article-nav">
-          <li class="current last"><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/develop/sdk_pdk_download.html" target="_top">SDK-PDK Download</a>
-        <ol class="level-1">
-        <li><a href="#c23272" target="_top">Installing the SDK and PDK on a Windows PC</a></li>
-        <li><a href="#c23352" target="_top">Installing the SDK and PDK on a Mac</a></li>
-        <li><a href="#c28522" target="_top">Installing the SDK on Ubuntu Linux</a></li>
-        <li class="last"><a href="#c39896" target="_top">Other Emulator Images</a></li></ol></li></ol>
+        <ol class="article-nav"><li class="current last"><a href="/web/20131031072322/https://developer.palm.com/content/resources/develop/developing_with_the_eclipse_ide.html" target="_top">Developing with the Eclipse IDE</a><ol class="level-1"><li><a href="/web/20131031072322/https://developer.palm.com/content/resources/develop/developing_with_the_eclipse_ide.html#c19202" target="_top">Installing Eclipse and the webOS Plug-In</a></li><li><a href="/web/20131031072322/https://developer.palm.com/content/resources/develop/developing_with_the_eclipse_ide.html#c19222" target="_top">Install Eclipse</a></li><li><a href="/web/20131031072322/https://developer.palm.com/content/resources/develop/developing_with_the_eclipse_ide.html#c19242" target="_top">Find and install updates</a></li><li><a href="/web/20131031072322/https://developer.palm.com/content/resources/develop/developing_with_the_eclipse_ide.html#c19252" target="_top">Installing the Aptana Plug-In</a></li><li><a href="/web/20131031072322/https://developer.palm.com/content/resources/develop/developing_with_the_eclipse_ide.html#c19262" target="_top">Using Eclipse with the Plug-Ins</a></li><li><a href="/web/20131031072322/https://developer.palm.com/content/resources/develop/developing_with_the_eclipse_ide.html#c19272" target="_top">Starting Eclipse</a></li><li><a href="/web/20131031072322/https://developer.palm.com/content/resources/develop/developing_with_the_eclipse_ide.html#c19282" target="_top">Selecting the webOS Perspective</a></li><li><a href="/web/20131031072322/https://developer.palm.com/content/resources/develop/developing_with_the_eclipse_ide.html#c19292" target="_top">Select the perspective</a></li><li><a href="/web/20131031072322/https://developer.palm.com/content/resources/develop/developing_with_the_eclipse_ide.html#c19302" target="_top">Generating a webOS Application</a></li><li><a href="/web/20131031072322/https://developer.palm.com/content/resources/develop/developing_with_the_eclipse_ide.html#c19322" target="_top">Create a new webOS application</a></li><li><a href="/web/20131031072322/https://developer.palm.com/content/resources/develop/developing_with_the_eclipse_ide.html#c19332" target="_top">Add a scene to the application</a></li><li><a href="/web/20131031072322/https://developer.palm.com/content/resources/develop/developing_with_the_eclipse_ide.html#c19342" target="_top">Start the application</a></li><li><a href="/web/20131031072322/https://developer.palm.com/content/resources/develop/developing_with_the_eclipse_ide.html#c19362" target="_top">Debug an application</a></li><li><a href="/web/20131031072322/https://developer.palm.com/content/resources/develop/developing_with_the_eclipse_ide.html#c19382" target="_top">Stay Updated</a></li><li><a href="/web/20131031072322/https://developer.palm.com/content/resources/develop/developing_with_the_eclipse_ide.html#c19392" target="_top">Enabling Developer Mode</a></li><li><a href="/web/20131031072322/https://developer.palm.com/content/resources/develop/developing_with_the_eclipse_ide.html#c19412" target="_top">Enable Developer mode, webOS 1.0-1.4.5</a></li><li class="last"><a href="/web/20131031072322/https://developer.palm.com/content/resources/develop/developing_with_the_eclipse_ide.html#c19422" target="_top">Enable Developer mode, webOS 2.0 and 3.0</a></li></ol></li></ol>
     </div>
 </div>
 <!-- Content Nav Ends Here -->
