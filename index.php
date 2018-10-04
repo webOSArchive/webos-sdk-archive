@@ -228,8 +228,8 @@ install VirtualBox manually here:&nbsp;<span style="color: blue; text-decoration
 <pre>sudo apt-get install ia32-libs</pre>
 <p class="nomargin">If you happen to have installed palm-novacom before installing ia32-libs, then you must restart palm-novacomd:</p>
 <pre>sudo stop palm-novacomd<br>sudo start palm-novacomd</pre></div><h3>Install the SDK for Linux</h3>
-<p class="def-button"><a href="https://web.archive.org/web/20130130211140/https://cdn.downloads.palm.com/sdkdownloads/3.0.5.676/sdkBinaries/palm-novacom_1.0.80_i386.deb" target="_blank">Download Novacom - 32-bit</a></p>
-<p class="def-button"><a href="https://web.archive.org/web/20130130211140/https://cdn.downloads.palm.com/sdkdownloads/3.0.5.676/sdkBinaries/palm-novacom_1.0.80_amd64.deb" target="_blank">Download Novacom - 64-bit</a></p>
+<p class="def-button"><a href="https://1drv.ms/u/s!Av5IQUxnr8DUjN4Gcj3d5y4dLHwKRQ" target="_blank">Download Novacom - 32-bit</a></p>
+<p class="def-button"><a href="https://1drv.ms/u/s!Av5IQUxnr8DUjN4FYpKlaCyGz5wYvA" target="_blank">Download Novacom - 64-bit</a></p>
 <p class="bodytext"><b>and</b>
 </p>
 <p class="def-button"><a href="https://web.archive.org/web/20130130211140/https://cdn.downloads.palm.com/sdkdownloads/3.0.5.676/sdkBinaries/palm-sdk_3.0.5-svn528736-pho676_i386.deb" target="_blank">Download SDK</a></p><div class="padding">If you are installing on a 32-bit system, perform the following steps to install the SDK:
@@ -240,11 +240,12 @@ install VirtualBox manually here:&nbsp;<span style="color: blue; text-decoration
 </div></div><a id="c39896"></a><h2>Other Emulator Images</h2><a id="c39926"></a><div class="csc-textpic-text"><p class="bodytext">It
  is sometimes necessary to test your software on other versions of 
 webOS. Use the links below to download VMDKs for these versions. (Be 
-sure to right-click and use "Save As..." to save these as binaries.)</p><ul class="def-list"><li><a href="https://web.archive.org/web/20130130211140/https://cdn.downloads.palm.com/sdkdownloads/emulator-images/SDK%201.3.5.368.vmdk.zip" target="_blank">1.3.5</a></li>
-<li><a href="https://web.archive.org/web/20130130211140/https://cdn.downloads.palm.com/sdkdownloads/emulator-images/SDK%201.4.0.420.vmdk.zip" target="_blank">1.4.0</a></li>
-<li><a href="https://web.archive.org/web/20130130211140/https://cdn.downloads.palm.com/sdkdownloads/emulator-images/SDK%201.4.1.427.vmdk.zip" target="_blank">1.4.1</a></li>
+sure to right-click and use "Save As..." to save these as binaries.)</p><ul class="def-list">
+<li><a href="https://1drv.ms/u/s!Av5IQUxnr8DUjN4HKKXvhe6vFg15rQ" target="_blank">1.3.5</a></li>
+<li><a href="https://1drv.ms/u/s!Av5IQUxnr8DUjN4KBCzdCrwztZR1Sw" target="_blank">1.4.0</a></li>
+<li><a href="https://1drv.ms/u/s!Av5IQUxnr8DUjN4J8VBdsWqrlm8nmQ" target="_blank">1.4.1</a></li>
 <li><a href="https://1drv.ms/u/s!Av5IQUxnr8DUjN1_mS4My43gmlpVaA" target="_blank">1.4.5</a></li>
-<li><a href="https://web.archive.org/web/20130130211140/https://cdn.downloads.palm.com/sdkdownloads/emulator-images/SDK%202.1.0.519.vmdk.zip" target="_blank">2.1.0</a></li>
+<li><a href="https://1drv.ms/u/s!Av5IQUxnr8DUjN4IkNP1rxZrMujPFw" target="_blank">2.1.0</a></li>
 <li><a href="https://web.archive.org/web/20130130211140/https://cdn.downloads.palm.com/sdkdownloads/emulator-images/SDK-2210.vmdk.zip" target="_blank">2.2.0</a>&nbsp;(Pre<sup>3</sup>&nbsp;format only)</li>
 <li><a href="https://1drv.ms/u/s!Av5IQUxnr8DUjN4ALoKmE2Os_p8tqg" target="_blank">2.2.4</a> (Pre2 and Pre<sup>3</sup> format)</li></ul><p class="bodytext">Once
  you have downloaded the zip file, you will need to "install" the image 
@@ -262,7 +263,13 @@ using the palm-emulator command from the command line. For example:
 <div class="col-aside">
     <div class="sidebox">
         <h3>Contents</h3>
-        <ol class="article-nav"><li class="current last"><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/develop/sdk_pdk_download.html" target="_top">SDK-PDK Download</a><ol class="level-1"><li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/develop/sdk_pdk_download.html#c23272" target="_top">Installing the SDK and PDK on a Windows PC</a></li><li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/develop/sdk_pdk_download.html#c23352" target="_top">Installing the SDK and PDK on a Mac</a></li><li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/develop/sdk_pdk_download.html#c28522" target="_top">Installing the SDK on Ubuntu Linux</a></li><li class="last"><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/develop/sdk_pdk_download.html#c39896" target="_top">Other Emulator Images</a></li></ol></li></ol>
+        <ol class="article-nav">
+          <li class="current last"><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/develop/sdk_pdk_download.html" target="_top">SDK-PDK Download</a>
+        <ol class="level-1">
+        <li><a href="#c23272" target="_top">Installing the SDK and PDK on a Windows PC</a></li>
+        <li><a href="#c23352" target="_top">Installing the SDK and PDK on a Mac</a></li>
+        <li><a href="#c28522" target="_top">Installing the SDK on Ubuntu Linux</a></li>
+        <li class="last"><a href="#c39896" target="_top">Other Emulator Images</a></li></ol></li></ol>
     </div>
 </div>
 

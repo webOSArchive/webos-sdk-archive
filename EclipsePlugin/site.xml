@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <description>This update site contains the latest Eclipse plugins for the Palm webOS SDK.</description>
+   <feature url="com.palm.pdt.feature_2.0.0.201106022334.jar" id="com.palm.pdt.feature" version="2.0.0.201106022334">
+       <category name="pdt"/>
+   </feature>
+   <category-def name="pdt" label="Palm webOS SDK">
+       <description>Eclipse plugins for the Palm webOS SDK</description>
+   </category-def>
+</site>
