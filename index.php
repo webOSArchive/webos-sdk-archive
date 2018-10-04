@@ -115,7 +115,7 @@ tools if you prefer. (App templates are currently only available for
 Xcode 3.6 and earlier.)
 </p>
 <p class="infobox"><b>Note: </b>PDK development is now supported for Linux. See the Linux download section below for more information.</p>
-<p class="bodytext">The SDK tools are also command-line based, but if you prefer to use an integrated development environment (IDE), HP provides a <a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/develop/developing_with_the_eclipse_ide.html">webOS plug-in for the Eclipse IDE</a>.
+<p class="bodytext">The SDK tools are also command-line based, but if you prefer to use an integrated development environment (IDE), HP provides a <a href="eclipse.php">webOS plug-in for the Eclipse IDE</a>.
 </p>
 <p class="bodytext">Ready to get to work? Click below on your platform of choice to download:</p><ul class="def-list">    <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/develop/sdk_pdk_download.html#windows">Windows</a></li>    <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/develop/sdk_pdk_download.html#osx">OS X</a></li>    <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/develop/sdk_pdk_download.html#linux">Ubuntu Linux</a></li> </ul><div class="hr"></div></div><div style="height:20px;"><!-- --></div><a id="c23272"></a><h2>Installing the SDK and PDK on a Windows PC        </h2><div class="csc-textpic-text"><p class="bodytext"><a name="windows"></a>
 </p>
