@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+$palmdownloadserver="23.4.17.24"
+?>
 <html class="js" lang="en-US">
 <head>
 <link rel="stylesheet" type="text/css" href="SDK-PDK%20Download%20-%20HP%20webOS%20Developer%20Center_files/widget103.css" media="all">
@@ -142,7 +145,12 @@ virtual machine software that you can download free from Oracle®.
 VirtualBox is required before installing the HP webOS SDK. <b>Note:</b> The webOS emulator now runs&nbsp;on Virtualbox 4.0 and&nbsp;4.1.
 </p>
 <p class="def-button"> 					<a href="https://web.archive.org/web/20130130211140/http://www.virtualbox.org/wiki/Download_Old_Builds_4_0" target="_blank">Download VirtualBox</a></p>
-<h3>Install the HP webOS SDK for Windows</h3><ol> 					<li>Download the appropriate Windows SDK installer (Windows Vista and Windows 7 only): 						<p>                                                           <a class="def-button" href="https://web.archive.org/web/20130130211140/https://cdn.downloads.palm.com/sdkdownloads/3.0.5.676/sdkBinaries/HP_webOS_SDK-Win-3.0.5-676-x86.exe">     Download</a>&nbsp; SDK/PDK for 32-bit machines. </p> <p>                                                         <a class="def-button" href="https://web.archive.org/web/20130130211140/https://cdn.downloads.palm.com/sdkdownloads/3.0.5.676/sdkBinaries/HP_webOS_SDK-Win-3.0.5-676-x64.exe">      Download</a>&nbsp; SDK/PDK for 64-bit machines. </p>	</li> 					<li>Ensure VirtualBox is not running before starting the webOS SDK Installer. 					</li> 					<li>Double-click the webOS SDK Installer file. 					</li><li>Proceed through the licensing agreements.</li><li>Click "Finish" to complete the installation.</li> 				</ol><h3>Download the CodeSourcery Toolchain (PDK only)</h3>
+<h3>Install the HP webOS SDK for Windows</h3>
+  <ol>
+    <li>Download the appropriate Windows SDK installer (Windows Vista and Windows 7 only): 					
+  <p><a class="def-button" href="http://<?php echo $palmdownloadserver; ?>/sdkdownloads/3.0.5.676/sdkBinaries/HP_webOS_SDK-Win-3.0.5-676-x86.exe">     Download</a>&nbsp; SDK/PDK for 32-bit machines. </p> 
+  <p><a class="def-button" href="http://<?php echo $palmdownloadserver; ?>/sdkdownloads/3.0.5.676/sdkBinaries/HP_webOS_SDK-Win-3.0.5-676-x64.exe">      Download</a>&nbsp; SDK/PDK for 64-bit machines. </p>	</li> 					
+  <li>Ensure VirtualBox is not running before starting the webOS SDK Installer. 					</li> 					<li>Double-click the webOS SDK Installer file. 					</li><li>Proceed through the licensing agreements.</li><li>Click "Finish" to complete the installation.</li> 				</ol><h3>Download the CodeSourcery Toolchain (PDK only)</h3>
 <p class="bodytext">Perform this step only if you intend to do plug-in or other C/C++ development.
 </p>
 <p class="bodytext">If not already installed, download the CodeSourcery 
