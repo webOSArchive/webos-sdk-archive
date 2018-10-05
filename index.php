@@ -87,17 +87,11 @@
           choice to download:</p>
 
           <ul class="def-list">
-            <li><a href=
-            "https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/develop/sdk_pdk_download.html#windows">
-            Windows</a></li>
+            <li><a href="#windows">Windows</a></li>
 
-            <li><a href=
-            "https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/develop/sdk_pdk_download.html#osx">
-            OS X</a></li>
+            <li><a href="#osx">OS X</a></li>
 
-            <li><a href=
-            "https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/develop/sdk_pdk_download.html#linux">
-            Ubuntu Linux</a></li>
+            <li><a href="#linux">Ubuntu Linux</a></li>
           </ul>
 
           <div class="hr"></div>
