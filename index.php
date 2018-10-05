@@ -34,6 +34,8 @@ $palmdownloadserver="23.4.17.24"
 
 <?php include 'menu.php'; ?>
 
+<!-- Actual Content Starts Here -->
+
 <div id="main" class="clearfix two-columns-right">
     <div id="intro">
       <ol class="hp-breadcrumbs">
@@ -173,8 +175,8 @@ $palmdownloadserver="23.4.17.24"
 
           <p class="bodytext">&nbsp;</p>
           <pre>
-java -version
-</pre>
+          java -version
+          </pre>
 
           <p class="bodytext">&nbsp;</p>
 
@@ -279,8 +281,8 @@ java -version
 
             <li>Open a Command Prompt window, and then type:
               <pre>
- palm-generate  
-</pre>
+              palm-generate  
+              </pre>
 
               <p>to verify that the tools are installed:</p>
 
@@ -420,27 +422,27 @@ java -version
 
               <p>If you are using 10.04 (Lucid Lynx):</p>
               <pre>
-deb http://download.virtualbox.org/virtualbox/debian lucid non-free
-</pre>
+              deb http://download.virtualbox.org/virtualbox/debian lucid non-free
+              </pre>
 
               <p>If you are installing on 9.04 (Jaunty Jackalope):</p>
               <pre>
-deb http://download.virtualbox.org/virtualbox/debian jaunty non-free
-</pre>
+              deb http://download.virtualbox.org/virtualbox/debian jaunty non-free
+              </pre>
             </li>
 
             <li>
               <p>Download and register the Oracle&reg; public key for apt-secure:</p>
               <pre>
-wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
-</pre>
+              wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
+              </pre>
             </li>
 
             <li>
               <p>Refresh the package index files:</p>
               <pre>
-sudo apt-get update
-</pre>
+              sudo apt-get update
+              </pre>
             </li>
           </ol>
 
@@ -452,8 +454,8 @@ sudo apt-get update
 
           <p class="bodytext">&nbsp;</p>
           <pre>
-sudo apt-get install sun-java6-jre
-</pre>
+          sudo apt-get install sun-java6-jre
+          </pre>
 
           <p class="bodytext">&nbsp;</p>
 
@@ -487,8 +489,8 @@ sudo apt-get install sun-java6-jre
               <p>Install&nbsp;version 4.0&nbsp;of VirtualBox (optionally, you can install
               4.1):</p>
               <pre>
-sudo apt-get install virtualbox-4.0
-</pre>
+              sudo apt-get install virtualbox-4.0
+              </pre>
             </li>
           </ol>
 
@@ -513,14 +515,14 @@ sudo apt-get install virtualbox-4.0
             <p class="nomargin">If you are installing on a 64-bit system, perform the
             following additional step before installation:</p>
             <pre>
-sudo apt-get install ia32-libs
-</pre>
+            sudo apt-get install ia32-libs
+            </pre>
 
             <p class="nomargin">If you happen to have installed palm-novacom before
             installing ia32-libs, then you must restart palm-novacomd:</p>
             <pre>
-sudo stop palm-novacomd<br>sudo start palm-novacomd
-</pre>
+            sudo stop palm-novacomd<br>sudo start palm-novacomd
+            </pre>
           </div>
 
           <h3>Install the SDK for Linux</h3>
@@ -543,15 +545,15 @@ sudo stop palm-novacomd<br>sudo start palm-novacomd
             If you are installing on a 32-bit system, perform the following steps to
             install the SDK:
             <pre>
-sudo dpkg -i palm-sdk_3.0.5-svn528736-pho676_i386.deb<br>sudo dpkg -i palm-novacom_1.0.80_i386.deb         
-</pre>
+            sudo dpkg -i palm-sdk_3.0.5-svn528736-pho676_i386.deb<br>sudo dpkg -i palm-novacom_1.0.80_i386.deb         
+            </pre>
 
             <p class="nomargin">If you are installing on a 64-bit system, perform the
             following steps to install the SDK:</p>
             <pre>
-sudo dpkg -i --force-architecture palm-sdk_3.0.5-svn528736-pho676_i386.deb<br>sudo dpkg -i --force-architecture palm-novacom_1.0.80_amd64.deb      
-</pre><b>Note:</b> If you experience installation issues, try a clean install. To
-uninstall, follow the uninstall instructions.
+            sudo dpkg -i --force-architecture palm-sdk_3.0.5-svn528736-pho676_i386.deb<br>sudo dpkg -i --force-architecture palm-novacom_1.0.80_amd64.deb      
+            </pre><b>Note:</b> If you experience installation issues, try a clean install. To
+            uninstall, follow the uninstall instructions.
           </div>
         </div><a id="c39896" name="c39896"></a>
 
@@ -591,8 +593,8 @@ uninstall, follow the uninstall instructions.
 
           <p class="bodytext">&nbsp;</p>
           <pre>
-palm-emulator --install "~/Downloads/SDK 2.1.0.519.vmdk.zip"
-</pre>
+          palm-emulator --install "~/Downloads/SDK 2.1.0.519.vmdk.zip"
+          </pre>
 
           <p class="bodytext">&nbsp;</p>
 
@@ -602,13 +604,14 @@ palm-emulator --install "~/Downloads/SDK 2.1.0.519.vmdk.zip"
 
           <p class="bodytext">&nbsp;</p>
           <pre>
-&lt;meta name='viewport' content='height=device-height'&gt;
-</pre>
+          &lt;meta name='viewport' content='height=device-height'&gt;
+          </pre>
         </div>
       </div>
-    </div><!-- Actual Content Ends Here -->
-    <!-- Content Nav Starts Here -->
+    </div>
+    <!-- Actual Content Ends Here -->
 
+    <!-- Content Nav Starts Here -->
     <div class="col-aside">
       <div class="sidebox">
         <h3>Contents</h3>
@@ -635,6 +638,7 @@ palm-emulator --install "~/Downloads/SDK 2.1.0.519.vmdk.zip"
           </li>
         </ol>
       </div>
-    </div><!-- Content Nav Ends Here -->
+    </div>
+    <!-- Content Nav Ends Here -->
   </div>
 <?php include 'footer.php';?>
