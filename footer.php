@@ -26,9 +26,7 @@
         </div>
       </div>
       <div class="imprint clearfix">
-        <div class="hp-copyright"><div id="c28323" class="csc-default"><p class="bodytext">© 2011 Hewlett-Packard Development Company, L.P.<br> The information contained herein was cloned from the Internet Wayback Machine. While every effort has been made to maintain the archival value, changes have been made to preserve the original content, and update links or instructions that have changed since originally archived. HP has not approved or endorsed the maintenance of this content, nor has LG, the current holder of the original webOS IP. The host of this archival content makes no claims of ownership or invention, it is simply being preserved for its historical value. &nbsp;This site doesn't not employee cookies, tracking or any user data storage.</p></div>
-      </div>
-        <ul class="inline-footer-list"><li><a href="https://web.archive.org/web/20130130211140/http://www.palm.com/" target="_top" title="Palm.com">Palm.com</a></li><li><a href="https://web.archive.org/web/20130130211140/http://www.palm.com/us/company/legal.html" target="_top" title="Legal Notices">Legal Notices</a></li><li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/contact_us.html" target="_top" title="Contact Us">Contact Us</a></li></ul>
+        <p class="bodytext">© 2011 Hewlett-Packard Development Company, L.P.<br> The information contained herein was cloned from the Internet Wayback Machine. While every effort has been made to maintain the archival value, changes have been made to preserve the original content, and update links or instructions that have changed since originally archived. HP has not approved or endorsed the maintenance of this content, nor has LG, the current holder of the original webOS IP. The host of this archival content makes no claims of ownership or invention, it is simply being preserved for its historical value. &nbsp;This site doesn't not employee cookies, tracking or any user data storage.</p>
       </div>
     </div>
 </div>
