@@ -575,4 +575,6 @@ $palmdownloadserver="23.4.17.24"
     </div>
     <!-- Content Nav Ends Here -->
 
+</div>
+
 <?php include 'footer.php';?>
