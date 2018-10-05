@@ -48,8 +48,8 @@
                 <ul class="nav-list">
                   <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/api/design/design-enyo.html">Enyo Design Guide</a></li>
 
-                  <li style="list-style: none">&lt;
-                   li&gt;<a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/advanced_application_guidelines.html" target="_top">Advanced Application Guidelines</a></li>
+                  <li style="list-style: none">
+                   <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/advanced_application_guidelines.html" target="_top">Advanced Application Guidelines</a></li>
 
                   <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/hp_webos_and_game_development.html" target="_top">webOS and Game Development</a></li>
                 </ul>
