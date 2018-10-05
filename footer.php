@@ -27,7 +27,7 @@
       </div>
       <div class="imprint clearfix">
         <div class="hp-copyright"><div id="c28323" class="csc-default">
-        <p class="bodytext">© 2011 Hewlett-Packard Development Company, L.P.<br> The information contained herein was cloned from the Internet Wayback Machine. While every effort has been made to maintain the archival value, changes have been made to preserve the original content, and update links or instructions that have changed since originally archived. HP has not approved or endorsed the maintenance of this content, nor has LG, the current holder of the original webOS IP. The host of this archival content makes no claims of ownership or invention, it is simply being preserved for its historical value. &nbsp;This site doesn't not employee cookies, tracking or any user data storage.</p>
+        <p class="bodytext">© 2011 Hewlett-Packard Development Company, L.P.<br> The information contained herein was cloned from the Internet Wayback Machine. While every effort has been made to maintain the archival value, changes have been made to preserve the original content and update links or instructions that have changed since originally archived. HP has not approved or endorsed the maintenance of this content, nor has LG, the current holder of the original webOS IP. The host of this archival content makes no claims of ownership or invention, it is simply being preserved for its historical value. &nbsp;This site doesn't not employee cookies, tracking or any user data storage.</p>
           </div></div>
       </div>
     </div>
