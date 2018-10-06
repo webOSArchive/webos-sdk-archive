@@ -171,7 +171,7 @@
           <p class="bodytext">The webOS emulator is built on VirtualBox&trade;, virtual
           machine software that you can download free from Oracle&reg;. VirtualBox is
           required before installing the HP webOS SDK. <b>Note:</b> The webOS emulator
-          now runs&nbsp;on Virtualbox 4.0.36 r71416 and&nbsp;4.1.0 r73009.</p>
+          now runs on Virtualbox 4.0.36 r71416 and 4.1.0 r73009.</p>
 
           <p class="def-button"><a href=
           "https://www.virtualbox.org/wiki/Download_Old_Builds" target="_blank">Download
@@ -290,7 +290,7 @@
           <p class="bodytext">The webOS emulator is built on VirtualBox, virtual machine
           software that you can download free from Oracle&reg;. VirtualBox is required
           before installing the HP webOS SDK. <b>Note:</b> The emulator now
-          supports&nbsp;VirtualBox 4.0 and&nbsp;4.1.</p>
+          supports Virtualbox 4.0.36 r71416 and 4.1.0 r73009.</p>
 
           <p class="def-button"><a href=
           "https://www.virtualbox.org/wiki/Download_Old_Builds" target="_blank">Download
@@ -442,7 +442,7 @@
           <p class="bodytext">The webOS emulator is built on VirtualBox&trade;, virtual
           machine software that you can download free from Oracle. VirtualBox is required
           before installing the HP webOS SDK. <b>Note:</b> The webOS emulator
-          now&nbsp;supports VirtualBox 4.0 and&nbsp;4.1.</p>
+          now Virtualbox 4.0.36 r71416 and 4.1.0 r73009.</p>
 
           <h5>Installing or Upgrading VirtualBox</h5>
 
