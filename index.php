@@ -166,6 +166,11 @@
           "https://www.java.com/en/download/faq/java_win64bit.xml" target=
           "_blank">https://www.java.com/en/download/faq/java_win64bit.xml</a>.</p>
 
+          <h3>Install Drivers</h3>
+
+          <p class="bodytext">The Novacom drivers are available for all supported platforms.</p>
+          <p class="def-button"><a href="https://1drv.ms/u/s!Av5IQUxnr8DUjN4jRgScLZJq_tn1ag" target="_blank">Download Drivers</a>
+
           <h3>Install VirtualBox</h3>
 
           <p class="bodytext">The webOS emulator is built on VirtualBox&trade;, virtual
