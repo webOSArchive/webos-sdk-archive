@@ -313,8 +313,7 @@
           "https://www.virtualbox.org/wiki/Download_Old_Builds" target="_blank">Download
           VirtualBox</a></p>
 
-          <h3><br>
-          Download the SDK/PDK disk image file</h3>
+          <h3>Download the SDK/PDK disk image file</h3>
 
           <p class="def-button"><a href=
           "https://1drv.ms/u/s!Av5IQUxnr8DUjN4Eqq0T0WWYOWuZ8g" target="_blank">Download
