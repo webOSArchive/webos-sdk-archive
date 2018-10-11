@@ -289,8 +289,20 @@
         </div><a id="c23362" name="c23362"></a>
 
         <div class="csc-textpic-text">
-          <h3><br>
-          Install VirtualBox&trade;</h3>
+
+          <h3>Install Java</h3>
+
+          <p class="nomargin">Download and install the latest version of Java&trade; supported on your version of OS X.<br>
+
+          <p class="def-button"><a href="https://support.apple.com/en-us/HT204036" target=
+          "_blank">Download Java</a></p>
+
+          <h3>Install Drivers</h3>
+
+          <p class="bodytext">The Novacom drivers are available for all supported platforms.</p>
+          <p class="def-button"><a href="https://1drv.ms/u/s!Av5IQUxnr8DUjN4jRgScLZJq_tn1ag" target="_blank">Download Drivers</a>
+
+          <h3>Install VirtualBox&trade;</h3>
 
           <p class="bodytext">The webOS emulator is built on VirtualBox, virtual machine
           software that you can download free from Oracle&reg;. VirtualBox is required
