@@ -148,9 +148,7 @@
           To verify that Java is installed, go to the Command Prompt and type:</p>
 
           <p class="bodytext">&nbsp;</p>
-          <pre>
-          java -version
-          </pre>
+          <pre>java -version</pre>
 
           <p class="bodytext">&nbsp;</p>
 
@@ -259,9 +257,7 @@
             <li>Create or choose a directory to use as your development workspace.</li>
 
             <li>Open a Command Prompt window, and then type:
-              <pre>
-              palm-generate  
-              </pre>
+              <pre>palm-generate</pre>
 
               <p>to verify that the tools are installed:</p>
 
@@ -411,28 +407,20 @@
               <p>Update the Package Repository Information to /etc/apt/sources.list:</p>
 
               <p>If you are using 10.04 (Lucid Lynx):</p>
-              <pre>
-              deb http://download.virtualbox.org/virtualbox/debian lucid non-free
-              </pre>
+              <pre>deb http://download.virtualbox.org/virtualbox/debian lucid non-free</pre>
 
               <p>If you are installing on 9.04 (Jaunty Jackalope):</p>
-              <pre>
-              deb http://download.virtualbox.org/virtualbox/debian jaunty non-free
-              </pre>
+              <pre>deb http://download.virtualbox.org/virtualbox/debian jaunty non-free</pre>
             </li>
 
             <li>
               <p>Download and register the Oracle&reg; public key for apt-secure:</p>
-              <pre>
-              wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
-              </pre>
+              <pre>wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -</pre>
             </li>
 
             <li>
               <p>Refresh the package index files:</p>
-              <pre>
-              sudo apt-get update
-              </pre>
+              <pre>sudo apt-get update</pre>
             </li>
           </ol>
 
@@ -443,9 +431,7 @@
           (GCJ). Example:</p>
 
           <p class="bodytext">&nbsp;</p>
-          <pre>
-          sudo apt-get install sun-java6-jre
-          </pre>
+          <pre>sudo apt-get install sun-java6-jre</pre>
 
           <p class="bodytext">&nbsp;</p>
 
@@ -478,9 +464,7 @@
             <li>
               <p>Install&nbsp;version 4.0&nbsp;of VirtualBox (optionally, you can install
               4.1):</p>
-              <pre>
-              sudo apt-get install virtualbox-4.0
-              </pre>
+              <pre>sudo apt-get install virtualbox-4.0</pre>
             </li>
           </ol>
 
@@ -504,15 +488,11 @@
           <div class="padding">
             <p class="nomargin">If you are installing on a 64-bit system, perform the
             following additional step before installation:</p>
-            <pre>
-            sudo apt-get install ia32-libs
-            </pre>
+            <pre>sudo apt-get install ia32-libs</pre>
 
             <p class="nomargin">If you happen to have installed palm-novacom before
             installing ia32-libs, then you must restart palm-novacomd:</p>
-            <pre>
-            sudo stop palm-novacomd<br>sudo start palm-novacomd
-            </pre>
+            <pre>sudo stop palm-novacomd<br>sudo start palm-novacomd</pre>
           </div>
 
           <h3>Install the SDK for Linux</h3>
@@ -534,15 +514,12 @@
           <div class="padding">
             If you are installing on a 32-bit system, perform the following steps to
             install the SDK:
-            <pre>
-            sudo dpkg -i palm-sdk_3.0.5-svn528736-pho676_i386.deb<br>sudo dpkg -i palm-novacom_1.0.80_i386.deb         
-            </pre>
+            <pre>sudo dpkg -i palm-sdk_3.0.5-svn528736-pho676_i386.deb<br>sudo dpkg -i palm-novacom_1.0.80_i386.deb</pre>
 
             <p class="nomargin">If you are installing on a 64-bit system, perform the
             following steps to install the SDK:</p>
-            <pre>
-            sudo dpkg -i --force-architecture palm-sdk_3.0.5-svn528736-pho676_i386.deb<br>sudo dpkg -i --force-architecture palm-novacom_1.0.80_amd64.deb      
-            </pre><b>Note:</b> If you experience installation issues, try a clean install. To
+            <pre>sudo dpkg -i --force-architecture palm-sdk_3.0.5-svn528736-pho676_i386.deb<br>sudo dpkg -i --force-architecture palm-novacom_1.0.80_amd64.deb</pre>
+            <b>Note:</b> If you experience installation issues, try a clean install. To
             uninstall, follow the uninstall instructions.
           </div>
         </div><a id="c39896" name="c39896"></a>
@@ -582,20 +559,23 @@
           example:</p>
 
           <p class="bodytext">&nbsp;</p>
-          <pre>
-          palm-emulator --install "~/Downloads/SDK 2.1.0.519.vmdk.zip"
-          </pre>
+          <pre>palm-emulator --install "~/Downloads/SDK 2.1.0.519.vmdk.zip"</pre>
 
           <p class="bodytext">&nbsp;</p>
 
-          <p class="bodytext"><b>Note:</b> To avoid the letterbox bar that will show on
-          the Pre<sup>3</sup>&nbsp;if your app retains it's Pre/Pre2-based aspect ratio,
-          add the following to your index.html:</p>
-
-          <p class="bodytext">&nbsp;</p>
-          <pre>
-          &lt;meta name='viewport' content='height=device-height'&gt;
-          </pre>
+          <p class="bodytext"><b>Screen Size Notes:</b>
+            <ul>
+              <li>To avoid the letterbox bar that will show on
+              the Pre<sup>3</sup>&nbsp;if your app retains it's Pre/Pre2-based aspect ratio,
+              add the following to your index.html:
+              <pre>&lt;meta name='viewport' content='height=device-height'&gt;</pre>
+              </li>
+              <li>To avoid the phone simulator frame that will show on 
+              the TouchPad if your app retains it's Pre/Pre2-based aspect ratio, add the following to your appinfo.json:
+              <pre>"uiRevision": "2",</pre>
+              </li>
+            </ul>
+          </p>
         </div>
       </div>
     </div>
