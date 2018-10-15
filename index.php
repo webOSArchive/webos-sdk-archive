@@ -518,8 +518,10 @@
             
           </div>
 
+        <p class="bodytext">&nbsp;</p>
+
         <div class="hr"></div>
-        
+
         <div style="height:20px;">
           <!-- -->
         </div><a id="c39926" name="c39926"></a>
@@ -570,12 +572,12 @@
 
           <p class="bodytext">
             <ul>
-              <li>To avoid the letterbox bar that will show on
+              <li><b>Pre3</b>To avoid the letterbox bar that will show on
               the Pre<sup>3</sup>&nbsp;if your app retains it's Pre/Pre2-based aspect ratio,
               add the following to your index.html:
               <pre>&lt;meta name='viewport' content='height=device-height'&gt;</pre>
               </li>
-              <li>To avoid the phone simulator frame that will show on 
+              <li><b>TouchPad</b>To avoid the phone simulator frame that will show on 
               the TouchPad if your app retains it's Pre/Pre2-based aspect ratio, add the following to your appinfo.json:
               <pre>"uiRevision": "2",</pre>
               </li>
