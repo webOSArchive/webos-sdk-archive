@@ -516,9 +516,12 @@
             <b>Note:</b> If you experience installation issues, try a clean install. To
             uninstall, follow the uninstall instructions.
           </div>
-        </div><a id="c39896" name="c39896"></a>
 
-        <h2>Other Emulator Images</h2><a id="c39926" name="c39926"></a>
+        <div style="height:20px;">
+          <!-- -->
+        </div><a id="c39926" name="c39926"></a>
+
+        <h2>Other Emulator Images</h2>
 
         <div class="csc-textpic-text">
           <p class="bodytext">It is sometimes necessary to test your software on other
@@ -554,7 +557,15 @@
 
           <pre>palm-emulator --install "~/Downloads/SDK 2.1.0.519.vmdk.zip"</pre>
 
-          <p class="bodytext"><b>Screen Size Notes:</b>
+        </div>
+        
+        <div style="height:20px;">
+          <!-- -->
+        </div><a id="cScreenSize" name="cScreenSize"></a>
+
+        <h2>Screen-size Notes</h2>
+
+          <p class="bodytext">
             <ul>
               <li>To avoid the letterbox bar that will show on
               the Pre<sup>3</sup>&nbsp;if your app retains it's Pre/Pre2-based aspect ratio,
@@ -590,7 +601,9 @@
 
               <li><a href="#c28522" target="_top">Installing the SDK on Ubuntu Linux</a></li>
 
-              <li class="last"><a href="#c39896" target="_top">Other Emulator Images</a></li>
+              <li><a href="#c28522" target="_top">Other Emulator Images</a></li>
+              
+              <li class="last"><a href="#cScreenSize" target="_top">Screen-size Notes</a></li>
             </ol>
           </li>
         </ol>
