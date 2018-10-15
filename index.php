@@ -82,8 +82,8 @@
           <p class="bodytext">The SDK tools are also command-line based, but if you
           prefer to use an integrated development environment (IDE) there are some options:
           <ul>
-          <li>- HP provided a <a href="eclipse.php">webOS plug-in for the Eclipse IDE</a>.
-          <li>- Hobby developer, Jonathan Wise, is working on <a href="https://github.com/codepoet80/webos-vscode-extensions">VisualStudio Code extensions for webOS</a>.          
+          <li>HP provided a <a href="eclipse.php">webOS plug-in for the Eclipse IDE</a>.
+          <li>Hobby developer, Jonathan Wise, is working on <a href="https://github.com/codepoet80/webos-vscode-extensions">VisualStudio Code extensions for webOS</a>.          
           </p>
 
 
