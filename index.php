@@ -514,11 +514,10 @@
             following steps to install the SDK:</p>
             <pre>sudo dpkg -i --force-architecture palm-sdk_3.0.5-svn528736-pho676_i386.deb<br>sudo dpkg -i --force-architecture palm-novacom_1.0.80_amd64.deb</pre>
             <b>Note:</b> If you experience installation issues, try a clean install. To
-            uninstall, follow the uninstall instructions.
+            uninstall, follow the uninstall instructions.<br/>
+            &nbsp;<br/>
             
           </div>
-
-        <p class="bodytext">&nbsp;</p>
 
         <div class="hr"></div>
 
@@ -572,12 +571,12 @@
 
           <p class="bodytext">
             <ul>
-              <li><b>Pre3</b>To avoid the letterbox bar that will show on
+              <li><b>Pre3: </b>To avoid the letterbox bar that will show on
               the Pre<sup>3</sup>&nbsp;if your app retains it's Pre/Pre2-based aspect ratio,
               add the following to your index.html:
               <pre>&lt;meta name='viewport' content='height=device-height'&gt;</pre>
               </li>
-              <li><b>TouchPad</b>To avoid the phone simulator frame that will show on 
+              <li><b>TouchPad: </b>To avoid the phone simulator frame that will show on 
               the TouchPad if your app retains it's Pre/Pre2-based aspect ratio, add the following to your appinfo.json:
               <pre>"uiRevision": "2",</pre>
               </li>
