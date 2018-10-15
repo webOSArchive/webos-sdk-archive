@@ -147,10 +147,7 @@
           <p class="nomargin">Download and install the latest version of Java&trade;.<br>
           To verify that Java is installed, go to the Command Prompt and type:</p>
 
-          <p class="bodytext">&nbsp;</p>
           <pre>java -version</pre>
-
-          <p class="bodytext">&nbsp;</p>
 
           <p class="bodytext">If Java is installed, Java version information appears.</p>
 
@@ -430,10 +427,7 @@
           (JRE). The SDK is incompatible with the default Ubuntu GNU Compiler for Java
           (GCJ). Example:</p>
 
-          <p class="bodytext">&nbsp;</p>
           <pre>sudo apt-get install sun-java6-jre</pre>
-
-          <p class="bodytext">&nbsp;</p>
 
           <p class="bodytext">From time to time, typically after installing Ubuntu system
           updates, the default Java setting can get changed to something other than
@@ -558,10 +552,7 @@
           "install" the image using the palm-emulator command from the command line. For
           example:</p>
 
-          <p class="bodytext">&nbsp;</p>
           <pre>palm-emulator --install "~/Downloads/SDK 2.1.0.519.vmdk.zip"</pre>
-
-          <p class="bodytext">&nbsp;</p>
 
           <p class="bodytext"><b>Screen Size Notes:</b>
             <ul>
