@@ -515,6 +515,7 @@
             <pre>sudo dpkg -i --force-architecture palm-sdk_3.0.5-svn528736-pho676_i386.deb<br>sudo dpkg -i --force-architecture palm-novacom_1.0.80_amd64.deb</pre>
             <b>Note:</b> If you experience installation issues, try a clean install. To
             uninstall, follow the uninstall instructions.
+            <div class="hr"></div>
           </div>
 
         <div style="height:20px;">
@@ -556,7 +557,7 @@
           example:</p>
 
           <pre>palm-emulator --install "~/Downloads/SDK 2.1.0.519.vmdk.zip"</pre>
-
+          <div class="hr"></div>
         </div>
         
         <div style="height:20px;">
