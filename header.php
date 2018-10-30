@@ -21,7 +21,7 @@
 
 <script src="assets/javascript_343c9f04e8.js" type="text/javascript"></script>
 
-<title> <?php echo $pageTitle; ?> - HP webOS Developer Center</title>			
+<title>webOS Dev Center - <?php echo $pageTitle; ?></title>			
 <link rel="shortcut icon" href="https://web.archive.org/web/20130130211140im_/https://developer.palm.com/content/typo3conf/ext/palm_template/icons/favicon.ico" type="application/x-empty; charset=binary">
 <link rel="icon" href="https://web.archive.org/web/20130130211140im_/https://developer.palm.com/content/typo3conf/ext/palm_template/icons/favicon.ico" type="application/x-empty; charset=binary">
 
