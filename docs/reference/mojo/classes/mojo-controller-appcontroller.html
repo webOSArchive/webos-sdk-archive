@@ -345,15 +345,15 @@
       Mojo.Controller.AppController.<strong>playSoundNotification</strong>(soundClass, soundFile, duration)
     </h3>
     <p>
-      Immediately play a notification sound. Note that soundClass should be set to &quot;notifications&quot;. If you need the device to vibrate, set soundClass to &quot;vibrate&quot;.
+      Immediately play a notification sound. Note that soundClass should be set to &quot;notifications&quot;, &quot;alerts&quot; or &quot;media&quot;. If you need the device to vibrate, set soundClass to &quot;vibrate&quot;.
     </p>
     <h4 id="parameters-7">
       Parameters
     </h4>
     <ul>
-      <li>{String} <strong>soundClass</strong> - class of the sound. Use "alert" for a standard alert sound, use "media" to specify a sound file
+      <li>{String} <strong>soundClass</strong> - class of the sound. Use "vibrate" for only vibration, "alerts" or "notifications" for a standard alert sound, or "media" to specify a sound file
       </li>
-      <li>{String} <strong>soundFile</strong> - relative or absolute path to the sound file. Only used if soundClass is "media"
+      <li>{String} <strong>soundFile</strong> - relative or absolute path to the media file to play
       </li>
       <li>{String} <strong>duration</strong> - duration of sound in ms
       </li>
@@ -431,7 +431,7 @@
               soundClass
             </td>
             <td>
-              string containing the sound class to use - can be either "alert" or "media"
+              string containing the sound class to use - can be "alerts", "notifications" or "media"
             </td>
           </tr>
           <tr>
