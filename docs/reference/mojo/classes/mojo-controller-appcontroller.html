@@ -351,9 +351,9 @@
       Parameters
     </h4>
     <ul>
-      <li>{String} <strong>soundClass</strong> - class of the sound
+      <li>{String} <strong>soundClass</strong> - class of the sound. Use "alert" for a standard alert sound, use "media" to specify a sound file
       </li>
-      <li>{String} <strong>soundFile</strong> - partial or full path to the sound file
+      <li>{String} <strong>soundFile</strong> - relative or absolute path to the sound file. Only used if soundClass is "media"
       </li>
       <li>{String} <strong>duration</strong> - duration of sound in ms
       </li>
@@ -431,7 +431,7 @@
               soundClass
             </td>
             <td>
-              string containing the sound class to use
+              string containing the sound class to use - can be either "alert" or "media"
             </td>
           </tr>
           <tr>
@@ -439,7 +439,7 @@
               soundFile
             </td>
             <td>
-              partial or full path to a sound file to play
+              partial or full path to a sound file to play - used with soundClass "media"
             </td>
           </tr>
           <tr>
