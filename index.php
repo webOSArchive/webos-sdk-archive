@@ -502,7 +502,7 @@
           <p class="bodytext"><b>and</b></p>
 
           <p class="def-button"><a href=
-          "https://1drv.ms/u/s!Av5IQUxnr8DUjN4MY-1s_XNL3ninqQ.deb" target=
+          "https://1drv.ms/u/s!Av5IQUxnr8DUjN4MY-1s_XNL3ninqQ" target=
           "_blank">Download SDK</a></p>
 
           <div class="padding">
