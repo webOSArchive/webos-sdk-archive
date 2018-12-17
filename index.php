@@ -483,6 +483,8 @@
             <p class="nomargin">If you are installing on a 64-bit system, perform the
             following additional step before installation:</p>
             <pre>sudo apt-get install ia32-libs</pre>
+            
+            <p class="nomargin">On newer Linux distros, <a href="https://stackoverflow.com/questions/23182765/how-to-install-ia32-libs-in-ubuntu-14-04-lts-trusty-tahr">this thread</a> may help</a></p>
 
             <p class="nomargin">If you happen to have installed palm-novacom before
             installing ia32-libs, then you must restart palm-novacomd:</p>
