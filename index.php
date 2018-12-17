@@ -452,26 +452,24 @@
               "https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/develop/uninstalling_the_sdk_and_pdk.html">
               this page</a>.</p>
             </li>
+            <li>
+                <p><b>Note:</b> While VirtualBox 4.1 won't run on newer distros, you'll need it to create emulator images.
+                    Install 4.1 and create the images, then uninstall. Install a newer VirtualBox to actually run the emulator
+                    from the VirtualBox UI.
+            </li>
 
             <li>
               <p>Install&nbsp;version 4.0&nbsp;of VirtualBox (optionally, you can install
               4.1):</p>
-              <pre>sudo apt-get install virtualbox-4.0</pre>
             </li>
           </ol>
 
-          <p class="bodytext"><b>Note:</b> If virtualbox-ose is installed (or suggested)
-          instead of virtualbox-4.0, this is a sign that apt-get did not properly parse
-          the packages from download.virtualbox.org and is instead trying to pull an old
-          VirtualBox 1.5 binary from Ubuntu's own repositories. Make sure to register the
-          repository key before doing the update. If there is an issue with using the
-          Ubuntu repository, you can also download and install VirtualBox manually
+          <p class="bodytext">Download and install VirtualBox 4 manually
           here:&nbsp;<span style="color: blue; text-decoration: underline;"><a href=
-          "https://web.archive.org/web/20130130211140/http://www.virtualbox.org/wiki/Download_Old_Builds_4_0"
-          target=
-          "_blank">http://www.virtualbox.org/wiki/Download_Old_Builds_4_0</a></span>.</p>
+          "https://www.virtualbox.org/wiki/Download_Old_Builds_4_1"
+          target="_blank">https://www.virtualbox.org/wiki/Download_Old_Builds_4_1</a></span>.</p>
 
-          <p class="bodytext">Click <a href=
+          <p class="bodytext">Download <a href=
           "http://www.virtualbox.org/wiki/Linux_Downloads" target="_blank">here</a> to go
           directly to the VirtualBox Linux page.</p>
 
