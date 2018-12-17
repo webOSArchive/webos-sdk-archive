@@ -423,19 +423,17 @@
 
           <h3>Install Java&trade;</h3>
 
-          <p class="bodytext">Download and install the Oracle Java Runtime Environment
+          <p class="bodytext">Download and install the OpenJRE Java Runtime Environment
           (JRE). The SDK is incompatible with the default Ubuntu GNU Compiler for Java
-          (GCJ). Example:</p>
+          (GCJ), and the Java JRE is no longer available. Example:</p>
 
-          <pre>sudo add-apt-repository ppa:webupd8team/java<br>sudo apt-get update<br>sudo apt-get install oracle-java6-installer</pre>
+          <pre>sudo apt-get install openjdk-8-jr</pre>
 
-          <p class="bodytext">From time to time, typically after installing Ubuntu system
-          updates, the default Java setting can get changed to something other than
-          sun-java6. Ensure that sun-java6-jre is set as the default by typing 'sudo
-          update-alternatives --config java', and select
-          '/usr/lib/jvm/java-6-sun/jre/bin/java' if it is not already starred as the
-          default. This may need to be done again in the future if the palm-emulator
-          stops working or tells you that the default Java setting is not correct.</p>
+          <p class="bodytext">To set Oracle JDK8 as default, install the "oracle-java8-set-default" package.
+            <pre>sudo apt install oracle-java8-set-default</pre>
+            On Ubuntu systems, oracle-java8-set-default is most probably installed
+            automatically with this package.
+          </p>
 
           <h3>Install VirtualBox</h3>
 
