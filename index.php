@@ -427,7 +427,10 @@
           (JRE). The SDK is incompatible with the default Ubuntu GNU Compiler for Java
           (GCJ). Example:</p>
 
-          <pre>sudo apt-get install sun-java6-jre</pre>
+          <pre>sudo add-apt-repository ppa:webupd8team/java<br>
+          sudo apt-get update<br>
+          sudo apt-get install oracle-java6-installer
+          </pre>
 
           <p class="bodytext">From time to time, typically after installing Ubuntu system
           updates, the default Java setting can get changed to something other than
