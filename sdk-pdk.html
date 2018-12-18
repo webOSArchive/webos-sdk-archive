@@ -384,29 +384,10 @@
           Linux, the native desktop toolchain will generate x64 code, which will not work
           in the emulator.)</p>
 
+          <p><b>Note:</b> These instructions have been updated for Ubuntu 14.04.5 LTS (Trusty Tahr)</p>
+
           <h3>Update the Package Repository Information</h3>
-
-          <ol>
-            <li>
-              <p>Update the Package Repository Information to /etc/apt/sources.list:</p>
-
-              <p>If you are using 10.04 (Lucid Lynx):</p>
-              <pre>deb http://download.virtualbox.org/virtualbox/debian lucid non-free</pre>
-
-              <p>If you are installing on 9.04 (Jaunty Jackalope):</p>
-              <pre>deb http://download.virtualbox.org/virtualbox/debian jaunty non-free</pre>
-            </li>
-
-            <li>
-              <p>Download and register the Oracle&reg; public key for apt-secure:</p>
-              <pre>wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -</pre>
-            </li>
-
-            <li>
-              <p>Refresh the package index files:</p>
-              <pre>sudo apt-get update</pre>
-            </li>
-          </ol>
+          <pre>sudo apt-get update</pre>
 
           <h3>Install Java&trade;</h3>
 
