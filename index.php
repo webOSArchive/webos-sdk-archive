@@ -3,7 +3,10 @@
 <head>
 <?php
 echo $_SERVER['HTTP_HOST'];
-echo (stripos($_SERVER['HTTP_HOST'], "sdk"));
+if (stripos($_SERVER['HTTP_HOST'], "sdk") != 0)
+{
+	echo "I should go to index site";
+}
 // index.php
 //header("Location: http://www.yoursite.com/new_index.php", TRUE, 301);
 //exit();
