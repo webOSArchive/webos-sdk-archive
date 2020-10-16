@@ -3,6 +3,7 @@
 <head>
 <?php
 echo $_SERVER['HTTP_HOST'];
+echo (stripos($_SERVER['HTTP_HOST'], "sdk"));
 // index.php
 //header("Location: http://www.yoursite.com/new_index.php", TRUE, 301);
 //exit();
