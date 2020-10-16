@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html class="js" lang="en-US">
 <head>
-
+<?php
+echo $_SERVER['HTTP_HOST'];
+// index.php
+//header("Location: http://www.yoursite.com/new_index.php", TRUE, 301);
+//exit();
+?>
 <meta name="generator" content="TYPO3 4.5 CMS">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <meta name="description" content="SDK-PDK Download">
