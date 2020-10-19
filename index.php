@@ -8,6 +8,16 @@ if ($_SERVER['HTTP_HOST'] != "sdk.webosarchive.com")
 <!DOCTYPE html>
 <html class="js" lang="en-US">
 <head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-12254772-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-12254772-4');
+</script>
+
 <meta name="generator" content="TYPO3 4.5 CMS">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <meta name="description" content="SDK-PDK Download">
