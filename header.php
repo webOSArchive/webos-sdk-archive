@@ -60,7 +60,7 @@
 
                   <li><a href="index.php?page=firstapp"><img src="assets/check.png" style="vertical-align:top;"> Build your first Mojo App</a></li>
 
-                  <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/api/dev-guide/enyo/enyo-basics-from-the-bottom-up.html"><img src="assets/wayback.png" style="vertical-align:top;"> Enyo from the Ground Up</a></li>
+                  <li><a href="index.php?page=enyogroundup"><img src="assets/check.png" style="vertical-align:top;"> Enyo from the Ground Up</a></li>
 
                   <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/api/dev-guide/enyo/tutorial.html"><img src="assets/wayback.png" style="vertical-align:top;"> Enyo Tutorial</a></li>
 

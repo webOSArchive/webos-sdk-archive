@@ -1,0 +1,193 @@
+<div id="main" class="clearfix two-columns-right"> 
+    
+    <div id="intro">
+        <ol class="hp-breadcrumbs"><li><a href="/" target="_top" onfocus="blurLink(this);">Home</a></li><li><a href="https://web.archive.org/web/20121023072434/https://developer.palm.com/content/resources.html" target="_top" onfocus="blurLink(this);">Resources</a></li><li class="ctx-last">Building Your First App</li></ol>
+        <h1 class="page-title">Enyo Basics</h1>
+        <ul class="inline-icon-list"><li><a onclick="window.print(); return false;" href="javascript: void(0);" class="icon-print">Print</a></li><li><a href="" target="_top" class="icon-mail addthis_button_email">Email</a></li><li class="last"><div class="addthis_toolbox addthis_default_style"><a class="icon-share addthis_button_compact">Share</a></div></li></ul>
+    </div>
+    
+    <div id="content" class="col-content">
+    
+        <div class="default-content article-content">
+    
+          <h2 id="enyo-basics---kinds-components-controls">
+            Enyo Basics - Kinds, Components, Controls
+          </h2>
+          <p>
+            In this document, we take a closer look at kinds, components, and controls--three foundational Enyo concepts that we touched upon in <a href="/?page=enyogroundup">Enyo From the Ground Up</a>.
+          </p>
+
+          <a id="cKinds"></a><h2 id="kinds">
+            Kinds
+          </h2>
+          <p>
+            In Enyo, nearly all code is located in object prototypes called <em>kinds</em>. A kind is an object constructor created using the <code>enyo.kind</code> factory method.
+          </p>
+          <p>
+            The kind in Enyo has a role analogous to that of the class in Java or C++. For example, kinds provide a standard mechanism for implementing inheritance, with subkinds inheriting properties and functions from their superkinds.
+          </p>
+          <p>
+            Here are examples of kinds that create objects representing points in two- and three-dimensional space. Note that the second kind (<code>Point3D</code>) inherits from the first (<code>Point</code>):
+          </p>
+          <blockquote>
+            <pre class="contentbox code-text">
+<code>
+enyo.kind({
+  name: &quot;Point&quot;,
+  x: 0,
+  y: 0,
+  constructor: function(x, y) {
+      this.x = x;
+      this.y = y;
+  },
+  translate: function(dx, dy) {
+      this.x += dx;
+      this.y += dy;
+  },
+  toString: function() {
+      return this.x + &quot;, &quot; + this.y;
+  }
+});
+
+enyo.kind({
+  name: &quot;Point3D&quot;,
+  kind: &quot;Point&quot;,
+  z: 0,
+  constructor: function(x, y, z) {
+      this.inherited(arguments);
+      this.z = z;
+  },
+  translate: function(dx, dy, dz) {
+      this.inherited(arguments);
+      this.z += dz;
+  },
+  toString: function() {
+      return this.inherited(arguments) + &quot;, &quot; + this.z;
+  }
+});
+
+p = new Point3D(1, 1, 1);</code>
+      </pre>
+          </blockquote>
+
+          <a id="cComponents"></a><h2 id="components">
+            Components
+          </h2>
+          <p>
+            <code>Component</code> objects are the basic building blocks of Enyo. Components share common features, which allow them to work together in a standard way. For example, all components have a name (string). A component may create other components, which it is said to <em>own</em>. Each component maintains a collection of the components it owns, and is responsible for the lifecycle of those components.
+          </p>
+          <p>
+            Here are the kind definitions of two components. At runtime, a <code>SimulatedMessage</code> object creates (and thus owns) a <code>RandomizedTimer</code> object, which it uses to simulate the sending of service messages at random intervals:
+          </p>
+          <blockquote>
+            <pre class="contentbox code-text">
+<code>
+enyo.kind({
+  name: &quot;RandomizedTimer&quot;,
+  kind: enyo.Component,
+  baseInterval: 100,
+  percentTrigger: 50,
+  events: {
+      onTriggered: &quot;&quot;
+  },
+  create: function() {
+      this.inherited(arguments);
+      this.job = window.setInterval(enyo.hitch(this, &quot;timer&quot;), this.baseInterval);
+  },
+  destroy: function() {
+      window.clearInterval(this.job);
+  },
+  timer: function() {
+      if (Math.random() &lt; this.percentTrigger * 0.01) {
+          this.doTriggered();
+      }
+  }
+});
+
+enyo.kind({
+  name: &quot;SimulatedMessage&quot;,
+  kind: enyo.Component,
+  components: [
+      {name: &quot;timer&quot;, kind: RandomizedTimer, percentTrigger: 10,
+          onTriggered: &quot;timerTriggered&quot;}
+  ],
+  timerTriggered: function() {
+      this.log(&quot;Simulated Service Message Occurred&quot;);
+  }
+});</code>
+      </pre>
+          </blockquote>
+
+          <a id="cControls"></a><h2 id="controls">
+            Controls
+          </h2>
+          <p>
+            A <code>Control</code> object is a component that controls a DOM node (i.e., an element in the user interface). Controls are generally visible and the user often interacts with them directly. Things like buttons and input boxes are obviously controls, but in Enyo a control may become as complex as an entire application.
+          </p>
+          <p>
+            In the following example, we define a <code>Circle</code> control and put it to use inside a <code>TrafficLight</code> control:
+          </p>
+          <blockquote>
+            <pre class="contentbox code-text">
+<code>
+enyo.kind({
+  name: &quot;Circle&quot;,
+  kind: &quot;Control&quot;,
+  published: {
+      color: &quot;magenta&quot;,
+      bgColor: &quot;black&quot;
+  },
+  content: &quot;Hi&quot;,
+  style: &quot;padding: 2px 6px; border: 3px solid; border-radius: 20px;
+      cursor: pointer;&quot;,
+  create: function() {
+      this.inherited(arguments);
+      this.colorChanged();
+  },
+  colorChanged: function() {
+      this.applyStyle(&quot;border-color&quot;, this.color);
+  },
+  bgColorChanged: function() {
+      this.applyStyle(&quot;background-color&quot;, this.bgColor);
+  },
+  mousedown: function() {
+      this.applyStyle(&quot;background-color&quot;, &quot;white&quot;);
+  },
+  mouseup: function() {
+      this.applyStyle(&quot;background-color&quot;, &quot;black&quot;);
+  }
+});
+
+enyo.kind({
+  name: &quot;TrafficLight&quot;,
+  kind: &quot;Control&quot;,
+  style: &quot;position: absolute; padding: 4px; border: 1px solid black;
+      background-color: silver;&quot;,
+  components: [
+      {kind: &quot;Circle&quot;, color: &quot;red&quot;, onclick: &quot;circleClick&quot;},
+      {kind: &quot;Circle&quot;, color: &quot;yellow&quot;, onclick: &quot;circleClick&quot;},
+      {kind: &quot;Circle&quot;, color: &quot;green&quot;, onclick: &quot;circleClick&quot;}
+  ],
+  circleClick: function(inSender) {
+      var lights = {red: &quot;tomato&quot;, yellow: &quot;#FFFF80&quot;, green: &quot;lightgreen&quot;};
+      if (this.lastCircle) {
+          this.lastCircle.setBgColor(&quot;black&quot;);
+      }
+      this.lastCircle.setBgColor(lights[inSender.color]);
+      this.lastCircle = inSender;
+  }
+});</code>
+      </pre>
+          </blockquote>
+
+
+            </div>
+    </div>
+
+    <div class="col-aside">
+        <div class="sidebox">
+            <h3>Contents</h3>
+            <ol class="article-nav"><li class="current last"><a href="" target="_top">Building Your First App</a><ol class="level-1"><li><a href="#cKinds" target="_top">Kinds</a></li><li><a href="#cComponents" target="_top">Components</a></li><li class="last"><a href="#cControls" target="_top">Controls</a></li></ol></li></ol>
+        </div>
+    </div>
+</div>
