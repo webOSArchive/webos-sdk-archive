@@ -158,6 +158,8 @@
                 <h4 class="menu-heading">Community Sites</h4>
 
                 <ul class="nav-list last">
+                  <li><a href="http://www.webosarchive.com" target="_blank"><img src="assets/check.png" style="vertical-align:top;"> webOS Archive</a></li>
+
                   <li><a href="https://web.archive.org/web/20130130211140/http://www.mobspot.com/" target="_blank"><img src="assets/wayback.png" style="vertical-align:top;"> mobspot</a></li>
 
                   <li><a href="https://web.archive.org/web/20130130211140/http://www.cyrket.com/m/palm/" target="_blank"><img src="assets/wayback.png" style="vertical-align:top;"> Cyrket</a></li>
