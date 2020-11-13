@@ -78,9 +78,12 @@ function includeHTML() {
   <div id="header">
     <div id="header_inner">
       <div class="hp-center">
-        <a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/home.html" id="logo" name="logo"><img src="assets/logo24.png" alt="Palm Developer Center" width="227" height="41" /></a>
+        <a href="http://sdk.webosarchive.com" id="logo" name="logo"><img src="assets/logo24.png" alt="Palm Developer Center" width="227" height="41" /></a>
 
         <ul class="hp-nav" id="nav">
+
+          <li><a href="http://www.webosarchive.com" title="webOS Archive" target="_top" class="top">webOS Archive</a></li>
+
           <li>
             <a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/showcase.html" title="Showcase" target="_top" class="top">Showcase</a>
 
@@ -110,8 +113,6 @@ function includeHTML() {
               </div>
             </div>
           </li>
-
-          <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/index.php?option=com_appsubmission&amp;view=applist" title="My Apps" target="_top" class="top">My Apps</a></li>
 
           <li class="current">
             <a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources.html" title="Resources" target="_top" class="top">Resources</a>
