@@ -8,13 +8,15 @@
           <li><a href="http://www.webosarchive.com" title="webOS Archive" target="_top" class="top">webOS Archive</a></li>
 
           <li>
-            <a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/showcase.html" title="Showcase" target="_top" class="top">Showcase</a>
+            <a title="Showcase" target="_top" class="top">Showcase</a>
 
             <div class="megamenu">
               <div class="nav-child">
                 <h4 class="menu-heading"><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/showcase/why_webos.html" target="_top">Why webOS</a></h4>
 
                 <ul class="nav-list last">
+                  <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/showcase.html" target="_top"><img src="assets/wayback.png" style="vertical-align:top;"> Showcase</a></li>
+
                   <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/showcase/why_webos.html" target="_top"><img src="assets/wayback.png" style="vertical-align:top;"> The Opportunity</a></li>
 
                   <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/showcase/why_webos.html#item2" target="_top"><img src="assets/wayback.png" style="vertical-align:top;"> Innovative Platform</a></li>
@@ -38,10 +40,14 @@
           </li>
 
           <li class="current">
-            <a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources.html" title="Resources" target="_top" class="top">Resources</a>
-
+            <a title="Resources" target="_top" class="top">Resources</a>
             <div class="megamenu">
               <div class="nav-child">
+              <h4 class="menu-heading"><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/design_resources.html" target="_top">Resources</a></h4>
+
+                <ul class="nav-list">
+                  <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources.html"><img src="assets/wayback.png" style="vertical-align:top;"> Home</a></li>
+                </ul>
                 <h4 class="menu-heading"><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/design_resources.html" target="_top">Design</a></h4>
 
                 <ul class="nav-list">
@@ -123,13 +129,15 @@
           </li>
 
           <li>
-            <a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/community.html" title="Community" target="_top" class="top">Community</a>
+            <a title="Community" class="top">Community</a>
 
             <div class="megamenu">
               <div class="nav-child">
                 <h4 class="menu-heading">Connect</h4>
 
                 <ul class="nav-list last">
+                  <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/community.html" target="_top"><img src="assets/wayback.png" style="vertical-align:top;"> Community</a></li>
+
                   <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/distribution/index.php"><img src="assets/wayback.png" style="vertical-align:top;"> Forums</a></li>
 
                   <li><a href="https://web.archive.org/web/20130130211140/http://developer.palm.com/blog" target="_blank"><img src="assets/wayback.png" style="vertical-align:top;"> Developer Blog</a></li>
@@ -175,7 +183,7 @@
           </li>
 
           <li>
-            <a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/api/index.html" title="Documentation" target="_top" class="top">Documentation</a>
+            <a title="Documentation" class="top">Documentation</a>
 
             <div class="megamenu">
               <div class="nav-child">
