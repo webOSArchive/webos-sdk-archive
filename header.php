@@ -1,46 +1,15 @@
-<div id="header">
+<div id="header" style="min-width:1095">
     <div id="header_inner">
       <div class="hp-center">
         <a href="http://sdk.webosarchive.com" id="logo" name="logo"><img src="assets/logo24.png" alt="Palm Developer Center" width="227" height="41" /></a>
 
         <ul class="hp-nav" id="nav">
 
-          <li><a href="http://www.webosarchive.com" title="webOS Archive" target="_top" class="top">webOS Archive</a></li>
+        <li><a href="http://www.webosarchive.com" title="webOS Archive" target="_top" class="top">webOS Archive</a></li>
 
-          <li>
-            <a title="Showcase" target="_top" class="top">Showcase</a>
-
-            <div class="megamenu">
-              <div class="nav-child">
-                <h4 class="menu-heading"><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/showcase/why_webos.html" target="_top">Why webOS</a></h4>
-
-                <ul class="nav-list last">
-                  <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/showcase.html" target="_top"><img src="assets/wayback.png" style="vertical-align:top;"> Showcase</a></li>
-
-                  <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/showcase/why_webos.html" target="_top"><img src="assets/wayback.png" style="vertical-align:top;"> The Opportunity</a></li>
-
-                  <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/showcase/why_webos.html#item2" target="_top"><img src="assets/wayback.png" style="vertical-align:top;"> Innovative Platform</a></li>
-
-                  <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/showcase/why_webos.html#item3" target="_top"><img src="assets/wayback.png" style="vertical-align:top;"> Cross-Platform</a></li>
-
-                  <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/showcase/why_webos.html#item5" target="_top"><img src="assets/wayback.png" style="vertical-align:top;"> Vibrant Community</a></li>
-                </ul>
-              </div>
-
-              <div class="nav-child">
-                <h4 class="menu-heading"><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/showcase.html" target="_top">Showcase</a></h4>
-
-                <ul class="nav-list last">
-                  <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/showcase/app_showcase.html" target="_top"><img src="assets/wayback.png" style="vertical-align:top;"> App Showcase</a></li>
-
-                  <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/showcase/developer_voices.html" target="_top"><img src="assets/wayback.png" style="vertical-align:top;"> Developer Voices</a></li>
-                </ul>
-              </div>
-            </div>
-          </li>
-
-          <li class="current">
+        <li class="current">
             <a title="Resources" target="_top" class="top">Resources</a>
+
             <div class="megamenu">
               <div class="nav-child">
               <h4 class="menu-heading"><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/design_resources.html" target="_top">Resources</a></h4>
@@ -86,6 +55,7 @@
                 </ul>
               </div>
 
+              <!--
               <div class="nav-child">
                 <h4 class="menu-heading"><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/distribution_and_promotion_resources.html" target="_top">Distribution and Promotion</a></h4>
 
@@ -119,8 +89,44 @@
                   <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/distribute/where_can_i_distribute_my_apps.html" target="_top"><img src="assets/wayback.png" style="vertical-align:top;"> Countries List</a></li>
                 </ul>
 
-                <h4 class="menu-heading"><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/videos/videos.html" target="_top">Videos</a></h4>
+                
 
+              </div>
+-->
+            </div>
+          </li>
+
+          <li>
+            <a title="Showcase" target="_top" class="top" id="topMenuShowcase">Showcase</a>
+
+            <div class="megamenu" id="menuShowcase">
+              <div class="nav-child">
+                <h4 class="menu-heading"><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/showcase/why_webos.html" target="_top">Why webOS</a></h4>
+
+                <ul class="nav-list last">
+
+                  <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/showcase.html" target="_top"><img src="assets/wayback.png" style="vertical-align:top;"> Showcase</a></li>
+
+                  <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/showcase/why_webos.html" target="_top"><img src="assets/wayback.png" style="vertical-align:top;"> The Opportunity</a></li>
+
+                  <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/showcase/why_webos.html#item2" target="_top"><img src="assets/wayback.png" style="vertical-align:top;"> Innovative Platform</a></li>
+
+                  <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/showcase/why_webos.html#item3" target="_top"><img src="assets/wayback.png" style="vertical-align:top;"> Cross-Platform</a></li>
+
+                  <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/showcase/why_webos.html#item5" target="_top"><img src="assets/wayback.png" style="vertical-align:top;"> Vibrant Community</a></li>
+                </ul>
+              </div>
+
+              <div class="nav-child">
+                <h4 class="menu-heading"><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/showcase.html" target="_top">Showcase</a></h4>
+
+                <ul class="nav-list">
+                  <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/showcase/app_showcase.html" target="_top"><img src="assets/wayback.png" style="vertical-align:top;"> App Showcase</a></li>
+
+                  <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/showcase/developer_voices.html" target="_top"><img src="assets/wayback.png" style="vertical-align:top;"> Developer Voices</a></li>
+                </ul>
+
+                <h4 class="menu-heading"><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/videos/videos.html" target="_top">Videos</a></h4>
                 <ul class="nav-list last">
                   <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/videos/videos.html" target="_top"><img src="assets/wayback.png" style="vertical-align:top;"> View All</a></li>
                 </ul>

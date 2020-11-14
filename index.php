@@ -1,4 +1,10 @@
 <?php
+if ($_SERVER['HTTP_HOST'] != "sdk.webosarchive.com" && $_SERVER['HTTP_HOST'] != "localhost"  && $_SERVER['HTTP_HOST'] != "192.168.1.232")
+{
+	header("Location: http://www.webosarchive.com", TRUE, 301);
+        exit();
+}
+//Figure out which page to load
 $theContent = "sdk-pdk";
 if ($_GET['page'] != "") {
   $thePage = $_GET['page'];
@@ -21,7 +27,7 @@ $theContent = $theContent . ".html";
 </script>
 
 <meta name="generator" content="TYPO3 4.5 CMS">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="viewport" content="width=1024, initial-scale=0.5, maximum-scale=2, user-scalable=1">
 <meta name="description" content="SDK-PDK Download">
 <meta name="keywords" content="Develop, Tools, SDK, PDK">
 <meta name="created" content="15.09.2011 20:35:27">
@@ -40,8 +46,8 @@ $theContent = $theContent . ".html";
 <link rel="stylesheet" type="text/css" href="assets/additional.css" media="screen">
 
 <title>webOS Dev Center - SDK-PDK Download</title>			
-<link rel="shortcut icon" href="https://web.archive.org/web/20130130211140im_/https://developer.palm.com/content/typo3conf/ext/palm_template/icons/favicon.ico" type="application/x-empty; charset=binary">
-<link rel="icon" href="https://web.archive.org/web/20130130211140im_/https://developer.palm.com/content/typo3conf/ext/palm_template/icons/favicon.ico" type="application/x-empty; charset=binary">
+<link rel="shortcut icon" href="favicon.ico" type="application/x-empty; charset=binary">
+<link rel="icon" href="favicon.ico" type="application/x-empty; charset=binary">
 <script>
 function includeHTML() {
   var z, i, elmnt, file, xhttp;
@@ -78,6 +84,25 @@ function includeHTML() {
 <div class="page-bg-ext"></div>
 
 <?php include("header.php")?>
+
+<?php
+/* detect Mobile Safari */
+$browserAsString = $_SERVER['HTTP_USER_AGENT'];
+if (strstr($browserAsString, " Mobi"))
+{
+  echo("<br><div style='margin:auto; width:60%; padding: 25px; border: 1px solid red;background: white;'><p align='center'><b><em>Note: ");
+  if (strstr($browserAsString, " AppleWebKit/"))
+  {
+    echo("Due to the age of this site, the menus do not work with mobile Safari, and a significant portion of the site content will be unaccessible to you. To use the menus please use Chrome or Firefox, or switch to a Desktop environment.");
+  }
+  else
+  {
+    echo("Due to the age of this site, the menus may not work on your mobile device in portrait orientation. Please make sure you rotate your device to landscape mode, or switch to a Desktop environment.");
+  }
+  echo("</em></b></p></div><br>");
+}
+
+?>
 
 <div w3-include-html="<?php echo($theContent);?>"></div>
 <!--Footer starts here-->
