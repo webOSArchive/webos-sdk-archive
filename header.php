@@ -111,6 +111,8 @@
 
                   <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/showcase/why_webos.html#item2" target="_top"><img src="assets/wayback.png" style="vertical-align:top;"> Innovative Platform</a></li>
 
+                  <li><a href="https://www.slideshare.net/fpatton/marinacci-josh-intro-to-web-os-palm-dev-day" target="_top"><img src="assets/check.png" style="vertical-align:top;"> Developer Relations Slides</a></li>
+
                   <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/showcase/why_webos.html#item3" target="_top"><img src="assets/wayback.png" style="vertical-align:top;"> Cross-Platform</a></li>
 
                   <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/showcase/why_webos.html#item5" target="_top"><img src="assets/wayback.png" style="vertical-align:top;"> Vibrant Community</a></li>
