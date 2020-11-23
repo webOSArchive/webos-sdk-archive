@@ -166,9 +166,9 @@
 
                   <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/distribute/custom_feeds/custom_feeds.html" target="_top"><img src="assets/wayback.png" style="vertical-align:top;"> Guide to Custom Feeds</a></li>
 
-                  <li><a href="https://web.archive.org/web/20130130211140/http://webos101.com/Main_Page" target="_blank"><img src="assets/wayback.png" style="vertical-align:top;"> webOS101 (external)</a></li>
+                  <li><a href="https://web.archive.org/web/20130130211140/http://webos101.com/Main_Page" target="_blank"><img src="assets/wayback.png" style="vertical-align:top;"> webOS101</a></li>
 
-                  <li><a href="https://code.tutsplus.com/series/introduction-to-webos-sdk-development--mobile-22879" target="_blank"><img src="assets/check.png" style="vertical-align:top;"> Intro to webOS (Mojo) Development</a></li>
+                  <li><a href="https://code.tutsplus.com/series/introduction-to-webos-sdk-development--mobile-22879" target="_blank"><img src="assets/check.png" style="vertical-align:top;"> Intro to webOS (Mojo) Dev</a></li>
                 </ul>
 
                 <h4 class="menu-heading">Community Sites</h4>
