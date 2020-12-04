@@ -1,9 +1,4 @@
 <?php
-if ($_SERVER['HTTP_HOST'] != "sdk.webosarchive.com" && $_SERVER['HTTP_HOST'] != "localhost"  && $_SERVER['HTTP_HOST'] != "192.168.1.232")
-{
-	header("Location: http://www.webosarchive.com", TRUE, 301);
-        exit();
-}
 //Figure out which page to load
 $theContent = "sdk-pdk";
 if ($_GET['page'] != "") {
