@@ -477,14 +477,22 @@
 
                 <div class="csc-textpic-text">
                     <p class="bodytext">
+                        <h3>SDK Apps (Mojo and Enyo)</h3>
                         <ul>
-                            <li><b>Pre3: </b>To avoid the letterbox bar that will show on the Pre<sup>3</sup>&nbsp;if your app retains it's Pre/Pre2-based aspect ratio, add the following to your index.html:
+                            <li><b>Pre3: </b>To avoid the letterbox bar that will show on the Pre<sup>3</sup>&nbsp;if your app retains it's Pre/Pre2-based aspect ratio, add the following to your <em>index.html</em>:
                                 <pre>&lt;meta name='viewport' content='height=device-height'&gt;</pre>
                             </li>
-                            <li><b>TouchPad: </b>To avoid the phone simulator frame that will show on the TouchPad if your app retains it's Pre/Pre2-based aspect ratio, add the following to your appinfo.json:
+                            <li><b>TouchPad: </b>To avoid the phone simulator frame that will show on the TouchPad if your app retains it's Pre/Pre2-based aspect ratio, add the following to your <em>appinfo.json</em>:
                                 <pre>"uiRevision": "2",</pre>
                             </li>
                         </ul>
+                        <h3>PDK Apps (C and C++)</h3>
+                        <ul>
+                            <li>To allow the screen content to resize on different devices, include a file named <em>metadata.json</em> in the root of your application's directory, with the following content:
+                                <pre>{"version":1,"devices":[101]}</pre>
+                            </li>
+                        </ul>
+                         <p class="infobox"><b>Note:</b> This file can be added to applications already installed on a device to improve compatibility. Copy the file to /media/cryptofs/apps/usr/palm/applications/&lt;pdk-app-folder&gt;<br/>A reboot will be required for the change to take effect.</p>
                     </p>
                     <div class="hr"></div>
                 </div>
@@ -517,7 +525,7 @@
                                 <div class="content">
                                     <h4>Warning:</h4>
 
-                                    <p>Do not edit files directly within the cryptofs folder. This folder is designed to be secured by the operating system and should be considered <em>read only</em>. Copy contents out before you make any edits.</p>
+                                    <p>Use caution when working with files within the cryptofs folder. This folder is designed to be secured by the operating system and should usually be considered <em>read only</em>. Copy contents out before you make any edits.</p>
                                 </div>
                             </div>
                         </div>
