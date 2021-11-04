@@ -223,7 +223,7 @@
             "https://web.archive.org/web/20130130211140/https://developer.palm.com/index.php?option=com_user&amp;view=login&amp;signup">Sign Up</a>
           </div>
 
-          <form class="hp-search" action="https://web.archive.org/web/20130130211140/http://www.palm.com/us/search/developer.html" method="get">
+          <form class="hp-search" action="googlesearch.php" method="get">
             <fieldset>
               <legend><span>Search Form</span></legend> <button class="sifr ext-sifr-search" type="submit"><span>Search</span></button> <input class="search-txt" name="search" placeholder="Just Search" /> <input value="all" id="basic-search-collection" type="hidden" />
             </fieldset>
