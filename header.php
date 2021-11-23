@@ -200,11 +200,11 @@
                 <h4 class="menu-heading">SDK Documentation</h4>
 
                 <ul class="nav-list last">
-                  <li><a href="docs/index.html"><img src="assets/check.png" style="vertical-align:top;"> Index</a></li>
+                  <li><a href="docs/index.php?index.html"><img src="assets/check.png" style="vertical-align:top;"> Index</a></li>
 
-                  <li><a href="docs/dev-guide.html"><img src="assets/check.png" style="vertical-align:top;"> Developer Guide</a></li>
+                  <li><a href="docs/index.php?dev-guide.html"><img src="assets/check.png" style="vertical-align:top;"> Developer Guide</a></li>
 
-                  <li><a href="docs/reference.html"><img src="assets/check.png" style="vertical-align:top;"> API Reference</a></li>
+                  <li><a href="docs/index.php?reference.html"><img src="assets/check.png" style="vertical-align:top;"> API Reference</a></li>
 
                   <li><a href="https://kylemaas.github.io/luna-sysmgr/index.htm"><img src="assets/check.png" style="vertical-align:top;"> Luna Service Reference</a></li>
                   

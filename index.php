@@ -74,9 +74,7 @@ function includeHTML() {
 </script> 
 </head>
 <body class="PageArticle">
-<?php
-echo file_get_contents("http://www.webosarchive.com/menu.php?content=sdk");
-?>
+<?php include("menu.php")?>
 <!-- Top Menu is here -->
 <div class="page-bg-ext"></div>
 
