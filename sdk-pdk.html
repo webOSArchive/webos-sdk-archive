@@ -123,8 +123,7 @@
 
                 <h4>Note:</h4>
 
-                <p class="bodytext">If you are using a 64-bit version of Windows, you will need to download Java&nbsp;from <a href="https://www.java.com/en/download/" target="_blank">https://www.java.com/en/download/</a>.&nbsp;You MUST do this in Internet Explorer. Other
-                    browsers do not show the 64-bit Java Runtime Environment installer. From here, follow the instructions for&nbsp;"Windows 7, XP Offline (64-bit)". You can also download it directly from&nbsp;<a href="https://www.java.com/en/download/faq/java_win64bit.xml"
+                <p class="bodytext">If you are using a 64-bit version of Windows, you will need to download Java&nbsp;from <a href="https://www.java.com/en/download/" target="_blank">https://www.java.com/en/download/</a>. Ensure you download the 64-bit Java Runtime Environment installer. From here, follow the instructions for&nbsp;"Windows 7, XP Offline (64-bit)". You can also download it directly from&nbsp;<a href="https://www.java.com/en/download/faq/java_win64bit.xml"
                         target="_blank">https://www.java.com/en/download/faq/java_win64bit.xml</a>.</p>
 
                 <h3>Install Drivers</h3>
@@ -333,7 +332,8 @@
                 <p class="infobox"><b>A note about PDK development on Linux:</b> The current SDK for Linux includes headers and libraries needed to do PDK development for the device and for the emulator. It also includes an arm-gcc toolchain for compiling applications for
                     the device. If you are running a 32-bit i686 Linux desktop, you should be able to use the standard&nbsp;g++ compiler. (On x64 Linux, the native desktop toolchain will generate x64 code, which will not work in the emulator.)</p>
 
-                <p><b>Note:</b> These instructions have been updated for Ubuntu 14.04.5 LTS (Trusty Tahr)</p>
+                <h4>Note:</h4>
+                These instructions were originally written for Ubuntu 14.04.5 LTS (Trusty Tahr), notes have been added where the installation process differs for more modern releases, and the update process has been tested on Ubuntu 20.04 LTS.</p>
 
                 <h3>Update the Package Repository Information</h3>
                 <pre>sudo apt-get update</pre>
@@ -347,6 +347,9 @@
                 <p class="bodytext">To set Oracle JDK8 as default, install the "oracle-java8-set-default" package.
                     <pre>sudo apt install oracle-java8-set-default</pre> On Ubuntu systems, oracle-java8-set-default is most probably installed automatically with this package.
                 </p>
+
+                <p><b>Note:</b> The above steps no longer work and have been preserved for archival purposes only. Instead, <a href="https://www.fosstechnix.com/install-oracle-java-8-on-ubuntu-20-04/">install Oracle Java 8 by following these instructions</a>.</p>
+
 
                 <h3>Install VirtualBox</h3>
 
@@ -379,14 +382,20 @@
                     <p class="nomargin">If you are installing on a 64-bit system, perform the following additional step before installation:</p>
                     <pre>sudo apt-get install ia32-libs</pre>
 
-                    <p class="nomargin"><b>Note:</b> On newer Linux distros, <a href="https://stackoverflow.com/questions/23182765/how-to-install-ia32-libs-in-ubuntu-14-04-lts-trusty-tahr">this thread</a> may help</a>
+                    <p class="nomargin"><b>Note:</b> On newer Linux distros, <a href="https://stackoverflow.com/a/25576918">this Stack Overflow answer</a> provides a modern work-around.
                     </p>
 
                     <p class="nomargin">If you happen to have installed palm-novacom before installing ia32-libs, then you must restart palm-novacomd:</p>
                     <pre>sudo stop palm-novacomd<br>sudo start palm-novacomd</pre>
+
+                    <p class="nomargin"><b>Note:</b> This approach to managing novacomd no longer works on modern Linux, since it depends on systemd. See below for notes on how to manage with systemd instead.
                 </div>
 
                 <h3>Install Drivers</h3>
+
+                <p class="nomargin"><b>Note:</b> On modern Linux you will need to install pre-requisites for both 64-bit and 32-bit architectures:
+                    <pre>sudo apt install libusb-0.1-4<br>sudo apt install libusb-0.1-4:i386</pre>
+                </p>
 
                 <p class="bodytext">The Novacom drivers are available for all supported platforms.</p>
                     <p class="def-button"><a href="http://stacks.webosarchive.com/sdk/palm-novacom_all-platforms.zip" target="_blank">Download Drivers</a>
@@ -401,9 +410,26 @@
 
                     <p class="nomargin">If you are installing on a 64-bit system, perform the following steps to install the SDK:</p>
                     <pre>sudo dpkg -i --force-architecture palm-sdk_3.0.5-svn528736-pho676_i386.deb<br>sudo dpkg -i --force-architecture palm-novacom_1.0.80_amd64.deb</pre>
-                    <b>Note:</b> If you experience installation issues, try a clean install. To uninstall, follow the uninstall instructions.<br/> &nbsp;
-                    <br/>
+                    <p class="nomargin"><b>Note:</b> On modern Linux you will get an error after installing novacom. Community member, <a href="https://forums.webosnation.com/hp-touchpad/331153-novacom-drivers-ubuntu-64bits.html#post3449178">herrie describes how to resolve on the forums by configuring systemd service</a>...</p>
+                        Paste the following into the file: /etc/systemd/system/palm-novacomd.service<br>
+                        <pre>
+[Unit]
+Description=Palm NovaCom, Palm's debug/control protocol server.
 
+[Service]
+#Environment=
+WorkingDirectory=/opt/Palm/novacom/
+ExecStart=/opt/Palm/novacom/novacomd
+Restart=always
+
+[Install]
+WantedBy=multi-user.target</pre>
+                    <p class="nomargin">Then, from the command line execute:</p>
+                    <pre>sudo chmod 733 /etc/systemd/system/palm-novacomd.service</pre>
+                    <p class="nomargin">Now you can start the service with:</p>
+                    <pre>sudo service palm-novacomd start</pre>
+                    <p class="nomargin">Finally, call this command to auto-start the service on boot:</p>
+                    <pre>sudo systemctl enable palm-novacomd.service</pre>
                 </div>
 
                 <div class="hr"></div>
@@ -467,6 +493,27 @@
 
                     <div class="hr"></div>
                 </div>
+
+
+                <div style="height:20px;">
+                    <!-- -->
+                </div>
+                <a id="cUsingSDK" name="cUsingSDK"></a>
+
+                <h2>Using the SDK</h2>
+
+                <div class="csc-textpic-text">
+                    <p class="bodytext">
+                        <h3>Tools and Documentation</h3>
+                        <p class="nomargin">Once you have the SDK installed, you can connect to a physical device, via a micro-USB cable, or an emulated device locally.</p>
+                        <p class="nomargin"></p>Visit the <a href="http://localhost/webos-sdk-archive/docs/docs.html#dev-guide/tools.html">Tools section of the SDK Documentation</a> for details on enabling Developer Mode, using the command line tools, and transfering files.</p>
+                        <p class="nomargin"></p>Visit the <a href="http://localhost/webos-sdk-archive/docs/docs.html#dev-guide.html">Developer Guide section</a> for help getting started. Sample apps were deployed to your computer during SDK installation, and can be found in the install path (eg: /opt/PalmSDK/Current/share).</p>
+                        <p class="nomargin"></p>Review the <a href="http://localhost/webos-sdk-archive/docs/docs.html#dev-guide.html">Reference section</a> to find details about specific widgets, apis and classes for the different frameworks (Mojo, Enyo, PDK).</p>
+
+                    </p>
+                    <div class="hr"></div>
+                </div>
+
 
                 <div style="height:20px;">
                     <!-- -->
@@ -553,6 +600,8 @@
                         <li><a href="#c23352" target="_top">Installing the SDK and PDK on a Mac</a></li>
 
                         <li><a href="#c28522" target="_top">Installing the SDK on Ubuntu Linux</a></li>
+
+                        <li><a href="#cUsingSDK" target="_top">Using the SDK</a></li>
 
                         <li><a href="#cEmulatorNotes" target="_top">Emulator Notes</a></li>
 
