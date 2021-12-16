@@ -382,7 +382,8 @@
                     <p class="nomargin">If you are installing on a 64-bit system, perform the following additional step before installation:</p>
                     <pre>sudo apt-get install ia32-libs</pre>
 
-                    <p class="nomargin"><b>Note:</b> On newer Linux distros, <a href="https://stackoverflow.com/a/25576918">this Stack Overflow answer</a> provides a modern work-around.
+                    <p class="nomargin"><b>Note:</b> On newer Linux distros, <a href="https://stackoverflow.com/a/25576918">this Stack Overflow answer</a> provides working instructions if the above does not work. You may also need to install libc6-i386:
+                        <pre>sudo apt-get install libc6-i386</pre>
                     </p>
 
                     <p class="nomargin">If you happen to have installed palm-novacom before installing ia32-libs, then you must restart palm-novacomd:</p>
