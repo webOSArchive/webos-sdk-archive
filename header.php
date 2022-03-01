@@ -215,9 +215,9 @@
                 <ul class="nav-list last">
                   <li><a href="http://www.webosarchive.com/enyo2sampler"><img src="assets/check.png" style="vertical-align:top;"> EnyoJS 2.5.1 Sampler</a></li>
 
-                  <li><a href="https://github.com/enyojs/enyo/wiki"><img src="assets/check.png" style="vertical-align:top;"> EnyoJS Archived Docs</a></li>
+                  <li><a href="https://github.com/enyojs/enyo/wiki"><img src="assets/check.png" style="vertical-align:top;"> EnyoJS Wiki</a></li>
 
-                   <li><a href="http://sdk.webosarchive.com/enyojs" target="_top"><img src="assets/check.png" style="vertical-align:top;"> EnyoJS Wiki</a></li>
+                   <li><a href="http://sdk.webosarchive.com/enyojs" target="_top"><img src="assets/check.png" style="vertical-align:top;"> EnyoJS Docs</a></li>
 
                   <li><a href="https://github.com/codepoet80/enyo2-bootplate" target="_top"><img src="assets/check.png" style="vertical-align:top;"> Cross Platform Bootplate</a></li>
                 </ul>
