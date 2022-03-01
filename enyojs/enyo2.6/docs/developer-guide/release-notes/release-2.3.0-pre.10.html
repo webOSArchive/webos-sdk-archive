@@ -1,0 +1,302 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Enyo 2.3.0-pre.10 Release Notes</h1>
+<p>Welcome to Enyo 2.3.0-pre.10, a pre-release version of Enyo 2.3.0. The following items have changed since the Enyo 2.2 release. (Note that this list is not comprehensive; see the commit history in GitHub for a complete list of changes.)</p>
+<h2 id="enyo">Enyo</h2>
+<ul>
+<li><p>This release adds support for the MVC model of application development. This includes changes to properties to support bindings, computed properties, and property change observers; highlights are called out below.</p>
+<ul>
+<li><p>Added <code>enyo.Application</code>, a new kind to include non-visible elements and rendered components. It is defined in the new <code>Application.js</code> file in the <code>kernel</code> module.</p></li>
+<li><p>Added <code>data</code> module, which houses code used for manipulating data in an MVC environment. This module includes the following kinds:</p>
+<ul>
+<li><p><code>enyo.Model</code>, a special object whose properties define the schema (i.e., set of attributes) for a data record; it is not derived from any other Enyo kind</p></li>
+<li><p><code>enyo.Collection</code>, used for working with groups of models</p></li>
+<li><p><code>enyo.ModelController</code>, used in data binding</p></li>
+<li><p><code>enyo.Store</code>, a runtime database of data records</p></li>
+<li><p><code>enyo.Source</code>, used for retrieving data from external services</p></li>
+</ul></li>
+<li><p>Added data layer components (under <code>ui/data</code>) <code>enyo.DataList</code> and <code>enyo.DataGridList</code>, both subkinds of the abstract <code>enyo.DataRepeater</code> kind.</p></li>
+<li><p>Added <code>enyo.Router</code>, a new kind that acts as an application controller that responds to changes in the Web page URL. This allows developers to modify application state on startup based on the initial URL, as well as track the current state by updating the URL as the application runs. <code>enyo.Router</code> is defined in the new <code>Router.js</code> file in the <code>kernel</code> module.</p></li>
+<li><p>Significantly expanded <code>kernel</code> module, adding new files <code>Binding.js</code>, <code>Controller.js</code>, <code>ViewController.js</code>, and <code>dev.js</code> (in addition to the aforementioned <code>Application.js</code> and <code>Router.js</code>). Also made major additions to existing <code>lang.js</code> and <code>Object.js</code> files.</p></li>
+<li><p>Added new <code>ext</code> module, which contains several subkinds of <code>enyo.Binding</code>, as well as <code>macroize.js</code> (previously found in the <code>kernel</code> module).</p></li>
+<li><p>Added new file <code>ready.js</code> in the <code>boot</code> module.</p></li>
+<li><p>Added <code>enyo.View</code> as an alias for <code>enyo.Control</code>.</p></li>
+<li><p>Under <code>tools</code>, added unit tests for new MVC functionality.</p></li>
+</ul></li>
+<li><p>Introduced new API for getting and setting object property values.</p>
+<p>The existing getter and setter methods, <code>getProperty()</code> and <code>setProperty()</code>, have been replaced by the simpler <code>get()</code> and <code>set()</code>. To retrieve a property’s value, instead of calling <code>getProperty("&lt;propertyName&gt;")</code> on an object, you should now call <code>get("&lt;propertyName&gt;")</code>.</p>
+<p>Likewise, when setting a property’s value, instead of calling <code>setProperty("&lt;propertyName&gt;", &lt;value&gt;)</code> on a given object, you should now call <code>set("&lt;propertyName&gt;", &lt;value&gt;)</code>.</p>
+<p>The framework’s automatic support for <code>propertyName&lt;Changed&gt;</code> methods for published properties has not changed. So, for example, a call to <code>set("myProp", 5)</code> will still automatically call the <code>myPropChanged()</code> method (assuming that you’ve defined such a method, and that the value of <code>myProp</code> was not already <code>5</code>).</p></li>
+<li><p>In <code>Oop.js</code>, changed <code>enyo.kind()</code> to delay most of its work until the kind is used for the first time. This behavior is enabled by default for named kinds with no static members; it may be turned off by setting the kind’s <code>noDefer</code> property to a truthy value, as is done in <code>enyo.Object</code>, <code>enyo.Component</code>, <code>enyo.Control</code>, and <code>enyo.Signals</code>.</p>
+<p>In a related development, kinds may now define “protected statics”. These are static members designed for use only within the given kind and its subkinds. The presence of protected statics will not prevent the deferral of kind creation, whereas the presence of regular statics will.</p>
+<p>Finally, as a result of these modifications, in the configuration object passed into <code>enyo.kind()</code>, the value of the <code>kind</code> property will need to be quoted (e.g., <code>kind: "enyo.Control"</code>). Previously, the quotation marks were optional.</p></li>
+<li><p>To improve performance, modified internal code in Enyo Core so that override methods use <code>enyo.inherit()</code>, following the double function pattern outlined by <a href="http://www.dcljs.org/docs/general/supercalls/">dcl.js</a>. Application code will continue to use the existing <code>this.inherited()</code> syntax.</p></li>
+<li><p>In <code>enyo.Component</code>, added new functionality and addressed outstanding issues:</p>
+<ul>
+<li><p>New <code>componentOverrides</code> property simplifies the creation of subkinds by letting developers alter items in the superkind’s <code>components</code> block without having to copy all of the block’s contents into the subkind.</p></li>
+<li><p>New methods <code>startJob()</code> and <code>stopJob()</code> are used to manage job methods that should be associated with a specific component; they are automatically stopped if the component is destroyed.</p></li>
+<li><p>New <code>throttleJob()</code> method allows you to execute a method immediately and then prevent the method from being called again for a specified period of time.</p></li>
+<li><p>New <code>silence()</code> and <code>unsilence()</code> methods are used to stop and restore event propagation through the component. This is useful when you’re changing a lot of properties and want to keep observers from reacting to <code>changed</code> events until all of your work is complete.</p></li>
+<li><p>Added special handling for notifications originating from <code>addComponent()</code>.</p></li>
+<li><p>To reduce startup time, deferred creation of <code>__jobs</code> hash until it’s actually used.</p></li>
+<li><p>Fixed event dispatching so that delegated events are only dispatched to the immediate owners; added related test case to <code>ComponentDispatchTest.js</code>.</p></li>
+</ul></li>
+<li><p>Added support for progress events during asynchronous activities. Progress events are sent by <code>enyo.Async.sendProgress()</code> and handled by <code>enyo.Ajax.updateProgress()</code>. Also added associated unit test.</p></li>
+<li><p>Added HTML5 fullscreen support to Enyo controls. Changes include modification of <code>Control.js</code> and additions of <code>fullscreen.js</code> and “FullscreenSample”. (This is temporarily disabled for webOS because it isn’t working yet on the OS side.)</p></li>
+<li><p>Added support for loading framework source from embedded on-device location.</p></li>
+<li><p>Added new kinds <code>enyo.Media</code> and <code>enyo.Audio</code>. Also added <code>enyo.Anchor</code>, which implements an HTML anchor (<code>&lt;a&gt;</code>) tag; <code>title</code> and <code>href</code> are available as published properties.</p></li>
+<li><p>Moved code for drawers, previously in <code>onyx.Drawer</code>, into the core Enyo <code>ui</code> library as the new kind <code>enyo.Drawer</code>. Also added new <code>onDrawerAnimationEnd</code> event, which may be used to detect changes in the drawer’s open/closed status.</p></li>
+<li><p>Moved <code>focus()</code> and <code>blur()</code> methods from <code>enyo.Input</code> to <code>enyo.Control</code>, since they are generally useful for any DOM node. Also in <code>enyo.Control</code>, fixed behavior of <code>getStyle()</code> and added protected property <code>rtl</code>, which indicates direction of layout. <code>rtl</code> should be set to <code>true</code> for right-to-left scripts (default is <code>false</code>). This property will typically only be used by developers who are creating their own subkinds of <code>enyo.Control</code>.</p></li>
+<li><p>Added <code>enyo.design</code>, which is used to specify design information for the Ares designer tool.</p></li>
+<li><p>Added new <code>version.js</code> file, which defines <code>enyo.version</code>, a string that indicates the framework version (currently, <code>2.3.0-pre.10-dev</code>). Then, added <code>version.js</code> to list of boot scripts in <code>enyo.js</code> (so that <code>enyo.version</code> is available to non-minified files) and to list of dependencies in <code>package.js</code>.</p></li>
+<li><p>Added <code>CHANGELOG.md</code>, which is intended to be a continuously-updated list of changes that affect existing APIs.</p></li>
+<li><p>Added <code>jobs.js</code>, which defines <code>enyo.jobs</code>, a low-level mechanism for queueing tasks and sorting them by priority. Normally, it will not be used by application code. Also added related sample, “AnimatorSample”.</p></li>
+<li><p>In <code>enyo.Object</code>, added new <code>bindSafely()</code> method, which acts like <code>enyo.bind()</code>, but handles the case in which the bound method is called after the object has been destroyed.</p>
+<p>In addition, removed <code>enyo.Object.overload()</code> and rewrote <code>enyo.Object.addGetterSetter()</code> to make use of <code>enyo.getPath.fast()</code> and <code>enyo.setPath.fast()</code>, which were added to <code>lang.js</code></p>
+<p>Finally, in <code>set()</code> method, added documentation for optional <code>force</code> parameter; if true, the property whose value is being set will be updated (and notifications will be sent) even if the passed-in value is the same as the existing value.</p></li>
+<li><p>In <code>job.js</code>, added <code>enyo.job.throttle()</code>, which enables job throttling outside the context of a specific component.</p></li>
+<li><p>In <code>dispatcher.js</code>, added <code>enyo.dispatcher.stopListening()</code>, which removes listeners for a particular kind of event, and <code>enyo.unmakeBubble()</code>, which stops listening for events bubbled by <code>enyo.makeBubble()</code>. Also added support for <code>animationEnd</code> and <code>webkitAnimationEnd</code> events.</p></li>
+<li><p>Renamed <code>phonegap.js</code> as <code>cordova.js</code> and modified <code>enyo.ready()</code> to add listener for <code>deviceready</code> event before setting up signals for other Cordova events. Also added Enyo support for the <code>localechange</code> event supplied by cordova-webos (i.e., signals will be sent).</p></li>
+<li><p>In <code>loader.js</code> and <code>boot.js</code>, fixed issue causing <code>enyo.load()</code> to not wait until all files have loaded before calling the callback function.</p></li>
+<li><p>In <code>boot.js</code>, changed <code>enyo.ready()</code> to call <code>enyo.asyncMethod()</code> instead of <code>run()</code>, to guarantee that all callbacks are asynchronous. Also added “charset”` to the generated script elements for Internet Explorer.</p></li>
+<li><p>Added new method <code>enyo.easedComplexLerp()</code> in <code>animation.js</code> and put it to use in <code>Animator.next()</code>. The new method allows for more complex animations than are possible with the existing <code>enyo.easedLerp()</code>.</p></li>
+<li><p>In <code>enyo.Async</code>, fixed issue causing exceptions when setting properties on the subkind <code>enyo.Ajax</code>. (The <code>constructor()</code> method was missing a call to <code>this.inherited(arguments)</code>.)</p></li>
+<li><p>In <code>enyo.Ajax</code>, changed <code>contentType</code> check from exact string match to regular expression, to allow values such as <code>'application/json; charset=utf-8'</code>. Also, fixed improper retention of <code>failed</code> state between calls to <code>go()</code> and removed check for webOS platform when determining whether synchronous (blocking) AJAX requests are allowed.</p></li>
+<li><p>Added <code>overrideCallback</code> property to <code>enyo.JsonpRequest</code>, along with inline documentation and associated unit test.</p></li>
+<li><p>In <code>xhr.js</code>, fixed <code>request()</code> to only apply cache-control code to iOS 6, not to iOS versions greater than 6.</p></li>
+<li><p>In <code>modal.js</code>, updated <code>release()</code> to search for a passed-in target to release from the list of captured events, instead of simply releasing the last captured event. This fixes an issue in which popups could close unexpectedly.</p></li>
+<li><p>In <code>FloatingLayer.js</code> and <code>Popup.js</code>, modified <code>enyo.FloatingLayer</code> so it recreates itself when <code>document.body</code> is wiped out by a fresh render.</p></li>
+<li><p>Added detection of webOS 4/Open webOS, Tizen, BlackBerry PlayBook, and Internet Explorer 11 platforms to <code>platform.js</code>.</p></li>
+<li><p>In <code>Oop.js</code>, fixed issue in <code>enyo.kind.features.push()</code> that could allow feature mixins to be run more than once, overwriting the custom subclass method. Also added <code>enyo.kind.allowOverride</code> flag for use in Ares; it allows flagged kinds to be redefined.</p></li>
+<li><p>In <code>UiComponent.js</code>, modified <code>getBubbleTarget()</code> to allow events to bubble properly from a control to an owning component that is not a UiComponent. Also fixed issue in which setting the <code>addBefore</code> property could update the <code>children</code> array but not update the <code>controls</code> array with the same ordering.</p></li>
+<li><p>In <code>Repeater.js</code>, updated <code>decorateEvent()</code> to prevent index value from being overwritten when dealing with nested repeaters.</p></li>
+<li><p>In <code>RichText.js</code>, updated <code>valueChanged()</code> to prevent scroll reset on keypress. Also added proper support for <code>disabled</code> property, including new <code>disabledChanged()</code> method.</p></li>
+<li><p>Modified <code>enyo.Scroller</code> to provide current scroll bounds in generated events. Also, updated documentation for <code>getScrollBounds()</code>.</p></li>
+<li><p>In <code>enyo.TouchScrollStrategy</code>, added published property <code>interval</code>, which facades the animation time step from <code>enyo.ScrollMath</code>.</p></li>
+<li><p>In <code>enyo.TransitionScrollStrategy</code>, added stub version of <code>intervalChanged()</code>.</p></li>
+<li><p>In <code>enyo.ScrollMath</code>, modified <code>stop()</code> to avoid unnecessary calls to system timer code.</p></li>
+<li><p>In <code>enyo.Image</code>, added new published property <code>alt</code>, which corresponds to the <code>"alt"</code> attribute of an HTML <code>&lt;img&gt;</code> tag.</p></li>
+<li><p>Updated <code>msevents.js</code> to include button status info in generated events.</p></li>
+<li><p>Modified core code so that IE8 passes unit tests. Also, fixed positioning issues affecting IE8 in <code>dom.js</code>.</p></li>
+<li><p>Also in <code>dom.js</code>, added methods <code>enyo.dom.hasClass()</code>, <code>enyo.dom.addClass()</code>, and <code>enyo.dom.removeClass()</code>. Put the new methods to use in <code>enyo.Control</code> to prevent duplication of effort across multiple renders.</p></li>
+<li><p>In <code>drag.js</code>, reworked code for cloning events in <code>beginHold()</code>, as it was causing crashes in <code>ImageView</code>.</p></li>
+<li><p>Made several changes to <code>lang.js</code>:</p>
+<ul>
+<li><p>Added fast implementations of <code>enyo.setPath()</code> and <code>enyo.getPath()</code> that only work with local property names. These are used internally by a new unit test for published properties; they are not for public use.</p></li>
+<li><p>Modified <code>enyo.setPath()</code> to take <code>force</code> parameter into account when deciding whether to send change notifications to observers, and fixed <code>enyo.getPath()</code> to return null if path is not defined.</p></li>
+<li><p>Updated <code>enyo.trim()</code> to use JavaScript’s built-in <code>trim()</code> method when available.</p></li>
+</ul></li>
+<li><p>In <code>langTest.js</code>, added tests for <code>enyo.isObject()</code> and <code>enyo.isArray()</code>.</p></li>
+<li><p>In <code>ready.js</code>, added legacy WebKit support for <code>enyo.ready()</code>.</p></li>
+<li><p>Fixed <code>enyo.Drawer</code> and “GestureSample” to stop propagation of animation events.</p></li>
+</ul>
+<h2 id="onyx">Onyx</h2>
+<ul>
+<li><p>Added new <code>onyx.Submenu</code> kind, which enables the creation of nested menus. Instances are meant to live alongside <code>onyx.MenuItem</code> objects within an <code>onyx.Menu</code>.</p></li>
+<li><p>Added <code>version.js</code> file, which specifies current version of Onyx library (<code>enyo.version.onyx</code>). Initial value is <code>2.3.0-pre.10-dev</code>. Also added <code>version.js</code> to list of dependencies in <code>package.js</code>.</p></li>
+<li><p>In <code>onyx.Menu</code>, added support for specifying a menu’s scroll strategy.</p></li>
+<li><p>Added <code>onyx.design</code>, which is used by libraries to specify their associated design information. It replaces <code>design.js</code> and is discoverable via <code>package.js</code>.</p></li>
+<li><p>Added library manifest file, <code>deploy.json</code>.</p></li>
+<li><p>Moved <code>onyx.Drawer</code> from Onyx library into Enyo core, as <code>enyo.Drawer</code>, with <code>onyx.Drawer</code> now aliased to <code>enyo.Drawer</code>.</p></li>
+<li><p>Cleaned up code for better compatibility with JSHint 2.1, which is used in Travis CI tests.</p></li>
+<li><p>In <code>Popup.js</code>, modified <code>getScrimZIndex()</code> to ensure selection of proper z-index values for popups that should appear on top of other popups. Also made static fields protectedStatic to hide their internal state.</p></li>
+<li><p>In <code>ContextualPopup.js</code>, added ability to set <code>ontap</code> handlers for the action buttons.</p></li>
+<li><p>Tweaked the <code>Button</code>, <code>IconButton</code>, and <code>Slider</code> controls to work better on FirefoxOS.</p></li>
+<li><p>In <code>DatePicker.js</code>, fixed issue causing DatePicker controls to be unusable inside a Repeater.</p></li>
+<li><p>In <code>IntegerPicker.js</code>, fixed issue in <code>selectedChanged()</code> causing two-way data bindings to not work properly. Also fixed max/min validation in <code>valueChanged()</code>.</p></li>
+<li><p>In <code>MoreToolbar.js</code>, fixed issue that could cause a crash when resizing a window.</p></li>
+<li><p>In <code>TimePicker.js</code>, fixed issues causing two-way data bindings to not work properly. Also moved check for null <code>is24HrMode</code> property after globalization/localization code.</p></li>
+<li><p>In “SliderSample”, fixed issues preventing proper updating of values on slider movement.</p></li>
+</ul>
+<h2 id="layout">Layout</h2>
+<ul>
+<li><p>Added several new layout-related kinds:</p>
+<ul>
+<li><p><code>enyo.ContextualLayout</code>, a layout strategy intended for use in a popup in a decorator/activator scenario, where the popup is positioned relative to the activating control</p></li>
+<li><p><code>enyo.FittableHeaderLayout</code>, a subkind of <code>enyo.FittableColumnsLayout</code> in which items are laid out in a set of naturally-sized vertical columns, with one column designated to expand horizontally to fill any leftover space</p></li>
+<li><p><code>enyo.GridList</code>, which extends <code>enyo.List</code> to display items in a grid pattern, with multiple items per row based on the available container width</p></li>
+<li><p><code>enyo.GridListImageItem</code>, a convenience component that may be used inside an <code>enyo.GridList</code> to display an image grid</p></li>
+<li><p><code>enyo.GridFlyweightRepeater</code>, which extends <code>enyo.FlyweightRepeater</code> to display items in a grid pattern</p></li>
+</ul></li>
+<li><p>Added <code>version.js</code> file, which specifies current version of Layout library (<code>enyo.version.layout</code>). Initial value is <code>2.3.0-pre.10-dev</code>. Also added <code>version.js</code> to list of dependencies in <code>package.js</code>.</p></li>
+<li><p>Added <code>layout.design</code>, which contains information on the layouts available in the Layout library; it replaces <code>design.js</code> and is loaded by default.</p></li>
+<li><p>Added library manifest file, <code>deploy.json</code>.</p></li>
+<li><p>In <code>enyo.List</code>, added support for horizontal layouts; also removed unnecessary call to <code>inEvent.preventDefault()</code> and fixed issue causing horizontal lists to not have a scrollbar until they are resized.</p></li>
+<li><p>In <code>enyo.Panels</code>, added method <code>selectPanelByName()</code>, which selects a pane based on its name instead of its index. Also, fixed <code>removeControl()</code> to correctly update the active panel if you remove the one that’s currently selected, as well as addressing issue causing problems with panel transition animations.</p></li>
+<li><p>Modified <code>enyo.Arranger</code> to allow panels to opt out of acceleration/transform on a per-instance basis. Also allowed sliding panel acceleration to be set to <code>auto</code>.</p></li>
+<li><p>In <code>FittableLayout.css</code>, added special case for tables in a FittableColumnsLayout. Also added special case for locales with right-to-left text alignment.</p></li>
+<li><p>Updated “ListPulldownSample” to use Flickr search API instead of Twitter API.</p></li>
+</ul>
+<h2 id="canvas">Canvas</h2>
+<ul>
+<li><p>Added <code>Line.js</code>, which defines <code>enyo.canvas.Line</code>, a Canvas control that draws a line according to the developer’s specifications.</p></li>
+<li><p>Added documentation for existing Canvas controls.</p></li>
+<li><p>Added <code>version.js</code> file, which specifies current version of Canvas library (<code>enyo.version.canvas</code>). Initial value is <code>2.3.0-pre.10-dev</code>. Also added <code>version.js</code> to list of dependencies in <code>package.js</code>.</p></li>
+<li><p>Added library manifest file, <code>deploy.json</code>.</p></li>
+</ul>
+<h2 id="globalizationlocalization">Globalization/Localization</h2>
+<ul>
+<li><p>Introduced <code>enyo-ilib</code>, a wrapper for the <a href="www.jedlsoft.com">ilib</a> globalization/internationalization library. This is a replacement for the now-deprecated <code>g11n</code> library.</p></li>
+<li><p>Fixed <code>deploy.sh</code> to not create duplicate subdirectories.</p></li>
+</ul>
+<h2 id="bootplate">Bootplate</h2>
+<ul>
+<li><p>Introduced new <code>bootplate-mvc</code> repo, an application template using the new MVC pattern.</p></li>
+<li><p>In <code>deploy.sh</code>, fixed issue causing problems when development path name contains whitespace.</p></li>
+<li><p>In <code>.gitmodules</code>, replaced absolute URL paths to github.com with relative paths to allowing forking of the project.</p></li>
+</ul>
+<h2 id="samples">Samples</h2>
+<ul>
+<li><p>Added new samples “DataListSample”, “DataRepeaterSample”, and “ComponentOverrideSample”.</p></li>
+<li><p>Removed obsolete “Playground” sample.</p></li>
+<li><p>In <code>sampler</code> repo’s <code>.gitmodules</code> file, replaced absolute URL paths to github.com with relative paths to allowing forking of the project.</p></li>
+<li><p>In Sampler app’s <code>App.js</code> file, added platform checks for improved compatibility with Windows 8 and Windows Phone 8. Also made fix to not clobber existing namespaces.</p></li>
+<li><p>Updated samples with “no telephone number detection” and “no translation” meta tags.</p></li>
+<li><p>In “ButtonSample”, modified sample control to use <code>.png</code> file instead of <code>.ico</code> file for improved compatibility with Windows Phone 8 browser.</p></li>
+<li><p>In “PlatformSample”, modified <code>updateWindowSize()</code> for improved compatibility with IE8.</p></li>
+<li><p>In “RepeaterSample”, modified <code>setupItem()</code> to stop event propagation.</p></li>
+<li><p>Fixed “ListPulldownSample” to work properly as a Windows 8 application.</p></li>
+<li><p>In “ContextualPopupSample”, fixed double-inclusion of Onyx source.</p></li>
+<li><p>Revised “PopupSample” to test fix for unexpected dismissal of popups.</p></li>
+</ul>
+<h2 id="tools">Tools</h2>
+<ul>
+<li><p>Added support for Travis CI continuous integration system, which uses JSHint and PhantomJS to run tests on repos after each commit.</p></li>
+<li><p>Added <code>.jshintrc</code> files to the root folder of most repos; these are now used when writing new code and validating old code. Set <code>"es3": true</code> so that JSHint detects trailing commas. (Subsequently removed trailing commas from a number of source files.)</p></li>
+<li><p>Updated minifier support in Enyo to use <code>less 1.3.3</code> and <code>uglify-js 2.2.5</code>. Flag tweaks should result in ~5% reduction in gzipped-file size.</p></li>
+<li><p>Added support for new <code>"beautify"</code> option in minification and deployment scripts, <code>tools/minify.js</code> and <code>tools/deploy.js</code>. When this switch is activated (by specifying <code>-B</code> on the command line), the scripts will create output files in which line breaks are not removed from code. The improvement in human-readability makes the beautified files useful for debugging.</p></li>
+<li><p>Made numerous changes to enable use of <code>deploy.js</code> and <code>minify.js</code> outside of the source tree.</p></li>
+<li><p>In <code>deploy.js</code>, added support for manifest file (<code>deploy.json</code>). Also added <code>-T</code>/<code>--test</code> switch to generate a build directory in the source tree for testing.</p></li>
+<li><p>Addressed problems with asset paths in <code>deploy.js</code> and <code>minify.js</code> seen when deploying apps that don’t follow the Bootplate pattern.</p></li>
+<li><p>In <code>minify.js</code>, updated <code>concatCSS()</code> to handle CSS rules such as <code>url("")</code>, <code>url()</code>, and <code>url('')</code>.</p></li>
+<li><p>Modified <code>walker.js</code> to keep package name in re-mapped sources, to allow deployment of multiple themes in a single library.</p></li>
+<li><p>Updated <code>lessc.js</code> to work with multiple <code>.less</code> files in <code>package.js</code>; also added <code>-w</code> flag, which watches the file and any dependencies, and recompiles if changes are detected.</p></li>
+</ul>
+<h2 id="work-in-progress">Work in Progress</h2>
+<p>The following components are considered “Work-in-Progress” (WIP), meaning code has been committed but is still under development and should not be considered API-stable.</p>
+<p>All WIP components are included in a <code>wip-package.js</code> rather than the standard <code>package.js</code>, so apps will not have access to these kinds by default. If you need to use them, you may include the relevant <code>wip-package.js</code> file in your app, but be aware that breaking changes are likely.</p>
+<ul>
+<li><p>Layout</p>
+<ul>
+<li><code>enyo.FlexLayout</code> and related kinds</li>
+</ul></li>
+<li><p>Onyx</p>
+<ul>
+<li><code>onyx.TabBar</code>, <code>onyx.TabBar.Item</code>, and <code>onyx.TabPanels</code></li>
+</ul></li>
+</ul>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../js/main.js"></script>
+  <script type="text/javascript" src="../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

@@ -1,0 +1,197 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Enyo 2.2 Release Notes</h1>
+<p>Welcome to Enyo 2.2. The following items have changes since the Enyo 2.1.1 release. (Note that this list is not comprehensive; see the commit history in GitHub for a complete list of changes.)</p>
+<h2 id="enyo">Enyo</h2>
+<ul>
+<li><p>Added support for building applications for PCs and tablets running Windows 8, to be deployed via the Windows Store. Also improved compatibility with Windows Phone 8 (see “Known Issues and Limitations” below).</p></li>
+<li><p>Added new <code>enyo.TransitionScrollStrategy</code> helper kind, which extends and optimizes <code>enyo.TouchScrollStrategy</code> for environments in which scrolling works best when implemented using CSS transitions. This currently supports iOS 5 and later. To use this in your own code, in your Scroller or List definition, declare the <code>strategyKind</code> property as follows:</p>
+<pre><code>  strategyKind: (enyo.platform.ios &gt;= 5) ? &quot;TransitionScrollStrategy&quot; : undefined</code></pre>
+<p>This will leave <code>strategyKind</code> undefined except on iOS 5+.</p>
+<p>In the future, we expect that <code>TransitionScrollStrategy</code> will become the default scroll strategy for iOS 5+ devices.</p></li>
+<li><p>Added new <code>enyo.FormData</code> kind, used to send <code>multipart/form-data</code> Ajax requests.</p></li>
+<li><p>In <code>Oop.js</code>, error thrown by <code>enyo.kind()</code> now indicates whether the problematic kind is undefined or unknown.</p></li>
+<li><p>In <code>lang.js</code>, added <code>enyo.isTrue()</code> method, which returns false if the passed-in argument is equal to the string “false”, Boolean false, 0, or undefined.</p></li>
+<li><p>In <code>Checkbox.js</code>, added ability to accept strings “true” and “false” as values, in addition to Boolean true and false.</p></li>
+<li><p>In <code>boot.js</code>, fixed issue causing <code>enyo.machine.script</code> events not to fire.</p></li>
+<li><p>In <code>loader.js</code>, added ability to use other path resolvers besides <code>enyo.path</code>. Also, changed static check for <code>"http:"</code> in <code>getPathPrefix()</code> to regex test that supports mixed-case variants and https, and added associated unit tests.</p></li>
+<li><p>In <code>Ajax.js</code> and <code>xhr.js</code>, added support for disabling <code>"cache-control"</code> header for services that do not support it. Also modified accompanying unit tests.</p></li>
+<li><p>In <code>Node.js</code>, added <code>"collapsible"</code> property to complement the existing <code>"expandable"</code> property.</p></li>
+<li><p>In <code>Control.js</code>, added check that the control has been generated before calling <code>rendered()</code> on it. Also restored old behavior of <code>getBounds()</code> and added a corresponding unit test.</p></li>
+<li><p>In <code>dispatcher.js</code>, added code to dispatch a tap event when the spacebar is pressed while a button has focus.</p></li>
+<li><p>In <code>dom.css</code>, added <code>calcViewportPositionForNode()</code>, helper function for locating nodes within the viewport. Also fixed issue causing Enyo and Onyx buttons to be rendered differently in Firefox as compared to WebKit-based browsers.</p></li>
+<li><p>In <code>Ajax.js</code>, addressed issue causing Ajax requests with a method type of <code>POST</code> to not send post data when not using the <code>postBody</code> parameter.</p></li>
+<li><p>In <code>TouchScrollStrategy.js</code>, fixed issue causing a Scroller’s thumbs to remain visible when its <code>vertical</code> or <code>horizontal</code> property is set to <code>"hidden"</code>.</p></li>
+<li><p>In <code>Checkbox.js</code>, modified dragging behavior to allow drag events to propagate, so dragging a checkbox no longer moves the whole viewport.</p></li>
+<li><p>In <code>Input.js</code>, made change to allow propagation of drag events when the input is not focused.</p></li>
+<li><p>In <code>Input.js</code> and <code>Select.js</code>, addressed issue with <code>onchange</code> events’ not firing in IE8.</p></li>
+<li><p>In <code>source/boot/enyo.js</code>, fixed issue that could cause index overflow when loading scripts while running minified version of <code>enyo.js</code> on IE.</p></li>
+<li><p>In <code>touch.js</code>, modified mouse handling logic to accommodate mixed touch and mouse input on devices having both touchscreen and mouse.</p></li>
+<li><p>In multiple files, replaced direct calls to <code>console</code> object log functions (<code>log</code>, <code>warn</code>, <code>error</code>) with calls to their <code>enyo</code> counterparts.</p></li>
+</ul>
+<h2 id="onyx">Onyx</h2>
+<ul>
+<li><p>Added new <code>onyx.ContextualPopup</code> and <code>onyx.IntegerPicker</code> controls.</p></li>
+<li><p>In <code>MenuItem.js</code>, added <code>onItemContentChange</code> event, fired when the menu item’s content changes.</p></li>
+<li><p>In <code>Drawer.js</code>, made change to preserve value of <code>client.domCssText</code> through page re-rendering.</p></li>
+<li><p>In <code>Item.js</code>, removed reference to non-existent “guide lines” in API comments.</p></li>
+<li><p>In <code>RangeSlider.js</code>, improved behavior when sliding one knob past the position of the other knob.</p></li>
+<li><p>In <code>FlyweightPicker.js</code>, fixed issue causing <code>enyo.Picker</code> to not set its <code>selected</code> property at creation time.</p></li>
+<li><p>In <code>Toolbar.less</code>, fixed issue that could cause a menu inside a toolbar to appear cut-off.</p></li>
+<li><p>Moved <code>increment</code> property from <code>onyx.RangeSlider</code> to its superkind, <code>onyx.Slider</code>. Also made related changes to <code>onyx.ProgressBar</code> and updated “SliderSample” app.</p></li>
+<li><p>Updated <code>README.md</code> with instructions on handling changes to CSS with respect to <code>.less</code> and <code>.css</code> files.</p></li>
+</ul>
+<h2 id="layout">Layout</h2>
+<ul>
+<li><p>Added support for swipeable and user-reorderable items in Lists.</p></li>
+<li><p>Added new <code>enyo.DockRightArranger</code> kind.</p></li>
+<li><p>In <code>CollapsingArranger.js</code>, added <code>peekWidth</code> property, as previously seen in Enyo 1; also fixed behavior when using hidden panels.</p></li>
+</ul>
+<h2 id="globalizationlocalization">Globalization/Localization</h2>
+<ul>
+<li><p>In <code>datetime.js</code>, fixed issue causing <code>enyo.g11n.DateFmt.prototype.getFirstDayOfWeek()</code> to always return <code>undefined</code>.</p></li>
+<li><p>Marked Address-related functionality as “work-in-progress”.</p></li>
+</ul>
+<h2 id="bootplate">Bootplate</h2>
+<ul>
+<li>Modified the Bootplate application code to be of more practical value.</li>
+</ul>
+<h2 id="samples">Samples</h2>
+<ul>
+<li><p>Added samples for reorderable Lists, new <code>onyx.ContextualPopup</code> and <code>onyx.IntegerPicker</code> controls, and new <code>enyo.DockRightArranger</code> kind.</p></li>
+<li><p>In “PopupSample”, added example demonstrating <code>showPopupAtEvent()</code> method.</p></li>
+<li><p>Fixed styling issues affecting single-page samples when Sampler app is loaded from nightly.enyojs.com, as well as styling glitches affecting Onyx widgets.</p></li>
+<li><p>In “PanelsFlickrSample”, fixed image sizing.</p></li>
+<li><p>In “TimePickerSample”, changed label to clarify that the time shown is the localized time.</p></li>
+</ul>
+<h2 id="tools">Tools</h2>
+<ul>
+<li>In <code>minify.js</code>, modified script to not convert external links to relative paths when processing url strings; also fixed an issue affecting deployment of <code>.less</code> files.</li>
+</ul>
+<h2 id="known-issues-and-limitations">Known Issues and Limitations</h2>
+<h3 id="windows-8">Windows 8</h3>
+<p>Developers should be aware of the possibility for unexpected behavior related to Windows 8’s lack of support for JSONP and the fact that the Bootplate app must be in its minified state to run properly on this platform.</p>
+<h3 id="windows-phone-8">Windows Phone 8</h3>
+<p>While compatibility with Windows Phone 8 has been improved over previous Enyo releases, we have encountered some notable (non-Enyo-related) obstacles while developing for this platform. Specifically:</p>
+<ul>
+<li><p>Debugging is difficult. There is no <code>console.log()</code> for Visual Studio Express for Windows Phone 8. To do logging, you must pass console messages from your JavaScript to a C# function that then produces output. In addition, we sometimes received unexpected log data for things like objects.</p></li>
+<li><p>App caching can be a hindrance. When you make a code change and redeploy your app, you won’t always see new results from the app. In order to see the results of our code changes, we have sometimes had to quit and restart Visual Studio, create a new project, or reboot a device.</p></li>
+<li><p>The viewport is somewhat odd, in that you can move your app around. Setting specific pixel dimensions for the viewport and setting <code>-ms-touch-action: none;</code> (which is done in the <code>enyo-no-touch-action</code> class) seem to aid usability.</p></li>
+</ul>
+<h3 id="kindle-fire-hd">Kindle Fire HD</h3>
+<p>We have noticed several issues with how swipeable/reorderable lists are handled by the Web browser on Kindle Fire HD. Currently, this browser lacks a mode in which it can be full-screen without reacting to scrolls that cause the URL bar to be shown or hidden. As a result, operations that involve dragging often fail. This may be addressed by Amazon in a future browser update.</p>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../js/main.js"></script>
+  <script type="text/javascript" src="../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

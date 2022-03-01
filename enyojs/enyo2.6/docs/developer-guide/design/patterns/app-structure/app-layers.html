@@ -1,0 +1,137 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../../../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Application Layers</h1>
+<h2 id="panels-and-basement">Panels and Basement</h2>
+<p>The bottom layer of an application is referred to as the “basement” and is used for displaying fullscreen content such as video or photos. The layer above contains panels and drawers. Panels slide in from the right of the screen. When a new panel is opened, the previous panel transitions into a breadcrumb and is pushed to the left.</p>
+<p><img src="../../../assets/dg-app-layers-panels-basement.png" /></p>
+<p>When the basement has content loaded into it, a “hide panels”/“show panels” indicator will appear on the right side of the screen. If the user clicks the “hide panels” indicator, all open panels and breadcrumbs will transition off screen to the right.</p>
+<p>If, while viewing the full screen basement content, the user clicks on the “show panels” indicator, the panels will transition back in from the right; the last panel the user was in will be open.</p>
+<h2 id="top-drawer">Top Drawer</h2>
+<p>The Top Drawer is on the same layer as the panels. This means that when the drawer is opened, it pushes the panels down the screen. When a drawer is partially opened, such as in the Music Player Pattern, the header is still visible, so that the user does not lose the context of the current panel.</p>
+<figure>
+<img src="../../../assets/dg-app-layers-drawer-and-panels.png" alt="Top Drawer with Panels" /><figcaption><em>Top Drawer with Panels</em></figcaption>
+</figure>
+<p>Since the top drawer is on the same layer as the panels, if it is opened while viewing the full screen basement, the drawer will open on top of the basement.</p>
+<figure>
+<img src="../../../assets/dg-app-layers-drawer-and-basement.png" alt="Top Drawer Over Basement" /><figcaption><em>Top Drawer Over Basement</em></figcaption>
+</figure>
+<h2 id="popups">Popups</h2>
+<p>Popups always open on the top layer of the application. Whether you are in a panel, a drawer, or the basement, any popups that you open will appear on a layer above the rest of the app.</p>
+<figure>
+<img src="../../../assets/dg-app-layers-popups.png" alt="Popups" /><figcaption><em>Popups</em></figcaption>
+</figure>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../../../js/main.js"></script>
+  <script type="text/javascript" src="../../../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

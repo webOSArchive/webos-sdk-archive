@@ -1,0 +1,135 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Progress Bar</h1>
+<h2 id="about">About</h2>
+<p>A Progress Bar is a control in the form of a horizontal bar that shows the linear progress of a process.</p>
+<h2 id="api-reference">API Reference</h2>
+<p><a href="../../..//#/kind/moon.ProgressBar">moon.ProgressBar</a></p>
+<h2 id="behavior-and-states">Behavior and States</h2>
+<h3 id="behavior">Behavior</h3>
+<p>A Progress Bar consists of a horizontal Bar and Progress that fills the Bar. There is also an optional third component that may be used to indicate buffering.</p>
+<p>During media playback, the Bar represents the total length of a given piece of content. Progress fills the Bar to reflect the current playback position. The state of Progress may be illustrated with a popup button that indicates either a percentage (%) of completion or an amount of time (elapsed or remaining).</p>
+<p>The Bar remains static during playback, while Progress advances with the content. Progress may be animated, showing continuous progression, or unanimated, increasing in chunks.</p>
+<p>A third, optional, bar is used to display buffering. It should be used to show what has been queued but not yet processed or viewed. This is most relevant in scenarios such as video playback.</p>
+<p>Text may be added within a Tool Tip to indicate status (e.g., 35%), and buttons may be added to provide extra functionality (e.g., Stop/Cancel a download). Outside of such buttons, there are no user interactions with Progress Bars.</p>
+<h3 id="states">States</h3>
+<p>The Progress Bar has no states.</p>
+<h3 id="sizing">Sizing</h3>
+<p>The Bar dictates the overall width of the control; it has a default width of 300 pixels. This width is configurable, but the height of the Progress Bar is not. Progress starts at 0 and grows until it reaches the same width as the Bar; the buffering bar works in the same manner.</p>
+<h2 id="illustration">Illustration</h2>
+<p><img src="../../assets/dg-controls-progress-bar.png" /></p>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../../js/main.js"></script>
+  <script type="text/javascript" src="../../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

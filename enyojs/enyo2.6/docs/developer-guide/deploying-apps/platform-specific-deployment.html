@@ -1,0 +1,197 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Platform-Specific Deployment</h1>
+<p>The instructions that follow assume that you have completed the development phase of an Enyo-based application as well as the optimization phase (i.e., running the <code>deploy</code> script and removing any unnecessary files from the project) and that you are now ready to create a final product for deployment to your platform of choice.</p>
+<h2 id="deploying-as-a-mobile-application">Deploying as a Mobile Application</h2>
+<h3 id="deploying-to-ios-using-cordova-phonegap">Deploying to iOS Using Cordova (PhoneGap)</h3>
+<ol type="1">
+<li><p>Follow the instructions in the <a href="http://docs.phonegap.com/en/2.7.0/guide_getting-started_index.md.html#Getting%20Started%20Guides">Cordova Getting Started Guide</a> to install Cordova and create a basic iOS Cordova app.</p></li>
+<li><p>Now drop your Enyo-based app files into the <code>www</code> directory created in step 1.</p></li>
+<li><p>Add the following <code>&lt;meta&gt;</code> tag to <code>index.html</code> for proper display on device:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb1-1" title="1">    <span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;viewport&quot;</span><span class="er">;</span><span class="ot"> content=</span><span class="st">&quot;width=device-width, initial-scale=1.0,</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="st">        maximum-scale=1.0, user-scalable=no&quot;</span> <span class="kw">/&gt;</span></a></code></pre></div></li>
+</ol>
+<p>From here you can follow the instructions in the Cordova Getting Started Guide to deploy to the simulator or device. To submit your app to the Apple App Store, you’ll need to sign up for a developer account and review the documentation provided at <a href="http://developer.apple.com" class="uri">http://developer.apple.com</a>.</p>
+<p>Finally, if your project requires access to Cordova’s native functionality, follow the directions in <a href="cordova-native-functions.html">Making Use of Cordova’s Native Functions</a>.</p>
+<h3 id="deploying-to-android-using-cordova">Deploying to Android Using Cordova</h3>
+<ol type="1">
+<li><p>Follow the instructions in the <a href="http://docs.phonegap.com/en/2.7.0/guide_getting-started_index.md.html#Getting%20Started%20Guides">Cordova Getting Started Guide</a> to install Cordova and create a basic Android Cordova app.</p></li>
+<li><p>Now drop your Enyo-based app files into the <code>www</code> directory created in step 1.</p></li>
+<li><p>Add the following <code>&lt;meta&gt;</code> tag to <code>index.html</code> for proper display on device:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb2-1" title="1">    <span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;viewport&quot;</span><span class="er">;</span><span class="ot"> content=</span><span class="st">&quot;width=device-width, initial-scale=1.0,</span></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="st">        maximum-scale=1.0, user-scalable=no&quot;</span> <span class="kw">/&gt;</span></a></code></pre></div></li>
+</ol>
+<p>From here you can follow the instructions in the Cordova Getting Started Guide to deploy to the emulator or device. To publish your app on Google Play, you’ll need to sign up for a developer account and review the documentation provided at <a href="http://developer.android.com" class="uri">http://developer.android.com</a>.</p>
+<p>Finally, if your project requires access to Cordova’s native functionality, follow the directions in <a href="cordova-native-functions.html">Making Use of Cordova’s Native Functions</a>.</p>
+<h3 id="deploying-to-windows-phone-using-cordova">Deploying to Windows Phone Using Cordova</h3>
+<ol type="1">
+<li><p>Follow the instructions in the <a href="http://docs.phonegap.com/en/2.7.0/guide_getting-started_index.md.html#Getting%20Started%20Guides">Cordova Getting Started Guide</a> to install Cordova and create a basic Windows Phone Cordova app.</p></li>
+<li><p>Now drop your Enyo-based app files into the <code>www</code> directory created in step 1.</p></li>
+<li><p>Add the following viewport rule to <code>css/index.css</code> for proper display on device:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb3-1" title="1">    <span class="im">@-ms-viewport</span> {</a>
+<a class="sourceLine" id="cb3-2" title="2">        <span class="kw">width</span>: device-width<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-3" title="3">        <span class="kw">height</span>: device-height<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-4" title="4">        user-zoom: <span class="dv">fixed</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb3-5" title="5">        max-zoom: <span class="dv">1</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb3-6" title="6">        min-zoom: <span class="dv">1</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb3-7" title="7">    }</a></code></pre></div></li>
+</ol>
+<p>From here you can follow the instructions in the Cordova Getting Started Guide to deploy to the simulator or device. To submit your app to the Microsoft Windows Phone Store, you’ll need to sign up for a developer account and review the documentation provided at <a href="https://dev.windowsphone.com/en-us" class="uri">https://dev.windowsphone.com/en-us</a>.</p>
+<p>Finally, if your project requires access to Cordova’s native functionality, follow the directions in <a href="cordova-native-functions.html">Making Use of Cordova’s Native Functions</a>.</p>
+<h3 id="deploying-to-open-webos-using-cordova">Deploying to Open webOS Using Cordova</h3>
+<p>You may recall that Enyo 1.0 was the preferred framework for developing applications in webOS 3.0.x. Enyo 1.0 was tightly integrated with the operating system, providing many webOS-specific features to facilitate app development.</p>
+<p>With Enyo 2 and Open webOS, however, the framework and OS have been decoupled; you are free to use either one alone, or both of them together. If you use them together, please be aware that Enyo 2 no longer contains functionality specific to webOS.</p>
+<p>The Open webOS team recommends that you use the <a href="http://phonegap.com/download/">Cordova JavaScript library</a> to provide the layer connecting application and device.</p>
+<p>If, for example, you want to use the <a href="../getting-started/bootplate.html">Bootplate</a> template app with Open webOS, first modify the <code>&lt;head&gt;</code> section of Bootplate’s <code>index.html</code> file by inserting the following line to load Cordova before Enyo:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb4-1" title="1">    <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;cordova-2.7.0.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></a></code></pre></div>
+<p>Enyo supports Cordova events out of the box; you may subscribe to them using <code>enyo.Signals</code>. To listen for Cordova’s startup event (<code>onDeviceReady</code>), add the following to your main app kind’s <code>components</code> block:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1">    <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;Signals&quot;</span><span class="op">,</span> <span class="dt">ondeviceready</span><span class="op">:</span> <span class="st">&quot;deviceready&quot;</span><span class="op">}</span></a></code></pre></div>
+<p><code>onDeviceReady</code> will be sent as soon as Cordova detects that the device is ready. If you need to call any Cordova functions on initialization, simply place them in the <code>deviceready()</code> function.</p>
+<p>Additional information on using Enyo with Open webOS is available on the <a href="http://www.openwebosproject.org">Open webOS Web site</a>.</p>
+<h3 id="deploying-as-a-mobile-app-using-phonegap-build">Deploying as a Mobile App Using PhoneGap Build</h3>
+<ol type="1">
+<li><p>Create a zip file of your project.</p></li>
+<li><p>Upload the zip file into your PhoneGap Build application (follow the instructions on the <a href="https://build.phonegap.com/">Web site</a>).</p></li>
+<li><p>PhoneGap Build outputs application packages for various platforms.</p></li>
+</ol>
+<h2 id="deploying-as-a-google-chrome-application">Deploying as a Google Chrome Application</h2>
+<ol type="1">
+<li><p>Create a <code>manifest.json</code> file in your application’s root directory, e.g.:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb6-1" title="1">    <span class="fu">{</span></a>
+<a class="sourceLine" id="cb6-2" title="2">        <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Testplate&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb6-3" title="3">        <span class="dt">&quot;version&quot;</span><span class="fu">:</span> <span class="st">&quot;1.0&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb6-4" title="4">        <span class="dt">&quot;manifest_version&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb6-5" title="5">        <span class="dt">&quot;description&quot;</span><span class="fu">:</span> <span class="st">&quot;Enyo extension.&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb6-6" title="6">        <span class="dt">&quot;app&quot;</span><span class="fu">:</span> <span class="fu">{</span></a>
+<a class="sourceLine" id="cb6-7" title="7">            <span class="dt">&quot;launch&quot;</span><span class="fu">:</span> <span class="fu">{</span></a>
+<a class="sourceLine" id="cb6-8" title="8">                <span class="dt">&quot;local_path&quot;</span><span class="fu">:</span> <span class="st">&quot;index.html&quot;</span></a>
+<a class="sourceLine" id="cb6-9" title="9">            <span class="fu">}</span></a>
+<a class="sourceLine" id="cb6-10" title="10">        <span class="fu">}</span></a>
+<a class="sourceLine" id="cb6-11" title="11">    <span class="fu">}</span></a></code></pre></div></li>
+<li><p>In Google Chrome, choose <strong>Tools|Extensions</strong>, then pick <strong>Load Unpacked Extension</strong> and select your deployment folder (e.g., <code>myapp-deploy</code>).</p></li>
+<li><p>A generic application icon appears on your Chrome Apps page that will invoke this app.</p></li>
+<li><p>Refer to the <a href="https://developer.chrome.com/apps/about_apps.html">Chrome documentation</a> for more information on manifest files and the actual packaging of an application.</p></li>
+</ol>
+<h2 id="deploying-as-a-windows-8-app">Deploying as a Windows 8 App</h2>
+<p>For information on building apps for PCs and tablets running Windows 8, to be deployed via the Windows Store, please see <a href="enyo-apps-on-windows-8.html">Enyo Apps on Windows 8</a>.</p>
+<h2 id="deploying-as-an-installable-windows-application">Deploying as an Installable Windows Application</h2>
+<p>Intel has discontinued its online Encapsulator tool for creating Windows executables from Web applications. However, they have published an article on their Web site providing detailed <a href="http://software.intel.com/en-us/articles/do-it-yourself-chromium-base-web-application-container">instructions for building your own app container</a>.</p>
+<p><strong>Additional Reading</strong></p>
+<ul>
+<li><a href="cordova-native-functions.html">Cordova Native Functions</a></li>
+</ul>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../js/main.js"></script>
+  <script type="text/javascript" src="../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

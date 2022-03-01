@@ -1,0 +1,587 @@
+<?js // var self = this; ?>
+<div class="row">
+	<div class="col-sm-4 col-sm-push-8 features">
+		
+		<div class="properties">
+			<h1><a href="javascript:find(':properties');">Properties</a></h1>
+			<div>
+<ul>
+	
+	<li class="property private ">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':applyFitSize');">applyFitSize</a>
+	</li>
+	
+	<li class="property private ">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':kind');">kind</a>
+	</li>
+	
+	<li class="property private ">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':name');">name</a>
+	</li>
+	
+</ul>
+</div>
+			<h1 class="inherited"><a href="javascript:find(':inherited-properties');">Inherited Properties</a></h1>
+			<div class="inherited">
+<ul>
+	
+	<li class="property private inherited">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':destroy');">destroy</a>
+	</li>
+	
+	<li class="property private inherited">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':flexAvailable');">flexAvailable</a>
+	</li>
+	
+	<li class="property public inherited">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':layoutClass');">layoutClass</a>
+	</li>
+	
+	<li class="property private inherited">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':noDefer');">noDefer</a>
+	</li>
+	
+</ul>
+</div>
+		</div>
+		<div class="methods">
+			<h1><a href="javascript:find(':methods');">Methods</a></h1>
+			<div>
+
+<span class="no-methods">No methods</span>
+</div>
+			<h1 class="inherited"><a href="javascript:find(':inherited-methods');">Inherited Methods</a></h1>
+			<div class="inherited">
+<ul>
+	
+	<li class="method private inherited">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':_reflow');">_reflow</a>
+	</li>
+	
+	<li class="method private inherited">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':calcFitIndex');">calcFitIndex</a>
+	</li>
+	
+	<li class="method private inherited">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':constructor');">constructor</a>
+	</li>
+	
+	<li class="method public inherited">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':flow');">flow</a>
+	</li>
+	
+	<li class="method private inherited">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':getFirstChild');">getFirstChild</a>
+	</li>
+	
+	<li class="method private inherited">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':getFitControl');">getFitControl</a>
+	</li>
+	
+	<li class="method private inherited">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':getLastChild');">getLastChild</a>
+	</li>
+	
+	<li class="method private inherited">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':getShowingChildren');">getShowingChildren</a>
+	</li>
+	
+	<li class="method public inherited">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':reflow');">reflow</a>
+	</li>
+	
+	<li class="method private inherited">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':shouldReverse');">shouldReverse</a>
+	</li>
+	
+</ul>
+</div>
+		</div>
+		<div class="events">
+			<h1><a href="javascript:find(':events');">Events</a></h1>
+			<div>
+<span class="no-methods">No events</span>
+</div>
+			<h1 class="inherited"><a href="javascript:find(':inherited-events');">Inherited Events</a></h1>
+			<div class="inherited">
+<span class="no-methods">No inherited events</span>
+</div>
+		</div>
+		<div class="typedefs">
+			<h1><a href="javascript:find(':typedefs');">Type Definitions</a></h1>
+			<div>
+<span class="no-methods">No Type Definitons</span>
+
+</div>
+		</div>
+	</div>
+	<div class="col-sm-8 col-sm-pull-4 kind main-container">
+
+
+		<div class="header">
+
+			<!--<h2>KIND</h2>-->
+			<h1><a href="#/namespace/enyo">enyo</a>.FittableHeaderLayout</h1>
+			
+<div class="inherits">
+	<span class="title">Extends&nbsp;</span>
+	<span class="super"><a href="#/kind/enyo.Layout">enyo.Layout</a></span>
+	
+	<span>&gt;</span>
+	<span class="super"><a href="#/kind/enyo.FittableLayout">enyo.FittableLayout</a></span>
+	
+	<span>&gt;</span>
+	<span class="super"><a href="#/kind/enyo.FittableColumnsLayout">enyo.FittableColumnsLayout</a></span>
+	
+</div>
+
+			<div class="source">From enyo26/lib/layout/fittable/source/FittableHeaderLayout.js</div>
+		</div>
+
+		<div class="section description">
+			<h1>Description</h1>
+			<div><p><a href="#/kind/enyo.FittableHeaderLayout">enyo.FittableHeaderLayout</a> extends <a href="#/kind/enyo.FittableColumnsLayout">enyo.FittableColumnsLayout</a>,
+providing a container in which items are laid out in a set of vertical columns,
+with most items having natural size, but one expanding to fill the remaining
+space. The one that expands is labeled with the attribute <code>fit: true</code>.</p>
+<p>For more information, see the documentation on
+<a class="linkplain" href="../developer-guide//building-apps/layout/fittables.html">Fittables</a> in the
+Enyo Developer Guide.</p></div>
+		</div>
+		<div class="section properties"><a name="properties"></a>
+<h1>Properties</h1>
+
+<a name="applyFitSize"></a>
+<div class="entry property private ">
+	<div class="header">
+		<span class="access private">private</span>
+		<span class="name">applyFitSize</span>
+		<span>:</span>
+		<span class="type"><a class="glossary" href="#/glossary:undefined">undefined</a></span>
+	</div>
+	<div class="content">
+		
+		<div class="default">Default: </div>
+		<div class="description"></div>
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/lib/layout/fittable/source/FittableHeaderLayout.js</span>
+			<span class="line">:33</span>
+		</div>
+	</div>
+</div>
+<a name="kind"></a>
+<div class="entry property private ">
+	<div class="header">
+		<span class="access private">private</span>
+		<span class="name">kind</span>
+		<span>:</span>
+		<span class="type"><a class="glossary" href="#/glossary:undefined">undefined</a></span>
+	</div>
+	<div class="content">
+		
+		<div class="default">Default: </div>
+		<div class="description"></div>
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/lib/layout/fittable/source/FittableHeaderLayout.js</span>
+			<span class="line">:28</span>
+		</div>
+	</div>
+</div>
+<a name="name"></a>
+<div class="entry property private ">
+	<div class="header">
+		<span class="access private">private</span>
+		<span class="name">name</span>
+		<span>:</span>
+		<span class="type"><a class="glossary" href="#/glossary:undefined">undefined</a></span>
+	</div>
+	<div class="content">
+		
+		<div class="default">Default: </div>
+		<div class="description"></div>
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/lib/layout/fittable/source/FittableHeaderLayout.js</span>
+			<span class="line">:23</span>
+		</div>
+	</div>
+</div>
+
+</div>
+		<div class="section inherited-properties inherited"><a name="inherited-properties"></a>
+<h1 class="inherited">Inherited Properties</h1>
+
+<a name="destroy"></a>
+<div class="entry property private inherited">
+	<div class="header">
+		<span class="access private">private</span>
+		<span class="name">destroy</span>
+		<span>:</span>
+		<span class="type"><a class="glossary" href="#/glossary:undefined">undefined</a></span>
+	</div>
+	<div class="content">
+		
+		<div class="inherited">Inherited from <a href="#/kind/enyo.FittableLayout:destroy">enyo.FittableLayout#destroy</a></div>
+		
+		<div class="default">Default: </div>
+		<div class="description"></div>
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/lib/layout/fittable/source/FittableLayout.js</span>
+			<span class="line">:115</span>
+		</div>
+	</div>
+</div>
+<a name="flexAvailable"></a>
+<div class="entry property private inherited">
+	<div class="header">
+		<span class="access private">private</span>
+		<span class="name">flexAvailable</span>
+		<span>:</span>
+		<span class="type"><a class="glossary" href="#/glossary:Boolean">Boolean</a></span>
+	</div>
+	<div class="content">
+		
+		<div class="inherited">Inherited from <a href="#/kind/enyo.FittableLayout:flexAvailable">enyo.FittableLayout#flexAvailable</a></div>
+		
+		<div class="default">Default: <a class="glossary" href="#/glossary:false">false</a></div>
+		<div class="description"><p>Indicates whether flexbox optimization can be used.</p></div>
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/lib/layout/fittable/source/FittableLayout.js</span>
+			<span class="line">:276</span>
+		</div>
+	</div>
+</div>
+<a name="layoutClass"></a>
+<div class="entry property public inherited">
+	<div class="header">
+		<span class="access public">public</span>
+		<span class="name">layoutClass</span>
+		<span>:</span>
+		<span class="type"><a class="glossary" href="#/glossary:String">String</a></span>
+	</div>
+	<div class="content">
+		
+		<div class="inherited">Inherited from <a href="#/kind/enyo.Layout:layoutClass">enyo.Layout#layoutClass</a></div>
+		
+		<div class="default">Default: ''</div>
+		<div class="description"><p>CSS class that's added to the <a href="#/kind/enyo.Control">control</a> using this 
+<a href="#/kind/enyo.Layout">layout</a> <a class="glossary" href="#/glossary:kind">kind</a>.</p></div>
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/enyo/source/kernel/Layout.js</span>
+			<span class="line">:39</span>
+		</div>
+	</div>
+</div>
+<a name="noDefer"></a>
+<div class="entry property private inherited">
+	<div class="header">
+		<span class="access private">private</span>
+		<span class="name">noDefer</span>
+		<span>:</span>
+		<span class="type"><a class="glossary" href="#/glossary:undefined">undefined</a></span>
+	</div>
+	<div class="content">
+		
+		<div class="inherited">Inherited from <a href="#/kind/enyo.FittableLayout:noDefer">enyo.FittableLayout#noDefer</a></div>
+		
+		<div class="default">Default: </div>
+		<div class="description"></div>
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/lib/layout/fittable/source/FittableLayout.js</span>
+			<span class="line">:52</span>
+		</div>
+	</div>
+</div>
+
+</div>
+		<div class="section methods"><a name="methods"></a>
+<h1>Methods</h1>
+
+<strong>No methods</strong>
+</div>
+		<div class="section inherited-methods inherited"><a name="inherited-methods"></a>
+<h1 class="inherited">Inherited Methods</h1>
+
+
+<a name="_reflow"></a>
+<div class="entry method private inherited">
+	<div class="header">
+		<span class="access private">private</span>
+		<span class="name">_reflow&#040;&#041;</span><span>&rarr;</span>
+		<span class="header-returns"><a class="glossary" href="#/glossary:undefined">undefined</a></span></div>
+	<div class="content">
+		
+		<div class="inherited">Inherited from <a href="#/kind/enyo.FittableLayout:_reflow">enyo.FittableLayout#_reflow</a></div>
+		
+		<div class="description"></div>
+		
+
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/lib/layout/fittable/source/FittableLayout.js</span>
+			<span class="line">:172</span>
+		</div>
+	</div>
+</div>
+
+
+<a name="calcFitIndex"></a>
+<div class="entry method private inherited">
+	<div class="header">
+		<span class="access private">private</span>
+		<span class="name">calcFitIndex&#040;&#041;</span><span>&rarr;</span>
+		<span class="header-returns"><a class="glossary" href="#/glossary:undefined">undefined</a></span></div>
+	<div class="content">
+		
+		<div class="inherited">Inherited from <a href="#/kind/enyo.FittableLayout:calcFitIndex">enyo.FittableLayout#calcFitIndex</a></div>
+		
+		<div class="description"></div>
+		
+
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/lib/layout/fittable/source/FittableLayout.js</span>
+			<span class="line">:78</span>
+		</div>
+	</div>
+</div>
+
+
+<a name="constructor"></a>
+<div class="entry method private inherited">
+	<div class="header">
+		<span class="access private">private</span>
+		<span class="name">constructor&#040;&#041;</span><span>&rarr;</span>
+		<span class="header-returns"><a class="glossary" href="#/glossary:undefined">undefined</a></span></div>
+	<div class="content">
+		
+		<div class="inherited">Inherited from <a href="#/kind/enyo.FittableLayout:constructor">enyo.FittableLayout#constructor</a></div>
+		
+		<div class="description"></div>
+		
+
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/lib/layout/fittable/source/FittableLayout.js</span>
+			<span class="line">:58</span>
+		</div>
+	</div>
+</div>
+
+
+<a name="flow"></a>
+<div class="entry method public inherited">
+	<div class="header">
+		<span class="access public">public</span>
+		<span class="name">flow&#040;&#041;</span><span>&rarr;</span>
+		<span class="header-returns"><a class="glossary" href="#/glossary:undefined">undefined</a></span></div>
+	<div class="content">
+		
+		<div class="inherited">Inherited from <a href="#/kind/enyo.FittableLayout:flow">enyo.FittableLayout#flow</a></div>
+		
+		<div class="description"><p>Assigns any static layout properties not dependent on changes to the
+rendered component or container sizes, etc.</p></div>
+		
+
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/lib/layout/fittable/source/FittableLayout.js</span>
+			<span class="line">:233</span>
+		</div>
+	</div>
+</div>
+
+
+<a name="getFirstChild"></a>
+<div class="entry method private inherited">
+	<div class="header">
+		<span class="access private">private</span>
+		<span class="name">getFirstChild&#040;&#041;</span><span>&rarr;</span>
+		<span class="header-returns"><a class="glossary" href="#/glossary:undefined">undefined</a></span></div>
+	<div class="content">
+		
+		<div class="inherited">Inherited from <a href="#/kind/enyo.FittableLayout:getFirstChild">enyo.FittableLayout#getFirstChild</a></div>
+		
+		<div class="description"></div>
+		
+
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/lib/layout/fittable/source/FittableLayout.js</span>
+			<span class="line">:128</span>
+		</div>
+	</div>
+</div>
+
+
+<a name="getFitControl"></a>
+<div class="entry method private inherited">
+	<div class="header">
+		<span class="access private">private</span>
+		<span class="name">getFitControl&#040;&#041;</span><span>&rarr;</span>
+		<span class="header-returns"><a class="glossary" href="#/glossary:undefined">undefined</a></span></div>
+	<div class="content">
+		
+		<div class="inherited">Inherited from <a href="#/kind/enyo.FittableLayout:getFitControl">enyo.FittableLayout#getFitControl</a></div>
+		
+		<div class="description"></div>
+		
+
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/lib/layout/fittable/source/FittableLayout.js</span>
+			<span class="line">:94</span>
+		</div>
+	</div>
+</div>
+
+
+<a name="getLastChild"></a>
+<div class="entry method private inherited">
+	<div class="header">
+		<span class="access private">private</span>
+		<span class="name">getLastChild&#040;&#041;</span><span>&rarr;</span>
+		<span class="header-returns"><a class="glossary" href="#/glossary:undefined">undefined</a></span></div>
+	<div class="content">
+		
+		<div class="inherited">Inherited from <a href="#/kind/enyo.FittableLayout:getLastChild">enyo.FittableLayout#getLastChild</a></div>
+		
+		<div class="description"></div>
+		
+
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/lib/layout/fittable/source/FittableLayout.js</span>
+			<span class="line">:141</span>
+		</div>
+	</div>
+</div>
+
+
+<a name="getShowingChildren"></a>
+<div class="entry method private inherited">
+	<div class="header">
+		<span class="access private">private</span>
+		<span class="name">getShowingChildren&#040;&#041;</span><span>&rarr;</span>
+		<span class="header-returns"><a class="glossary" href="#/glossary:undefined">undefined</a></span></div>
+	<div class="content">
+		
+		<div class="inherited">Inherited from <a href="#/kind/enyo.FittableLayout:getShowingChildren">enyo.FittableLayout#getShowingChildren</a></div>
+		
+		<div class="description"></div>
+		
+
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/lib/layout/fittable/source/FittableLayout.js</span>
+			<span class="line">:154</span>
+		</div>
+	</div>
+</div>
+
+
+<a name="reflow"></a>
+<div class="entry method public inherited">
+	<div class="header">
+		<span class="access public">public</span>
+		<span class="name">reflow&#040;&#041;</span><span>&rarr;</span>
+		<span class="header-returns"><a class="glossary" href="#/glossary:undefined">undefined</a></span></div>
+	<div class="content">
+		
+		<div class="inherited">Inherited from <a href="#/kind/enyo.FittableLayout:reflow">enyo.FittableLayout#reflow</a></div>
+		
+		<div class="description"><p>Updates the layout to reflect any changes made to the layout container or
+the contained components.</p></div>
+		
+
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/lib/layout/fittable/source/FittableLayout.js</span>
+			<span class="line">:254</span>
+		</div>
+	</div>
+</div>
+
+
+<a name="shouldReverse"></a>
+<div class="entry method private inherited">
+	<div class="header">
+		<span class="access private">private</span>
+		<span class="name">shouldReverse&#040;&#041;</span><span>&rarr;</span>
+		<span class="header-returns"><a class="glossary" href="#/glossary:undefined">undefined</a></span></div>
+	<div class="content">
+		
+		<div class="inherited">Inherited from <a href="#/kind/enyo.FittableLayout:shouldReverse">enyo.FittableLayout#shouldReverse</a></div>
+		
+		<div class="description"></div>
+		
+
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/lib/layout/fittable/source/FittableLayout.js</span>
+			<span class="line">:108</span>
+		</div>
+	</div>
+</div>
+
+
+</div>
+		<div class="section events"><a name="events"></a>
+<h1>Events</h1>
+
+<strong>No events</strong>
+</div>
+		<div class="section inherited-events inherited"><a name="inherited-events"></a>
+<h1 class="inherited">Inherited Events</h1>
+
+<strong class="inherited">No inherited events</strong>
+</div>
+		<div class="section typedefs"><a name="typedefs"></a>
+<h1>Type Definitions</h1>
+
+<strong>No Type Definitions</strong>
+
+</div>
+		<div class="section mixins"></div>
+	</div>
+</div>

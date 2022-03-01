@@ -1,0 +1,224 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Kinds</h1>
+<h2 id="enyo.kind">enyo.kind()</h2>
+<p><a href="../..//#/namespace/enyo.kind">enyo.kind(inProps)</a> is the Enyo framework’s method for generating kinds. A kind is a constructor-with-prototype (like a class) that has advanced features like prototype-chaining (inheritance).</p>
+<p>A plug-in system is included for extending the abilities of the kind generator, and constructors are allowed to perform custom operations when subclassed.</p>
+<p>In this article, we look at several things that happen when <code>enyo.kind()</code> is invoked. To learn about what happens once you have an instantiated object, see <a href="objects-and-published-properties.html">Objects and Published Properties</a> and <a href="components.html">Components</a>.</p>
+<h2 id="special-property-names">Special Property Names</h2>
+<p>Generally, the properties defined in the passed-in <code>inProps</code> object are copied directly to the generated prototype, but certain property names trigger special processing. Some examples of special properties are:</p>
+<ul>
+<li><p><code>name</code>: Defines the name of the created constructor in the global namespace (intermediate objects are created automatically). <code>name</code> is not copied directly to the prototype, but is instead stored as <code>kindName</code>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1">    <span class="co">// Create a function myNamespace.MyKind with a prototype.</span></a>
+<a class="sourceLine" id="cb1-2" title="2">    <span class="co">// myNamespace.MyKind.prototype.kindName is set to &quot;myNamespace.MyKind&quot;.</span></a>
+<a class="sourceLine" id="cb1-3" title="3">    <span class="co">// myNamespace.MyKind.prototype.plainProperty is set to &quot;foo&quot;.</span></a>
+<a class="sourceLine" id="cb1-4" title="4">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb1-5" title="5">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;myNamespace.MyKind&quot;</span></a>
+<a class="sourceLine" id="cb1-6" title="6">        <span class="dt">plainProperty</span><span class="op">:</span> <span class="st">&quot;foo&quot;</span></a>
+<a class="sourceLine" id="cb1-7" title="7">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-8" title="8">    <span class="co">// Make an instance of the new kind.</span></a>
+<a class="sourceLine" id="cb1-9" title="9">    <span class="kw">var</span> myk <span class="op">=</span> <span class="kw">new</span> <span class="va">myNamespace</span>.<span class="at">MyKind</span>()<span class="op">;</span></a></code></pre></div></li>
+<li><p><code>kind</code>: The name of, or a reference to, a kind to derive from, like a superclass. The new constructor’s prototype is chained to the prototype specified by <code>kind</code>, and the <code>base</code> property in the new prototype is set to reference the <code>kind</code> constructor.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1">    <span class="co">// Create a function MyKind with a prototype, derived from enyo.Object.</span></a>
+<a class="sourceLine" id="cb2-2" title="2">    <span class="co">// MyKind.prototype.kindName is set to &quot;MyKind&quot;.</span></a>
+<a class="sourceLine" id="cb2-3" title="3">    <span class="co">// MyKind.prototype.base is set to &quot;enyo.Object&quot;.</span></a>
+<a class="sourceLine" id="cb2-4" title="4">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb2-5" title="5">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;MyKind&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb2-6" title="6">        <span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.Object&quot;</span></a>
+<a class="sourceLine" id="cb2-7" title="7">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div></li>
+<li><p><code>constructor</code>: An optional function to call when a new instance is created; it is actually stored on the prototype as <code>_constructor</code>.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1">    <span class="co">// Create a function MyKind with a prototype, derived from enyo.Object.</span></a>
+<a class="sourceLine" id="cb3-2" title="2">    <span class="co">// _constructor_ is called when an instance is created. </span></a>
+<a class="sourceLine" id="cb3-3" title="3">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb3-4" title="4">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;MyKind&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb3-5" title="5">        <span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.Object&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb3-6" title="6">        <span class="dt">constructor</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-7" title="7">            <span class="kw">this</span>.<span class="at">instanceArray</span> <span class="op">=</span> []<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-8" title="8">            <span class="co">// Call the constructor inherited from Object</span></a>
+<a class="sourceLine" id="cb3-9" title="9">            <span class="kw">this</span>.<span class="at">inherited</span>(<span class="kw">arguments</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-10" title="10">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb3-11" title="11">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div></li>
+<li><p><code>statics</code>: Properties from any <code>statics</code> object are copied onto the constructor directly, instead of the prototype.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1">    <span class="co">// Create a kind with a static method.</span></a>
+<a class="sourceLine" id="cb4-2" title="2">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb4-3" title="3">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;MyKind&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb4-4" title="4">        <span class="dt">statics</span><span class="op">:</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-5" title="5">            <span class="dt">info</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-6" title="6">                <span class="cf">return</span> <span class="st">&quot;MyKind is a kind with statics.&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb4-7" title="7">            <span class="op">}</span></a>
+<a class="sourceLine" id="cb4-8" title="8">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb4-9" title="9">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-10" title="10">    <span class="co">// Invoke the static info() method of MyKind.</span></a>
+<a class="sourceLine" id="cb4-11" title="11">    <span class="va">console</span>.<span class="at">log</span>(<span class="va">MyKind</span>.<span class="at">info</span>())<span class="op">;</span></a></code></pre></div></li>
+<li><p><code>protectedStatics</code>: Introduced in Enyo 2.3, protected statics are statics that are meant for use only within the kind in which they are declared, or in code that derives from that kind.</p>
+<p>Unlike public statics, protected statics won’t prevent the deferral of a kind’s creation. Deferral is not possible for kinds containing public statics because of the potential for the public statics’ being used before any instances of the kind exist.</p></li>
+</ul>
+<p>Certain kinds in the framework define their own special properties, e.g., the <code>published</code> property supported by <a href="../..//#/kind/enyo.Object">enyo.Object</a>.</p>
+<h2 id="lifecycle-of-a-trivial-kind">Lifecycle of a Trivial Kind</h2>
+<p>A trivial kind has a simple lifecycle:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1">    <span class="kw">var</span> MyKind <span class="op">=</span> <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb5-2" title="2">        <span class="dt">kind</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span> <span class="co">// otherwise it will default to &#39;Control&#39;</span></a>
+<a class="sourceLine" id="cb5-3" title="3">        <span class="dt">constructor</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-4" title="4">            <span class="co">// do any initialization tasks</span></a>
+<a class="sourceLine" id="cb5-5" title="5">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb5-6" title="6">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>That’s it. <code>MyKind()</code> is now a function that you can use with the <code>new</code> operator to create instances.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1">        myInstance <span class="op">=</span> <span class="kw">new</span> <span class="at">MyKind</span>()<span class="op">;</span></a></code></pre></div>
+<p>Like all JavaScript objects, a kind instance will be garbage-collected when there are no references to it.</p>
+<h2 id="inheritance-this.inherited">Inheritance: this.inherited()</h2>
+<p>It’s common for one kind to be based on another kind. The new kind inherits all the properties and methods of the old kind. If the new kind overrides a method from the old kind, you can call the overridden method using <code>this.inherited()</code>:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1">    <span class="kw">var</span> MyNextKind <span class="op">=</span> <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb7-2" title="2">        <span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;MyKind&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb7-3" title="3">        <span class="dt">constructor</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-4" title="4">            <span class="co">// do any initialization tasks before MyKind initializes</span></a>
+<a class="sourceLine" id="cb7-5" title="5">            <span class="co">//</span></a>
+<a class="sourceLine" id="cb7-6" title="6">            <span class="co">// do inherited initialization (optional, but usually a good idea)</span></a>
+<a class="sourceLine" id="cb7-7" title="7">            <span class="kw">this</span>.<span class="at">inherited</span>(<span class="kw">arguments</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-8" title="8">            <span class="co">//</span></a>
+<a class="sourceLine" id="cb7-9" title="9">            <span class="co">// do any initialization tasks after MyKind initializes</span></a>
+<a class="sourceLine" id="cb7-10" title="10">            <span class="op">}</span></a>
+<a class="sourceLine" id="cb7-11" title="11">        <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p><code>MyNextKind</code> starts with all the properties and methods of <code>MyKind</code>, but then we override <code>constructor()</code>. Our new constructor may call the old constructor using the <code>this.inherited()</code> syntax. The first parameter passed to <code>this.inherited()</code> must be the literal <code>arguments</code>, which is a special JavaScript variable containing information about the executing function. (For more about <code>arguments</code>, see <a href="https://developer.mozilla.org/en/JavaScript/Reference/Functions_and_function_scope/arguments">developer.mozilla.org</a>.)</p>
+<p>In its constructor, <code>MyNextKind</code> may specify things to do before or after calling the old constructor, or it may choose to not call the old constructor at all.</p>
+<p>This override system works the same for any method, not just <code>constructor()</code>:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb8-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;MyOriginalKind&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb8-3" title="3">        <span class="dt">doWork</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-4" title="4">            <span class="kw">this</span>.<span class="at">work</span><span class="op">++;</span></a>
+<a class="sourceLine" id="cb8-5" title="5">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb8-6" title="6">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-7" title="7"></a>
+<a class="sourceLine" id="cb8-8" title="8">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb8-9" title="9">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;MyDerivedKind&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb8-10" title="10">        <span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;MyOriginalKind&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb8-11" title="11">        <span class="dt">doWork</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-12" title="12">            <span class="cf">if</span> (<span class="kw">this</span>.<span class="at">shouldDoWork</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-13" title="13">                <span class="kw">this</span>.<span class="at">inherited</span>(<span class="kw">arguments</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-14" title="14">            <span class="op">}</span></a>
+<a class="sourceLine" id="cb8-15" title="15">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb8-16" title="16">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>Note that you could also call an inherited method using only raw JavaScript, like so:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1">    <span class="va">MyKind</span>.<span class="va">prototype</span>.<span class="op">&lt;</span>method name<span class="op">&gt;</span>.<span class="at">apply</span>(<span class="kw">this</span><span class="op">,</span> <span class="kw">arguments</span>)<span class="op">;</span></a></code></pre></div>
+<p>However, the <code>this.inherited()</code> syntax is shorter and eliminates the need to specify the superkind’s name (in this case, <code>MyKind</code>).</p>
+<p><strong>Additional Reading</strong></p>
+<ul>
+<li><a href="event-handling.html">Event Handling</a></li>
+<li><a href="objects-and-published-properties.html">Objects and Published Properties</a></li>
+<li><a href="components.html">Components</a></li>
+<li><a href="controls.html">Controls</a></li>
+</ul>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../js/main.js"></script>
+  <script type="text/javascript" src="../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

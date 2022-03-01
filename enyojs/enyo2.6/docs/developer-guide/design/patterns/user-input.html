@@ -1,0 +1,138 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">User Input</h1>
+<h2 id="introduction">Introduction</h2>
+<p>In general, text input should be avoided on the TV for the following reasons:</p>
+<ul>
+<li><p>We are trying to foster a lean-back atmosphere on the TV, but text input (especially with the Magic Remote) is an inherently lean-forward experience.</p></li>
+<li><p>A key aspect of Keeping it Simple is the elimination or consolidation of situations in which text entry is needed; interactions should be driven by button clicks, if possible.</p></li>
+<li><p>The onscreen virtual keyboard limits the amount of space available for forms and search results, especially when using Always Viewing Patterns.</p></li>
+</ul>
+<p>However, there are certain cases (e.g., login form, contact information, or account information) where a user cannot avoid entering text or interacting with forms.</p>
+<p>We have identified two common patterns for user input: <a href="acting-on-data/edit-mode.html#inline-editing">Inline Editing</a> and <a href="acting-on-data/edit-mode.html#new-panel-editing">New Panel Editing</a>. These patterns will help you to provide users with a consistent text input experience. Both are covered in detail in the discussion of <a href="acting-on-data/edit-mode.html">Edit Mode</a>.</p>
+<h2 id="best-practices">Best Practices</h2>
+<p>When possible, labels should be aligned on the left side of the form, with Input Fields, Pickers, Checkboxes, etc. to the right of the labels. In width-constrained forms, labels may be placed above the corresponding forms.</p>
+<p>Input Fields should be grouped, when possible, to minimize the number of times that the Virtual Keyboard is opened and closed.</p>
+<p>Submit actions (e.g., Log In, Create Account, Change Password) should always be directly below the last form element, left-aligned with the input field column.</p>
+<p>Allow users to toggle between similar forms (e.g., Login/Register or Credit Card/PayPal) using an action button in the header. This will reduce the form length and allow users to reach their desired forms faster.</p>
+<p>Assume that editing/updating of data will be infrequent. Display current data in the Details Panel (e.g., Account Information) as plain text to optimize screen real estate, and perform edits or updates in the next panel.</p>
+<p>Use popups to confirm actions and suggest next steps.</p>
+<p>When the input takes place within a popup, ensure that the height of the popup can be fully displayed above the expanded Virtual Keyboard.</p>
+<h2 id="related-topics">Related Topics</h2>
+<p>Patterns: Notifications, Onscreen Direction, Confirmation</p>
+<p>Controls: <a href="../controls/text-input.html">Text Input</a>, <a href="../controls/button.html">Button</a>, <a href="../controls/form-checkbox.html">Form Checkbox</a>, <a href="../controls/date-picker.html">Date Picker</a></p>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../../js/main.js"></script>
+  <script type="text/javascript" src="../../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

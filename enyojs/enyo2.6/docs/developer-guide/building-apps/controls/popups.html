@@ -1,0 +1,241 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Popups</h1>
+<h2 id="enyo.popup">enyo.Popup</h2>
+<p><a href="../../..//#/kind/enyo.Popup">enyo.Popup</a> is a control used to display certain content on top of other content. The following example shows a kind in which pressing a button will display a popup.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb1-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;PopupExample&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-3" title="3">        <span class="dt">style</span><span class="op">:</span> <span class="st">&quot;text-align: center;&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-4" title="4">        <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb1-5" title="5">            <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.Button&quot;</span><span class="op">,</span> <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Basic Popup&quot;</span><span class="op">,</span> <span class="dt">ontap</span><span class="op">:</span> <span class="st">&quot;showPopup&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb1-6" title="6">            <span class="op">{</span><span class="dt">name</span><span class="op">:</span> <span class="st">&quot;basicPopup&quot;</span><span class="op">,</span> <span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.Popup&quot;</span><span class="op">,</span> <span class="dt">floating</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">centered</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-7" title="7">                <span class="dt">style</span><span class="op">:</span> <span class="st">&quot;background-color: yellow; padding: 10px&quot;</span><span class="op">,</span> <span class="dt">onHide</span><span class="op">:</span> <span class="st">&quot;popupHidden&quot;</span><span class="op">,</span> <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb1-8" title="8">                    <span class="op">{</span><span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Popup...&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb1-9" title="9">                ]</a>
+<a class="sourceLine" id="cb1-10" title="10">            <span class="op">}</span></a>
+<a class="sourceLine" id="cb1-11" title="11">        ]<span class="op">,</span></a>
+<a class="sourceLine" id="cb1-12" title="12">        <span class="dt">showPopup</span><span class="op">:</span> <span class="kw">function</span>(inSender<span class="op">,</span> inEvent) <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-13" title="13">            <span class="kw">this</span>.<span class="va">$</span>.<span class="va">basicPopup</span>.<span class="at">show</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-14" title="14">        <span class="op">},</span></a>
+<a class="sourceLine" id="cb1-15" title="15">        <span class="dt">popupHidden</span><span class="op">:</span> <span class="kw">function</span>(inSender<span class="op">,</span> inEvent) <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-16" title="16">            <span class="co">// do something</span></a>
+<a class="sourceLine" id="cb1-17" title="17">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb1-18" title="18">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<figure>
+<img src="../../assets/enyo-popup-hidden.png" alt="enyo.Popup (hidden)" /><figcaption><em>enyo.Popup (hidden)</em></figcaption>
+</figure>
+<p>Popups are initially hidden on creation; they can be shown by calling the <code>show()</code> method and re-hidden by calling <code>hide()</code>. A popup will fire an <code>onShow</code> event once shown and an <code>onHide</code> event once re-hidden.</p>
+<figure>
+<img src="../../assets/enyo-popup-shown.png" alt="enyo.Popup (shown)" /><figcaption><em>enyo.Popup (shown)</em></figcaption>
+</figure>
+<p>You may center a popup in its viewport by setting its <code>centered</code> property to <code>true</code>; if not centered, it should be given a specific position.</p>
+<p>A popup may be floated above all application content by setting its <code>floating</code> property to <code>true</code>. This has the advantage of guaranteeing that the popup will be displayed on top of other content. This usage is appropriate when the popup does not need to scroll along with the other content.</p>
+<p>The <code>autoDismiss</code> property controls how a popup may be dismissed. If <code>true</code> (the default), then tapping outside the popup or pressing the <code>ESC</code> key will dismiss the popup.</p>
+<p>The <code>modal</code> property may be set to <code>true</code> to prevent any controls outside the popup from responding to events while the popup is showing:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1">    <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.Popup&quot;</span><span class="op">,</span> <span class="dt">centered</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">modal</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">floating</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb2-2" title="2">        <span class="op">{</span><span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Here&#39;s some information...&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb2-3" title="3">    ]<span class="op">}</span></a></code></pre></div>
+<h2 id="moon.popup">moon.Popup</h2>
+<p><a href="../../..//#/kind/moon.Popup">moon.Popup</a> is an <code>enyo.Popup</code> that appears at the bottom of the screen and takes up the full screen width. Its features include support for scrim behavior and z-index handling, along with Moonstone visual styling.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1">    components<span class="op">:</span> [</a>
+<a class="sourceLine" id="cb3-2" title="2">        <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.Button&quot;</span><span class="op">,</span> <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Basic Popup&quot;</span><span class="op">,</span> <span class="dt">ontap</span><span class="op">:</span> <span class="st">&quot;showPopup&quot;</span><span class="op">,</span> <span class="dt">popup</span><span class="op">:</span> <span class="st">&quot;basicPopup&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb3-3" title="3">        <span class="op">{</span><span class="dt">name</span><span class="op">:</span> <span class="st">&quot;basicPopup&quot;</span><span class="op">,</span> <span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.Popup&quot;</span><span class="op">,</span> <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Popup...&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb3-4" title="4">    ]<span class="op">,</span></a>
+<a class="sourceLine" id="cb3-5" title="5"></a>
+<a class="sourceLine" id="cb3-6" title="6">    ...</a>
+<a class="sourceLine" id="cb3-7" title="7"></a>
+<a class="sourceLine" id="cb3-8" title="8">    showPopup<span class="op">:</span> <span class="kw">function</span>(inSender) <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-9" title="9">        <span class="kw">this</span>.<span class="at">hidePopup</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-10" title="10">        <span class="kw">var</span> p <span class="op">=</span> <span class="kw">this</span>.<span class="at">$</span>[<span class="va">inSender</span>.<span class="at">popup</span>]<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-11" title="11">        <span class="cf">if</span> (p) <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-12" title="12">            <span class="va">p</span>.<span class="at">show</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-13" title="13">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb3-14" title="14">    <span class="op">},</span></a>
+<a class="sourceLine" id="cb3-15" title="15">    hidePopup<span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-16" title="16">        <span class="kw">this</span>.<span class="va">$</span>.<span class="va">basicPopup</span>.<span class="at">hide</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-17" title="17">    <span class="op">}</span></a></code></pre></div>
+<figure>
+<img src="../../assets/popup-hidden.png" alt="moon.Popup (hidden)" /><figcaption><em>moon.Popup (hidden)</em></figcaption>
+</figure>
+<p>A scrim temporarily disables an application’s user interface, covering the screen with a translucent (i.e., semi-opaque) layer. To display a scrim, set the popup’s <code>scrim</code> property to <code>true</code>.</p>
+<figure>
+<img src="../../assets/popup-shown.png" alt="moon.Popup (shown)" /><figcaption><em>moon.Popup (shown)</em></figcaption>
+</figure>
+<p>Note that, in order to avoid obscuring the popup’s contents, the scrim won’t render unless the popup is floating.</p>
+<h2 id="moon.dialog">moon.Dialog</h2>
+<p><a href="../../..//#/kind/moon.Dialog">moon.Dialog</a> is a <code>moon.Popup</code> with a title, a message, and an area for additional controls.</p>
+<p>Often, a dialog will present the user with a choice between two options, as in the following example:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb4-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;moon.sample.DialogSample&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb4-3" title="3">        <span class="dt">classes</span><span class="op">:</span> <span class="st">&quot;moon enyo-unselectable enyo-fit&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb4-4" title="4">        <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb4-5" title="5">            <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.Button&quot;</span><span class="op">,</span> <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Basic Dialog&quot;</span><span class="op">,</span> <span class="dt">ontap</span><span class="op">:</span> <span class="st">&quot;showDialog&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb4-6" title="6">            <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-7" title="7">                <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;dialog&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb4-8" title="8">                <span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.Dialog&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb4-9" title="9">                <span class="dt">title</span><span class="op">:</span> <span class="st">&quot;You&#39;ve been watching TV for a very long time.&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb4-10" title="10">                <span class="dt">message</span><span class="op">:</span> <span class="st">&quot;Perhaps it&#39;s time to take a break and get some fresh air.&quot;</span></a>
+<a class="sourceLine" id="cb4-11" title="11">                    <span class="op">+</span> <span class="st">&quot; &quot;</span></a>
+<a class="sourceLine" id="cb4-12" title="12">                    <span class="op">+</span> <span class="st">&quot;There is a nice coffee shop around the corner.&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb4-13" title="13">                <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb4-14" title="14">                    <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.Button&quot;</span><span class="op">,</span> <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Go get a coffee&quot;</span><span class="op">,</span> <span class="dt">ontap</span><span class="op">:</span> <span class="st">&quot;hideDialog&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb4-15" title="15">                    <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.Button&quot;</span><span class="op">,</span> <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Keep watching TV&quot;</span><span class="op">,</span> <span class="dt">ontap</span><span class="op">:</span> <span class="st">&quot;hideDialog&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb4-16" title="16">                ]</a>
+<a class="sourceLine" id="cb4-17" title="17">            <span class="op">}</span></a>
+<a class="sourceLine" id="cb4-18" title="18">        ]<span class="op">,</span></a>
+<a class="sourceLine" id="cb4-19" title="19">        <span class="dt">showDialog</span><span class="op">:</span> <span class="kw">function</span>(inSender) <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-20" title="20">            <span class="kw">this</span>.<span class="va">$</span>.<span class="va">dialog</span>.<span class="at">show</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-21" title="21">        <span class="op">},</span></a>
+<a class="sourceLine" id="cb4-22" title="22">        <span class="dt">hideDialog</span><span class="op">:</span> <span class="kw">function</span>(inSender<span class="op">,</span> inEvent) <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-23" title="23">            <span class="kw">this</span>.<span class="va">$</span>.<span class="va">dialog</span>.<span class="at">hide</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-24" title="24">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb4-25" title="25">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<h2 id="moon.contextualpopup">moon.ContextualPopup</h2>
+<p><a href="../../..//#/kind/moon.ContextualPopup">moon.ContextualPopup</a> is a modal container for content such as text, images, or buttons. It extends <code>enyo.Popup</code>, adding Moonstone-themed visual styling, and is typically used inside a <a href="../../..//#/kind/moon.ContextualPopupDecorator">moon.ContextualPopupDecorator</a>, which couples the popup with an activating control.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1">    <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.ContextualPopupDecorator&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb5-2" title="2">        <span class="dt">style</span><span class="op">:</span> <span class="st">&quot;position: absolute; left: 0px; top: 45%;&quot;</span><span class="op">,</span> <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb5-3" title="3">            <span class="op">{</span><span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Wide&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb5-4" title="4">            <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.ContextualPopup&quot;</span><span class="op">,</span> <span class="dt">classes</span><span class="op">:</span> <span class="st">&quot;moon-6h moon-4v&quot;</span><span class="op">,</span> <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb5-5" title="5">                <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.Scroller&quot;</span><span class="op">,</span> <span class="dt">classes</span><span class="op">:</span> <span class="st">&quot;enyo-fill&quot;</span><span class="op">,</span> <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb5-6" title="6">                    <span class="op">{</span><span class="dt">content</span><span class="op">:</span> <span class="st">&quot;testing 1&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb5-7" title="7">                    <span class="op">{</span><span class="dt">content</span><span class="op">:</span> <span class="st">&quot;testing 2&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb5-8" title="8">                ]<span class="op">}</span></a>
+<a class="sourceLine" id="cb5-9" title="9">            ]<span class="op">}</span></a>
+<a class="sourceLine" id="cb5-10" title="10">        ]</a>
+<a class="sourceLine" id="cb5-11" title="11">    <span class="op">}</span></a></code></pre></div>
+<figure>
+<img src="../../assets/contextual-popup-shown.png" alt="moon.ContextualPopup" /><figcaption><em>moon.ContextualPopup</em></figcaption>
+</figure>
+<p>In this example, we can tell that the “Wide” button is an instance of <a href="../../..//#/kind/moon.ContextualPopupButton">moon.ContextualPopupButton</a>, because that is the <code>defaultKind</code> value of <code>moon.ContextualPopupDecorator</code>.</p>
+<p>A contextual popup is dismissed when the user selects one of its items or clicks outside the popup’s boundaries.</p>
+<h2 id="moon.tooltip">moon.Tooltip</h2>
+<p><a href="../../..//#/kind/moon.Tooltip">moon.Tooltip</a>, like <code>moon.ContextualPopup</code>, is a subkind of <code>enyo.Popup</code> that is used in tandem with a decorator kind–in this case, <a href="../../..//#/kind/moon.TooltipDecorator">moon.TooltipDecorator</a>. This control automatically displays on-screen help content when the user hovers over the decorator for a given period of time (500 ms, by default).</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1">    <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.TooltipDecorator&quot;</span><span class="op">,</span> <span class="dt">style</span><span class="op">:</span> <span class="st">&quot;display:inline-block&quot;</span><span class="op">,</span> <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb6-2" title="2">        <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.Button&quot;</span><span class="op">,</span> <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Tooltip&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb6-3" title="3">        <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.Tooltip&quot;</span><span class="op">,</span> <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;I&#39;m a tooltip for a button.&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb6-4" title="4">    ]<span class="op">}</span></a></code></pre></div>
+<figure>
+<img src="../../assets/tooltip-hidden.png" alt="moon.Tooltip (hidden)" /><figcaption><em>moon.Tooltip</em> (hidden)</figcaption>
+</figure>
+<p>The tooltip is positioned around the decorator where there is available window space.</p>
+<figure>
+<img src="../../assets/tooltip-shown.png" alt="moon.Tooltip (shown)" /><figcaption><em>moon.Tooltip</em> (shown)</figcaption>
+</figure>
+<h2 id="known-issues-with-popups">Known Issues with Popups</h2>
+<p>We are aware of a WebKit bug that causes unexpected popup behavior in touch-enabled environments, such as tablets or smartphones. Specifically, when a popup is opened in front of an input control, pressing a button to dismiss the popup will cause the underlying input to receive focus when the popup closes.</p>
+<p>We recommend that developers work around this issue on the application side, within the handler method for the button’s <code>ontouchstart</code> event, by calling <code>preventDefault()</code> on the event object passed into the handler. For an example of how this is done, see <a href="http://jsfiddle.net/La44wvuf/light/" class="uri">http://jsfiddle.net/La44wvuf/light/</a>.</p>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../../js/main.js"></script>
+  <script type="text/javascript" src="../../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

@@ -1,0 +1,160 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Button</h1>
+<h2 id="about">About</h2>
+<p>A Button is a control that invokes an action when pressed. Buttons come in two basic types, text and icon, and are available in two sizes, large and small.</p>
+<h2 id="api-reference">API Reference</h2>
+<p><a href="../../..//#/kind/moon.Button">moon.Button</a></p>
+<h2 id="behaviors-and-states">Behaviors and States</h2>
+<h3 id="behavior">Behavior</h3>
+<p>Icon buttons are great for minimalist designs, but only if the user is able to understand the icons’ meaning. Icon buttons may have an optional caption, which can help describe the function of the button. The caption may be placed at the top, bottom, left, or right side of the icon button.</p>
+<p>Buttons are available in two sizes: large and small. The large button should be used sparingly (and for primary actions) because of its attention-grabbing nature. The small button is used for all other actions; multiple instances may be used without overwhelming the user. The small-sized button is the button used in panel headers.</p>
+<p>Toggle buttons have are able to reflect an on/off state. The selected state indicates that an option is “on”, while the unselected (default) state is “off”.</p>
+<p>Focusing and then pressing a button will result in either the execution of an action or the toggling of state (when the button is released).</p>
+<h3 id="states">States</h3>
+<p>A Button will be in one of four states at any given time:</p>
+<ul>
+<li><p><strong>Normal (up/unpressed)</strong></p>
+<p>There has been no interaction with the button, but it is available for use.</p></li>
+<li><p><strong>Focused (hover)</strong></p>
+<p>The button is being hovered over, or has the focus from 5-way navigation. This state may be animated.</p></li>
+<li><p><strong>Selected (down/pressed)</strong></p>
+<p>The button is not focused, but has previously been activated, triggering a state-changing action. An example would be a toggle button in the “on” state.</p></li>
+<li><p><strong>Deactivated (disabled)</strong></p>
+<p>The user cannot use the button.</p></li>
+</ul>
+<h3 id="sizing">Sizing</h3>
+<h4 id="large-button-and-small-button">Large Button and Small Button</h4>
+<p>For text buttons, the width of the button will automatically scale to fit the text. Note, however, that there is both a minimum width (130px for small button; 180px for large button) and a maximum width (300px). Alternatively, buttons may be set to a fixed width, if you so desire.</p>
+<p>When text exceeds the button width (either the fixed size or the maximum), the text be truncated and ellipsized. When the button is in the focused state, the text will marquee to show the full string.</p>
+<p>Large buttons should be used sparingly, and for primary actions, as they are attention-grabbing. The small button is preferred for most actions. Only small buttons should be used inside panel headers.</p>
+<h4 id="icon-button">Icon Button</h4>
+<p>Icon buttons are a fixed size; images should be sized appropriately to ensure that they are not clipped. In a large button, the icon area is 45px x 45px; in a small button, it is 32px x 32px.</p>
+<h3 id="illustration">Illustration</h3>
+<h4 id="large-button-85-pixels-high-variable-width">Large Button (85 pixels high, variable width)</h4>
+<p><img src="../../assets/dg-controls-button-1.png" /></p>
+<h4 id="small-button-60-pixels-high-with-80-pixel-target-area-variable-width">Small Button (60 pixels high with 80-pixel target area, variable width)</h4>
+<p><img src="../../assets/dg-controls-button-2.png" /></p>
+<h4 id="large-icon-button-85-pixels-high">Large Icon Button (85 pixels high)</h4>
+<p><img src="../../assets/dg-controls-button-3.png" /></p>
+<h4 id="small-icon-button-60-pixels-high-with-80-pixel-target-area">Small Icon Button (60 pixels high with 80-pixel target area)</h4>
+<p><img src="../../assets/dg-controls-button-4.png" /></p>
+<h4 id="optional-captions">Optional Captions</h4>
+<p><img src="../../assets/dg-controls-button-5.png" /></p>
+<h4 id="icon-sprite-specifications">Icon Sprite Specifications</h4>
+<p><img src="../../assets/dg-controls-button-6.jpg" /></p>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../../js/main.js"></script>
+  <script type="text/javascript" src="../../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

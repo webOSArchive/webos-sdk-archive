@@ -1,0 +1,402 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Localization</h1>
+<p>In this document, we look at how globalization/localization works in Enyo applications.</p>
+<h2 id="ilib">iLib</h2>
+<p>To meet its localization needs, Enyo uses a new open source library called <a href="http://www.jedlsoft.com/">iLib</a>. Those who have worked with Enyo in the past may recall that it previously used a library called <code>g11n</code>, which has since been released to the open source community as part of the <a href="https://github.com/enyojs">enyojs</a> project. <code>g11n</code> has been deprecated and should not be used in new Enyo projects going forward.</p>
+<p>The good news for those familiar with <code>g11n</code> is that, in a number of ways, <code>iLib</code> is quite similar. For example, the <code>$L("string")</code> syntax is still used for string localization. Also, while the two libraries’ APIs for formatting dates, times, and numbers are somewhat different, the functionality offered is largely the same.</p>
+<p>This makes sense when you consider that <code>iLib</code> and <code>g11n</code> were created by the same person, Edwin Hoogerbeets, who previously worked on webOS at HP, and has returned to work on webOS for TV at LG’s Silicon Valley Lab.</p>
+<h2 id="enyo-ilib">enyo-ilib</h2>
+<p>As an Enyo application developer, you will not work with <code>iLib</code> directly, but rather with <a href="https://github.com/enyojs/enyo-ilib">enyo-ilib</a>, a compatibility library that wraps <code>iLib</code>’s functionality for easy access from Enyo apps.</p>
+<p><code>enyo-ilib</code> is included in the <code>bootplate-moonstone</code> template by default; if you base your app on that template, you won’t need to obtain <code>enyo-ilib</code> separately. If, however, you decide not to use the template, you may obtain <code>enyo-ilib</code> by issuing the following command in your Git client:</p>
+<pre><code>    git clone https://github.com/enyojs/enyo-ilib.git</code></pre>
+<p>Then, to make the <code>ilib</code> namespace available to your app, add the <code>enyo-ilib</code> directory to your app’s <code>package.js</code> file, e.g.:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1">    <span class="va">enyo</span>.<span class="at">depends</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb2-2" title="2">        <span class="st">&quot;$lib/enyo-ilib/&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb2-3" title="3">        <span class="op">&lt;</span>other libraries<span class="op">&gt;,</span></a>
+<a class="sourceLine" id="cb2-4" title="4">        ...</a>
+<a class="sourceLine" id="cb2-5" title="5">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>(Again, you won’t need to do this if you use Bootplate.)</p>
+<h2 id="using-enyo-ilib">Using enyo-ilib</h2>
+<h3 id="locales">Locales</h3>
+<h4 id="ilib.locale">iLib.Locale</h4>
+<p>The concept of the locale is central to the functioning of <code>iLib</code>, as it is with any localization tool. Locales are specified using <a href="http://en.wikipedia.org/wiki/IETF_language_tag">IETF language tags</a> according to the BCP-47 convention. As you work with <code>enyo-ilib</code>, you’ll find that most locales are specified as a string consisting of a two-letter lowercase language code, followed by a hyphen, followed by a a two-letter uppercase region code, e.g.:</p>
+<pre><code>    &quot;ko-KR&quot;  // Korean (language), Korea (region)
+    &quot;en-US&quot;  // English (language), United States (region)</code></pre>
+<p>Note, however, that some locales also require the script to be specified (i.e., when a language is commonly written in more than one script).</p>
+<pre><code>    &quot;rs-Latn-RS&quot; // Serbian (language), Latin (script), Serbia (region)</code></pre>
+<p>In Enyo application code, you’ll work with instances of <code>iLib</code>’s <code>Locale</code> class:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1">    <span class="kw">var</span> locale <span class="op">=</span> <span class="kw">new</span> <span class="va">ilib</span>.<span class="at">Locale</span>(<span class="st">&quot;ko-KR&quot;</span>)<span class="op">;</span></a></code></pre></div>
+<p>If you create a <code>Locale</code> instance without passing in a string identifier, you’ll get an object representing the current locale.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1">    <span class="kw">var</span> curLocale <span class="op">=</span> <span class="kw">new</span> <span class="va">ilib</span>.<span class="at">Locale</span>()<span class="op">;</span></a></code></pre></div>
+<p>If no locale was previously set as the default, the system default locale from the JavaScript engine is used. In a WebKit environment (such as webOS for TV), this will be the <code>navigator.language</code> property; in a Node.js environment, it will be the <code>webos.locales.UI</code> property.</p>
+<h4 id="ilib.localeinfo">iLib.LocaleInfo</h4>
+<p>To obtain detailed information about a locale, you may create an instance of <code>ilib.LocaleInfo</code>.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1">    <span class="kw">var</span> li <span class="op">=</span> <span class="kw">new</span> <span class="va">ilib</span>.<span class="at">LocaleInfo</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb7-2" title="2">        <span class="dt">locale</span><span class="op">:</span> <span class="st">&quot;ru-RU&quot;</span></a>
+<a class="sourceLine" id="cb7-3" title="3">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>The <code>LocaleInfo</code> object provides the following information:</p>
+<ul>
+<li>The script(s) used to write the language</li>
+<li>The first day of the week in calendars</li>
+<li>The default paper sizes</li>
+<li>The currency</li>
+<li>The default time zone</li>
+<li>The measurement units system (<code>'metric'</code>, <code>'uscustomary'</code>, or <code>'imperial'</code>)</li>
+<li>The default calendar type (usually <code>'gregorian'</code>)</li>
+<li>The default clock hours, 12 or 24</li>
+<li>The default rounding mode</li>
+</ul>
+<p>On webOS for TV, information for locales other than the current UI locale must be retrieved asynchronously via the LS2 bus:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb8-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;LocalePref&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb8-3" title="3">        <span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.Component&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb8-4" title="4">        <span class="dt">components</span><span class="op">:</span> [<span class="op">{</span></a>
+<a class="sourceLine" id="cb8-5" title="5">            <span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.LS2Service&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb8-6" title="6">            <span class="dt">service</span><span class="op">:</span> <span class="st">&quot;palm://com.webos.settingsservice&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb8-7" title="7">            <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;getCurrentLanguage&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb8-8" title="8">            <span class="dt">method</span><span class="op">:</span> <span class="st">&quot;getSystemSettings&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb8-9" title="9">            <span class="dt">onResponse</span><span class="op">:</span> <span class="st">&quot;getCurrentLanguageResponse&quot;</span></a>
+<a class="sourceLine" id="cb8-10" title="10">        <span class="op">}</span>]<span class="op">,</span></a>
+<a class="sourceLine" id="cb8-11" title="11">        <span class="dt">getCurrentLanguageResponse</span><span class="op">:</span> <span class="kw">function</span>(inSender<span class="op">,</span> innResponse) <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-12" title="12">            <span class="kw">var</span> inResponse <span class="op">=</span> <span class="va">innResponse</span>.<span class="at">data</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb8-13" title="13">            <span class="kw">var</span> localeInfo <span class="op">=</span> <span class="va">inResponse</span>.<span class="at">localeInfo</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb8-14" title="14">            <span class="kw">var</span> STTlocale <span class="op">=</span> <span class="va">localeInfo</span>.<span class="va">locales</span>.<span class="at">STT</span><span class="op">;</span>  <span class="co">// speech-to-text locale (voice recognition)</span></a>
+<a class="sourceLine" id="cb8-15" title="15">        <span class="op">},</span></a>
+<a class="sourceLine" id="cb8-16" title="16">        <span class="dt">makeLS2Call</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-17" title="17">            <span class="kw">this</span>.<span class="va">$</span>.<span class="va">getCurrentLanguage</span>.<span class="at">call</span>(<span class="op">{</span><span class="dt">keys</span><span class="op">:</span>[<span class="st">&quot;localeInfo&quot;</span>]<span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-18" title="18">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb8-19" title="19">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-20" title="20">    <span class="kw">var</span> localePref <span class="op">=</span> <span class="kw">new</span> <span class="at">LocalePref</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-21" title="21">    <span class="va">localePref</span>.<span class="at">makeLS2Call</span>()<span class="op">;</span></a></code></pre></div>
+<h3 id="strings">Strings</h3>
+<h4 id="resource-bundles">Resource Bundles</h4>
+<p><code>ilib.ResBundle</code>, the resource bundle class, represents a set of translated strings. Each app has its own resource bundle. These bundles are loaded dynamically, with each one having a name and locale.</p>
+<p>The locale may be specified as an option in the constructor.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1">    <span class="kw">var</span> rb <span class="op">=</span> <span class="kw">new</span> <span class="va">ilib</span>.<span class="at">ResBundle</span>(<span class="op">{</span><span class="dt">locale</span><span class="op">:</span> <span class="st">&quot;ko-KR&quot;</span><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>In practical terms, <code>ResBundle</code>’s most important method is <code>getString()</code>.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1">    <span class="kw">var</span> str <span class="op">=</span> <span class="va">rb</span>.<span class="at">getString</span>(<span class="st">&quot;My Label&quot;</span>)<span class="op">;</span></a></code></pre></div>
+<p>The actual data contained in the bundle is stored under the application’s <code>resources</code> directory. Within <code>resources</code> is a hierarchy of subdirectories named for locales. <code>iLib</code> reads translated strings from <code>strings.json</code> files found in these directories.</p>
+<p>In the layered structure of the locale directories, values from deeper levels override those from nearer the surface, as in the following example:</p>
+<pre><code>    resources/
+        en/
+            strings.json - shared strings for all English
+            appinfo.json - application description
+            CA/
+                strings.json - only strings special to Canada
+            GB/
+                strings.json - only strings special to Great Britain</code></pre>
+<p>For the <code>en-GB</code> locale, if a string value is defined in both <code>/resources/en/strings.json</code> and <code>/resources/en/GB/strings.json</code>, the value from the latter (more-specific) file will override the value from the former file.</p>
+<p>It’s worth noting that, in addition to strings, other localized files (such as <code>appinfo.json</code>) may also be placed in these hierarchical directories, with their data following the same rules of precedence. In the case of <code>appinfo.json</code>, the locale-specific files will typically include values for “title”, “keywords”, and “description”. The other properties will keep the values inherited from the app’s top-level <code>appinfo.json</code>.</p>
+<h4 id="l">$L()</h4>
+<p><code>$L()</code> is a convenience function wrapping <code>ilib.ResBundle</code>.</p>
+<p>Each translatable string in your application should be wrapped in a call to <code>$L()</code>. For example:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb12-1" title="1">    <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-2" title="2">        <span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;text&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb12-3" title="3">        <span class="dt">label</span><span class="op">:</span> <span class="at">$L</span>(<span class="st">&quot;First Name:&quot;</span>)<span class="op">,</span></a>
+<a class="sourceLine" id="cb12-4" title="4">        ...</a>
+<a class="sourceLine" id="cb12-5" title="5">    <span class="op">}</span></a></code></pre></div>
+<p>You will need to extract the strings inside the <code>$L()</code> calls in your source code and write them out to a <code>strings.json</code> file for each locale. (Most likely you’ll want to create a script to do this.)</p>
+<p>The <code>strings.json</code> files should contain the translations in JSON format, i.e.:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb13-1" title="1">    <span class="op">{</span></a>
+<a class="sourceLine" id="cb13-2" title="2">        <span class="st">&quot;source string1&quot;</span><span class="op">:</span> <span class="st">&quot;translated string1&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb13-3" title="3">        <span class="st">&quot;source string2&quot;</span><span class="op">:</span> <span class="st">&quot;translated string2&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb13-4" title="4">        ...</a>
+<a class="sourceLine" id="cb13-5" title="5">    <span class="op">}</span> </a></code></pre></div>
+<p>Many localization houses are able to provide translations in this format.</p>
+<p>The string returned from a call to <code>$L()</code> will be the translated string for the current UI locale. If a different locale or a bundle with a different name is needed, use <code>ilib.ResBundle</code> directly instead of <code>$L()</code>.</p>
+<h4 id="string-formatting">String Formatting</h4>
+<p><code>ilib.String</code> is used to format strings. Its <code>format()</code> method allows for interpolation of named parameters into the string. The following syntax is recommended:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb14-1" title="1">    <span class="kw">var</span> template <span class="op">=</span> <span class="va">$L</span>.<span class="va">rb</span>.<span class="at">getString</span>(<span class="st">&quot;There are {n} objects.&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb14-2" title="2">    <span class="kw">var</span> str <span class="op">=</span> <span class="va">template</span>.<span class="at">format</span>(<span class="op">{</span><span class="dt">n</span><span class="op">:</span> <span class="dv">15</span><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p><code>str</code> now has the value <code>"There are 15 objects."</code></p>
+<p>Note that we are populating <code>template</code> by calling <code>getString()</code> on the localized resource bundle <code>$L.rb</code>. This is because <code>format()</code> accepts an <code>ilib.String</code> object, but not an intrinsic JavaScript string. (A call to <code>getString()</code> on a resource bundle returns an instance of <code>ilib.String</code>, while a call to <code>$L()</code> returns an intrinsic JavaScript string.)</p>
+<p><code>ilib.String</code> has the same methods as an intrinsic string, and in many cases may be used as a substitute. For those places that require an intrinsic string, you must call the <code>toString()</code> method to convert the <code>ilib.String</code> to an intrinsic string.</p>
+<h4 id="handling-plurals">Handling Plurals</h4>
+<p><code>ilib.String</code> uses the <code>formatChoice()</code> method to handle plurals. This allows translators to adjust strings to handle plurals properly for their respective languages.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb15-1" title="1">    <span class="kw">var</span> number <span class="op">=</span> <span class="dv">3</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb15-2" title="2">    <span class="kw">var</span> template <span class="op">=</span> <span class="va">rb</span>.<span class="at">getString</span>( <span class="st">&quot;0#There are no objects.|1#There is 1 object.|#There are {n} objects.&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb15-3" title="3">    <span class="kw">var</span> str <span class="op">=</span> <span class="va">template</span>.<span class="at">formatChoice</span>(number<span class="op">,</span> <span class="op">{</span><span class="dt">n</span><span class="op">:</span> number<span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p><code>str</code> now has the value <code>"There are 3 objects."</code></p>
+<p><code>formatChoice()</code> also supports number classes (“zero”, “one”, “two”, “few” and “many”) for languages with complex rules for pluralization, such as Russian or Serbian.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb16-1" title="1">    <span class="kw">var</span> template <span class="op">=</span> <span class="va">rb</span>.<span class="at">getString</span>( <span class="st">&quot;0#There are no objects.|few#There are a few ({n}) objects.|#There are many objects. ({n})&quot;</span>)<span class="op">;</span></a></code></pre></div>
+<h3 id="dates-and-times">Dates and Times</h3>
+<p>The formatting of dates and times can differ widely from one locale to the next:</p>
+<pre><code>------------------------------------
+ Locale    Format         
+--------- --------------------------
+ en-US     Mo 11/12/2012 2:30pm
+
+ en-CA     Mo 12/11/2012 2:30 PM
+
+ de-DE     14:30 Mo 12.11.2012
+
+ zh-CN     2012-11-12周一下午2:30
+
+ it-IT     Lu 12/11/2012 14.30
+------------------------------------</code></pre>
+<p>In <code>iLib</code>, the <code>ilib.DateFmt</code> class is used to format dates and times. The constructor accepts various options, which control how the formatter behaves. Once you create a <code>DateFmt</code> instance, you may call its <code>format()</code> method as many times as you want to format dates according to the given set of options.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb18-1" title="1">    <span class="kw">var</span> fmt <span class="op">=</span> <span class="kw">new</span> <span class="va">ilib</span>.<span class="at">DateFmt</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb18-2" title="2">    <span class="kw">var</span> d <span class="op">=</span> <span class="va">fmt</span>.<span class="at">format</span>(date)<span class="op">;</span></a></code></pre></div>
+<p>Among the options you may specify are the following:</p>
+<ul>
+<li>Which locale to use</li>
+<li>Whether to format the date only, time only, or both date and time together</li>
+<li>Which components of the date or time to format (e.g., only format the month and year components of the date)</li>
+<li>Whether to use a 12-hour clock, a 24-hour clock, or the default clock for the locale</li>
+<li>Whether to use short, medium, long, or full-length text for components that use words (e.g., Sunday may be expressed as “S”, “Su”, “Sun”, or “Sunday”)</li>
+<li>Which time zone to format for</li>
+</ul>
+<div class="sourceCode" id="cb19"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb19-1" title="1">    <span class="kw">var</span> fmt <span class="op">=</span> <span class="kw">new</span> <span class="va">ilib</span>.<span class="at">DateFmt</span>(<span class="op">{</span> <span class="dt">locale</span><span class="op">:</span> <span class="st">&quot;tr-TR&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb19-2" title="2">        <span class="dt">type</span><span class="op">:</span> <span class="st">&quot;date&quot;</span><span class="op">,</span> <span class="dt">date</span><span class="op">:</span> <span class="st">&quot;dmy&quot;</span><span class="op">,</span> <span class="dt">timezone</span><span class="op">:</span> <span class="st">&quot;Europe/Istanbul&quot;</span></a>
+<a class="sourceLine" id="cb19-3" title="3">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<h4 id="calendar-dates">Calendar Dates</h4>
+<p><code>iLib</code> also supports the formatting of dates in multiple calendaring systems, with the default being the familiar Gregorian calendar.</p>
+<p>To create a date, you may call the factory method or use the calendar date directly, e.g.:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb20-1" title="1">    <span class="kw">var</span> now <span class="op">=</span> <span class="kw">new</span> <span class="va">ilib</span>.<span class="va">Date</span>.<span class="at">HebrewDate</span>()<span class="op">;</span></a></code></pre></div>
+<p>This is equivalent to the following factory method call:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb21-1" title="1">    <span class="kw">var</span> now <span class="op">=</span> <span class="va">ilib</span>.<span class="va">Date</span>.<span class="at">newInstance</span>(<span class="op">{</span><span class="dt">type</span><span class="op">:</span> <span class="st">&quot;hebrew&quot;</span><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>Dates may be converted between calendars via a “Julian Day” number. A Julian Day is the number of whole days and fractions of a day since the beginning of the epoch on 24 November -4713 BCE (Gregorian):</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb22-1" title="1">    <span class="kw">var</span> now <span class="op">=</span> <span class="kw">new</span> <span class="va">ilib</span>.<span class="va">Date</span>.<span class="at">GregDate</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb22-2" title="2">    <span class="co">// now.year is currently 2013</span></a>
+<a class="sourceLine" id="cb22-3" title="3">    <span class="kw">var</span> jd <span class="op">=</span> <span class="va">now</span>.<span class="at">getJulianDay</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb22-4" title="4">    <span class="kw">var</span> hebrewDate <span class="op">=</span> <span class="kw">new</span> <span class="va">ilib</span>.<span class="va">Date</span>.<span class="at">HebrewDate</span>(<span class="op">{</span><span class="dt">julianday</span><span class="op">:</span> jd<span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb22-5" title="5">    <span class="co">// hebrewDate.year is 5773</span></a></code></pre></div>
+<p>To format a date in a non-Gregorian Calendar, follow the pattern of creating a <code>DateFmt</code> object and calling <code>format()</code> on it.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb23-1" title="1">    <span class="kw">var</span> fmt <span class="op">=</span> <span class="kw">new</span> <span class="va">ilib</span>.<span class="at">DateFmt</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb23-2" title="2">        <span class="dt">length</span><span class="op">:</span> <span class="st">&quot;full&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb23-3" title="3">        <span class="dt">locale</span><span class="op">:</span> <span class="st">&quot;en-US&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb23-4" title="4">        <span class="dt">calendar</span><span class="op">:</span> <span class="st">&quot;hebrew&quot;</span></a>
+<a class="sourceLine" id="cb23-5" title="5">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb23-6" title="6">    <span class="kw">var</span> d <span class="op">=</span> <span class="va">fmt</span>.<span class="at">format</span>(date)<span class="op">;</span></a></code></pre></div>
+<p>The value of <code>d</code> is <code>"Adar 27, 5773 11:47PM PDT"</code>.</p>
+<p>Information about the most popular calendars may be retrieved using the <code>ilib.Cal.*</code> classes. Use <code>ilib.Calendar.newInstance()</code> as a factory method to create the other calendar types.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb24-1" title="1">    <span class="kw">var</span> cal <span class="op">=</span> <span class="va">ilib</span>.<span class="va">Calendar</span>.<span class="at">newInstance</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb24-2" title="2">        <span class="co">// looks up calendar for this locale</span></a>
+<a class="sourceLine" id="cb24-3" title="3">        <span class="dt">locale</span><span class="op">:</span> <span class="st">&quot;nl-NL&quot;</span></a>
+<a class="sourceLine" id="cb24-4" title="4">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb24-5" title="5">    <span class="kw">var</span> days <span class="op">=</span> <span class="va">cal</span>.<span class="at">getMonLength</span>(<span class="dv">2</span><span class="op">,</span> year)<span class="op">;</span></a></code></pre></div>
+<p><code>days</code> is <code>28</code> in regular years and <code>29</code> in leap years.</p>
+<h4 id="ranges-and-durations">Ranges and Durations</h4>
+<p><code>ilib.DateRngFmt</code> may be used to format a date/time range–a period of time with a specific start point and end point. As with the other formatter classes, the final output (e.g., <code>'Mar 11-14, 2013'</code>) will depend on the options supplied to the formatter.</p>
+<p>Similarly, <code>ilib.DurFmt</code> lets you format durations–how long things take to happen. Again, you may customize the output (e.g., <code>'36 hours, 24 minutes, and 37 seconds'</code>) by setting the formatter’s options.</p>
+<h4 id="time-zones">Time Zones</h4>
+<p>In many countries, the federal government determines the time zone. In some countries, including the United States, this may be overridden by smaller jurisdictions such as states/provinces, counties, towns, etc. Time zones are specified using the IANA convention of “continent/city” (e.g., <code>'America/Los_Angeles'</code> or <code>'Asia/Seoul'</code>).</p>
+<p><code>ilib.TimeZone</code> represents information about a particular time zone. Instances may be passed to other classes such as <code>ilib.DateFmt</code>, although the specifier string itself is also accepted.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb25-1" title="1">    <span class="kw">var</span> tz <span class="op">=</span> <span class="kw">new</span> <span class="va">ilib</span>.<span class="at">TimeZone</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb25-2" title="2">        <span class="dt">id</span><span class="op">:</span> <span class="st">&quot;America/Los_Angeles&quot;</span></a>
+<a class="sourceLine" id="cb25-3" title="3">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb25-4" title="4">    <span class="kw">var</span> offset <span class="op">=</span> <span class="va">tz</span>.<span class="at">getOffset</span>(<span class="kw">new</span> <span class="va">ilib</span>.<span class="va">Date</span>.<span class="at">newInstance</span>())<span class="op">;</span></a></code></pre></div>
+<p><code>offset</code> is now <code>{h: -8, m: 0}</code>.</p>
+<h3 id="numeric-values">Numeric Values</h3>
+<p>The formatting of numeric values–in numbers, currency, and percentages–is another locale-sensitive process.</p>
+<pre><code>--------------------------------------------------------
+ Locale    Float           Currency       Percentage
+--------- --------------- -------------- ---------------
+ en-US     1,234,567.89    $1,234.56      57.2%
+ 
+ de-DE     1.234.567,89    1.234,56 €     57,2 %
+
+ fr-FR     1 234 567,89    1 234,56 €     57,2%
+
+ tr-TR     1.234.567,89    1.234,56 TL    % 57,2
+--------------------------------------------------------</code></pre>
+<p>As shown in the following examples, <code>iLib</code> handles each of these cases using <code>ilib.NumFmt</code>.</p>
+<h4 id="numbers">Numbers</h4>
+<div class="sourceCode" id="cb27"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb27-1" title="1">    <span class="kw">var</span> fmt <span class="op">=</span> <span class="kw">new</span> <span class="va">ilib</span>.<span class="at">NumFmt</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb27-2" title="2">        <span class="dt">locale</span><span class="op">:</span> <span class="st">&quot;de-DE&quot;</span></a>
+<a class="sourceLine" id="cb27-3" title="3">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb27-4" title="4">    <span class="kw">var</span> str <span class="op">=</span> <span class="va">fmt</span>.<span class="at">format</span>(<span class="fl">1234567.89</span>)<span class="op">;</span></a></code></pre></div>
+<p><code>str</code> is now <code>'1.234.567,89'</code>.</p>
+<h4 id="currency">Currency</h4>
+<div class="sourceCode" id="cb28"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb28-1" title="1">    <span class="kw">var</span> fmt <span class="op">=</span> <span class="kw">new</span> <span class="va">ilib</span>.<span class="at">NumFmt</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb28-2" title="2">        <span class="dt">style</span><span class="op">:</span> <span class="st">&quot;currency&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb28-3" title="3">        <span class="dt">currency</span><span class="op">:</span> <span class="st">&quot;EUR&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb28-4" title="4">        <span class="dt">locale</span><span class="op">:</span> <span class="st">&quot;de-DE&quot;</span></a>
+<a class="sourceLine" id="cb28-5" title="5">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb28-6" title="6">    <span class="kw">var</span> amount <span class="op">=</span> <span class="va">fmt</span>.<span class="at">format</span>(<span class="fl">1234.56289</span>)<span class="op">;</span></a></code></pre></div>
+<p><code>amount</code> is now <code>'1.234,56 €'</code>.</p>
+<h4 id="percentages">Percentages</h4>
+<div class="sourceCode" id="cb29"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb29-1" title="1">    <span class="kw">var</span> fmt <span class="op">=</span> <span class="kw">new</span> <span class="va">ilib</span>.<span class="at">NumFmt</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb29-2" title="2">        <span class="dt">style</span><span class="op">:</span> <span class="st">&quot;percentage&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb29-3" title="3">        <span class="dt">maxFractionDigits</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb29-4" title="4">        <span class="dt">locale</span><span class="op">:</span> <span class="st">&quot;tr-TR&quot;</span></a>
+<a class="sourceLine" id="cb29-5" title="5">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb29-6" title="6">    <span class="kw">var</span> percentString <span class="op">=</span> <span class="va">fmt</span>.<span class="at">format</span>(<span class="fl">0.893453</span>)<span class="op">;</span></a></code></pre></div>
+<p><code>percentString</code> is now <code>'% 89,34'</code>.</p>
+<h2 id="locale-specific-css">Locale-Specific CSS</h2>
+<p>When the <code>enyo-ilib</code> library is loaded into your app, it automatically applies some CSS classes to the <code>&lt;BODY&gt;</code> tag of your DOM. You can use these to write locale-specific CSS override classes using the “dot” specifier. These classes may indicate things such as whether the locale uses a right-to-left orientation or whether it uses non-Latin fonts.</p>
+<p>Classes added to the body are:</p>
+<ul>
+<li><p><code>enyo-locale-non-latin</code>, if the locale uses a non-Latin font</p></li>
+<li><p><code>enyo-locale-right-to-left</code>, if the locale is oriented right-to-left (in the absence of this class, the default orientation is left-to-right)</p></li>
+<li><p><code>enyo-locale-non-italic</code>, if the locale uses a script that is not typically italicized, such as Chinese or Thai. (You may also use this in your own classes to enable or disable italicization.)</p></li>
+</ul>
+<p>The following classes allow you to switch functionality based on the language, script, or region of the current UI locale:</p>
+<ul>
+<li><code>enyo-locale-&lt;language&gt;</code></li>
+<li><code>enyo-locale-&lt;script&gt;</code></li>
+<li><code>enyo-locale-&lt;region&gt;</code></li>
+<li><code>enyo-locale-&lt;language&gt;-&lt;script&gt;</code></li>
+<li><code>enyo-locale-&lt;language&gt;-&lt;region&gt;</code></li>
+<li><code>enyo-locale-&lt;language&gt;-&lt;script&gt;-&lt;region&gt;</code></li>
+</ul>
+<p>Here’s an example from the Moonstone library in which locale-specific CSS is used to turn on right-to-left orientation for a widget:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb30-1" title="1">    <span class="fu">.moon-contextual-popup</span><span class="op">,</span> <span class="fu">.enyo.moon-contextual-popup</span> {</a>
+<a class="sourceLine" id="cb30-2" title="2">        <span class="kw">min-height</span>: <span class="dv">100</span><span class="dt">px</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb30-3" title="3">        <span class="kw">min-width</span>: <span class="dv">100</span><span class="dt">px</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb30-4" title="4">        <span class="fu">...</span></a>
+<a class="sourceLine" id="cb30-5" title="5">    }</a>
+<a class="sourceLine" id="cb30-6" title="6">    <span class="fu">.enyo-locale-right-to-left</span> <span class="fu">.moon-contextual-popup</span> {</a>
+<a class="sourceLine" id="cb30-7" title="7">        <span class="kw">direction</span>: <span class="dv">rtl</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb30-8" title="8">    }</a></code></pre></div>
+<h2 id="responding-to-locale-changes-on-webos-for-tv">Responding to Locale Changes on webOS for TV</h2>
+<p>In Enyo apps running on webOS for TV, you can listen for locale changes and perform actions when a change occurs. The locale change event is implemented as an <code>enyo.Signal</code>. You may register a callback method to be called when the signal is raised.</p>
+<h3 id="changes-in-your-app">Changes in Your App</h3>
+<p>First, you must include the <a href="http://github.com/enyojs/enyo-webos">enyo-webos</a> library in your <code>package.js</code> file in order to receive the locale changed signal.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb31-1" title="1">    <span class="va">enyo</span>.<span class="at">depends</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb31-2" title="2">        <span class="st">&quot;$lib/enyo-ilib/&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb31-3" title="3">        <span class="st">&quot;$lib/enyo-webos/&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb31-4" title="4">        <span class="op">&lt;</span>other libraries<span class="op">&gt;,</span></a>
+<a class="sourceLine" id="cb31-5" title="5">        ...</a>
+<a class="sourceLine" id="cb31-6" title="6">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>Then, in your main app kind, add the following to the <code>components</code> block:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb32-1" title="1">    <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.Signals&quot;</span><span class="op">,</span> <span class="dt">onwebOSLocaleChange</span><span class="op">:</span> <span class="st">&quot;handleLocaleChangeEvent&quot;</span><span class="op">}</span></a></code></pre></div>
+<p>Finally, define the <code>handleLocaleChangeEvent()</code> function itself:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb33-1" title="1">    handleLocaleChangeEvent<span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb33-2" title="2">        <span class="co">// Check if the locale actually changed. Save the current locale in</span></a>
+<a class="sourceLine" id="cb33-3" title="3">        <span class="co">// your create method to compare against.</span></a>
+<a class="sourceLine" id="cb33-4" title="4">        <span class="cf">if</span> (ilib <span class="op">&amp;&amp;</span> <span class="va">ilib</span>.<span class="at">getLocale</span>() <span class="op">!==</span> <span class="kw">this</span>.<span class="at">iLibLocale</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb33-5" title="5">            <span class="kw">this</span>.<span class="at">saveStateIfNecessary</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb33-6" title="6">            <span class="cf">if</span> (<span class="kw">this</span>.<span class="at">canReload</span>()) <span class="op">{</span></a>
+<a class="sourceLine" id="cb33-7" title="7">                <span class="va">window</span>.<span class="at">location</span> <span class="op">&amp;&amp;</span> <span class="va">window</span>.<span class="va">location</span>.<span class="at">reload</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb33-8" title="8">            <span class="op">}</span></a>
+<a class="sourceLine" id="cb33-9" title="9">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb33-10" title="10">    <span class="op">}</span></a></code></pre></div>
+<p>The app will now reload and pick up the new locale. This will cause all of your <code>$L()</code> strings to be re-evaluated and all locale-sensitive classes to be re-instantiated from scratch.</p>
+<p>(For more information on <code>enyo.Signals</code>, see the documentation on <a href="../key-concepts/event-handling.html">Event Handling</a>).</p>
+<h3 id="caveats">Caveats</h3>
+<p>There are some situations in which you should refuse to reload in the locale change signal handler:</p>
+<ul>
+<li><p>If your input fields or internal state contain unsaved data. Do not reload unless you first save this data somehow and then reload it afterwards. Losing user-entered data is not good! You can record the locale change in your signal handler, and then reload once the data is saved properly.</p></li>
+<li><p>If the new locale is one that your app does not yet support.</p></li>
+</ul>
+<p>Also note that an app may pass parameters to itself via <code>window.location.reload()</code> if the state to be saved is very small.</p>
+<p>It is a good practice to reload and return to the screen that the app was showing before the reload, if at all possible.</p>
+<h2 id="additional-reading">Additional Reading</h2>
+<p><code>iLib</code> contains a host of other features that we have not covered in this introductory discussion. For the complete set of online documentation, see <a href="http://docs.jedlsoft.com/ilib/jsdoc/" class="uri">http://docs.jedlsoft.com/ilib/jsdoc/</a>.</p>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../js/main.js"></script>
+  <script type="text/javascript" src="../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

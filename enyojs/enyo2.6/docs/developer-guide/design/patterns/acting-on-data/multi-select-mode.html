@@ -1,0 +1,164 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../../../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Multi-Select Mode</h1>
+<h2 id="problem">Problem</h2>
+<p>The user needs to select multiple items from a list to perform actions such as Share To, Add To, Delete, or Favorite.</p>
+<h2 id="solution">Solution</h2>
+<p>Use an action button from the Action Bar or an action item from a List Actions menu to put the list or grid into multi-select mode for performing the selected action.</p>
+<h2 id="how-to-use">How to Use</h2>
+<p>For actions such as Delete and Favorite, use an action button in the Action Bar to invoke multi-select mode on the content below. This will allow the user to apply a single action to multiple items.</p>
+<p>For actions such as “Share To” and “Add To”, use an action button in the Action Bar to open a List Actions menu of targets to share or add to. Selecting a target will hide the menu and invoke multi-select mode on the content below, allowing the user to apply a single action to multiple items.</p>
+<p>Once an action has been selected, the list or grid should be in Edit mode (with focus on the first item in focus when using the 5-way).</p>
+<p>Replace the action buttons in the Action Bar with confirmation buttons (i.e., Delete/Cancel or Share/Cancel).</p>
+<p>Use the subheader to provide onscreen direction (e.g., “5 items selected for deletion” or “3 items selected to share to Facebook”).</p>
+<p>Select the items and then confirm the action.</p>
+<p>Once the action has been performed on the selected items, disable multi-select mode, dismiss the confirmation buttons, and return the action buttons to the Action Bar.</p>
+<p>Provide a confirmation message in the subheader or as a popup at the bottom of the screen.</p>
+<p>For actions such as “Add To”, open a popup message at the bottom of the screen offering a choice to stay in the current list/panel or return to the list/panel the user just added content to.</p>
+<figure>
+<img src="../../../assets/dg-acting-on-data-multi-select-1.jpg" alt="Fig. 1: Select an Action" /><figcaption><em>Fig. 1: Select an Action</em></figcaption>
+</figure>
+<p>The action Button has focus. Click to initiate multi-select mode.</p>
+<figure>
+<img src="../../../assets/dg-acting-on-data-multi-select-2.jpg" alt="Fig. 2: Navigate to an Object" /><figcaption><em>Fig. 2: Navigate to an Object</em></figcaption>
+</figure>
+<p>The first item has focus but is not yet selected.</p>
+<figure>
+<img src="../../../assets/dg-acting-on-data-multi-select-3.jpg" alt="Fig. 3: Object Selected" /><figcaption><em>Fig. 3: Object Selected</em></figcaption>
+</figure>
+<p>The first item has focus and is selected.</p>
+<figure>
+<img src="../../../assets/dg-acting-on-data-multi-select-4.jpg" alt="Fig. 4: Navigate to a Second Object" /><figcaption><em>Fig. 4: Navigate to a Second Object</em></figcaption>
+</figure>
+<p>The first item is selected. The second item has focus but is not yet selected.</p>
+<figure>
+<img src="../../../assets/dg-acting-on-data-multi-select-5.jpg" alt="Fig. 5: Select Second Object and Confirm Action" /><figcaption><em>Fig. 5: Select Second Object and Confirm Action</em></figcaption>
+</figure>
+<p>The first and second items are selected. The action button has focus but is not yet selected.</p>
+<figure>
+<img src="../../../assets/dg-acting-on-data-multi-select-6.jpg" alt="Fig. 6: Action Completed" /><figcaption><em>Fig. 6: Action Completed</em></figcaption>
+</figure>
+<p>When the action is complete, focus returns to the first item in the list.</p>
+<h2 id="what-to-avoid">What to Avoid</h2>
+<p>Don’t allow user to use multi-select without first selecting the action button.</p>
+<p>Don’t use a contextual popup to display the List Actions menu.</p>
+<h2 id="why">Why</h2>
+<p>Users may be interacting with a large volume of content and may want to take broad action on that content. By providing the multi-select tool, you make it faster and easier for them to do so.</p>
+<h2 id="related-topics">Related Topics</h2>
+<p>Patterns: <a href="../app-structure/panel-structure.html#action-bar">Action Bar</a>, <a href="sort-and-filter.html">Action Menu</a>, Lists and Grids</p>
+<p>Controls: <a href="../../controls/button.html">Button</a>, <a href="../../controls/checkbox-item.html">Checkbox Item</a>, <a href="../../controls/header-list-actions.html">Header</a>, <a href="../../controls/list.html">List</a>, <a href="../../controls/popup.html">Popup</a></p>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../../../js/main.js"></script>
+  <script type="text/javascript" src="../../../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

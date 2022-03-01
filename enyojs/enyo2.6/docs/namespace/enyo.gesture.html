@@ -1,0 +1,792 @@
+<div class="row">
+	<div class="col-sm-4 col-sm-push-8 features">
+		<div class="sub-namespaces">
+			<h1><a href="javascript:find(':sub-namespaces');">Sub-Namespaces</a></h1>
+			<div>
+<ul>
+	
+	<li class="sub-namespace">
+		<a href="javascript:find(':enyo.gesture.drag');">enyo.gesture.drag</a>
+	</li>
+	
+	<li class="sub-namespace">
+		<a href="javascript:find(':enyo.gesture.events');">enyo.gesture.events</a>
+	</li>
+	
+</ul>
+</div>
+		</div>
+		<div class="kinds">
+			<h1><a href="javascript:find(':kinds');">Kinds</a></h1>
+			<div>
+<span class="no-kinds">No kinds</span>
+</div>
+		</div>
+		<div class="mixins">
+			<h1><a href="javascript:find(':mixins');">Mixins</a></h1>
+			<div>
+<span class="no-mixins">No mixins</span>
+</div>
+		</div>
+		<div class="properties">
+			<h1><a href="javascript:find(':properties');">Properties</a></h1>
+			<div>
+<ul>
+	
+	<li class="property public ">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':doubleTapEnabled');">doubleTapEnabled</a>
+	</li>
+	
+	<li class="property private ">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':eventProps');">eventProps</a>
+	</li>
+	
+	<li class="property private ">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':events');">events</a>
+	</li>
+	
+	<li class="property private ">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':tapData');">tapData</a>
+	</li>
+	
+</ul>
+</div>
+		</div>
+		<div class="methods">
+			<h1><a href="javascript:find(':methods');">Methods</a></h1>
+			<div>
+
+<ul>
+	
+	<li class="method private ">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':disablePrevention');">disablePrevention</a>
+	</li>
+	
+	<li class="method public ">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':doubleTap');">doubleTap</a>
+	</li>
+	
+	<li class="method public ">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':down');">down</a>
+	</li>
+	
+	<li class="method public ">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':findCommonAncestor');">findCommonAncestor</a>
+	</li>
+	
+	<li class="method public ">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':isTargetDescendantOf');">isTargetDescendantOf</a>
+	</li>
+	
+	<li class="method public ">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':makeEvent');">makeEvent</a>
+	</li>
+	
+	<li class="method public ">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':move');">move</a>
+	</li>
+	
+	<li class="method public ">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':out');">out</a>
+	</li>
+	
+	<li class="method public ">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':over');">over</a>
+	</li>
+	
+	<li class="method private ">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':preventDefault');">preventDefault</a>
+	</li>
+	
+	<li class="method public ">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':sendTap');">sendTap</a>
+	</li>
+	
+	<li class="method private ">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':supportsDoubleTap');">supportsDoubleTap</a>
+	</li>
+	
+	<li class="method public ">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':up');">up</a>
+	</li>
+	
+</ul>
+</div>
+		</div>
+	</div>
+	<div class="col-sm-8 col-sm-pull-4 namespace main-container">
+
+
+		<div class="header">
+
+			<h2>NAMESPACE</h2>
+			<h1><a href="#/namespace/enyo">enyo</a>.gesture</h1>
+			<div class="source">From enyo26/enyo/source/dom/gesture.js</div>
+		</div>
+
+		<div class="section description">
+			<h1>Description</h1>
+			<div><p>Enyo supports a set of normalized events that work similarly across all supported platforms.
+These events are provided so that users can write a single set of event handlers for
+applications that run on both mobile and desktop platforms. They are needed because desktop
+and mobile platforms handle basic input differently.</p>
+<p>For more information on normalized input events and their associated properties, see the
+documentation on <a class="linkplain" href="../developer-guide//key-concepts/event-handling.html">Event Handling</a>
+in the Enyo Developer Guide.</p></div>
+		</div>
+		<div class="section sub-namespaces"><a name="sub-namespaces"></a>
+<h1>Sub-Namespaces</h1>
+
+
+<a name="enyo.gesture.drag"></a>
+<div class="entry sub-namespace">
+	<div class="header">
+		<span class="name"><a class="namespace" href="#/namespace/enyo.gesture.drag">enyo.gesture.drag</a></span>
+	</div>
+	<div class="content">
+		<div class="description"><p>Enyo supports a cross-platform set of drag <a class="glossary" href="#/glossary:event">events</a>. These
+events allow users to write a single set of event handlers for applications
+that run on both mobile and desktop platforms.</p>
+<p>The following events are provided:</p>
+<ul>
+<li>'dragstart'</li>
+<li>'dragfinish'</li>
+<li>'drag'</li>
+<li>'drop'</li>
+<li>'dragover'</li>
+<li>'dragout'</li>
+<li>'hold'</li>
+<li>'release'</li>
+<li>'holdpulse'</li>
+<li>'flick'</li>
+</ul>
+<p>For more information on these events, see the documentation on
+<a class="linkplain" href="../developer-guide//key-concepts/event-handling.html">Event Handling</a> in
+the Enyo Developer Guide.</p></div>
+	</div>
+</div>
+
+<a name="enyo.gesture.events"></a>
+<div class="entry sub-namespace">
+	<div class="header">
+		<span class="name"><a class="namespace" href="#/namespace/enyo.gesture.events">enyo.gesture.events</a></span>
+	</div>
+	<div class="content">
+		<div class="description"></div>
+	</div>
+</div>
+
+</div>
+		<div class="section kinds"><a name="kinds"></a>
+<h1>Kinds</h1>
+
+<strong>No kinds</strong>
+</div>
+		<div class="section mixins"><a name="mixins"></a>
+<h1>Mixins</h1>
+
+<strong>No mixins</strong>
+</div>
+		<div class="section properties"><a name="properties"></a>
+<h1>Properties</h1>
+
+<a name="doubleTapEnabled"></a>
+<div class="entry property public ">
+	<div class="header">
+		<span class="access public">public</span>
+		<span class="name">doubleTapEnabled</span>
+		<span>:</span>
+		<span class="type"><a class="glossary" href="#/glossary:Boolean">Boolean</a></span>
+	</div>
+	<div class="content">
+		
+		<div class="default">Default: <a class="glossary" href="#/glossary:false">false</a></div>
+		<div class="description"><p>Global configuration for double tap support. If this is true, all tap events for Controls
+that do not have <a href="#/kind/enyo.Control:doubleTapEnabled">enyo.Control#doubleTapEnabled</a> explicitly set to false will be
+delayed by the <a href="#/kind/enyo.Control:doubleTapInterval">enyo.Control#doubleTapInterval</a>.</p></div>
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/enyo/source/dom/gesture.js</span>
+			<span class="line">:212</span>
+		</div>
+	</div>
+</div>
+<a name="eventProps"></a>
+<div class="entry property private ">
+	<div class="header">
+		<span class="access private">private</span>
+		<span class="name">eventProps</span>
+		<span>:</span>
+		<span class="type"><a class="glossary" href="#/glossary:undefined">undefined</a></span>
+	</div>
+	<div class="content">
+		
+		<div class="default">Default: </div>
+		<div class="description"></div>
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/enyo/source/dom/gesture.js</span>
+			<span class="line">:22</span>
+		</div>
+	</div>
+</div>
+<a name="events"></a>
+<div class="entry property private ">
+	<div class="header">
+		<span class="access private">private</span>
+		<span class="name">events</span>
+		<span>:</span>
+		<span class="type"><a class="glossary" href="#/glossary:undefined">undefined</a></span>
+	</div>
+	<div class="content">
+		
+		<div class="default">Default: </div>
+		<div class="description"></div>
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/enyo/source/touch/msevents.js</span>
+			<span class="line">:49</span>
+		</div>
+	</div>
+</div>
+<a name="tapData"></a>
+<div class="entry property private ">
+	<div class="header">
+		<span class="access private">private</span>
+		<span class="name">tapData</span>
+		<span>:</span>
+		<span class="type"><a class="glossary" href="#/glossary:undefined">undefined</a></span>
+	</div>
+	<div class="content">
+		
+		<div class="default">Default: </div>
+		<div class="description"></div>
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/enyo/source/dom/gesture.js</span>
+			<span class="line">:197</span>
+		</div>
+	</div>
+</div>
+
+</div>
+		<div class="section methods"><a name="methods"></a>
+<h1>Methods</h1>
+
+
+<a name="disablePrevention"></a>
+<div class="entry method private ">
+	<div class="header">
+		<span class="access private">private</span>
+		<span class="name">disablePrevention&#040;&#041;</span><span>&rarr;</span>
+		<span class="header-returns"><a class="glossary" href="#/glossary:undefined">undefined</a></span></div>
+	<div class="content">
+		
+		<div class="description"></div>
+		
+
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/enyo/source/dom/gesture.js</span>
+			<span class="line">:322</span>
+		</div>
+	</div>
+</div>
+
+
+<a name="doubleTap"></a>
+<div class="entry method public ">
+	<div class="header">
+		<span class="access public">public</span>
+		<span class="name">doubleTap&#040;&#041;</span><span>&rarr;</span>
+		<span class="header-returns"><a class="glossary" href="#/glossary:undefined">undefined</a></span></div>
+	<div class="content">
+		
+		<div class="description"><p>private</p></div>
+		
+
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/enyo/source/dom/gesture.js</span>
+			<span class="line">:239</span>
+		</div>
+	</div>
+</div>
+
+
+<a name="down"></a>
+<div class="entry method public ">
+	<div class="header">
+		<span class="access public">public</span>
+		<span class="name">down&#040;<span class="header-params"><span class="param ">evt</span></span>&#041;</span><span>&rarr;</span>
+		<span class="header-returns"><a class="glossary" href="#/glossary:undefined">undefined</a></span></div>
+	<div class="content">
+		
+		<div class="description"><p>Handles &quot;down&quot; <a class="glossary" href="#/glossary:event">events</a>, including <code>mousedown</code> and <code>keydown</code>. This is
+responsible for the press-and-hold key repeater.</p></div>
+		
+<div class="subsection params">
+	<h3>Parameters</h3>
+	<ul>
+	
+	<li>
+		<span class="name ">evt</span>
+		
+		
+		
+		<div class="type">Type: <a class="glossary" href="#/glossary:Event">Event</a></div>
+		
+		<div class="description"><p>The standard <a class="glossary" href="#/glossary:event">event</a> [object]{glossary Object}.</p></div>
+	</li>
+	
+	</ul>
+</div>
+
+
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/enyo/source/dom/gesture.js</span>
+			<span class="line">:86</span>
+		</div>
+	</div>
+</div>
+
+
+<a name="findCommonAncestor"></a>
+<div class="entry method public ">
+	<div class="header">
+		<span class="access public">public</span>
+		<span class="name">findCommonAncestor&#040;<span class="header-params"><span class="param ">controlA</span><span class="param ">, controlB</span></span>&#041;</span><span>&rarr;</span>
+		<span class="header-returns"><a class="glossary" href="#/glossary:Node">Node</a>, <a class="glossary" href="#/glossary:undefined">undefined</a></span></div>
+	<div class="content">
+		
+		<div class="description"><p>Given two <a class="glossary" href="#/glossary:Node">DOM nodes</a>, searches for a shared ancestor (looks up
+the hierarchic <a class="glossary" href="#/glossary:DOM">DOM</a> tree of <a class="glossary" href="#/glossary:Node">nodes</a>). The shared
+ancestor node is returned.</p></div>
+		
+<div class="subsection params">
+	<h3>Parameters</h3>
+	<ul>
+	
+	<li>
+		<span class="name ">controlA</span>
+		
+		
+		
+		<div class="type">Type: <a class="glossary" href="#/glossary:Node">Node</a></div>
+		
+		<div class="description"><p>Control one.</p></div>
+	</li>
+	
+	<li>
+		<span class="name ">controlB</span>
+		
+		
+		
+		<div class="type">Type: <a class="glossary" href="#/glossary:Node">Node</a></div>
+		
+		<div class="description"><p>Control two.</p></div>
+	</li>
+	
+	</ul>
+</div>
+
+
+		
+<div class="subsection returns">
+	<h3>Returns</h3>
+		<div class="description"><p>The shared ancestor.</p></div>
+</div>
+
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/enyo/source/dom/gesture.js</span>
+			<span class="line">:280</span>
+		</div>
+	</div>
+</div>
+
+
+<a name="isTargetDescendantOf"></a>
+<div class="entry method public ">
+	<div class="header">
+		<span class="access public">public</span>
+		<span class="name">isTargetDescendantOf&#040;<span class="header-params"><span class="param ">child</span><span class="param ">, parent</span></span>&#041;</span><span>&rarr;</span>
+		<span class="header-returns"><a class="glossary" href="#/glossary:Boolean">Boolean</a>, <a class="glossary" href="#/glossary:undefined">undefined</a></span></div>
+	<div class="content">
+		
+		<div class="description"><p>Given two controls, returns <code>true</code> if the <code>child</code> is inside the <code>parent</code>.</p></div>
+		
+<div class="subsection params">
+	<h3>Parameters</h3>
+	<ul>
+	
+	<li>
+		<span class="name ">child</span>
+		
+		
+		
+		<div class="type">Type: <a class="glossary" href="#/glossary:Node">Node</a></div>
+		
+		<div class="description"><p>The child to search for.</p></div>
+	</li>
+	
+	<li>
+		<span class="name ">parent</span>
+		
+		
+		
+		<div class="type">Type: <a class="glossary" href="#/glossary:Node">Node</a></div>
+		
+		<div class="description"><p>The expected parent.</p></div>
+	</li>
+	
+	</ul>
+</div>
+
+
+		
+<div class="subsection returns">
+	<h3>Returns</h3>
+		<div class="description"><p><code>true</code> if the <code>child</code> is actually a child of <code>parent</code>.</p></div>
+</div>
+
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/enyo/source/dom/gesture.js</span>
+			<span class="line">:297</span>
+		</div>
+	</div>
+</div>
+
+
+<a name="makeEvent"></a>
+<div class="entry method public ">
+	<div class="header">
+		<span class="access public">public</span>
+		<span class="name">makeEvent&#040;<span class="header-params"><span class="param ">type</span><span class="param ">, evt</span></span>&#041;</span><span>&rarr;</span>
+		<span class="header-returns"><a class="glossary" href="#/glossary:Object">Object</a></span></div>
+	<div class="content">
+		
+		<div class="description"><p>Creates an <a class="glossary" href="#/glossary:event">event</a> of type <code>type</code> and returns it.
+<code>evt</code> should be an event <a class="glossary" href="#/glossary:Object">object</a>.</p></div>
+		
+<div class="subsection params">
+	<h3>Parameters</h3>
+	<ul>
+	
+	<li>
+		<span class="name ">type</span>
+		
+		
+		
+		<div class="type">Type: <a class="glossary" href="#/glossary:String">String</a></div>
+		
+		<div class="description"><p>The type of <a class="glossary" href="#/glossary:event">event</a> to make.</p></div>
+	</li>
+	
+	<li>
+		<span class="name ">evt</span>
+		
+		
+		
+		<div class="type">Type: <a class="glossary" href="#/glossary:Event">Event</a>, <a class="glossary" href="#/glossary:Object">Object</a></div>
+		
+		<div class="description"><p>The event you'd like to clone or an object that looks like it.</p></div>
+	</li>
+	
+	</ul>
+</div>
+
+
+		
+<div class="subsection returns">
+	<h3>Returns</h3>
+		<div class="description"><p>The new event <a class="glossary" href="#/glossary:Object">object</a>.</p></div>
+</div>
+
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/enyo/source/dom/gesture.js</span>
+			<span class="line">:35</span>
+		</div>
+	</div>
+</div>
+
+
+<a name="move"></a>
+<div class="entry method public ">
+	<div class="header">
+		<span class="access public">public</span>
+		<span class="name">move&#040;<span class="header-params"><span class="param ">evt</span></span>&#041;</span><span>&rarr;</span>
+		<span class="header-returns"><a class="glossary" href="#/glossary:undefined">undefined</a></span></div>
+	<div class="content">
+		
+		<div class="description"><p>Handles <code>mousemove</code> <a class="glossary" href="#/glossary:event">events</a>.</p></div>
+		
+<div class="subsection params">
+	<h3>Parameters</h3>
+	<ul>
+	
+	<li>
+		<span class="name ">evt</span>
+		
+		
+		
+		<div class="type">Type: <a class="glossary" href="#/glossary:Event">Event</a></div>
+		
+		<div class="description"><p>The standard <a class="glossary" href="#/glossary:event">event</a> [object]{glossary Object}.</p></div>
+	</li>
+	
+	</ul>
+</div>
+
+
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/enyo/source/dom/gesture.js</span>
+			<span class="line">:111</span>
+		</div>
+	</div>
+</div>
+
+
+<a name="out"></a>
+<div class="entry method public ">
+	<div class="header">
+		<span class="access public">public</span>
+		<span class="name">out&#040;<span class="header-params"><span class="param ">evt</span></span>&#041;</span><span>&rarr;</span>
+		<span class="header-returns"><a class="glossary" href="#/glossary:undefined">undefined</a></span></div>
+	<div class="content">
+		
+		<div class="description"><p>Handles <code>mouseout</code> <a class="glossary" href="#/glossary:event">events</a>.</p></div>
+		
+<div class="subsection params">
+	<h3>Parameters</h3>
+	<ul>
+	
+	<li>
+		<span class="name ">evt</span>
+		
+		
+		
+		<div class="type">Type: <a class="glossary" href="#/glossary:Event">Event</a></div>
+		
+		<div class="description"><p>The standard <a class="glossary" href="#/glossary:event">event</a> [object]{glossary Object}.</p></div>
+	</li>
+	
+	</ul>
+</div>
+
+
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/enyo/source/dom/gesture.js</span>
+			<span class="line">:177</span>
+		</div>
+	</div>
+</div>
+
+
+<a name="over"></a>
+<div class="entry method public ">
+	<div class="header">
+		<span class="access public">public</span>
+		<span class="name">over&#040;<span class="header-params"><span class="param ">evt</span></span>&#041;</span><span>&rarr;</span>
+		<span class="header-returns"><a class="glossary" href="#/glossary:undefined">undefined</a></span></div>
+	<div class="content">
+		
+		<div class="description"><p>Handles <code>mouseover</code> <a class="glossary" href="#/glossary:event">events</a>.</p></div>
+		
+<div class="subsection params">
+	<h3>Parameters</h3>
+	<ul>
+	
+	<li>
+		<span class="name ">evt</span>
+		
+		
+		
+		<div class="type">Type: <a class="glossary" href="#/glossary:Event">Event</a></div>
+		
+		<div class="description"><p>The standard <a class="glossary" href="#/glossary:event">event</a> [object]{glossary Object}.</p></div>
+	</li>
+	
+	</ul>
+</div>
+
+
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/enyo/source/dom/gesture.js</span>
+			<span class="line">:166</span>
+		</div>
+	</div>
+</div>
+
+
+<a name="preventDefault"></a>
+<div class="entry method private ">
+	<div class="header">
+		<span class="access private">private</span>
+		<span class="name">preventDefault&#040;&#041;</span><span>&rarr;</span>
+		<span class="header-returns"><a class="glossary" href="#/glossary:undefined">undefined</a></span></div>
+	<div class="content">
+		
+		<div class="description"><p>Installed on <a class="glossary" href="#/glossary:event">events</a> and called in event context.</p></div>
+		
+
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/enyo/source/dom/gesture.js</span>
+			<span class="line">:313</span>
+		</div>
+	</div>
+</div>
+
+
+<a name="sendTap"></a>
+<div class="entry method public ">
+	<div class="header">
+		<span class="access public">public</span>
+		<span class="name">sendTap&#040;<span class="header-params"><span class="param ">evt</span></span>&#041;</span><span>&rarr;</span>
+		<span class="header-returns"><a class="glossary" href="#/glossary:undefined">undefined</a></span></div>
+	<div class="content">
+		
+		<div class="description"><p>Generates <code>tap</code> <a class="glossary" href="#/glossary:event">events</a>.</p></div>
+		
+<div class="subsection params">
+	<h3>Parameters</h3>
+	<ul>
+	
+	<li>
+		<span class="name ">evt</span>
+		
+		
+		
+		<div class="type">Type: <a class="glossary" href="#/glossary:Event">Event</a></div>
+		
+		<div class="description"><p>The standard <a class="glossary" href="#/glossary:event">event</a> [object]{glossary Object}.</p></div>
+	</li>
+	
+	</ul>
+</div>
+
+
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/enyo/source/dom/gesture.js</span>
+			<span class="line">:188</span>
+		</div>
+	</div>
+</div>
+
+
+<a name="supportsDoubleTap"></a>
+<div class="entry method private ">
+	<div class="header">
+		<span class="access private">private</span>
+		<span class="name">supportsDoubleTap&#040;<span class="header-params"><span class="param ">target</span></span>&#041;</span><span>&rarr;</span>
+		<span class="header-returns"><a class="glossary" href="#/glossary:Boolean">Boolean</a></span></div>
+	<div class="content">
+		
+		<div class="description"><p>Determines if the provided target node supports double tap events</p></div>
+		
+<div class="subsection params">
+	<h3>Parameters</h3>
+	<ul>
+	
+	<li>
+		<span class="name ">target</span>
+		
+		
+		
+		<div class="type">Type: <a class="glossary" href="#/glossary:Node">Node</a></div>
+		
+		<div class="description"></div>
+	</li>
+	
+	</ul>
+</div>
+
+
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/enyo/source/dom/gesture.js</span>
+			<span class="line">:221</span>
+		</div>
+	</div>
+</div>
+
+
+<a name="up"></a>
+<div class="entry method public ">
+	<div class="header">
+		<span class="access public">public</span>
+		<span class="name">up&#040;<span class="header-params"><span class="param ">evt</span></span>&#041;</span><span>&rarr;</span>
+		<span class="header-returns"><a class="glossary" href="#/glossary:undefined">undefined</a></span></div>
+	<div class="content">
+		
+		<div class="description"><p>Handles &quot;up&quot; <a class="glossary" href="#/glossary:event">events</a>, including <code>mouseup</code> and <code>keyup</code>.</p></div>
+		
+<div class="subsection params">
+	<h3>Parameters</h3>
+	<ul>
+	
+	<li>
+		<span class="name ">evt</span>
+		
+		
+		
+		<div class="type">Type: <a class="glossary" href="#/glossary:Event">Event</a></div>
+		
+		<div class="description"><p>The standard <a class="glossary" href="#/glossary:event">event</a> [object]{glossary Object}.</p></div>
+	</li>
+	
+	</ul>
+</div>
+
+
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/enyo/source/dom/gesture.js</span>
+			<span class="line">:130</span>
+		</div>
+	</div>
+</div>
+
+
+</div>
+	</div>
+</div>

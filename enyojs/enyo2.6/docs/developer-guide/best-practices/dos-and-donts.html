@@ -1,0 +1,203 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Enyo Dos and Don’ts</h1>
+<p>A while back, the Framework Team began keeping a list of items for team members to consider before submitting code for peer review. As the list grew, we realized that it could be useful to the wider community of app developers. Thus we are pleased to present the current document.</p>
+<p>The content is divided into sections aimed at particular groups of developers; we begin by addressing a general audience, then move on to discuss the more specialized responsibilities of those creating shared code. We suggest that you start reading at the beginning and stop when the content no longer seems relevant to your specific role.</p>
+<h2 id="im-developing-an-enyomoonstone-application">I’m Developing an Enyo/Moonstone Application…</h2>
+<p>Welcome to the team! Here are some things that all developers should keep in mind when writing apps using Enyo and Moonstone:</p>
+<ul>
+<li><p><strong>Don’t break encapsulation.</strong></p>
+<ul>
+<li><p>Avoid using <code>$</code> more than once on a given line:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1">    <span class="kw">this</span>.<span class="va">$</span>.<span class="va">child</span>.<span class="va">$</span>.<span class="at">childsChild</span>    <span class="co">// bad idea</span></a></code></pre></div></li>
+<li><p>Don’t reach into the parent’s other components:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1">    <span class="kw">this</span>.<span class="va">parent</span>.<span class="va">$</span>.<span class="at">parentsChild</span>    <span class="co">// also a bad idea</span></a></code></pre></div></li>
+</ul>
+<p>For more on this topic, see <a href="encapsulation-in-enyo.html">Encapsulation in Enyo</a>.</p></li>
+<li><p><strong>Most published properties should have change handlers (or data bindings).</strong></p>
+<p>A common bug occurs when a property is used only at create/render time; later, when someone calls <code>set("myProperty", &lt;myValue&gt;)</code>, nothing happens because there is no change handler to enable the property to change at runtime.</p>
+<p>This situation can easily go undetected. Samples may look fine because the properties are passed in at create time. The normal pattern is to put the code that uses a property in a change handler, and to call that handler from <code>create()</code> (or from <code>render()</code>, if the handler needs to send events–see the following).</p></li>
+<li><p><strong>Do not send events from <code>create()</code>; if initial events must be sent, send them from <code>render()</code>.</strong></p>
+<p>The problem with sending events from <code>create()</code> is that event handlers in the owner or elsewhere often need to reference other components. <code>create()</code> is called as items are being created, meaning that at the time Component A’s <code>create()</code> is called, all components after it (e.g., Components B and C) have yet to be created. As a result, if you have a handler for A’s event that references <code>this.$.B</code>, it will throw an undefined error.</p>
+<p>Firing initial events from <code>render()</code> is safer, since all components have been created by the time <code>render()</code> is called.</p></li>
+<li><p><strong>Handlers for <code>onSetupItem</code> events should usually return <code>true</code>, stopping propagation of the event.</strong></p>
+<p>Failure to return <code>true</code> may cause problems with nested repeaters or lists, and will certainly make the program run more slowly due to the extra dispatching taking place for each item.</p></li>
+<li><p><strong>Don’t create unnecessary <code>Signals</code> instances.</strong></p>
+<p>When you have a component that needs to listen for several different signals, the component only needs to include one instance of <code>enyo.Signals</code>. That one instance may register as a listener for multiple signals. (For details, see <a href="../key-concepts/event-handling.html">Event Handling</a>.)</p></li>
+<li><p><strong>Try to minimize your use of Fittables.</strong></p>
+<p>When possible, do layout using CSS styles rather than Fittables; CSS-based layout is faster because it avoids the JavaScript overhead that comes with <code>FittableRows</code> and <code>FittableColumns</code>. If you decide to use Fittables, remember to set <code>fit: true</code> on the row or column that you want to expand.</p></li>
+<li><p><strong>Don’t set <code>font-face</code> directly.</strong></p>
+<p>Latin and Non-Latin fonts use different font faces. The framework sets the font face as needed; as an application developer, you should not need to concern yourself with this.</p></li>
+<li><p><strong>Remember that Moonstone includes both a dark theme and a light theme.</strong></p>
+<p>The dark theme, with white or gray text on a black background, is the default. To use the light theme (which features dark text on a gray background), open your app’s <code>package.js</code> file and replace <code>$lib/moonstone</code> with <code>$lib/moonstone/light-package.js</code>.</p></li>
+<li><p><strong>Use shortcuts for shared paths.</strong></p>
+<p>When you need to specify the path to a shared resource, remember that the framework supports a number of shortcuts for commonly-used locations (such as <code>$tv-common</code> in the following example):</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1">    <span class="kw">this</span>.<span class="va">$</span>.<span class="va">channelSource</span>.<span class="at">setSrc</span>(<span class="st">&quot;$tv-common/assets/banner/banner_input_icon_tv.png&quot;</span>)<span class="op">;</span></a></code></pre></div></li>
+<li><p><strong>Test for right-to-left compatibility.</strong></p>
+<p>Setting the CSS class <code>enyo-locale-right-to-left</code> on a control will activate any specialized behavior it supports for right-to-left scripts.</p></li>
+<li><p><strong>Use your browser for debugging.</strong></p>
+<p>It’s typically much easier to debug a JavaScript app running in a browser than one running on any kind of hardware, so we recommend that you debug in the browser to the extent that that’s possible. For a detailed discussion of this topic, see <a href="../building-apps/testing-and-debugging/browser-based-debugging.html">Browser-Based Debugging</a>.</p></li>
+<li><p><strong>Refactor your code.</strong></p>
+<p>There are many good reasons to refactor your application code. One to remember in the context of Enyo and Moonstone is that refactored code will typically yield smaller file sizes for the final, optimized version of your application.</p></li>
+</ul>
+<h2 id="im-creating-custom-widgets-for-my-app">I’m Creating Custom Widgets for My App…</h2>
+<p>Unless you’re working on an app by yourself, your code is likely to be used by at least a few of your colleagues. Here are some things to remember when creating shared code:</p>
+<ul>
+<li><p><strong>Use familiar naming.</strong></p>
+<p>When naming a property or defining a new API, look at similar kinds that have already been implemented and, where possible, try to use the same naming. (When you can’t use the same naming, use new names that are consistent with existing ones.) By limiting the complexity of Enyo’s vocabulary, we allow programmers to have more accurate expectations of how our objects will work, thus reducing the amount of new learning necessary.</p></li>
+<li><p><strong>Remember to include inline API documentation.</strong></p>
+<p>All Enyo APIs are documented with comments in JSDoc format. If you create a new kind, be sure to include a summary the top, including a description of the kind and a brief code sample (if appropriate). In addition, add inline comments for all published properties, public events (including event properties), and public methods. When commenting your code, use the existing comments as a guide.</p>
+<p>For more details, see <a href="api-reference.html#documenting-code-for-the-api-reference">Documenting Code for the API Reference</a>.</p></li>
+<li><p><strong>Prefix all CSS classes with the name of the widget you are developing.</strong></p>
+<p>All CSS classes should be scoped to the widget you are developing; otherwise there is a high likelihood of collisions. For example, if two widgets define a <code>.button-overlay</code> class, the second definition will wipe out the first.</p>
+<p>Instead, create CSS classes that are specific to your widget, e.g., <code>.mywidget-button-overlay</code> or <code>.mywidget .button-overlay</code>.</p></li>
+<li><p><strong>Don’t assume you that know what type a component’s client controls will be.</strong></p>
+<p>For example, <code>this.children[0].aFunction("foo");</code> is bad. Particularly in decorator patterns (e.g., InputDecorator), it’s tempting to assume that a developer will always put a particular type of object (like an Input) inside. But the developer should be free to put an IconButton in the decorator alongside the Input, or to wrap the Input inside another control within the decorator.</p>
+<p>Don’t limit the freedom of developers to be creative. Typically, this may be avoided through the judicious use of events (bubbling up and waterfalling down).</p></li>
+<li><p><strong>If your kind contains controls that should not be deleted by the user, create those controls as chrome (i.e., in your kind definition).</strong></p>
+<p>When a developer instantiates your kind and calls <code>createComponent()</code> to add new controls to the instance, those controls are created as client controls, which may be freely added or removed as needed.</p>
+<p>By contrast, when you specify components in your kind definition, they are created as chrome controls (i.e., the <code>isChrome</code> flag is true); unlike client controls, chrome controls are built into the widget and cannot be directly modified by the user. The <code>destroyClientControls()</code> method allows the user to destroy all of the client (user-added) controls without affecting the internal chrome controls.</p>
+<p>If you need to create chrome controls dynamically at runtime (e.g., in <code>create()</code>), be sure to do one of the following:</p>
+<ul>
+<li><p>Create the controls using <code>createChrome()</code> instead of <code>createComponent()</code>; or</p></li>
+<li><p>Set <code>isChrome: true</code> on each control before passing it to <code>createComponent()</code></p></li>
+</ul>
+<p>Controls created in either of these ways will be treated as chrome, and will not be affected by calls to <code>destroyClientControls()</code>.</p></li>
+<li><p><strong>Update any cached size/position data in resizeHandler.</strong></p>
+<p>One common bug occurs when the results of size/position calculations (e.g., calls to <code>getBounds()</code>) are made and cached in <code>rendered()</code>, but are not refreshed when the component is resized/reflowed.</p></li>
+<li><p><strong>Avoid sending <code>onChange</code>-type events initially.</strong></p>
+<p>Although arguments could be made either way, the general direction we have chosen is to not send <code>onChange</code>-type events when setting a property’s initial value, only when the value changes after render.</p></li>
+<li><p><strong>Don’t re-invent the wheel with utility functions.</strong></p>
+<p>All framework developers should familiarize themselves with the many useful, cross-platform-compatible utilities provided by <code>enyo.lang</code>, <code>enyo.dom</code>, <code>enyo.Component</code>, <code>enyo.UIComponent</code>, and <code>enyo.Control</code>. Whether you need to check whether one component is a descendant of another, convert a style string into an array (and back), or filter an array of data, chances are good that someone else has already had to do something similar. And that person might well have built the functionality you need into the framework.</p></li>
+</ul>
+<h2 id="im-contributing-code-to-the-enyo-framework">I’m Contributing Code to the Enyo Framework…</h2>
+<p>Great! In that case, you’re creating code that will definitely be used (or, in the case of samples, studied) by others. We have some special words of advice for you, beyond what has already been discussed:</p>
+<ul>
+<li><p><strong>Don’t commit “commented-out” code.</strong></p>
+<p>You make a weak statement when you commit commented code–either you forgot to uncomment something you were testing, or you weren’t willing to remove the comment completely because you were unsure about it. In the former case, it’s a bug; in the latter case, you shouldn’t be committing code that you have doubts about.</p>
+<p>Don’t leave comments in for “history”–our version control system already tracks commit history. If you removed something and want to make sure that someone else doesn’t add it back, leave a comment describing what was removed and why, instead of leaving a cryptically commented line of code.</p></li>
+<li><p><strong>Don’t commit debug console log statements.</strong></p></li>
+<li><p><strong>Be sure that every commit includes the Enyo DCO signoff line:</strong></p>
+<pre><code>    Enyo-DCO-1.1-Signed-Off-By: &lt;Your Name&gt; (&lt;your email address&gt;)</code></pre></li>
+<li><p><strong>Add unit tests where possible.</strong></p>
+<p>Any major code changes to the Enyo library should have one or more corresponding unit tests. In addition, any new UI kind needs at least one sample that exercises all of the kind’s properties.</p></li>
+<li><p><strong>Keep samples simple.</strong></p>
+<p>If you are creating a sample and need to use a lot of custom CSS/JavaScript to make the widget look good or function correctly, the widget probably needs more work to make it more generally usable. Samples should exercise all of a control’s functionality while using as little custom code as possible.</p></li>
+<li><p><strong>Don’t include default properties on components used in samples.</strong></p>
+<p>Developers WILL copy and paste code from samples, so if you define a property on a kind, developers will assume they need to do the same.</p></li>
+</ul>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../js/main.js"></script>
+  <script type="text/javascript" src="../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

@@ -1,0 +1,408 @@
+<div class="row">
+	<div class="col-sm-4 col-sm-push-8 features">
+		<div class="sub-namespaces">
+			<h1><a href="javascript:find(':sub-namespaces');">Sub-Namespaces</a></h1>
+			<div>
+<span class="no-sub-namespaces">No sub-namespaces</span>
+</div>
+		</div>
+		<div class="kinds">
+			<h1><a href="javascript:find(':kinds');">Kinds</a></h1>
+			<div>
+<span class="no-kinds">No kinds</span>
+</div>
+		</div>
+		<div class="mixins">
+			<h1><a href="javascript:find(':mixins');">Mixins</a></h1>
+			<div>
+<span class="no-mixins">No mixins</span>
+</div>
+		</div>
+		<div class="properties">
+			<h1><a href="javascript:find(':properties');">Properties</a></h1>
+			<div>
+<ul>
+	
+	<li class="property private ">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':defaultNamespace');">defaultNamespace</a>
+	</li>
+	
+	<li class="property private ">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':features');">features</a>
+	</li>
+	
+	<li class="property private ">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':statics');">statics</a>
+	</li>
+	
+</ul>
+</div>
+		</div>
+		<div class="methods">
+			<h1><a href="javascript:find(':methods');">Methods</a></h1>
+			<div>
+
+<ul>
+	
+	<li class="method public ">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':extend');">extend</a>
+	</li>
+	
+	<li class="method private ">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':extendMethods');">extendMethods</a>
+	</li>
+	
+	<li class="method private ">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':finish');">finish</a>
+	</li>
+	
+	<li class="method private ">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':inherited');">inherited</a>
+	</li>
+	
+	<li class="method private ">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':makeCtor');">makeCtor</a>
+	</li>
+	
+	<li class="method public ">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':subclass');">subclass</a>
+	</li>
+	
+</ul>
+</div>
+		</div>
+	</div>
+	<div class="col-sm-8 col-sm-pull-4 namespace main-container">
+
+
+		<div class="header">
+
+			<h2>NAMESPACE</h2>
+			<h1><a href="#/namespace/enyo">enyo</a>.kind</h1>
+			<div class="source">From enyo26/enyo/source/kernel/Oop.js</div>
+		</div>
+
+		<div class="section description">
+			<h1>Description</h1>
+			<div><p>Creates a JavaScript <a class="glossary" href="#/glossary:constructor">constructor</a> function with
+a prototype defined by <code>props</code>. <strong>All constructors must have a unique name.</strong></p>
+<p><code>enyo.kind()</code> makes it easy to build a constructor-with-prototype (like a
+class) that has advanced features like prototype-chaining
+(<a class="glossary" href="#/glossary:inheritance">inheritance</a>).</p>
+<p>A plug-in system is included for extending the abilities of the
+<a class="glossary" href="#/glossary:kind">kind</a> generator, and constructors are allowed to
+perform custom operations when subclassed.</p>
+<p>If you make changes to <code>enyo.kind()</code>, be sure to add or update the appropriate
+<a href="@link https://github.com/enyojs/enyo/tree/master/tools/test/core/tests">unit tests</a>.</p>
+<p>For more information, see the documentation on
+<a class="linkplain" href="../developer-guide//key-concepts/kinds.html">Kinds</a> in the Enyo Developer Guide.</p></div>
+		</div>
+		<div class="section sub-namespaces"><a name="sub-namespaces"></a>
+<h1>Sub-Namespaces</h1>
+
+<strong>No sub-namespaces</strong>
+</div>
+		<div class="section kinds"><a name="kinds"></a>
+<h1>Kinds</h1>
+
+<strong>No kinds</strong>
+</div>
+		<div class="section mixins"><a name="mixins"></a>
+<h1>Mixins</h1>
+
+<strong>No mixins</strong>
+</div>
+		<div class="section properties"><a name="properties"></a>
+<h1>Properties</h1>
+
+<a name="defaultNamespace"></a>
+<div class="entry property private ">
+	<div class="header">
+		<span class="access private">private</span>
+		<span class="name">defaultNamespace</span>
+		<span>:</span>
+		<span class="type"><a class="glossary" href="#/glossary:undefined">undefined</a></span>
+	</div>
+	<div class="content">
+		
+		<div class="default">Default: </div>
+		<div class="description"><p>Classes referenced by name may omit this namespace (e.g., &quot;Button&quot; instead of &quot;enyo.Button&quot;)</p></div>
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/enyo/source/kernel/Oop.js</span>
+			<span class="line">:223</span>
+		</div>
+	</div>
+</div>
+<a name="features"></a>
+<div class="entry property private ">
+	<div class="header">
+		<span class="access private">private</span>
+		<span class="name">features</span>
+		<span>:</span>
+		<span class="type"><a class="glossary" href="#/glossary:undefined">undefined</a></span>
+	</div>
+	<div class="content">
+		
+		<div class="default">Default: </div>
+		<div class="description"><p>Feature hooks for the oop system</p></div>
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/enyo/source/kernel/Oop.js</span>
+			<span class="line">:230</span>
+		</div>
+	</div>
+</div>
+<a name="statics"></a>
+<div class="entry property private ">
+	<div class="header">
+		<span class="access private">private</span>
+		<span class="name">statics</span>
+		<span>:</span>
+		<span class="type"><a class="glossary" href="#/glossary:undefined">undefined</a></span>
+	</div>
+	<div class="content">
+		
+		<div class="default">Default: </div>
+		<div class="description"></div>
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/enyo/source/kernel/Oop.js</span>
+			<span class="line">:389</span>
+		</div>
+	</div>
+</div>
+
+</div>
+		<div class="section methods"><a name="methods"></a>
+<h1>Methods</h1>
+
+
+<a name="extend"></a>
+<div class="entry method public ">
+	<div class="header">
+		<span class="access public">public</span>
+		<span class="name">extend&#040;<span class="header-params"><span class="param ">props</span><span class="param optional">, target</span></span>&#041;</span><span>&rarr;</span>
+		<span class="header-returns"><a class="glossary" href="#/glossary:Object">Object</a></span></div>
+	<div class="content">
+		
+		<div class="description"><p>Allows for extension of the current <a class="glossary" href="#/glossary:kind">kind</a> without
+creating a new kind. This method is available on all
+<a class="glossary" href="#/glossary:constructor">constructors</a>, although calling it on a
+<a class="glossary" href="#/glossary:deferred">deferred</a> constructor will force it to be
+resolved at that time. This method does not re-run the
+<a href="#/namespace/enyo.kind:features">enyo.kind.features</a> against the constructor or instance.</p></div>
+		
+<div class="subsection params">
+	<h3>Parameters</h3>
+	<ul>
+	
+	<li>
+		<span class="name ">props</span>
+		
+		
+		
+		<div class="type">Type: <a class="glossary" href="#/glossary:Object">Object</a>, [<a class="glossary" href="#/glossary:Object">Object</a>]</div>
+		
+		<div class="description"><p>A <a class="glossary" href="#/glossary:Object">hash</a> or <a class="glossary" href="#/glossary:Array">array</a>
+    of <a class="glossary" href="#/glossary:Object">hashes</a>. Properties will override
+    <a class="glossary" href="#/glossary:Object.prototype">prototype</a> properties. If a
+    method that is being added already exists, the new method will
+    supersede the existing one. The method may call
+    <code>this.inherited()</code> or be wrapped with <code>enyo.inherit()</code> to call
+    the original method (this chains multiple methods tied to a
+    single <a class="glossary" href="#/glossary:kind">kind</a>).</p></div>
+	</li>
+	
+	<li>
+		<span class="name optional">target</span>
+		
+		<div class="optional">This parameter is optional</div>
+		
+		
+		
+		<div class="type">Type: <a class="glossary" href="#/glossary:Object">Object</a></div>
+		
+		<div class="description"><p>The instance to be extended. If this is not specified, then the
+    <a class="glossary" href="#/glossary:constructor">constructor</a> of the
+    <a class="glossary" href="#/glossary:Object">object</a> this method is being called on will
+    be extended.</p></div>
+	</li>
+	
+	</ul>
+</div>
+
+
+		
+<div class="subsection returns">
+	<h3>Returns</h3>
+		<div class="description"><p>The constructor of the class, or specific
+    instance, that has been extended.</p></div>
+</div>
+
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/enyo/source/kernel/Oop.js</span>
+			<span class="line">:430</span>
+		</div>
+	</div>
+</div>
+
+
+<a name="extendMethods"></a>
+<div class="entry method private ">
+	<div class="header">
+		<span class="access private">private</span>
+		<span class="name">extendMethods&#040;&#041;</span><span>&rarr;</span>
+		<span class="header-returns"><a class="glossary" href="#/glossary:undefined">undefined</a></span></div>
+	<div class="content">
+		
+		<div class="description"><p>Used internally by several mechanisms to allow safe and normalized handling for extending a
+<a class="glossary" href="#/glossary:kind">kind's</a> super-methods. It can take a
+<a class="glossary" href="#/glossary:constructor">constructor</a>, a <a class="glossary" href="#/glossary:Object.prototype">prototype</a>, or an
+instance.</p></div>
+		
+
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/enyo/source/kernel/Oop.js</span>
+			<span class="line">:240</span>
+		</div>
+	</div>
+</div>
+
+
+<a name="finish"></a>
+<div class="entry method private ">
+	<div class="header">
+		<span class="access private">private</span>
+		<span class="name">finish&#040;&#041;</span><span>&rarr;</span>
+		<span class="header-returns"><a class="glossary" href="#/glossary:undefined">undefined</a></span></div>
+	<div class="content">
+		
+		<div class="description"></div>
+		
+
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/enyo/source/kernel/Oop.js</span>
+			<span class="line">:92</span>
+		</div>
+	</div>
+</div>
+
+
+<a name="inherited"></a>
+<div class="entry method private ">
+	<div class="header">
+		<span class="access private">private</span>
+		<span class="name">inherited&#040;&#041;</span><span>&rarr;</span>
+		<span class="header-returns"><a class="glossary" href="#/glossary:undefined">undefined</a></span></div>
+	<div class="content">
+		
+		<div class="description"><p>Called by <a href="#/kind/enyo.Object">enyo.Object</a> instances attempting to access super-methods
+of a parent class (<a class="glossary" href="#/glossary:kind">kind</a>) by calling
+<code>this.inherited(arguments)</code> from within a kind method. This can only be done
+safely when there is known to be a super class with the same method.</p></div>
+		
+
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/enyo/source/kernel/Oop.js</span>
+			<span class="line">:289</span>
+		</div>
+	</div>
+</div>
+
+
+<a name="makeCtor"></a>
+<div class="entry method private ">
+	<div class="header">
+		<span class="access private">private</span>
+		<span class="name">makeCtor&#040;&#041;</span><span>&rarr;</span>
+		<span class="header-returns"><a class="glossary" href="#/glossary:undefined">undefined</a></span></div>
+	<div class="content">
+		
+		<div class="description"></div>
+		
+
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/enyo/source/kernel/Oop.js</span>
+			<span class="line">:193</span>
+		</div>
+	</div>
+</div>
+
+
+<a name="subclass"></a>
+<div class="entry method public ">
+	<div class="header">
+		<span class="access public">public</span>
+		<span class="name">subclass&#040;<span class="header-params"><span class="param ">ctor</span><span class="param ">, props</span></span>&#041;</span><span>&rarr;</span>
+		<span class="header-returns"><a class="glossary" href="#/glossary:undefined">undefined</a></span></div>
+	<div class="content">
+		
+		<div class="description"><p>A <a class="glossary" href="#/glossary:kind">kind</a> may set its own <code>subclass()</code> method as a
+static method for its <a class="glossary" href="#/glossary:constructor">constructor</a>. Whenever
+it is subclassed, the constructor and properties will be passed through
+this method for special handling of important features.</p></div>
+		
+<div class="subsection params">
+	<h3>Parameters</h3>
+	<ul>
+	
+	<li>
+		<span class="name ">ctor</span>
+		
+		
+		
+		<div class="type">Type: <a class="glossary" href="#/glossary:function">function</a></div>
+		
+		<div class="description"><p>The <a class="glossary" href="#/glossary:constructor">constructor</a> of the
+    <a class="glossary" href="#/glossary:kind">kind</a> being subclassed.</p></div>
+	</li>
+	
+	<li>
+		<span class="name ">props</span>
+		
+		
+		
+		<div class="type">Type: <a class="glossary" href="#/glossary:Object">Object</a></div>
+		
+		<div class="description"><p>The properties of the kind being subclassed.</p></div>
+	</li>
+	
+	</ul>
+</div>
+
+
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/enyo/source/kernel/Oop.js</span>
+			<span class="line">:403</span>
+		</div>
+	</div>
+</div>
+
+
+</div>
+	</div>
+</div>

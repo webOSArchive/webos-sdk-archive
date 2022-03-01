@@ -1,0 +1,151 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../../../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Detail Pages</h1>
+<h2 id="problem">Problem</h2>
+<p>After navigating through panels or a top drawer, a user discovers her desired content (e.g., a movie she wants to watch). This content has a distinct and necessary set of metadata that should be prominently displayed, including a plot summary, list of cast members, ratings, and reviews.</p>
+<h2 id="solution">Solution</h2>
+<p>The layout of the detail pages should be consistent within an app, even if the data types and attributes will vary from one page of content to the next. Sectioned detail pages allow users to quickly scroll to or click through to their desired content, while maintaining easy access to an application’s primary functions. Consistent placement of the action buttons (e.g., Play, Buy, Share, Favorite) and section navigation will assist the user with navigation, making for a more comfortable browsing experience.</p>
+<h2 id="how-to-use">How to Use</h2>
+<p>Metadata should be segmented into discrete containers with labeled dividers. The most important information should be placed at the top of the page, in the first block. When appropriate, a thumbnail image should be included.</p>
+<p>Make important pieces of data stand out visually by using a distinctive size, color, spacing, contrast, etc. The content in each section should be consistent in its visual representation, distribution, alignment, and spacing from other sections.</p>
+<p>Each block should be shorter than the height of the viewable content area, to allow enough room for the next block to peek into view. If a block includes a long description, use a More/Less button with an expandable text field to show/hide additional text that would otherwise not fit in the viewable content area. Only blocks with expanded text fields may be taller than the height of the viewable content area.</p>
+<p>If a block includes a long list of thumbnail images, only show a single row. Use a More button to open the full list of thumbnails in the next panel.</p>
+<p>Detail pages with a lot of sections may be divided into two columns, one for the sectioned details (e.g., plot summary, cast, reviews) and the other for a Jump to Anchor Menu and any premium action buttons that deserve additional attention (e.g., Watch or Buy).</p>
+<h2 id="example">Example</h2>
+<figure>
+<img src="../../../assets/dg-displaying-data-detail-pages-1.jpg" alt="Sectioned Detail Page: Top" /><figcaption><em>Sectioned Detail Page: Top</em></figcaption>
+</figure>
+<p>This is an example of a Sectioned Detail Page for a movie; the same design may be easily applied to a TV show, CD, or other such item.</p>
+<p>A Jump to Anchor Menu is included on the right side of the panel to let the user easily jump to different sections in this view.</p>
+<p>The Jump to Anchor Menu and large action buttons above will remain fixed on the right while the user scrolls through the main content area on the left.</p>
+<figure>
+<img src="../../../assets/dg-displaying-data-detail-pages-2.png" alt="Sectioned Detail Page: Full Panel" /><figcaption><em>Sectioned Detail Page: Full Panel</em></figcaption>
+</figure>
+<p>This is a visualization of the same Sectioned Detail Page without the frame of the TV, to demonstrate the length of the panel and the value of using sections.</p>
+<p>Clicking the <strong>More Info</strong> button under the plot summary will expand the text field to show more details.</p>
+<p>Clicking the <strong>More Cast and Crew</strong> button under “Cast and Crew”, or the <strong>View More</strong> button under “Users Also Watched”, will open a new panel with more content of the given type.</p>
+<p>Clicking an item in the Jump to Anchor menu will automatically scroll the panel’s content (on the left) to the corresponding section.</p>
+<h2 id="why">Why</h2>
+<p>A sectioned details page helps to keep the app hierarchy flat by making it easy to scroll through the most important information in each section using the Magic Remote Scroll Wheel or Conventional Remote 5-way. This, in turn, reduces the need to navigate in and out of additional panels.</p>
+<h2 id="what-to-avoid">What to Avoid</h2>
+<p>Do not enable vertical scrolling within a single section. All sections should scroll together as one unit.</p>
+<p>Do not enable horizontal scrolling if there are additional sections, Jump to Anchor menus, or visible panels to the right or left of the current section. In such cases, horizontal scrolling will prevent 5-way users from easily accessing anything on either side of the current section.</p>
+<p><strong>Do not expand a list of thumbnails within the same panel. This will cause technical errors.</strong></p>
+<h2 id="related-topics">Related Topics</h2>
+<p>Patterns: <a href="../acting-on-data.html">Acting on Data</a>, Jump to Anchor, Loading</p>
+<p>Controls: <a href="../../controls/button.html">Button</a>, Expandable Text</p>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../../../js/main.js"></script>
+  <script type="text/javascript" src="../../../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

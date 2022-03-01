@@ -1,0 +1,147 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">List</h1>
+<h2 id="about">About</h2>
+<p>A List is a control used to organize groups of UI controls or other content that a user may interact with or browse through. Lists may be oriented either vertically or horizontally. When a list’s contents overflow, a scroller will appear.</p>
+<h2 id="api-reference">API Reference</h2>
+<p><a href="../../..//#/kind/moon.DataList">moon.DataList</a></p>
+<h2 id="behavior-and-states">Behavior and States</h2>
+<h3 id="behavior">Behavior</h3>
+<p>Lists may be oriented either vertically or horizontally.</p>
+<p>When a List is first opened, or navigated to, the focus moves by default to the first list item, whether a UI control or content. In a vertical list, this is the topmost list item; in a horizontal list, it is the leftmost Item.</p>
+<p>As focus moves through the list via 5-way navigation, list items remain stationary until the last fully visible list item is in focus. For longer lists, once the user navigates past this item, the list will shift to accommodate the next list item. If there are multiple offscreen list items, this process will be repeated until the end (or beginning) of the list is reached.</p>
+<p>Alternatively, users may use scroll bars for navigation when a list goes beyond the screen. Scroll bars are only visible when a list item is in focus.</p>
+<h3 id="states">States</h3>
+<p>Lists do not have states; list content may be in either the normal state or the focused state. The UI controls in a list retain their usual states.</p>
+<p>In a typical list, the focus starts on the topmost item. As focus moves downward, the list items remain stationary until the last fully visible list item is in focus. Subsequent down arrow keypresses will move the focus one item per press.</p>
+<h3 id="scrolling">Scrolling</h3>
+<p>Lists can scroll horizontally or vertically.</p>
+<p>Vertically-scrolling lists require an 80-pixel area on the right side of the container to accommodate the scroller. Similarly, horizontally-scrolling lists require an 80-pixel area on the bottom side of the container to accommodate the scroller. The scroller is visible only when the focus is on the list container.</p>
+<p>Two scroller arrow buttons appear when focus is over or inside a list. The buttons advance the content one “page” each time the button is pressed. In this context, a page is equal to the amount of content visible in the scrolling region.</p>
+<p>The scroll indicator bar (a vertical line indicating the amount of content in the list) is non-actionable and only appears during scrolling action, even when focus is inside a list.</p>
+<h4 id="accelerated-scrolling">Accelerated Scrolling</h4>
+<p>When focus is inside a list and the down- or up-arrow button on the remote control is pressed and held (long press), the list scrolling speed increases over time, allowing for very fast and accurate scrolling through long lists. This accelerated scrolling behavior may also be invoked by long-pressing the onscreen scroller pagination buttons.</p>
+<h2 id="illustration">Illustration</h2>
+<p>Here we see how a list item is repeated to create a list.</p>
+<p><img src="../../assets/dg-controls-lists-1.png" /></p>
+<p>This list does not have focus, so its scroller is not visible.</p>
+<p><img src="../../assets/dg-controls-lists-2.jpg" /></p>
+<p>When the list receives focus, the scroller appears. In the following example, the list is at the top, so only the down scroll button is shown.</p>
+<p><img src="../../assets/dg-controls-lists-3.jpg" /></p>
+<p>The scroll indicator (vertical line) only appears while the list is being scrolled. Here we see that the down scroll button has focus. Each press of this button will advance the list one “page” at a time.</p>
+<p><img src="../../assets/dg-controls-lists-4.jpg" /></p>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../../js/main.js"></script>
+  <script type="text/javascript" src="../../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

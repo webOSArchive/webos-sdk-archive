@@ -1,0 +1,139 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Data Lists</h1>
+<p>In addition to the basic list kinds (List, Repeater, and GridList), Enyo and Moonstone offer a separate set of data list kinds, which feature built-in support for data binding. If you’ve designed your app to use Enyo’s data layer, you’ll find these controls to be both convenient and powerful.</p>
+<p>(<strong>Note:</strong> The following discussion assumes familiarity with the concepts presented in <a href="../managing-data/building-data-driven-apps.html">Building Data-Driven Apps</a>; if you haven’t read that article, it may be worthwhile to do so now.)</p>
+<h2 id="enyo.datarepeater">enyo.DataRepeater</h2>
+<p><a href="../../..//#/kind/enyo.DataRepeater">enyo.DataRepeater</a> is an <a href="../../..//#/kind/enyo.Control">enyo.Control</a> that iterates over the items in an <a href="../../..//#/kind/enyo.Collection">enyo.Collection</a>, repeatedly rendering and synchronizing data records (instances of <a href="../../..//#/kind/enyo.Model">enyo.Model</a>) with properties on its own child components.</p>
+<p>For each record in the collection, a corresponding child control is rendered in the DataRepeater. If the appropriate data bindings exist, child controls will automatically update when properties on the underlying records are modified; if a record is destroyed, the corresponding child will also be destroyed.</p>
+<h2 id="enyo.datalist">enyo.DataList</h2>
+<p><a href="../../..//#/kind/enyo.DataList">enyo.DataList</a> is an <code>enyo.DataRepeater</code> that employs a paginated scrolling scheme to enhance performance with larger data sets. The data is provided to the DataList by the <code>enyo.Collection</code> set as the value of the DataList’s <code>collection</code> property.</p>
+<p>Be careful when deciding how to lay out the list’s children. When there are a large number of child elements, the layout process can be taxing for the browser. Avoid dynamically-updated layouts that require lots of calculations each time the data in the view is updated. Try to use CSS whenever possible.</p>
+<p>While paging through data, <code>enyo.DataList</code> emits the <code>paging</code> event, which you may handle to make updates on a per-page basis, as necessary. You may register for this event by calling <code>addListener()</code> and specifying the event, along with a callback method.</p>
+<p>The callback method receives a reference to the <code>enyo.DataList</code>, the name of the event (<code>paging</code>), and a hash with the properties <code>start</code>, <code>end</code>, and <code>action</code>, referring, respectively, to the lowest active index in the data set, the highest active index, and the action that triggered the paging. The value of <code>action</code> may be either <code>"scroll"</code> or <code>"reset"</code>.</p>
+<h2 id="enyo.datagridlist">enyo.DataGridList</h2>
+<p><a href="../../..//#/kind/enyo.DataGridList">enyo.DataGridList</a> is a paginated <code>enyo.DataList</code> designed to lay out its children in a grid pattern. As in the DataList, the child controls in a DataGridList are directly linked to underlying records in an <code>enyo.Collection</code>.</p>
+<p>DataGridList is flexible in its handling of layout, so the spacing of its children must be set using the kind’s available API (e.g., the <code>spacing</code>, <code>minWidth</code>, and <code>minHeight</code> properties). Note that a DataGridList will attempt to grow or shrink the size of its children in order to keep them evenly spaced.</p>
+<h2 id="moon.datalist-and-moon.datagridlist">moon.DataList and moon.DataGridList</h2>
+<p>Moonstone offers its own variants of DataList and DataGridList–namely, <a href="../../..//#/kind/moon.DataList">moon.DataList</a> and <a href="../../..//#/kind/moon.DataGridList">moon.DataGridList</a>. Aside from the addition of Moonstone visual styling and support for focus management using Spotlight, these Moonstone kinds are essentially the same as the Enyo kinds they are derived from.</p>
+<p>For an example of how <code>moon.DataGridList</code> may be used in an application, see the <a href="../../getting-started/moonstone-app-tutorial.html">Moonstone App Tutorial</a>.</p>
+<h2 id="enyo.gridlistimageitem">enyo.GridListImageItem</h2>
+<p><a href="../../..//#/kind/enyo.GridListImageItem">enyo.GridListImageItem</a> is a convenience component that may be used inside an <code>enyo.DataGridList</code> to display an image grid.</p>
+<h2 id="moon.gridlistimageitem">moon.GridListImageItem</h2>
+<p><a href="../../..//#/kind/moon.GridListImageItem">moon.GridListImageItem</a> extends <code>enyo.GridListImageItem</code>, adding Moonstone-specific configuration, styling, decorators and Spotlight/focus-state management.</p>
+<p>Add instances of <code>moon.GridListImageItem</code> as components of a <code>moon.DataGridList</code> to create an image grid.</p>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../../js/main.js"></script>
+  <script type="text/javascript" src="../../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

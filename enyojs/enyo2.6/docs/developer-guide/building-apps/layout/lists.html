@@ -1,0 +1,188 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Lists</h1>
+<p>Most applications need to display a list of items of one kind or another. Sometimes the items in the list are very simple, like the name of a contact, while other times they are complex, like a drawer containing prompts and buttons.</p>
+<p>The Enyo framework and Moonstone library offer a robust set of tools for building lists in your applications.</p>
+<h2 id="behavior">Behavior</h2>
+<p>Before we examine the technical aspects of working with Lists, let’s take a moment to consider how lists behave in Enyo:</p>
+<ul>
+<li><p>The contents of a List may scroll either vertically or horizontally.</p></li>
+<li><p>Lists scroll within a defined area.</p></li>
+<li><p>Lists are paginated based on the number of visible items.</p></li>
+<li><p>In a typical list, the focus starts (by default) on the topmost item in the list. As you go down the list, the focus moves, but the list content is static until the last fully visible item is in focus. Then the list starts to move, with the focus stepping through the list one item per press.</p></li>
+</ul>
+<h2 id="list-items">List Items</h2>
+<p>Each item in a list may contain a text string, an image, or both. The Moonstone library offers kinds that implement these basic types of list items, as well as some with more advanced features. For details, see the separate documentation for <a href="../controls/list-items.html">List Items</a>.</p>
+<h2 id="list-kinds">List Kinds</h2>
+<p>It’s quite a challenge to create a <code>List</code> control supporting a large number of items that can be rendered and scrolled with good performance across the range of devices that Enyo supports. For this reason, Enyo has two broad strategies for dealing with lists of data. When an application needs a relatively small number of items (up to ~100) that are relatively complex, an <a href="../../..//#/kind/enyo.Repeater">enyo.Repeater</a> should be used. When an application needs a large number of relatively simple items (into the millions), an <a href="../../..//#/kind/enyo.List">enyo.List</a> should be used.</p>
+<h3 id="enyo.repeater">enyo.Repeater</h3>
+<p><a href="../../..//#/kind/enyo.Repeater">enyo.Repeater</a> is a simple control for making lists of items. A repeater does just what its name implies–it repeats the set of controls that are contained within it. The components of a repeater are copied for each item created, and are wrapped in a control that keeps the state of the item index. Any control may be placed inside a repeater, and applications may interact with these controls normally.</p>
+<p>The <code>count</code> property specifies the number of times the item controls are repeated; for each repetition, the <code>onSetupItem</code> event is fired. You may handle this event to customize the settings for individual rows, e.g.:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1">    <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;Repeater&quot;</span><span class="op">,</span> <span class="dt">count</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">onSetupItem</span><span class="op">:</span> <span class="st">&quot;setImageSource&quot;</span><span class="op">,</span> <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb1-2" title="2">        <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;Image&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb1-3" title="3">    ]<span class="op">},</span></a>
+<a class="sourceLine" id="cb1-4" title="4"></a>
+<a class="sourceLine" id="cb1-5" title="5">    ...</a>
+<a class="sourceLine" id="cb1-6" title="6"></a>
+<a class="sourceLine" id="cb1-7" title="7">    setImageSource<span class="op">:</span> <span class="kw">function</span>(inSender<span class="op">,</span> inEvent) <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-8" title="8">        <span class="kw">var</span> index <span class="op">=</span> <span class="va">inEvent</span>.<span class="at">index</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb1-9" title="9">        <span class="kw">var</span> item <span class="op">=</span> <span class="va">inEvent</span>.<span class="at">item</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb1-10" title="10">        <span class="va">item</span>.<span class="va">$</span>.<span class="va">image</span>.<span class="at">setSrc</span>(<span class="kw">this</span>.<span class="at">imageSources</span>[index])<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-11" title="11">        <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb1-12" title="12">    <span class="op">}</span></a></code></pre></div>
+<p>Be sure to return <code>true</code> from your <code>onSetupItem</code> handler to prevent other event handlers further up the tree from trying to modify your item control.</p>
+<p>The repeater will always be rebuilt after a call to <code>setCount</code>, even if the count didn’t change. This behavior differs from that of most properties, for which no action happens when a set-value call doesn’t modify the value. This is done to accommodate potential changes to the data model for the repeater, which may or may not have the same item count as before.</p>
+<p>(<strong>Note:</strong> If the contents of a repeater should scroll, then the repeater should be placed inside an <a href="../../..//#/kind/enyo.Scroller">enyo.Scroller</a>.)</p>
+<h3 id="enyo.list">enyo.List</h3>
+<p><a href="../../..//#/kind/enyo.List">enyo.List</a> is a control that displays a scrolling list of rows. It is designed to render a very large number of rows efficiently, having been optimized such that only a small portion of the list is rendered at any given time. This is done using a <a href="http://en.wikipedia.org/wiki/Flyweight_pattern">flyweight pattern</a>, in which controls placed inside the list are created once, but rendered for each list item. For this reason, it’s best to use only simple controls in a List, such as <a href="../../..//#/kind/enyo.Control">enyo.Control</a> and <a href="../../..//#/kind/enyo.Image">enyo.Image</a>.</p>
+<p>(Note that <code>enyo.List</code> includes a scroller; therefore, it should <em>not</em> be placed inside an <code>enyo.Scroller</code>.)</p>
+<p>A List’s <code>components</code> block contains the controls to be used for a single row. This set of controls will be rendered for each row. You may customize the row rendering by handling the <code>onSetupItem</code> event. For example, given the following list…</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1">    components<span class="op">:</span> [</a>
+<a class="sourceLine" id="cb2-2" title="2">        <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;List&quot;</span><span class="op">,</span> <span class="dt">fit</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">count</span><span class="op">:</span> <span class="dv">100</span><span class="op">,</span> <span class="dt">onSetupItem</span><span class="op">:</span> <span class="st">&quot;setupItem&quot;</span><span class="op">,</span> <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb2-3" title="3">            <span class="op">{</span><span class="dt">classes</span><span class="op">:</span> <span class="st">&quot;item&quot;</span><span class="op">,</span> <span class="dt">ontap</span><span class="op">:</span> <span class="st">&quot;itemTap&quot;</span><span class="op">,</span> <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb2-4" title="4">                <span class="op">{</span><span class="dt">name</span><span class="op">:</span> <span class="st">&quot;name&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb2-5" title="5">                <span class="op">{</span><span class="dt">name</span><span class="op">:</span> <span class="st">&quot;index&quot;</span><span class="op">,</span> <span class="dt">style</span><span class="op">:</span> <span class="st">&quot;float: right;&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb2-6" title="6">            ]<span class="op">}</span></a>
+<a class="sourceLine" id="cb2-7" title="7">        ]<span class="op">}</span></a>
+<a class="sourceLine" id="cb2-8" title="8">    ]</a></code></pre></div>
+<p>…one might write event handlers like so:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1">    setupItem<span class="op">:</span> <span class="kw">function</span>(inSender<span class="op">,</span> inEvent) <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-2" title="2">        <span class="co">// given some available data.</span></a>
+<a class="sourceLine" id="cb3-3" title="3">        <span class="kw">var</span> data <span class="op">=</span> <span class="kw">this</span>.<span class="at">data</span>[<span class="va">inEvent</span>.<span class="at">index</span>]<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-4" title="4">        <span class="co">// setup the controls for this item.</span></a>
+<a class="sourceLine" id="cb3-5" title="5">        <span class="kw">this</span>.<span class="va">$</span>.<span class="va">name</span>.<span class="at">setContent</span>(<span class="va">data</span>.<span class="at">name</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-6" title="6">        <span class="kw">this</span>.<span class="va">$</span>.<span class="va">index</span>.<span class="at">setContent</span>(<span class="va">inEvent</span>.<span class="at">index</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-7" title="7">    <span class="op">},</span></a>
+<a class="sourceLine" id="cb3-8" title="8">    itemTap<span class="op">:</span> <span class="kw">function</span>(inSender<span class="op">,</span> inEvent) <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-9" title="9">        <span class="at">alert</span>(<span class="st">&quot;You tapped on row: &quot;</span> <span class="op">+</span> <span class="va">inEvent</span>.<span class="at">index</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-10" title="10">    <span class="op">}</span></a></code></pre></div>
+<p>As this example illustrates, the identity of the row from which the event originated is available to us in the event’s <code>index</code> property (i.e., <code>inEvent.index</code>).</p>
+<p>It is possible to alter the contents of a row in an <code>enyo.List</code>, but in order to do so effectively, one must understand the implications of the flyweight pattern used in lists.</p>
+<h3 id="moon.list">moon.List</h3>
+<p><a href="../../..//#/kind/moon.List">moon.List</a> inherits from <code>enyo.List</code>, adding support for 5-way focus (Spotlight) and pagination buttons.</p>
+<p>Currently, <code>moon.List</code> requires a value of <code>"TouchScrollStrategy"</code> (or a subkind of <code>"TouchScrollStrategy"</code>) for the <code>strategyKind</code> property.</p>
+<h2 id="enyo.gridlist">enyo.GridList</h2>
+<p><a href="../../..//#/kind/enyo.GridList">enyo.GridList</a> extends <code>enyo.List</code>, providing a grid in which you may display multiple items per row (depending on the available container width). Three rendering modes are supported: “fixed-size”, “fluid-width”, and “variable-size” (with or without normalization of rows).</p>
+<p>In <code>fixedSize</code> mode–i.e., when <code>itemFixedSize</code> is set to <code>true</code>–all items are of the same size, which may be configured by setting the <code>itemWidth</code> and <code>itemHeight</code> properties at creation time.</p>
+<p>In <code>fluidWidth</code> mode–when <code>itemFluidWidth</code> is set to <code>true</code>–all items are of the same size, but that size may grow or shrink to fit the available container width, while respecting the minimum value specified in <code>itemMinWidth</code>.</p>
+<p>When <code>itemWidth</code> and <code>itemHeight</code> are not known at creation time, you may set <code>normalizeRows</code> to <code>true</code> and handle the <code>sizeupItem</code> event to set each item’s dimensions at runtime.</p>
+<h2 id="moon.gridlist">moon.GridList</h2>
+<p><a href="../../..//#/kind/moon.GridList">moon.GridList</a> extends <code>enyo.GridList</code>, adding Moonstone-specific configuration, styling, decorators, and Spotlight/focus-state management.</p>
+<h2 id="more-on-flyweight">More on Flyweight</h2>
+<p>Any time a list row is rendered, the <code>onSetupItem</code> event is fired. An application can therefore control the rendering of the controls in a row by calling methods on those controls within this event’s handler. An application can update a specific row by forcing it to render using the list’s <code>renderRow(inIndex)</code> method.</p>
+<p>In addition, it is possible to create controls with more complex interactions that are specifically tailored to function correctly in a flyweight context. Events for controls in a list will be decorated with both the index of the row being interacted with and the flyweight controller for the control (i.e., <code>event.index</code> and <code>event.flyweight</code>). The list’s <code>prepareRow(inIndex)</code> method can be used to assign the list’s controls to a specific list row, allowing persistent interactivity with that row. When the interaction is complete, the list’s <code>lockRow()</code> method should be called.</p>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../../js/main.js"></script>
+  <script type="text/javascript" src="../../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

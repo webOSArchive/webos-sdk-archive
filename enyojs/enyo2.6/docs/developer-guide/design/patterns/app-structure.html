@@ -1,0 +1,157 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Application Structure</h1>
+<p>Before choosing your first pattern, determine the structure of your application (flat or hierarchical) and then review the articles on <a href="app-structure/app-layers.html">Application Layers</a> and <a href="app-structure/panel-structure.html">Panel Structure</a>. You should then be able to <a href="app-structure/panel-patterns.html">choose your first pattern</a> (Always Viewing or Activity), which will set the scope for your application.</p>
+<h2 id="flat-applications">Flat Applications</h2>
+<h3 id="general-structure">General Structure</h3>
+<p>A flat application structure is used to present a single activity in a single view, or multiple activities that exist as peers (i.e., each activity has direct access to the other activities).</p>
+<p><img src="../../assets/dg-app-structure-flat.png" /></p>
+<h3 id="how-to-use">How to Use</h3>
+<h4 id="single-activity">Single Activity</h4>
+<p>Single Activity applications, such as a Clock, Calculator, or Calendar, are not common on the TV. These apps tend to be more appropriate for personal computing devices such as phones, tablets, or computers. However, there are some fun single activity applications that can be created for TV, such as the Yule Log, Weather, or simple games like Mahjong.</p>
+<p><img src="../../assets/dg-yule-log.jpg" /></p>
+<p>Related Patterns: Full Screen Basement, Popup, Playback Controls</p>
+<h2 id="hierarchical-applications">Hierarchical Applications</h2>
+<h3 id="general-structure-1">General Structure</h3>
+<p>A hierarchical application structure supports multiple activities with deep navigation, where each level in the hierarchy has a different level of detail. Switching activities requires navigating to a higher level (in most cases, the top level).</p>
+<p><img src="../../assets/dg-app-structure-hierarchical.png" /></p>
+<h3 id="how-to-use-1">How to Use</h3>
+<h4 id="top-level">Top Level</h4>
+<p>The Top Level (Panel 1) of your application is commonly used as a launch pad for users to explore new items in different categories of the application, featured content, and/or promotions. Only information of the greatest importance to the user should be displayed here, along with the means to navigate the application’s main menu. This is where first impressions are made, so keep the content and layout visually rich and engaging.</p>
+<figure>
+<img src="../../assets/dg-rdio-top-level.jpg" alt="Rdio Top Level Page" /><figcaption><em>Rdio Top Level Page</em></figcaption>
+</figure>
+<p>Related Patterns: <a href="navigation/hub-and-spoke.html">Hub and Spoke</a>, <a href="displaying-data.html">Displaying Data</a>, <a href="app-structure/panel-patterns.html">Panel Patterns</a></p>
+<h4 id="category-views">Category Views</h4>
+<p>Category Views provide a slightly zoomed out view on an entire category of the application. This view commonly takes the form of a list with minimal details for each list item. When appropriate, the list should be organized with a dynamically interesting layout, while remaining intuitive and easy to navigate.</p>
+<figure>
+<img src="../../assets/dg-rdio-category-view.jpg" alt="Rdio Category View Page" /><figcaption><em>Rdio Category View Page</em></figcaption>
+</figure>
+<p>Related Patterns: <a href="displaying-data.html">Displaying Data</a>, Lists and Grids, <a href="acting-on-data.html">Acting on Data</a>, <a href="app-structure/panel-patterns.html">Panel Patterns</a></p>
+<h4 id="detail-pages">Detail Pages</h4>
+<p>The Detail Page is either the final destination in the app or the launching pad to the final destination. While the layout will vary depending on the content type, it should follow a simple pattern of displaying the most important information on top, with all other information easily navigable through simple scrolling. Complex detail pages should group different detail types into sections that only display a preview or subset of the data, along with a <strong>More</strong> button to expand the section either inline or in the next panel. Detail pages are also the best location for editing object-specific data (e.g., name, contact info, etc.).</p>
+<figure>
+<img src="../../assets/dg-rdio-detail-page.jpg" alt="Rdio Detail Page" /><figcaption><em>Rdio Detail Page</em></figcaption>
+</figure>
+<p>Related Patterns: <a href="displaying-data.html">Displaying Data</a>, <a href="displaying-data/detail-pages.html">Detail Pages</a>, Jump to Anchor, <a href="acting-on-data/edit-mode.html">Edit Mode</a>, <a href="app-structure/panel-patterns.html">Panel Patterns</a></p>
+<h4 id="full-screen-basement">Full Screen Basement</h4>
+<p>TV applications should take full advantage of the immersive experience the large screen affords the user. Whether the user is viewing a single video or photo, or participating in a video chat, the default/primary experience should be full-screen. The Always Viewing Pattern makes the most of this by always showing the basement and always loading selected content directly into the full screen basement.</p>
+<figure>
+<img src="../../assets/dg-rdio-full-screen-basement.jpg" alt="Rdio Full Screen Basement" /><figcaption><em>Rdio Full Screen Basement</em></figcaption>
+</figure>
+<p>Related Patterns: Video Playback, Slideshows</p>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../../js/main.js"></script>
+  <script type="text/javascript" src="../../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

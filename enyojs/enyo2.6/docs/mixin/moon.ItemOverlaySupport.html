@@ -1,0 +1,189 @@
+<div class="row">
+	<div class="col-sm-4 col-sm-push-8 features">
+		<div class="properties">
+			<h1><a href="javascript:find(':properties');">Properties</a></h1>
+			<div>
+<ul>
+	
+	<li class="property public ">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':autoHideBeginning');">autoHideBeginning</a>
+	</li>
+	
+	<li class="property public ">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':autoHideEnding');">autoHideEnding</a>
+	</li>
+	
+	<li class="property public ">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':beginningComponents');">beginningComponents</a>
+	</li>
+	
+	<li class="property public ">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':endingComponents');">endingComponents</a>
+	</li>
+	
+	<li class="property private ">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;<a href="javascript:find(':name');">name</a>
+	</li>
+	
+</ul>
+</div>
+		</div>
+		<div class="methods">
+			<h1><a href="javascript:find(':methods');">Methods</a></h1>
+			<div>
+
+<span class="no-methods">No methods</span>
+</div>
+		</div>
+		<div class="events">
+			<h1><a href="javascript:find(':events');">Events</a></h1>
+			<div>
+<span class="no-methods">No events</span>
+</div>
+		</div>
+	</div>
+	<div class="col-sm-8 col-sm-pull-4 mixin main-container">
+
+
+		<div class="header">
+
+			<h2>MIXIN</h2>
+			<h1><a href="#/namespace/moon">moon</a>.ItemOverlaySupport</h1>
+			<div class="source">From moonstone/source/ItemOverlay.js</div>
+		</div>
+
+		<div class="section description">
+			<h1>Description</h1>
+			<div><p>Provides a overlay layout support to moon.Item <a href="#/kind/moon.Item">moon.Item</a>.</p>
+<pre class="prettyprint source"><code>{kind: &quot;moon.Item&quot;, mixins: [&quot;moon.ItemOverlaySupport&quot;], beginningComponents: [
+    {kind: &quot;moon.Icon&quot;, icon: &quot;arrowlargeup&quot;, small: true},
+    {kind: &quot;moon.Icon&quot;, icon: &quot;arrowlargedown&quot;, small: true}
+],
+components: [
+    {kind: &quot;moon.MarqueeText&quot;, content: &quot;Item   with   icons   auto   hides&quot;}
+]}</code></pre></div>
+		</div>
+		<div class="section properties"><a name="properties"></a>
+<h1>Properties</h1>
+
+<a name="autoHideBeginning"></a>
+<div class="entry property public ">
+	<div class="header">
+		<span class="access public">public</span>
+		<span class="name">autoHideBeginning</span>
+		<span>:</span>
+		<span class="type"><a class="glossary" href="#/glossary:Boolean">Boolean</a></span>
+	</div>
+	<div class="content">
+		
+		<div class="default">Default: <a class="glossary" href="#/glossary:false">false</a></div>
+		<div class="description"><p>When <code>true</code>, the beginning controls in the overlay are only shown on focus; in
+other words, if the overlay is not focused, the controls will be hidden.</p></div>
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">moonstone/source/ItemOverlay.js</span>
+			<span class="line">:134</span>
+		</div>
+	</div>
+</div>
+<a name="autoHideEnding"></a>
+<div class="entry property public ">
+	<div class="header">
+		<span class="access public">public</span>
+		<span class="name">autoHideEnding</span>
+		<span>:</span>
+		<span class="type"><a class="glossary" href="#/glossary:Boolean">Boolean</a></span>
+	</div>
+	<div class="content">
+		
+		<div class="default">Default: <a class="glossary" href="#/glossary:false">false</a></div>
+		<div class="description"><p>When <code>true</code>, the ending controls in the overlay are only shown on focus; in
+other words, if the overlay is not focused, the controls will be hidden.</p></div>
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">moonstone/source/ItemOverlay.js</span>
+			<span class="line">:144</span>
+		</div>
+	</div>
+</div>
+<a name="beginningComponents"></a>
+<div class="entry property public ">
+	<div class="header">
+		<span class="access public">public</span>
+		<span class="name">beginningComponents</span>
+		<span>:</span>
+		<span class="type"><a class="glossary" href="#/glossary:Object">Object</a></span>
+	</div>
+	<div class="content">
+		
+		<div class="default">Default: <a class="glossary" href="#/glossary:null">null</a></div>
+		<div class="description"><p>The components block to create left overlay. Only created in creation time.</p></div>
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">moonstone/source/ItemOverlay.js</span>
+			<span class="line">:115</span>
+		</div>
+	</div>
+</div>
+<a name="endingComponents"></a>
+<div class="entry property public ">
+	<div class="header">
+		<span class="access public">public</span>
+		<span class="name">endingComponents</span>
+		<span>:</span>
+		<span class="type"><a class="glossary" href="#/glossary:Object">Object</a></span>
+	</div>
+	<div class="content">
+		
+		<div class="default">Default: <a class="glossary" href="#/glossary:null">null</a></div>
+		<div class="description"><p>The components block to create right overlay. Only created in creation time.</p></div>
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">moonstone/source/ItemOverlay.js</span>
+			<span class="line">:124</span>
+		</div>
+	</div>
+</div>
+<a name="name"></a>
+<div class="entry property private ">
+	<div class="header">
+		<span class="access private">private</span>
+		<span class="name">name</span>
+		<span>:</span>
+		<span class="type"><a class="glossary" href="#/glossary:undefined">undefined</a></span>
+	</div>
+	<div class="content">
+		
+		<div class="default">Default: </div>
+		<div class="description"></div>
+		
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">moonstone/source/ItemOverlay.js</span>
+			<span class="line">:106</span>
+		</div>
+	</div>
+</div>
+
+</div>
+		<div class="section methods"><a name="methods"></a>
+<h1>Methods</h1>
+
+<strong>No methods</strong>
+</div>
+		<div class="section events"><a name="events"></a>
+<h1>Events</h1>
+
+<strong>No events</strong>
+</div>
+	</div>
+</div>

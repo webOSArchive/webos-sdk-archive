@@ -1,0 +1,183 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Enyo 2.0.1 Release Notes</h1>
+<p>Welcome to Enyo 2.0.1. The following items have changes since the Enyo 2.0 release. (Note that this list is not comprehensive; see the commit history in GitHub for a complete list of changes.)</p>
+<h2 id="enyo">Enyo</h2>
+<ul>
+<li>Added <code>enyo.load()</code> API for loading files/packages at runtime.</li>
+<li>Added <code>enyo.singleton()</code> API, which implements a singleton design pattern.</li>
+<li>In <code>enyo.Ajax</code>, fixed issue causing failures when accessing file URLs via query string on Android. Also added optional <code>mimeType</code> property, which allows the MIME-Type of the XHR to be overridden.</li>
+<li>In <code>enyo.Async</code>, made <code>timeout</code> a published property and added documentation for it.</li>
+<li>In <code>enyo.OwnerProxy</code>, fixed issue affecting event bubbling for nested event handlers in a Repeater.</li>
+<li>In <code>enyo.Popup</code>, added down event tracking to fix oddities in window dismissal behavior. Also added a listener for <code>dragstart</code> event to hide the popup if <code>autoDismiss</code> is true and the drag is outside the popup or its children.</li>
+<li>In <code>enyo.Scrim</code>, added basic documentation.</li>
+<li>In <code>enyo.UiComponent</code>, when adding a child component, you can now specify the position within the components list where it will be added.</li>
+<li>Moved DOM measurement code from <code>enyo.FittableLayout</code> into <code>enyo.dom</code> to facilitate reuse.</li>
+<li>In <code>enyo.gesture</code>, added code to improve behavior in IE8.</li>
+<li>In <code>enyo.platform</code>, added <code>chrome</code> and <code>androidChrome</code> properties, referring to major version number of desktop Chrome browser and Android Chrome browser, respectively.</li>
+<li>In ‘enyo.kind’, fixed error checking to detect errors using undefined kinds, and added error checking to detect not using <code>new</code> to call generated constructors.</li>
+<li>Added a workaround for tap detection problems in the current Chrome for Android. The bug caused controls to be misidentified.</li>
+</ul>
+<h2 id="onyx">Onyx</h2>
+<ul>
+<li>Fixed issue causing <code>onyx.Button</code> controls to not be styled correctly when contained within an <code>onyx.Toolbar</code>.</li>
+<li>In <code>onyx.Drawer</code>, fixed issue causing nested drawers to not open fully.</li>
+<li>In <code>onyx.Icon</code>, added a disabled state (with associated styling); modified <code>onyx.IconButton</code> to work properly with it.</li>
+<li>In <code>onyx.InputDecorator</code>, added <code>alwaysLooksFocused</code> property.</li>
+<li>In <code>onyx.Menu</code>, added automatic scrolling when menu contains more items than can be displayed on screen at one time. Also fixed an issue that could cause menus to be cut off on the left side.</li>
+<li>In <code>onyx.MoreToolbar</code>, added <code>clientLayoutKind</code> property, which specifies layout scheme for client components. (Default is <code>"FittableColumnsLayout"</code>.) Also added temporary fix for issues with the “more” button (i.e., the ellipsized popup).</li>
+<li>Changed picker kinds (<code>onyx.Picker</code>, <code>onyx.FlyweightPicker</code>, <code>onyx.PickerButton</code>, <code>onyx.PickerDecorator</code>) to communicate via <code>onChange</code> events instead of <code>onSelect</code> events.</li>
+<li>In <code>onyx.ToggleButton</code>, fixed issue causing multiple <code>onChange</code> events to be fired while dragging the toggle to change the value.</li>
+<li>In <code>onyx.css</code>, added <code>"onyx-dark"</code> class for buttons. Also added styles to make progress animations Opera-compatible, and a style for ToggleButton opacity in IE8.</li>
+</ul>
+<h2 id="layout">Layout</h2>
+<ul>
+<li>In <code>enyo.Arranger</code>, made sure that <code>reflow()</code> is called to set up bounds data structures before the arranger is accessed.</li>
+<li>In <code>enyo.FlyweightRepeater</code>, added <code>clientClasses</code> and <code>clientStyle</code> properties to enable styling of wrapper component.</li>
+<li>In <code>enyo.LeftRightArranger</code>, replaced use of opacity with support for z-index management.</li>
+<li>In <code>enyo.Panels</code>, made <code>isScreenNarrow()</code> method public; also corrected name of property changed method for <code>narrowFit</code> property.</li>
+</ul>
+<h2 id="bootplate">Bootplate</h2>
+<ul>
+<li>Added quotes around paths so that paths containing whitespace won’t break deployment.</li>
+</ul>
+<h2 id="samples">Samples</h2>
+<ul>
+<li>Added ability to inspect each sample in the console.</li>
+<li>Removed deprecated samples.</li>
+<li>Added <code>Slideable</code> sample to Sampler app.</li>
+<li>Added workaround for tap recognition issues with Sampler app in Chrome mobile browser.</li>
+<li>Fixed issue causing improper formatting of Sampler app source code when viewed in IE8.</li>
+<li>Fixed possible infinite loop in <code>GridArranger</code>, which could cause “ArrangerSample” to freeze.</li>
+<li>In “CanvasBallsSample”, disabled propagation of drag events for the Input control where the number of balls is set.</li>
+<li>In “CheckboxSample”, fixed code for initializing checkbox state.</li>
+<li>In “InputSample”, added an <code>onChange</code> event handler to update the result field.</li>
+<li>In “ListPulldownSample”, removed ability to search on empty string.</li>
+<li>In “ProgressSample”, added examples of colored <code>ProgressBar</code> and <code>Slider</code> controls.</li>
+<li>In “ScrollerSample”, disabled panel dragging.</li>
+</ul>
+<h2 id="tools">Tools</h2>
+<ul>
+<li>Updated API Viewer to show published properties as top-level items in kinds.</li>
+<li>Added build/version information to API Viewer.</li>
+<li>Fixed issue with minifier script’s adding space when concatenating URLs.</li>
+</ul>
+<h2 id="documentation">Documentation</h2>
+<ul>
+<li>Throughout the framework, added documentation for numerous events, published properties, and public methods that had not been previously documented.</li>
+</ul>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../js/main.js"></script>
+  <script type="text/javascript" src="../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

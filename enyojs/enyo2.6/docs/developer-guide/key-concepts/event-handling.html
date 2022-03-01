@@ -1,0 +1,340 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Event Handling</h1>
+<p>Enyo employs a message-passing strategy for indirect communication between components. We refer to these messages as “events” to dovetail with common DOM usage. In general, events bubble up the component tree from child to parent. When using the <code>dom</code> package (part of the Enyo core), DOM events and custom events are unified.</p>
+<p>The use of events is key to enforcing encapsulation in your component design. In most cases, the child of a component should have no knowledge of its parent. Instead of calling functions on (and thus tightly binding itself to) its parent, a child should send events, which the parent may choose to handle or not handle.</p>
+<p>While sending events from child to parent is the standard paradigm in Enyo, in some situations the implementation of this model can result in inefficient and unwieldy code. Thus an alternative method of communication exists–this involves the use of <a href="../..//#/kind/enyo.Signals">enyo.Signals</a> and is discussed at the end of the current document.</p>
+<h2 id="sending-events">Sending Events</h2>
+<p>A component declares the events that it sends using an <code>events</code> block, e.g.:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1">    events<span class="op">:</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-2" title="2">        <span class="dt">onStateChanged</span><span class="op">:</span><span class="st">&quot;&quot;</span></a>
+<a class="sourceLine" id="cb1-3" title="3">    <span class="op">}</span></a></code></pre></div>
+<p>Note that, by convention, event names always start with <code>"on"</code>.</p>
+<p>For each event registered in a component’s <code>events</code> block, a helper function <code>do&lt;EventName&gt;(inEvent)</code> is created on the kind, which the component may call to send the event up the component tree. This function takes an optional <code>inEvent</code> parameter, which can contain event-specific information to be passed to the handler. For example, to send the <code>"onStateChanged"</code> event from the example above, a component would call</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1">    <span class="kw">this</span>.<span class="at">doStateChanged</span>(newState)  <span class="co">// parameter is specific to the &quot;onStateChanged&quot; event</span></a></code></pre></div>
+<p>Under the hood, the <code>do&lt;EventName&gt;</code> function wraps Enyo’s generic <code>bubble</code> function for sending events up the component tree:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1">    <span class="kw">this</span>.<span class="at">bubble</span>(inEventName <span class="op">&lt;,</span> inEvent<span class="op">,</span> inSender<span class="op">&gt;</span>)</a></code></pre></div>
+<ul>
+<li><p><code>inEventName</code> is the event name (including the <code>"on"</code> prefix).</p></li>
+<li><p><code>inEvent</code> is an optional object containing event-specific information (this is the same object listeners receive as <code>inEvent</code>, although it may be decorated, e.g., with the <code>originator</code> property). Note that this must be a JavaScript object, not a primitive.</p></li>
+<li><p><code>inSender</code> should almost always be omitted, although you could use it to force a particular sender for the next handler.</p></li>
+</ul>
+<p><strong>Note:</strong> Declaring an <code>events</code> block and using the <code>do&lt;EventName&gt;</code> helper function is preferable to calling <code>bubble()</code> directly, since the <code>events</code> block is more descriptive and serves to define the interface to your kind.</p>
+<h2 id="creating-handlers">Creating Handlers</h2>
+<p>An event handler is a function assigned to “catch” events bubbling up from children. For example:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1">    myEventHandler<span class="op">:</span> <span class="kw">function</span>(inSender<span class="op">,</span> inEvent) <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-2" title="2">        <span class="co">// Can return true to indicate that this event was handled and</span></a>
+<a class="sourceLine" id="cb4-3" title="3">        <span class="co">// propagation should stop</span></a>
+<a class="sourceLine" id="cb4-4" title="4">    <span class="op">}</span></a></code></pre></div>
+<ul>
+<li><p><code>inSender</code> is the immediate sender of the event–that is, the last <a href="../..//#/kind/enyo.Component">enyo.Component</a> to touch the event before passing it to <code>this</code>.</p></li>
+<li><p><code>inEvent</code> is an object that contains event data. For DOM events, this is the standard DOM event object. For custom events, it’s a custom object.</p></li>
+</ul>
+<p>The handler may return a truthy value to stop propagating the event. Otherwise, it will continue bubbling up the component tree.</p>
+<p>Note that the meaning of the return value is different from the classic DOM convention (historically, the return value would determine whether the default action occurs). If you need to control the default action on a DOM event, use the modern equivalent, <code>inEvent.preventDefault()</code>.</p>
+<p><code>inEvent.stopPropagation()</code> will not prevent propagation of events in Enyo; instead, return <code>true</code> from the handler.</p>
+<p>Because events propagate until stopped, an event’s sender (<code>inSender</code>) may be different from its originator (i.e., the component that originally fired the event). The originating component is available to the event handler as <code>inEvent.originator</code>.</p>
+<p>For example, when clicked, a button originates an <code>onclick</code> event, which bubbles up the control chain. The button’s parent may bubble the event up to the button’s grandparent. From the grandparent’s perspective, the originator is the button and the sender is the button’s parent.</p>
+<h2 id="attaching-handlers-to-events">Attaching Handlers to Events</h2>
+<p>There are two common ways of handling events in a component. The first is to set a handler name on an object owned by the component, like so:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1">    components<span class="op">:</span> [</a>
+<a class="sourceLine" id="cb5-2" title="2">        <span class="op">{</span><span class="dt">name</span><span class="op">:</span> <span class="st">&quot;thing&quot;</span><span class="op">,</span> <span class="dt">ontap</span><span class="op">:</span> <span class="st">&quot;thingTap&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb5-3" title="3">    ]<span class="op">,</span></a>
+<a class="sourceLine" id="cb5-4" title="4">    thingTap<span class="op">:</span> <span class="kw">function</span>(inSender<span class="op">,</span> inEvent) <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-5" title="5">        <span class="co">// do stuff</span></a>
+<a class="sourceLine" id="cb5-6" title="6">    <span class="op">}</span></a></code></pre></div>
+<p>The second is to name a catch-all handler in the <code>handlers</code> block, like so:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1">    handlers<span class="op">:</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-2" title="2">        <span class="dt">ontap</span><span class="op">:</span> <span class="st">&quot;anythingTap&quot;</span></a>
+<a class="sourceLine" id="cb6-3" title="3">    <span class="op">},</span></a>
+<a class="sourceLine" id="cb6-4" title="4">    anythingTap<span class="op">:</span> <span class="kw">function</span>(inSender<span class="op">,</span> inEvent) <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-5" title="5">        <span class="co">// do stuff</span></a>
+<a class="sourceLine" id="cb6-6" title="6">    <span class="op">}</span></a></code></pre></div>
+<p>Note that if you use both event handling strategies at the same time, you will receive the event in both places by default. You may avoid this behavior by preventing propagation in <code>thingTap()</code>. For example:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1">    components<span class="op">:</span> [</a>
+<a class="sourceLine" id="cb7-2" title="2">        <span class="op">{</span><span class="dt">name</span><span class="op">:</span> <span class="st">&quot;thing&quot;</span><span class="op">,</span> <span class="dt">ontap</span><span class="op">:</span> <span class="st">&quot;thingTap&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb7-3" title="3">    ]<span class="op">,</span></a>
+<a class="sourceLine" id="cb7-4" title="4">    handlers<span class="op">:</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-5" title="5">        <span class="dt">ontap</span><span class="op">:</span> <span class="st">&quot;anythingTap&quot;</span></a>
+<a class="sourceLine" id="cb7-6" title="6">    <span class="op">},</span></a>
+<a class="sourceLine" id="cb7-7" title="7">    thingTap<span class="op">:</span> <span class="kw">function</span>(inSender<span class="op">,</span> inEvent) <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-8" title="8">        <span class="co">// taps on _thing_ will bubble up to _anythingTap()_ also,</span></a>
+<a class="sourceLine" id="cb7-9" title="9">        <span class="co">// unless I stop propagation here</span></a>
+<a class="sourceLine" id="cb7-10" title="10">        <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span> <span class="co">// handled here, don&#39;t propagate</span></a>
+<a class="sourceLine" id="cb7-11" title="11">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb7-12" title="12">    anythingTap<span class="op">:</span> <span class="kw">function</span>(inSender<span class="op">,</span> inEvent) <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-13" title="13">        <span class="co">// do stuff</span></a>
+<a class="sourceLine" id="cb7-14" title="14">    <span class="op">}</span></a></code></pre></div>
+<p>If you need more sophisticated handling, you can use the <code>inSender</code> and <code>inEvent.originator</code> properties to help you discern the provenance of the event.</p>
+<h2 id="dom-events">DOM Events</h2>
+<p>In Enyo, DOM events are allowed to bubble all the way up to <code>document</code>, where they are handled by <code>enyo.dispatcher</code>. The dispatcher figures out where to send the event and provides hooks for various bits of event processing.</p>
+<p>Whenever possible, the dispatcher avoids disturbing original DOM events. To forcibly stop the bubbling of a DOM event, you may return <code>true</code> from the event’s handler method.</p>
+<p>In addition to the <code>target</code> property, which is set on all event objects, Enyo specifies a <code>dispatchTarget</code> property, which is set to the Enyo control containing the event target.</p>
+<p>The following DOM events are handled by Enyo:</p>
+<ul>
+<li>mousedown</li>
+<li>mouseup</li>
+<li>mouseover</li>
+<li>mouseout</li>
+<li>mousemove</li>
+<li>mousewheel</li>
+<li>click</li>
+<li>dblclick</li>
+<li>change</li>
+<li>keydown</li>
+<li>keyup</li>
+<li>keypress</li>
+<li>input</li>
+<li>paste</li>
+<li>copy</li>
+<li>cut</li>
+<li>resize</li>
+<li>load</li>
+<li>unload</li>
+<li>message</li>
+<li>hashchange</li>
+<li>webkitTransitionEnd</li>
+<li>transitionend</li>
+<li>webkitAnimationEnd</li>
+<li>animationEnd</li>
+</ul>
+<p>If there are additional DOM events that you want Enyo to handle, use the <code>enyo.dispatcher.listen()</code> method. For example, the following code sets up a handler for an event called <code>myEvent</code>:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1">    <span class="va">enyo</span>.<span class="va">dispatcher</span>.<span class="at">listen</span>(document<span class="op">,</span> <span class="st">&quot;myEvent&quot;</span><span class="op">,</span> handleMyEvent)<span class="op">;</span></a></code></pre></div>
+<p>Here the first parameter is an event receiver to listen on (typically <code>document</code> or <code>window</code>). The second parameter is the name of the event to listen for, and the third is the handler method.</p>
+<p>In addition to DOM events, there are a number of normalized input events that the dispatcher sends as synthesized “DOM-like” events (e.g., <code>ontap</code>, <code>ondown</code>, <code>onup</code>, <code>ondragstart</code>, <code>ondrag</code>, <code>ondragfinish</code>, <code>onenter</code>, and <code>onleave</code>). Most of these events work across platforms, so client code does not have to distinguish between touch and mouse interfaces. These events are discussed in detail in the following section.</p>
+<p>As a matter of convention, DOM events and DOM-like events remain lowercase when dispatched as Enyo events (i.e. <code>ontap</code>), but custom events declared by Enyo kinds use camel case (i.e. <code>onStateChanged</code>).</p>
+<h2 id="normalized-user-input">Normalized User Input</h2>
+<p>As noted above, Enyo supports a set of normalized, DOM-like events that work similarly across all supported platforms. These events are provided so that users can write a single set of event handlers for applications that run on both mobile and desktop platforms. They are needed because desktop and mobile platforms handle basic input differently. For example, desktop platforms provide mouse events, while mobile platforms support touch events and a limited set of mouse events for backward compatibility.</p>
+<h3 id="normalized-input-events">Normalized Input Events</h3>
+<p>Event normalization takes place in Enyo Core, in code from the <code>dom</code> (<code>drag.js</code>, <code>gesture.js</code>) and <code>touch</code> (<code>gesture.js</code>, <code>msevents.js</code>, <code>touch.js</code>) packages.</p>
+<p>The following normalized events are synthesized from the available DOM events:</p>
+<ul>
+<li><p><code>down</code> is generated when the pointer is pressed down.</p></li>
+<li><p><code>up</code> is generated when the pointer is released up.</p></li>
+<li><p><code>tap</code> is generated when the pointer is pressed down and released up. The target is the lowest DOM element that received both the related <code>down</code> and <code>up</code> events.</p></li>
+<li><p><code>move</code> is generated when the pointer moves.</p></li>
+<li><p><code>enter</code> is generated when the pointer enters a DOM node.</p></li>
+<li><p><code>leave</code> is generated when the pointer leaves a DOM node.</p></li>
+<li><p><code>dragstart</code> and <code>dragfinish</code> are sent for pointer moves that exceed a certain threshold.</p></li>
+<li><p><code>drag</code> and <code>drop</code> are sent to the original target of the pointer move, to provide information about the item being moved over (or released over) another element.</p></li>
+<li><p><code>dragover</code> and <code>dragout</code> are sent in addition to <code>over</code> and <code>out</code> while there is an active drag.</p></li>
+<li><p><code>hold</code> is generated when the pointer is held down without moving for a short period of time (~200ms).</p></li>
+<li><p><code>release</code> is generated when the pointer is released after being held down, or is moved off of the node while still held down, but before any potential <code>dragstart</code> event. The target is the same as that of the <code>hold</code> event.</p></li>
+<li><p><code>holdpulse</code> is generated when the pointer is held down without moving for a short period of time; it repeats periodically about once every 200ms. Use this event to trigger an action after a given period of time. The elapsed time is available in the <code>holdTime</code> property.</p></li>
+<li><p><code>flick</code> is generated when the user flicks the pointer quickly. This event provides flick velocity data through the properties <code>xVelocity</code> (velocity with respect to the horizontal axis) and <code>yVelocity</code> (velocity with respect to the vertical axis).</p></li>
+</ul>
+<p>(Note that, on the Android platform, the <code>touchmove</code> event must be prevented via <code>inEvent.preventDefault()</code>, or the Enyo dragging system will not function correctly.)</p>
+<p>Bear in mind that normalized input events are generated on Enyo controls, not DOM elements.</p>
+<p>These normalized events are handled in the usual Enyo fashion, as outlined above.</p>
+<h3 id="normalized-input-event-properties">Normalized Input Event Properties</h3>
+<p>Normalized input events have the following common properties, when available:</p>
+<ul>
+<li><code>target</code></li>
+<li><code>relatedTarget</code></li>
+<li><code>clientX</code></li>
+<li><code>clientY</code></li>
+<li><code>pageX</code></li>
+<li><code>pageY</code></li>
+<li><code>screenX</code></li>
+<li><code>screenY</code></li>
+<li><code>altKey</code></li>
+<li><code>ctrlKey</code></li>
+<li><code>metaKey</code></li>
+<li><code>shiftKey</code></li>
+<li><code>detail</code></li>
+<li><code>identifier</code></li>
+</ul>
+<h2 id="keyboard-input">Keyboard Input</h2>
+<p>Because Enyo apps may be run on the desktop, the framework must also be able to deal with hardware keyboard input–which, unlike mouse input, cannot be translated into normalized input events.</p>
+<p>Now, in most cases, you won’t have to worry about setting up your application code to accept keyboard input directly. If your app uses the <a href="../building-apps/controls/text-fields.html">text field kinds</a> built into Enyo and Moonstone, those kinds will handle keyboard input automatically. However, there may be situations–in some games, for instance–in which you want your app to respond directly to keyboard-related DOM events.</p>
+<p>To do this, you can use an <code>enyo.Signals</code> instance to listen for the events <code>onkeydown</code>, <code>onkeypress</code>, and <code>onkeyup</code>. Each keystroke fires an <code>onkeydown</code> and an <code>onkeyup</code>; if the keystroke generates a character, there will also be an <code>onkeypress</code> event fired between <code>onkeydown</code> and <code>onkeyup</code>.</p>
+<p>We’ll look at how this actually works in code, but first, a proper introduction to Signals is in order.</p>
+<h2 id="signals">Signals</h2>
+<p>There may be times when two distantly-related components in your app need to communicate with each other. Using the standard event model, you would pass an event up to a common parent (in the worst case, the top-level app kind) and then pass the event back down to the target component. Because this may require a significant amount of plumbing, Enyo provides an alternative.</p>
+<p><a href="../..//#/kind/enyo.Signals">enyo.Signals</a> provides a means of broadcasting and subscribing to global messages, bypassing the normal component tree. Within the Enyo framework itself, DOM events that have no node targets are broadcast as signals. These events include window events, like <code>onload</code> and <code>onbeforeunload</code>, and events that occur directly on <code>document</code>, like <code>onkeypress</code> if <code>document</code> has the focus. (We’ll see an example of this in the following section, <a href="#handling-keyboard-input-with-signals">Handling Keyboard Input with Signals</a>.) Signals are also useful for hooking up non-Enyo events (e.g., Cordova/PhoneGap events) to be handled by Enyo kinds in application code.</p>
+<p>To broadcast a message, a sender simply invokes the static <code>send()</code> function on <code>enyo.Signals</code>:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1">    <span class="va">enyo</span>.<span class="va">Signals</span>.<span class="at">send</span>(inEventName<span class="op">,</span> inEvent)<span class="op">;</span></a></code></pre></div>
+<ul>
+<li><p><code>inEventName</code> is the event name (including the <code>"on"</code> prefix).</p></li>
+<li><p><code>inEvent</code> is an optional object containing event-specific information.</p></li>
+</ul>
+<p>To listen for a signal, a component should include a Signals instance in its <code>components</code> block. It should also specify a handler for the signal by setting the <code>&lt;messageName&gt;</code> property of the Signals object to the name of a method in the owning kind. This method is then called whenever a <code>&lt;messageName&gt;</code> signal is received.</p>
+<p>For example, the following kind…</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb10-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Receiver&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb10-3" title="3">        <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb10-4" title="4">            <span class="co">// &#39;onTransmission&#39; is the message name and &#39;transmission&#39; is the</span></a>
+<a class="sourceLine" id="cb10-5" title="5">            <span class="co">// name of a handler method in my owner.</span></a>
+<a class="sourceLine" id="cb10-6" title="6">            <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;Signals&quot;</span><span class="op">,</span> <span class="dt">onTransmission</span><span class="op">:</span> <span class="st">&quot;transmission&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb10-7" title="7">        ]<span class="op">,</span></a>
+<a class="sourceLine" id="cb10-8" title="8">        <span class="dt">transmission</span><span class="op">:</span> <span class="kw">function</span>(inSender<span class="op">,</span> inEvent) <span class="op">{</span></a>
+<a class="sourceLine" id="cb10-9" title="9">            <span class="co">// respond to the signal</span></a>
+<a class="sourceLine" id="cb10-10" title="10">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb10-11" title="11">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>…will handle signal events dispatched by a call like this:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb11-1" title="1">        <span class="va">enyo</span>.<span class="va">Signals</span>.<span class="at">send</span>(<span class="st">&quot;onTransmission&quot;</span>)<span class="op">;</span></a></code></pre></div>
+<p>Note that, like all Enyo message handlers, the signal handler (<code>transmission()</code>) receives two parameters: a reference to the component that sent the message (in this case, our own Signals object, <code>this.$.signals</code>), and any event payload that the transmitter included in the broadcast.</p>
+<p>Some important things to note:</p>
+<ul>
+<li><p>The signal name passed into <code>send()</code> must exactly match the message name in the receiving Signals instance; both must include the <code>"on"</code> prefix.</p></li>
+<li><p>All Signals instances that register a handler for a particular message name will receive the message.</p></li>
+<li><p>The <code>send()</code> method is on the <code>enyo.Signals</code> kind itself, not an instance of a Signals component.</p></li>
+<li><p>Do not abuse Signals. Coupling objects with global communication is considered evil.</p></li>
+</ul>
+<h2 id="handling-keyboard-input-with-signals">Handling Keyboard Input with Signals</h2>
+<p>Now, returning to the subject of keyboard input, the following example kind uses Signals to implement some simple handling of keyboard events:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb12-1" title="1">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb12-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;KeyboardEventExample&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb12-3" title="3">        <span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.FittableRows&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb12-4" title="4">        <span class="dt">classes</span><span class="op">:</span> <span class="st">&quot;onyx&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb12-5" title="5">        <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb12-6" title="6">            <span class="op">{</span><span class="dt">name</span><span class="op">:</span> <span class="st">&quot;myContent&quot;</span><span class="op">,</span> <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Please do not press the spacebar.&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb12-7" title="7">            <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.Signals&quot;</span><span class="op">,</span> <span class="dt">onkeypress</span><span class="op">:</span> <span class="st">&quot;handleKeyPress&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb12-8" title="8">                <span class="dt">onkeydown</span><span class="op">:</span> <span class="st">&quot;handleKeyDown&quot;</span><span class="op">,</span> <span class="dt">onkeyup</span><span class="op">:</span> <span class="st">&quot;handleKeyUp&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb12-9" title="9">        ]<span class="op">,</span></a>
+<a class="sourceLine" id="cb12-10" title="10">        <span class="dt">handleKeyDown</span><span class="op">:</span> <span class="kw">function</span>(inSender<span class="op">,</span> inEvent) <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-11" title="11">            <span class="co">// Can use inEvent.keyCode to detect non-character keys</span></a>
+<a class="sourceLine" id="cb12-12" title="12">            <span class="cf">if</span> (<span class="va">inEvent</span>.<span class="at">keyCode</span> <span class="op">===</span> <span class="dv">8</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-13" title="13">                <span class="co">// respond to backspace</span></a>
+<a class="sourceLine" id="cb12-14" title="14">            <span class="op">}</span></a>
+<a class="sourceLine" id="cb12-15" title="15">        <span class="op">},</span></a>
+<a class="sourceLine" id="cb12-16" title="16">        <span class="dt">handleKeyPress</span><span class="op">:</span> <span class="kw">function</span>(inSender<span class="op">,</span> inEvent) <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-17" title="17">            <span class="co">// Use inEvent.charCode to detect spacebar</span></a>
+<a class="sourceLine" id="cb12-18" title="18">            <span class="cf">if</span> (<span class="va">inEvent</span>.<span class="at">charCode</span> <span class="op">===</span> <span class="dv">32</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-19" title="19">                <span class="kw">this</span>.<span class="va">$</span>.<span class="va">myContent</span>.<span class="at">setContent</span>(<span class="st">&quot;I thought I asked you not to press the spacebar.&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-20" title="20">            <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-21" title="21">                <span class="kw">var</span> key <span class="op">=</span> <span class="va">String</span>.<span class="at">fromCharCode</span>(<span class="va">inEvent</span>.<span class="at">charCode</span>).<span class="at">toUpperCase</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-22" title="22">                <span class="kw">this</span>.<span class="va">$</span>.<span class="va">myContent</span>.<span class="at">setContent</span>(<span class="st">&quot;Last key pressed: &quot;</span> <span class="op">+</span> key)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-23" title="23">            <span class="op">}</span></a>
+<a class="sourceLine" id="cb12-24" title="24">        <span class="op">},</span></a>
+<a class="sourceLine" id="cb12-25" title="25">        <span class="dt">handleKeyUp</span><span class="op">:</span> <span class="kw">function</span>(inSender<span class="op">,</span> inEvent) <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-26" title="26">            <span class="co">// Respond to keyup, if desired</span></a>
+<a class="sourceLine" id="cb12-27" title="27">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb12-28" title="28">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>Within the <code>onkeydown</code> and <code>onkeyup</code> handler methods (<code>handleKeyDown()</code> and <code>handleKeyUp()</code>), <code>inEvent.keyCode</code> is the JavaScript key code representing the key that was pressed. In the <code>onkeypress</code> handler (<code>handleKeyPress()</code>), <code>inEvent.charCode</code> is the decimal value of the Unicode character generated by the keypress; you can get the character itself as a string by passing <code>inEvent.charCode</code> into <code>String.fromCharCode()</code>.</p>
+<p>For example, let’s say I press the <code>J</code> key on my keyboard to type a lowercase “j”. First, an <code>onkeydown</code> event is fired, in which <code>inEvent.keyCode</code> has a value of <code>74</code>, the JavaScript key code for “j”. (Note that there is no distinction between lowercase and uppercase in the JavaScript key codes.) Then an <code>onkeypress</code> event is fired, in which <code>inEvent.charCode</code> has a value of <code>106</code>, which is the decimal value of the Unicode character lowercase “j”. Finally, an <code>onkeyup</code> event is fired, in which, once again, <code>inEvent.keyCode</code> is <code>74</code>.</p>
+<p>Now, let’s say I press <code>"SHIFT + J"</code> on my keyboard to type an uppercase “J”. This fires two sets of <code>onkeydown</code>/<code>onkeyup</code> events. In the first, <code>inEvent.keyCode</code> has a value of <code>16</code>, representing the SHIFT key, and there is no associated <code>onkeypress</code> event since there is no character generated. In the second <code>onkeydown</code> and <code>onkeyup</code>, <code>inEvent.keyCode</code> has a value of <code>74</code>, which we’ve seen is the JavaScript key code for “j”. Between the second <code>onkeydown</code> and the second <code>onkeyup</code>, an <code>onkeypress</code> event fires, in which the value of <code>inEvent.charCode</code> is also <code>74</code>, representing the decimal value of the Unicode character uppercase “J”.</p>
+<p><img src="../assets/user-input-1.png" /></p>
+<p>Note that returning true from the <code>onkeydown</code> handler will prevent the <code>onkeyup</code> from firing, but will not suppress the <code>onkeypress</code> event.</p>
+<p>For a more elaborate example of keyboard event handling, see the <a href="http://enyojs.com/samples/cryptotweets/">CryptoTweets</a> sample app.</p>
+<p><strong>Additional Reading</strong></p>
+<ul>
+<li><a href="controls.html">Controls</a></li>
+<li><a href="objects-and-published-properties.html">Objects and Published Properties</a></li>
+<li><a href="../best-practices/encapsulation-in-enyo.html">Encapsulation in Enyo</a></li>
+</ul>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../js/main.js"></script>
+  <script type="text/javascript" src="../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

@@ -1,0 +1,232 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">The API Reference: What Every Developer Should Know</h1>
+<h2 id="using-the-api-reference">Using the API Reference</h2>
+<h3 id="properties-events-and-methods">Properties, Events, and Methods</h3>
+<p>The <a href="../../index.html">Enyo API Reference</a>, also known as the API Viewer, provides detailed information on all of the framework’s publicly accessible kinds, including their properties, events, and methods.</p>
+<p>The primary purpose of the API Reference is to give application developers an easy way to find documentation. When you view the page for a particular kind, you’ll see a brief description of the kind, followed by a listing of its public elements, under the headings “Properties”, “Methods”, and “Events”. All of this information comes from comments in JSDoc format, found in the JavaScript source code of Enyo and its related libraries (e.g., Moonstone, Layout, Onyx).</p>
+<p>To begin browsing the API, follow one of the top-level navigation links. For example, if you follow the “namespaces” link, you’ll find all the public elements of the framework, sorted according to namespace–i.e., <code>enyo</code>, <code>moon</code> (for Moonstone), or <code>onyx</code>. Each namespace is broken down into its constituent parts, which may include controls (UI components), kinds (non-UI components), methods and properties that exist directly on the namespace, mixins (shared chunks of functionality that may be added to individual kinds as needed), and sub-namespaces (e.g., the focus-state management library, <code>enyo.Spotlight</code>).</p>
+<h2 id="documenting-code-for-the-api-reference">Documenting Code for the API Reference</h2>
+<h3 id="what-to-document">What to Document</h3>
+<p>When contributing a new kind, be sure to include appropriate documentation in JSDoc format. This will typically include a summary of the kind, along with comments describing all public properties, methods, and events. Details on how these API elements should be documented are provided in the following section, <a href="#how-to-document">How to Document</a>.</p>
+<p>Members that are private to the kind should be marked with the <code>@private</code> tag, but any additional documentation is optional.</p>
+<h3 id="how-to-document">How to Document</h3>
+<p>Here are some guidelines to follow when creating (and formatting) documentation for Enyo kinds.</p>
+<h4 id="summarydescription">Summary/Description</h4>
+<p>When documenting a kind, start with a brief summary of what the kind is and what it does. Then provide additional information via JSDoc tags.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1">    <span class="co">/**</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="co">    * {</span><span class="an">@link</span><span class="co"> </span><span class="cv">moon.ContextualPopup}</span><span class="co"> is a popup window control with Moonstone</span></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="co">    * visual styling applied. It extends {</span><span class="an">@link</span><span class="co"> </span><span class="cv">enyo.Popup}</span><span class="co"> and is designed</span></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="co">    * to be used with {</span><span class="an">@link</span><span class="co"> </span><span class="cv">moon.ContextualPopupDecorator}</span><span class="co">.</span></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="co">    *</span></a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="co">    * </span><span class="an">@class</span><span class="co"> </span><span class="cv">moon.ContextualPopup</span></a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="co">    * </span><span class="an">@extends</span><span class="co"> </span><span class="cv">enyo.Popup</span></a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="co">    * </span><span class="an">@ui</span></a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="co">    * </span><span class="an">@public</span></a>
+<a class="sourceLine" id="cb1-10" title="10"><span class="co">    */</span></a></code></pre></div>
+<p>This example shows the standard set of tags for an Enyo kind:</p>
+<ul>
+<li><p><code>@class</code> indicates the kind name, including namespace.</p></li>
+<li><p><code>@extends</code> indicates the superkind, i.e., the kind from which the current kind is derived.</p></li>
+<li><p><code>@ui</code> is a tag applied to UI components. For non-UI components, there is no equivalent tag; just omit the <code>'@ui'</code>.</p></li>
+<li><p><code>@public</code> indicates that this kind is part of the public API. As we will see, the <code>@public</code> and <code>@private</code> tags are also applied to properties, methods, and events.</p></li>
+</ul>
+<h4 id="public-properties">Public Properties</h4>
+<p>For public properties, begin by providing a brief description of the property. In most cases, the description should be a sentence or less in length. If the property cannot be adequately described in one sentence, try to keep the description as concise as possible.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1">    <span class="co">/**</span></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="co">    * A boolean parameter affecting the size of the button. If `true`, the</span></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="co">    * button&#39;s diameter will be set to 60px. However, the button&#39;s tap</span></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="co">    * target will still have a diameter of 78px, with an invisible DOM</span></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="co">    * element wrapping the small button to provide the larger tap zone.</span></a>
+<a class="sourceLine" id="cb2-6" title="6"><span class="co">    *</span></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="co">    * </span><span class="an">@type</span><span class="co"> {Boolean}</span></a>
+<a class="sourceLine" id="cb2-8" title="8"><span class="co">    * </span><span class="an">@default</span><span class="co"> false</span></a>
+<a class="sourceLine" id="cb2-9" title="9"><span class="co">    * </span><span class="an">@public</span></a>
+<a class="sourceLine" id="cb2-10" title="10"><span class="co">    */</span></a>
+<a class="sourceLine" id="cb2-11" title="11">    small<span class="op">:</span> <span class="kw">false</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb2-12" title="12">    ...</a></code></pre></div>
+<p>Be sure to indicate the property’s data type (using the <code>@type</code> tag), and its default value (using <code>@default</code>). Also be sure to include the <code>@public</code> tag so that the property will be displayed by the API Reference.</p>
+<p>If the property accepts only specific string values, list the valid values, e.g.:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1">    <span class="co">/**</span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="co">    * Position of the tooltip with respect to the activating control. Valid</span></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="co">    * values are `&#39;above&#39;`, `&#39;below&#39;`, and `&#39;auto&#39;`.</span></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="co">    *</span></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="co">    * </span><span class="an">@type</span><span class="co"> {String}</span></a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="co">    * </span><span class="an">@default</span><span class="co"> &#39;auto&#39;</span></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="co">    * </span><span class="an">@public</span></a>
+<a class="sourceLine" id="cb3-8" title="8"><span class="co">    */</span></a>
+<a class="sourceLine" id="cb3-9" title="9">    position<span class="op">:</span> <span class="st">&#39;auto&#39;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb3-10" title="10">    ...</a></code></pre></div>
+<p>Note that single quotes are used to indicate that a value is a string (e.g., <code>@default 'auto'</code>). Also note that, within the summary/description section, the single quotes are enclosed in backticks <code>(`)</code>, which make text appear as <code>monospaced</code> in the API Viewer.</p>
+<h4 id="public-methods">Public Methods</h4>
+<p>When documenting a public method, first provide a brief description of what the method does. By convention, the description begins with a verb in the present tense and is punctuated as a full sentence, with a period at the end, e.g.:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1">    <span class="co">/**</span></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="co">    * Determines whether this control currently has the [focus]{</span><span class="an">@glossary</span><span class="co"> focus}.</span></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="co">    *</span></a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="co">    * </span><span class="an">@returns</span><span class="co"> {Boolean} Whether this control has focus. `true` if the control</span></a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="co">    * has focus; otherwise, `false`.</span></a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="co">    * </span><span class="an">@public</span></a>
+<a class="sourceLine" id="cb4-7" title="7"><span class="co">    */</span></a>
+<a class="sourceLine" id="cb4-8" title="8">    hasFocus<span class="op">:</span> <span class="kw">function</span> () <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-9" title="9">        <span class="cf">if</span> (<span class="kw">this</span>.<span class="at">hasNode</span>()) <span class="cf">return</span> <span class="va">document</span>.<span class="at">activeElement</span> <span class="op">===</span> <span class="kw">this</span>.<span class="at">node</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb4-10" title="10">    <span class="op">},</span></a>
+<a class="sourceLine" id="cb4-11" title="11">    ...</a></code></pre></div>
+<p>If, as in this example, the method has a return value, the documentation should include the <code>@returns</code> tag. Use it to provide the data type and a brief description of the data being returned.</p>
+<p>(Notice that the Boolean values <code>true</code> and <code>false</code> are formatted with backticks. When documenting Enyo source code, backticks should also be placed around the names of kinds (if the namespace is included–e.g., <code>enyo.Control</code>, <code>moon.Button</code>), properties, methods, and CSS classes.)</p>
+<p>In some cases, in addition to describing what a method does, it is helpful to specify when it is used.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1">    <span class="co">/**</span></a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="co">    * A function that fires after the control has rendered. This performs a</span></a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="co">    * reflow.</span></a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="co">    *</span></a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="co">    * </span><span class="an">@public</span></a>
+<a class="sourceLine" id="cb5-6" title="6"><span class="co">    */</span></a>
+<a class="sourceLine" id="cb5-7" title="7">    rendered<span class="op">:</span> <span class="kw">function</span> () <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-8" title="8">        ...</a>
+<a class="sourceLine" id="cb5-9" title="9">    <span class="op">},</span></a>
+<a class="sourceLine" id="cb5-10" title="10">    ...</a></code></pre></div>
+<h4 id="events">Events</h4>
+<p>In the Enyo framework, events are typically declared at the top of each JavaScript file, before the definition of the kind that generates them.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1">    <span class="co">/**</span></a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="co">    * Fires when either the main drawer or the control drawer is activated. No</span></a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="co">    * event-specific data is sent with this event.</span></a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="co">    *</span></a>
+<a class="sourceLine" id="cb6-5" title="5"><span class="co">    * </span><span class="an">@event</span><span class="co"> moon.Drawer#onActivate</span></a>
+<a class="sourceLine" id="cb6-6" title="6"><span class="co">    * </span><span class="an">@type</span><span class="co"> {Object}</span></a>
+<a class="sourceLine" id="cb6-7" title="7"><span class="co">    * </span><span class="an">@public</span></a>
+<a class="sourceLine" id="cb6-8" title="8"><span class="co">    */</span></a></code></pre></div>
+<p>In the example above, we see the basic JSDoc tags associated with an event.</p>
+<ul>
+<li><p><code>@event</code> contains the name of the event <code>(onActivate)</code>, along with its generating kind <code>(moon.Drawer)</code>, with the two being separated by the <code>#</code> character.</p></li>
+<li><p><code>@type</code> contains the data type; for events, this should be <code>Object</code>, since Enyo events are passed around as objects.</p></li>
+<li><p><code>@public</code> marks the event as part of the public API.</p></li>
+</ul>
+<p>An event object will often contain information specific to that event, which a handler method might find useful, e.g.:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1">    <span class="co">/**</span></a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="co">    * Fires once per row at render time.</span></a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="co">    *</span></a>
+<a class="sourceLine" id="cb7-4" title="4"><span class="co">    * </span><span class="an">@event</span><span class="co"> enyo.List#onSetupItem</span></a>
+<a class="sourceLine" id="cb7-5" title="5"><span class="co">    * </span><span class="an">@type</span><span class="co"> {Object}</span></a>
+<a class="sourceLine" id="cb7-6" title="6"><span class="co">    * </span><span class="an">@property</span><span class="co"> </span><span class="cv">{Number}</span><span class="co"> index - The current row index.</span></a>
+<a class="sourceLine" id="cb7-7" title="7"><span class="co">    * </span><span class="an">@public</span></a>
+<a class="sourceLine" id="cb7-8" title="8"><span class="co">    */</span></a></code></pre></div>
+<p>Here the <code>@property</code> tag indicates that the event object has a property called <code>index</code>, which contains the index of the row currently being rendered by an <code>enyo.List</code>. This property may be accessed by methods that handle the <code>onSetupItem</code> event.</p>
+<h3 id="formatting-markdown">Formatting (Markdown)</h3>
+<p>In addition to supporting JSDoc tags, the API Reference includes support for <a href="http://daringfireball.net/projects/markdown/">Markdown</a>, a lightweight language for formatting text.</p>
+<p>Markdown may be used within API comments for simple formatting tasks such as italicizing text and creating bulleted lists.</p>
+<h3 id="coding">Coding</h3>
+<p>For guidelines on writing code, see the <a href="style-guide.html">Coding Style Guide</a>.</p>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../js/main.js"></script>
+  <script type="text/javascript" src="../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

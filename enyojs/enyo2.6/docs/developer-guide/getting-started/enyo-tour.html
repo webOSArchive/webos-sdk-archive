@@ -1,0 +1,192 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Enyo: A Brief Tour</h1>
+<p>Thanks for checking out Enyo! This document will help you familiarize yourself with how the framework is organized and what each piece offers.</p>
+<p>In a given Enyo release, you will find the following folders:</p>
+<ul>
+<li><strong>enyo</strong> - The core</li>
+<li><strong>lib</strong> - Where all plugins and add-on libraries live</li>
+<li><strong>moonstone</strong> - A toolbox of UI components, optimized for TV</li>
+<li><strong>onyx</strong> - Enyo’s original UI library, optimized for mobile devices</li>
+<li><strong>spotlight</strong> - A specialized library for handling focus state</li>
+<li><strong>layout</strong> - A set of layout components</li>
+<li><strong>enyo-ilib</strong> - A library providing localization services</li>
+<li><strong>canvas</strong> - Components for building HTML5-based canvas views</li>
+<li><strong>extra</strong> - Additional utility components</li>
+</ul>
+<h2 id="enyo">Enyo</h2>
+<p>The core of the framework, known simply as <code>enyo</code> in the source code, provides powerful features that enable complex applications and add-on libraries that build on the Web stack in a modular way:</p>
+<ul>
+<li><strong>Object encapsulation, inheritance, and ownership hierarchy</strong> - Kinds and Components</li>
+<li><strong>View and DOM widget model</strong> - UiComponent and Control</li>
+<li><strong>Event routing</strong> - Dispatcher and Signals</li>
+<li><strong>Services model</strong> - Async and Ajax</li>
+<li><strong>Data Modeling and Data Binding</strong> - Model, Collection, Binding, and more</li>
+<li><strong>Basic HTML components</strong> - Base UI</li>
+<li><strong>Touch support</strong> - Touch scroller and gesture simulation</li>
+<li><strong>Package loader</strong> - <code>enyo.depends()</code> and <code>package.js</code></li>
+</ul>
+<p>These pieces are actually separable (it’s easy to make micro-builds of Enyo), but we believe they form a useful working set, so we provide them together as the Enyo core.</p>
+<p>Everything else described below is an optional package built on top of the core. You may choose to include these <em>à la carte</em> to fit your application’s needs. However, these are only reference libraries for what we envision will be a large ecosystem of add-on libraries that bring different look and feel, layout options, service wrappers, etc. Check out the <a href="http://enyojs.com/gallery">Enyo Community Gallery</a> to see just how easy it is to create and share new components and add-on libraries.</p>
+<h2 id="moonstone">Moonstone</h2>
+<p>The Moonstone library provides a toolbox of beautifully-styled UI components for building applications. Specially designed and optimized for TV-based apps, Moonstone is ever-expanding, and currently includes the following:</p>
+<ul>
+<li><strong>Buttons</strong> (plain, icon, radio, and toggle buttons)</li>
+<li><strong>Inputs</strong> (text input field, text area, rich text area)</li>
+<li><strong>Lists</strong></li>
+<li><strong>Popups</strong></li>
+<li><strong>Header bars</strong></li>
+<li><strong>Group boxes</strong></li>
+<li><strong>Progress bars</strong></li>
+<li><strong>Sliders</strong></li>
+</ul>
+<h2 id="onyx">Onyx</h2>
+<p>Onyx, the original UI library that shipped with the Enyo framework, remains the library of choice for mobile device apps. While Moonstone has generated most of the publicity recently, new Onyx development is also in the works. We encourage you to check out the <a href="https://github.com/enyojs/onyx">Onyx source</a>, and stay tuned.</p>
+<h2 id="spotlight">Spotlight</h2>
+<p>The Spotlight library manages focus state, enabling users to navigate through Enyo applications in either 5-way mode (using the directional arrow and Return keys on a keyboard, or the corresponding buttons on a traditional television remote control) or pointer mode (using a mouse or touchscreen).</p>
+<h2 id="layout">Layout</h2>
+<p>While Enyo components may be laid out using pure HTML/CSS techniques, we have provided a Layout library that gives you easy-to-use, performant, cross-browser compatible containers for your common layout needs:</p>
+<ul>
+<li><strong>Fittable Rows and Columns</strong></li>
+<li><strong>Lists</strong></li>
+<li><strong>Panels</strong></li>
+</ul>
+<p>You can read up on these layout options <a href="https://github.com/enyojs/layout">here</a>.</p>
+<h2 id="enyo-ilib">enyo-ilib</h2>
+<p>The <code>enyo-ilib</code> library provides localization support for the Enyo framework. The heavy lifting is done by the open-source <code>iLib</code> library; <code>enyo-ilib</code> is essentially a compatibility layer, making it easy for Enyo app developers to access the powerful features of <code>iLib</code> without having to deal with messy, locale-specific details.</p>
+<h2 id="canvas">Canvas</h2>
+<p>Enyo’s encapsulation model works equally well for structuring canvas-based components as it does for traditional UI, and we have provided a library that abstracts common canvas primitives as Enyo components:</p>
+<ul>
+<li><strong>Canvas and CanvasControl</strong></li>
+<li><strong>Shapes</strong> (Circle, Rectangle)</li>
+<li><strong>Text</strong></li>
+<li><strong>Image</strong></li>
+</ul>
+<p>You can easily extend these to create complex graphical applications and games, such as our <a href="http://enyojs.com/samples/piratepig">Pirate Pig</a> canvas demo app.</p>
+<h2 id="extra">Extra</h2>
+<p>The “extra” library holds a number of useful utility-type components, which are used in various samples and demo applications.</p>
+<h2 id="bootplate">Bootplate</h2>
+<p>The <a href="bootplate.html">Bootplate</a> templates provide complete starter projects containing everything you need to develop and deploy Enyo apps out of the box. These templates contain current versions of Enyo, along with the most common libraries used by app developers (Moonstone or Onyx, Layout, etc.) and scripts to minify and create deployable versions of the source and assets.</p>
+<h2 id="additional-reading">Additional Reading</h2>
+<p>From here, there are several paths you can take to ramp up as an Enyo developer. A few suggestions:</p>
+<ul>
+<li>For a step-by-step introduction to Enyo, head to the <a href="moonstone-app-tutorial.html">Moonstone App Tutorial</a>.</li>
+<li>To get off to the races writing Enyo apps, check out <a href="bootplate.html">Bootplate</a>.</li>
+<li>To learn more about the nuts and bolts of Enyo app structure, read <a href="planning-and-structuring-your-app.html">Planning and Structuring Your App</a>.</li>
+<li>Can’t make up your mind? See the <a href="../index.html">complete list</a> of available documentation.</li>
+</ul>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../js/main.js"></script>
+  <script type="text/javascript" src="../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

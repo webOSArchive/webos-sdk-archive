@@ -1,0 +1,228 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Planning and Structuring Your App</h1>
+<p>While an Enyo application may be as simple as single HTML5 file, once we start making more sophisticated apps, there are numerous resources to manage, versions and dependencies to track, and debug switches to control. To facilitate a smooth workflow, the Enyo team has adopted a number of conventions regarding application structure. These are embodied in the <a href="bootplate.html">Bootplate</a> application template (available in both <a href="https://github.com/enyojs/bootplate-moonstone">Moonstone</a> and <a href="https://github.com/enyojs/bootplate">Onyx</a> variants), which you are encouraged to base your own apps upon. They are also described in some detail below.</p>
+<h2 id="the-basic-scaffold">The Basic Scaffold</h2>
+<p>Enyo is designed so that plugin libraries, applications, and Enyo itself are all portable resources. The use of common folder conventions significantly simplifies the management of these resources.</p>
+<p>The suggested folder structure for a plugin library looks like this:</p>
+<pre><code>    &lt;plugin&gt;
+        assets/
+        source/
+        package.js
+        (readmes, licenses, nfos)</code></pre>
+<ul>
+<li><p><code>source</code> contains JavaScript modules, stylesheets, or other raw (code) materials for the plugin.</p></li>
+<li><p><code>assets</code> typically contains images or other resources that the library will need in both production and development/debug environments. There may be as many of these folders as you like, and the folder name is not special–a project might have folders called <code>images</code> and <code>json</code>, for example. However, we suggest that you keep all such items in one folder called <code>assets</code>, so end users will know right away that this folder is necessary for final deployment.</p></li>
+<li><p><code>package.js</code> is a manifest listing the files in the library.</p></li>
+<li><p>The <code>&lt;plugin&gt;</code> folder will often contain other items, such as readmes, licenses, or other miscellaneous files.</p></li>
+</ul>
+<p>The suggested setup for applications is similar, but includes some additions:</p>
+<pre><code>    &lt;application&gt;
+        assets/
+        enyo/
+        lib/
+        build/
+        source/
+        tools/
+        (readmes, licenses, nfos)
+        debug.html
+        deploy.json
+        index.html
+        package.js</code></pre>
+<ul>
+<li><p>The <code>enyo</code> folder contains a copy of the Enyo framework source. As discussed below, it’s possible to reference <code>enyo</code> from a common location instead of embedding it in the application proper, but for ease of versioning and sealing, we recommend that you keep a copy of Enyo with your application.</p></li>
+<li><p>The <code>lib</code> folder contains any plugins or other resources used by the project.</p></li>
+<li><p>The <code>build</code> folder is the home for <em>minified</em> resources, which are JavaScript and CSS files that have been optimized to remove comments, whitespace, and other features not critical to functionality. In JavaScript files, syntax is sometimes changed (e.g., variable names may be shortened) to reduce file size.</p>
+<p>The minified files are produced when the <code>deploy</code> script is run. This script reads configuration info from <code>deploy.json</code> and triggers a call to a separate <code>minify</code> script, which performs the actual optimization. (Note that it generally isn’t necessary to call <code>minify</code> directly.)</p>
+<p>After <code>deploy</code> is run successfully, the output in <code>build</code> consists of two JavaScript files (<code>app.js</code>, with your app code, and <code>enyo.js</code>, with the framework code) and two corresponding CSS files (<code>app.css</code> and <code>enyo.css</code>).</p></li>
+<li><p>The <code>tools</code> folder houses two versions of the aforementioned <code>deploy</code> script, <code>deploy.bat</code> (for use on Windows) and <code>deploy.sh</code> (for Mac and Linux).</p>
+<p>During development, you’ll load the application directly from the <code>source</code> folder. (If you’re using a Bootplate template, you’ll do this by loading <code>debug.html</code>.) When you’re ready to deploy the application, run the <code>deploy</code> script to create a version of the app with the code minified and non-essential files removed.</p></li>
+</ul>
+<h2 id="the-lib-folder-and-plugins">The lib Folder and Plugins</h2>
+<p>Enyo’s infrastructure is intended to support a wide variety of plugins. While it is not a technical requirement, the convention is to put plugins in a folder called <code>lib</code> that is a peer to <code>enyo</code>:</p>
+<pre><code>    &lt;application&gt;
+        enyo/
+        lib/
+            aPluginFolder/
+                assets/
+                source/
+                package.js
+                (readmes, licenses, nfos)</code></pre>
+<p>Again, notice that the standard scaffold has been used for this plugin.</p>
+<h2 id="standard-snapshot">Standard Snapshot</h2>
+<p>If we combine the two preceding examples, we get the complete suggested folder structure:</p>
+<pre><code>    &lt;application&gt;
+        assets/
+        build/
+            enyo.js
+            enyo.css
+            app.js
+            app.css
+        enyo/
+        lib/
+            aPluginFolder/
+                assets/
+                source/
+                package.js
+                (readmes, licenses, nfos)
+        source/
+        tools/
+        debug.html
+        deploy.json
+        index.html
+        package.js
+        (readmes, licenses, nfos)</code></pre>
+<p>As touched upon earlier, to construct a production version of the app, duplicate the folder tree and then run <code>deploy</code> to generate a deployment build with debug and development resources removed. By default, this build will be created in a folder called <code>deploy</code>.</p>
+<p>Here’s the deployment tree for the suggested folder structure:</p>
+<pre><code>    &lt;application&gt;/
+        deploy/
+            assets/
+            build/
+                enyo.js
+                enyo.css
+                app.js
+                app.css
+            lib/
+                aPluginFolder/
+                    assets/
+                    (licenses)
+            index.html</code></pre>
+<p>Note that the <code>enyo</code> folder itself is not necessary for deployment.</p>
+<h2 id="sharing-enyo">Sharing Enyo</h2>
+<p>As mentioned previously, it’s also possible to build applications that refer to shared copies of Enyo and/or plugins. In this case, shared resources are found in a common location. This type of setup is most useful when developing plugins, creating a suite of applications that will be deployed together, or working on the Enyo source itself.</p>
+<p>Here’s an example of a shared app structure:</p>
+<pre><code>    &lt;root&gt;/
+        &lt;shared-root&gt;/
+            enyo/
+            lib/
+                onyx/
+                layout/
+        &lt;apps-root&gt;
+            &lt;app1&gt;/
+            &lt;app2&gt;/</code></pre>
+<p>The libraries under <code>&lt;shared-root&gt;</code> are cloned from GitHub individually.</p>
+<p>Under <code>&lt;apps-root&gt;</code>, new apps (e.g., <code>&lt;app1&gt;</code>) may be created by cloning the appropriate bootplate template. In this case, the app is using the Onyx UI library, so you would clone the <code>bootplate</code> template. Within <code>&lt;apps-root&gt;</code>, issue the command:</p>
+<pre><code>    git clone https://github.com/enyojs/bootplate.git &lt;app1&gt;</code></pre>
+<p>(To use the Moonstone UI library instead, clone <code>moonstone</code> within <code>&lt;shared-root&gt;/lib</code> and clone <code>bootplate-moonstone</code> within <code>&lt;apps-root&gt;</code>.)</p>
+<p>Within <code>&lt;app1&gt;</code>, the paths to <code>enyo</code> and the libraries will need to be updated to reflect their non-standard, shared location. Specifically, three files need updating:</p>
+<ul>
+<li><p>In <code>deploy.json</code>, the library paths must be changed from <code>./lib</code> to <code>../../&lt;shared-root&gt;/lib</code>.</p></li>
+<li><p>In <code>debug.html</code>, the path to <code>enyo</code> must be changed from <code>./enyo</code> to <code>../../&lt;shared-root&gt;/enyo</code>. (Note that <code>index.html</code> does not need to be changed.)</p></li>
+<li><p>In <code>tools/deploy.sh</code>, the path to <code>enyo</code> must be updated (from <code>"$SRC/enyo"</code> to <code>"$SRC/../../&lt;shared-root&gt;/enyo"</code>) and the output path for the <code>deploy.js</code> script must be overridden. Override the output path using the deploy script’s <code>-e</code> switch, changing <code>"$SRC/deploy" $@</code> to <code>"$SRC/deploy" -e "$ENYO" $@</code>.</p></li>
+</ul>
+<p>(Note that a <a href="https://paste.ee/p/51xpD">patch file</a> is available for use as a guide when making these updates.)</p>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../js/main.js"></script>
+  <script type="text/javascript" src="../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

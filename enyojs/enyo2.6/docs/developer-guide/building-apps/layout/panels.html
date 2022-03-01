@@ -1,0 +1,214 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Panels</h1>
+<h2 id="enyo.panels">enyo.Panels</h2>
+<p>The <a href="../../..//#/kind/enyo.Panels">enyo.Panels</a> kind is designed to satisfy a variety of common use cases for application layout. Using <code>enyo.Panels</code>, controls may be arranged as (among other things) a carousel, a set of collapsing panels, a card stack that fades between panels, or a grid.</p>
+<h2 id="behavior">Behavior</h2>
+<p>Any Enyo control may be placed inside an <code>enyo.Panels</code>, but by convention we refer to each of these controls as a “panel”. From the set of panels in an <code>enyo.Panels</code>, one is considered to be active. The active panel is set by index using the <code>setIndex</code> method. The actual layout of the panels typically changes each time the active panel is set, such that the new active panel has the most prominent position. For example, if the layout arranges the panels as a stack of cards, setting the active panel will show the active panel and hide the inactive ones.</p>
+<p><code>enyo.Panels</code> is designed to support animating and dragging between active states. When the active panel changes, the <code>onTransitionStart</code> and <code>onTransitionFinish</code> events are fired. Animation between active states can be turned off by setting the <code>animate</code> property to <code>false</code>. In addition, panels are draggable by default; to defeat this behavior, set the <code>draggable</code> property to <code>false</code>.</p>
+<p>Here’s an example of a card stack:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb1-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;App&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-3" title="3">        <span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;Panels&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-4" title="4">        <span class="dt">fit</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-5" title="5">        <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb1-6" title="6">            <span class="op">{</span><span class="dt">name</span><span class="op">:</span> <span class="st">&quot;MyStartPanel&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb1-7" title="7">            <span class="op">{</span><span class="dt">name</span><span class="op">:</span> <span class="st">&quot;MyMiddlePanel&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb1-8" title="8">            <span class="op">{</span><span class="dt">name</span><span class="op">:</span> <span class="st">&quot;MyLastPanel&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb1-9" title="9">        ]</a>
+<a class="sourceLine" id="cb1-10" title="10">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>This example will stretch the panels inside the application to fit the size of the application. If, instead, the panels should be arranged left-to-right as a carousel, set the <code>layoutKind</code> property of the <code>App</code> kind to <code>"CarouselArranger"</code>. In this case, the size of the panels should be set up in the application (e.g., <code>style: "width: 300px;"</code>).</p>
+<h2 id="layout">Layout</h2>
+<p>The layout behavior of an <code>enyo.Panels</code> is controlled by the kind specified as the <code>arrangerKind</code>. A number of <a href="arrangers.html">Arranger</a> kinds have been designed to work specifically with panels, and new ones may be created as desired.</p>
+<p>To simplify the process of creating arranger kinds for use with <code>enyo.Panels</code>, an interpolation strategy is used to render states between active settings. This means that only the layout of each active state needs to be specified by the <code>arrangerKind</code>. See the API documentation for more information.</p>
+<p>Certain arrangers may be used in conjunction with a Panels instance to create a “wrap-around” effect, in which moving forward past the last panel returns you to the first panel, and moving backward past the first panel brings you to the last panel. To achieve this effect, specify a <a href="../../..//#/kind/enyo.LeftRightArranger">LeftRightArranger</a>, <a href="../../..//#/kind/enyo.TopBottomArranger">TopBottomArranger</a>, <a href="../../..//#/kind/enyo.SpiralArranger">SpiralArranger</a>, or <a href="../../..//#/kind/enyo.GridArranger">GridArranger</a> as the <code>arrangerKind</code> for an <code>enyo.Panels</code> whose <code>wrap</code> property has been set to <code>true</code>.</p>
+<h2 id="responsive-design">Responsive Design</h2>
+<p><code>enyo.Panels</code> is designed to be used in conjunction with CSS media queries to support layouts that adapt to different screen sizes. How the layout should change is left up to the application developer, but the layout should function correctly as the size of the panels inside it changes. Here is an example use case: An application uses a <code>Panels</code> kind to arrange panels in a left-to-right collapsing layout. When the application is tablet- or desktop-sized, the expanded layout displays each panel side-by-side with the others. When the application is phone-sized, each panel takes up the full screen width and collapses to hide the other panels.</p>
+<p>The code for this use case is almost the same as in the previous example, but we’ve set the <code>arrangerKind</code> and applied a CSS class:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb2-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;App&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb2-3" title="3">        <span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;Panels&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb2-4" title="4">        <span class="dt">fit</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb2-5" title="5">        <span class="dt">classes</span><span class="op">:</span> <span class="st">&quot;app-panels&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb2-6" title="6">        <span class="dt">arrangerKind</span><span class="op">:</span> <span class="st">&quot;CollapsingArranger&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb2-7" title="7">        <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb2-8" title="8">            <span class="op">{</span><span class="dt">name</span><span class="op">:</span> <span class="st">&quot;MyStartPanel&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb2-9" title="9">            <span class="op">{</span><span class="dt">name</span><span class="op">:</span> <span class="st">&quot;MyMiddlePanel&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb2-10" title="10">            <span class="op">{</span><span class="dt">name</span><span class="op">:</span> <span class="st">&quot;MyLastPanel&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb2-11" title="11">        ]</a>
+<a class="sourceLine" id="cb2-12" title="12">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>Note that in a <a href="../../..//#/kind/enyo.CollapsingArranger">CollapsingArranger</a>, the last panel will always take up the available space.</p>
+<p>The key to achieving the sizing behavior we want is to set up the CSS classes correctly. Here’s one way to do it:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb3-1" title="1">    <span class="co">/* set the width and some basic styling for each panel */</span></a>
+<a class="sourceLine" id="cb3-2" title="2">    <span class="fu">.app-panels</span> <span class="op">&gt;</span> <span class="op">*</span> {</a>
+<a class="sourceLine" id="cb3-3" title="3">        <span class="kw">width</span>: <span class="dv">320</span><span class="dt">px</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb3-4" title="4">        <span class="kw">background-color</span>: <span class="cn">#EAEAEA</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb3-5" title="5">        <span class="kw">box-shadow</span>: <span class="dv">-4</span><span class="dt">px</span> <span class="dv">-4</span><span class="dt">px</span> <span class="dv">4</span><span class="dt">px</span> <span class="fu">rgba(</span><span class="dv">0</span><span class="op">,</span><span class="dv">0</span><span class="op">,</span><span class="dv">0</span><span class="op">,</span><span class="dv">0.3</span><span class="fu">)</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb3-6" title="6">    }</a>
+<a class="sourceLine" id="cb3-7" title="7"></a>
+<a class="sourceLine" id="cb3-8" title="8">    <span class="co">/* on small devices, make each panel fit to the app width */</span></a>
+<a class="sourceLine" id="cb3-9" title="9">    <span class="im">@media</span> <span class="dv">all</span> <span class="kw">and</span> (<span class="kw">max-width</span>: <span class="dv">800</span><span class="dt">px</span>) {</a>
+<a class="sourceLine" id="cb3-10" title="10">        <span class="fu">.app-panels</span> <span class="op">&gt;</span> <span class="op">*</span> {</a>
+<a class="sourceLine" id="cb3-11" title="11">            <span class="kw">min-width</span>: <span class="dv">100</span><span class="dt">%</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb3-12" title="12">            <span class="kw">max-width</span>: <span class="dv">100</span><span class="dt">%</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb3-13" title="13">        }</a>
+<a class="sourceLine" id="cb3-14" title="14">    }</a></code></pre></div>
+<p>Now, technically, the second block of CSS isn’t needed to achieve this specific sizing effect. That’s because the <code>narrowFit</code> property of <code>enyo.Panels</code>, when true (the default), causes each panel to be sized to fit the width of the application when the screen size is sufficiently narrow–and the default cutoff for “narrowness” is 800px. But this CSS still provides a useful guide to follow if you want to define your own custom cutoff width.</p>
+<p>Let’s say we want to modify our example kind to have a cutoff width of 600px instead of 800px. In the kind definition, we set the <code>narrowFit</code> property to false (to turn off the default behavior) and apply a custom CSS class (<code>"app-panels"</code>) in which we’ll define the new behavior.</p>
+<p>We’ll also want to override the static method <code>Panels.isScreenNarrow()</code>, replacing <code>800</code> with <code>600</code>. This method isn’t used by the framework itself, but exists to give application code an easy way to know if it’s being run in a small-screen environment. (For an interesting example of how this can be used in the context of navigation between panels, see the <a href="http://enyojs.com/samples/panels/app-flickr.html">Flickr sample app</a> on enyojs.com.)</p>
+<p>This gives us the following kind definition:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb4-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;App&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb4-3" title="3">        <span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.Panels&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb4-4" title="4">        <span class="dt">fit</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb4-5" title="5">        <span class="dt">narrowFit</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb4-6" title="6">        <span class="dt">classes</span><span class="op">:</span> <span class="st">&quot;app-panels&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb4-7" title="7">        <span class="dt">arrangerKind</span><span class="op">:</span> <span class="st">&quot;CollapsingArranger&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb4-8" title="8">        <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb4-9" title="9">            <span class="op">{</span><span class="dt">name</span><span class="op">:</span> <span class="st">&quot;MyStartPanel&quot;</span><span class="op">,</span> <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;start&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb4-10" title="10">            <span class="op">{</span><span class="dt">name</span><span class="op">:</span> <span class="st">&quot;MyMiddlePanel&quot;</span><span class="op">,</span> <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;middle&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb4-11" title="11">            <span class="op">{</span><span class="dt">name</span><span class="op">:</span> <span class="st">&quot;MyLastPanel&quot;</span><span class="op">,</span> <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;last&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb4-12" title="12">        ]<span class="op">,</span></a>
+<a class="sourceLine" id="cb4-13" title="13">        <span class="dt">statics</span><span class="op">:</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-14" title="14">            <span class="dt">isScreenNarrow</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-15" title="15">                <span class="cf">return</span> <span class="va">enyo</span>.<span class="va">dom</span>.<span class="at">getWindowWidth</span>() <span class="op">&lt;=</span> <span class="dv">600</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb4-16" title="16">            <span class="op">}</span></a>
+<a class="sourceLine" id="cb4-17" title="17">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb4-18" title="18">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>Finally, we add the appropriate media query to the accompanying CSS:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb5-1" title="1">    <span class="fu">.app-panels</span> <span class="op">&gt;</span> <span class="op">*</span> {</a>
+<a class="sourceLine" id="cb5-2" title="2">        <span class="kw">width</span>: <span class="dv">320</span><span class="dt">px</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb5-3" title="3">        <span class="kw">background-color</span>: <span class="cn">#EAEAEA</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb5-4" title="4">        <span class="kw">box-shadow</span>: <span class="dv">-4</span><span class="dt">px</span> <span class="dv">-4</span><span class="dt">px</span> <span class="dv">4</span><span class="dt">px</span> <span class="fu">rgba(</span><span class="dv">0</span><span class="op">,</span><span class="dv">0</span><span class="op">,</span><span class="dv">0</span><span class="op">,</span><span class="dv">0.3</span><span class="fu">)</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb5-5" title="5">    }</a>
+<a class="sourceLine" id="cb5-6" title="6"></a>
+<a class="sourceLine" id="cb5-7" title="7">    <span class="im">@media</span> <span class="dv">all</span> <span class="kw">and</span> (<span class="kw">max-width</span>: <span class="dv">600</span><span class="dt">px</span>) {</a>
+<a class="sourceLine" id="cb5-8" title="8">        <span class="fu">.app-panels</span> <span class="op">&gt;</span> <span class="op">*</span> {</a>
+<a class="sourceLine" id="cb5-9" title="9">            <span class="kw">min-width</span>: <span class="dv">100</span><span class="dt">%</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb5-10" title="10">            <span class="kw">max-width</span>: <span class="dv">100</span><span class="dt">%</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb5-11" title="11">        }</a>
+<a class="sourceLine" id="cb5-12" title="12">    }</a></code></pre></div>
+<p><img src="../../assets/enyo-panels-1.png" alt="Panels control with window width under 600px" /><br />
+Panels control with window width under 600px</p>
+<p><img src="../../assets/enyo-panels-2.png" alt="Panels control with window width over 600px" /><br />
+Panels control with window width over 600px</p>
+<h2 id="moon.panels-and-moon.panel">moon.Panels and moon.Panel</h2>
+<p>The <a href="../../..//#/kind/moon.Panels">moon.Panels</a> kind extends <code>enyo.Panels</code>, adding Moonstone visual styling and support for 5-way focus (Spotlight). The Moonstone Panels control is suitable for use in a broad range of applications.</p>
+<p>By default, new controls created inside a <code>moon.Panels</code> container are instances of <a href="../../..//#/kind/moon.Panel">moon.Panel</a>, which is <strong>not</strong> derived from <code>enyo.Panel</code>. A <code>moon.Panels</code> will typically contain several <code>moon.Panel</code> objects. The built-in features of <code>moon.Panel</code> include a header and a FittableRows layout for the main body content.</p>
+<h2 id="enyo.lightpanels">enyo.LightPanels</h2>
+<p>Coming soon!</p>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../../js/main.js"></script>
+  <script type="text/javascript" src="../../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

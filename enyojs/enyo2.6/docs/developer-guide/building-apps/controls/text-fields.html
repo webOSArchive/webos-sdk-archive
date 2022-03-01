@@ -1,0 +1,198 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Text Fields</h1>
+<h2 id="enyo.input">enyo.Input</h2>
+<p><a href="../../..//#/kind/enyo.Input">enyo.Input</a> is an <a href="../../..//#/kind/enyo.Control">enyo.Control</a> that implements an HTML <code>&lt;input&gt;</code> element with cross-platform support for change events.</p>
+<p>You can listen for the <code>oninput</code> and <code>onchange</code> DOM events to know when the text inside an Input has been modified. <code>oninput</code> fires immediately, while <code>onchange</code> fires when the text has changed and the input loses focus.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1">    components<span class="op">:</span> [</a>
+<a class="sourceLine" id="cb1-2" title="2">        <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.Input&quot;</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;myInput&quot;</span><span class="op">,</span> <span class="dt">placeholder</span><span class="op">:</span> <span class="st">&quot;Enter some text...&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-3" title="3">            <span class="dt">oninput</span><span class="op">:</span> <span class="st">&quot;inputChanged&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb1-4" title="4">    ]<span class="op">,</span></a>
+<a class="sourceLine" id="cb1-5" title="5">    inputChanged<span class="op">:</span> <span class="kw">function</span>(inSender<span class="op">,</span> inEvent) <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-6" title="6">        <span class="co">// retrieve new input value</span></a>
+<a class="sourceLine" id="cb1-7" title="7">        newInputValue <span class="op">=</span> <span class="kw">this</span>.<span class="va">$</span>.<span class="va">myInput</span>.<span class="at">get</span>(<span class="st">&quot;value&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-8" title="8">        <span class="co">// do something in response</span></a>
+<a class="sourceLine" id="cb1-9" title="9">    <span class="op">}</span></a></code></pre></div>
+<figure>
+<img src="../../assets/enyo-input.png" alt="enyo.Input" /><figcaption><em>enyo.Input</em></figcaption>
+</figure>
+<p>As illustrated above, you may use the <code>placeholder</code> property to specify text to be displayed when the input is empty.</p>
+<p>Also, in the event handler method, you may access the value of the input by calling <code>get("value")</code> (or <code>set("value", &lt;new value&gt;)</code>).</p>
+<p>To create an input suitable for password entry, set the <code>type</code> property to <code>"password"</code>.</p>
+<p>Finally, two other properties of <code>enyo.Input</code> deserve mention. By setting the <code>disabled</code> property to <code>true</code>, you can prevent the user from entering anything into the input (presumably on a temporary basis). And by setting <code>defaultFocus</code> to <code>true</code>, you can make the input take focus when rendered. (Note that you should only do this for one input.)</p>
+<h2 id="moon.input">moon.Input</h2>
+<p><a href="../../..//#/kind/moon.Input">moon.Input</a> derives from <code>enyo.Input</code> and provides the same functionality with added visual styling.</p>
+<p>Typically, a <code>moon.Input</code> is placed inside a <a href="../../..//#/kind/moon.InputDecorator">moon.InputDecorator</a>, e.g.:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1">    <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.InputDecorator&quot;</span><span class="op">,</span> <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb2-2" title="2">        <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.Input&quot;</span><span class="op">,</span> <span class="dt">type</span><span class="op">:</span> <span class="st">&quot;password&quot;</span><span class="op">,</span> <span class="dt">placeholder</span><span class="op">:</span> <span class="st">&quot;Enter password&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb2-3" title="3">            <span class="dt">oninput</span><span class="op">:</span> <span class="st">&quot;inputChanged&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb2-4" title="4">    ]<span class="op">}</span></a></code></pre></div>
+<figure>
+<img src="../../assets/input.png" alt="moon.Input" /><figcaption><em>moon.Input</em></figcaption>
+</figure>
+<h2 id="moon.expandableinput">moon.ExpandableInput</h2>
+<p><a href="../../..//#/kind/moon.ExpandableInput">moon.ExpandableInput</a> is a <a href="../../..//#/kind/moon.ExpandableListItem">moon.ExpandableListItem</a> that contains a <code>moon.Input</code> within its drop-down content area.</p>
+<p>In its collapsed state, the ExpandableInput displays its <code>content</code> and <code>value</code>. In the expanded state, the text input appears, giving the user the opportunity to change the <code>value</code>.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1">    <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.ExpandableInput&quot;</span><span class="op">,</span> <span class="dt">oninput</span><span class="op">:</span> <span class="st">&quot;inputChanging&quot;</span><span class="op">,</span> <span class="dt">onChange</span><span class="op">:</span> <span class="st">&quot;inputChanged&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb3-2" title="2">        <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Input with Value&quot;</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">&quot;Initial value&quot;</span><span class="op">}</span></a></code></pre></div>
+<figure>
+<img src="../../assets/expandable-input-collapsed.png" alt="moon.ExpandableInput (Collapsed)" /><figcaption><em>moon.ExpandableInput (Collapsed)</em></figcaption>
+</figure>
+<figure>
+<img src="../../assets/expandable-input-expanded.png" alt="moon.ExpandableInput (Expanded)" /><figcaption><em>moon.ExpandableInput (Expanded)</em></figcaption>
+</figure>
+<h2 id="enyo.textarea">enyo.TextArea</h2>
+<p><a href="../../..//#/kind/enyo.TextArea">enyo.TextArea</a> is an <code>enyo.Input</code> that implements an HTML <code>&lt;textarea&gt;</code> element with cross-platform support for change events.</p>
+<p><code>enyo.TextArea</code> is functionally equivalent to <code>enyo.Input</code>; one interacts with it through the same events (<code>oninput</code>, <code>onchange</code>) and properties (<code>value</code>, <code>placeholder</code>, <code>type</code>, <code>disabled</code>, <code>defaultFocus</code>).</p>
+<p>A TextArea differs from an Input mainly in that the text field it displays spans multiple lines.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1">    <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.TextArea&quot;</span><span class="op">,</span> <span class="dt">placeholder</span><span class="op">:</span> <span class="st">&quot;Enter some text...&quot;</span><span class="op">,</span> <span class="dt">oninput</span><span class="op">:</span> <span class="st">&quot;inputChanged&quot;</span><span class="op">}</span></a></code></pre></div>
+<figure>
+<img src="../../assets/enyo-text-area.png" alt="enyo.TextArea" /><figcaption><em>enyo.TextArea</em></figcaption>
+</figure>
+<h2 id="moon.textarea">moon.TextArea</h2>
+<p><a href="../../..//#/kind/moon.TextArea">moon.TextArea</a> is a Moonstone-styled TextArea control, derived from <code>enyo.TextArea</code>. Typically, a <code>moon.TextArea</code> is placed inside a <code>moon.InputDecorator</code>, which provides styling, e.g.:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1">    <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.InputDecorator&quot;</span><span class="op">,</span> <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb5-2" title="2">        <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.TextArea&quot;</span><span class="op">,</span> <span class="dt">oninput</span><span class="op">:</span> <span class="st">&quot;inputChanged&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb5-3" title="3">    ]<span class="op">}</span></a></code></pre></div>
+<figure>
+<img src="../../assets/text-area.png" alt="moon.TextArea" /><figcaption><em>moon.TextArea</em></figcaption>
+</figure>
+<h2 id="enyo.richtext">enyo.RichText</h2>
+<p><a href="../../..//#/kind/enyo.RichText">enyo.RichText</a> is a multi-line <code>enyo.Input</code> that supports rich formatting, such as bold, italics, and underlining.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1">    <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.RichText&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb6-2" title="2">        <span class="dt">value</span><span class="op">:</span> <span class="st">&quot;&lt;b&gt;Boldly&lt;/b&gt; going where &lt;i&gt;no one&lt;/i&gt; has gone before&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb6-3" title="3">        <span class="dt">style</span><span class="op">:</span> <span class="st">&quot;width: 250px;&quot;</span><span class="op">,</span> <span class="dt">defaultFocus</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">oninput</span><span class="op">:</span> <span class="st">&quot;inputChanged&quot;</span><span class="op">}</span></a></code></pre></div>
+<figure>
+<img src="../../assets/enyo-rich-text.png" alt="enyo.RichText" /><figcaption><em>enyo.RichText</em></figcaption>
+</figure>
+<p>As with Input and TextArea, the text displayed in a RichText may be accessed at runtime via <code>get("value")</code> and <code>set("value", &lt;new value&gt;)</code>.</p>
+<p>RichText also has <code>disabled</code> and <code>defaultFocus</code> properties that function just like their counterparts in Input and TextArea.</p>
+<p><code>enyo.RichText</code> differs from Input and TextArea in having an <code>allowHtml</code> property. This is <code>true</code> by default, enabling HTML-based rich formatting. Note that the default setting allows <em>any</em> HTML to be inserted into the RichText, including <code>&lt;iframe&gt;</code> and <code>&lt;script&gt;</code> tags. Since this can be a security concern in some situations, you have the option of setting <code>allowHtml</code> to <code>false</code>, in which case any inserted HTML will be escaped.</p>
+<p>RichText also differs from Input and TextArea by offering methods for manipulating the current selection and the cursor position. The selection operations and <code>insertAtCursor()</code> method use the <a href="https://dvcs.w3.org/hg/editing/raw-file/tip/editing.html#selections">HTML Editing APIs</a>.</p>
+<p>In addition, RichText requires explicit sizing for width.</p>
+<p>Note that RichText is not supported on Android &lt; 3.</p>
+<h2 id="moon.richtext">moon.RichText</h2>
+<p><a href="../../..//#/kind/moon.RichText">moon.RichText</a> is a multi-line text input that supports rich formatting, such as bold, italics, and underlining. It is derived directly from <code>enyo.RichText</code>.</p>
+<p>The content displayed in a RichText may be accessed at runtime via the <code>value</code> property.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1">    <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.InputDecorator&quot;</span><span class="op">,</span> <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb7-2" title="2">        <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.RichText&quot;</span><span class="op">,</span> <span class="dt">oninput</span><span class="op">:</span> <span class="st">&quot;handleInput&quot;</span><span class="op">,</span> <span class="dt">onchange</span><span class="op">:</span> <span class="st">&quot;handleChange&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb7-3" title="3">            <span class="dt">value</span><span class="op">:</span> <span class="st">&quot;&lt;b&gt;Boldly&lt;/b&gt; going where &lt;i&gt;no one&lt;/i&gt; has gone before&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb7-4" title="4">    ]<span class="op">}</span></a></code></pre></div>
+<figure>
+<img src="../../assets/rich-text.png" alt="moon.RichText" /><figcaption><em>moon.RichText</em></figcaption>
+</figure>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../../js/main.js"></script>
+  <script type="text/javascript" src="../../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

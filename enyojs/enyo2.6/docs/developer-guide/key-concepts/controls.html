@@ -1,0 +1,238 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Controls</h1>
+<h2 id="enyo.control">enyo.Control</h2>
+<p><a href="../..//#/kind/enyo.Control">enyo.Control</a> is a component that controls a DOM node (i.e., an element in the user interface). Controls are generally visible and the user often interacts with them directly. Things like buttons and input boxes are obviously controls, but in Enyo a control may become as complex as an entire application.</p>
+<h2 id="the-basics">The Basics</h2>
+<p>In the following example, we define a <code>Circle</code> control, which we will put to use inside a <code>TrafficLight</code> control:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb1-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Circle&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-3" title="3">        <span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;Control&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-4" title="4">        <span class="dt">published</span><span class="op">:</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-5" title="5">            <span class="dt">color</span><span class="op">:</span> <span class="st">&quot;magenta&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-6" title="6">            <span class="dt">bgColor</span><span class="op">:</span> <span class="st">&quot;black&quot;</span></a>
+<a class="sourceLine" id="cb1-7" title="7">        <span class="op">},</span></a>
+<a class="sourceLine" id="cb1-8" title="8">        <span class="dt">handlers</span><span class="op">:</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-9" title="9">            <span class="dt">ondown</span><span class="op">:</span> <span class="st">&quot;downHandler&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-10" title="10">            <span class="dt">onup</span><span class="op">:</span> <span class="st">&quot;upHandler&quot;</span></a>
+<a class="sourceLine" id="cb1-11" title="11">        <span class="op">},</span></a>
+<a class="sourceLine" id="cb1-12" title="12">        <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Hi&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-13" title="13">        <span class="dt">style</span><span class="op">:</span> <span class="st">&quot;padding: 2px 6px; border: 3px solid; border-radius: 20px; cursor: pointer;&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-14" title="14">        <span class="dt">create</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-15" title="15">            <span class="kw">this</span>.<span class="at">inherited</span>(<span class="kw">arguments</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-16" title="16">            <span class="kw">this</span>.<span class="at">colorChanged</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-17" title="17">        <span class="op">},</span></a>
+<a class="sourceLine" id="cb1-18" title="18">        <span class="dt">colorChanged</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-19" title="19">            <span class="kw">this</span>.<span class="at">applyStyle</span>(<span class="st">&quot;border-color&quot;</span><span class="op">,</span> <span class="kw">this</span>.<span class="at">color</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-20" title="20">        <span class="op">},</span></a>
+<a class="sourceLine" id="cb1-21" title="21">        <span class="dt">bgColorChanged</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-22" title="22">            <span class="kw">this</span>.<span class="at">applyStyle</span>(<span class="st">&quot;background-color&quot;</span><span class="op">,</span> <span class="kw">this</span>.<span class="at">bgColor</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-23" title="23">        <span class="op">},</span></a>
+<a class="sourceLine" id="cb1-24" title="24">        <span class="dt">downHandler</span><span class="op">:</span> <span class="kw">function</span>(inSender<span class="op">,</span> inEvent) <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-25" title="25">            <span class="kw">this</span>.<span class="at">applyStyle</span>(<span class="st">&quot;background-color&quot;</span><span class="op">,</span> <span class="st">&quot;white&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-26" title="26">        <span class="op">},</span></a>
+<a class="sourceLine" id="cb1-27" title="27">        <span class="dt">upHandler</span><span class="op">:</span> <span class="kw">function</span>(inSender<span class="op">,</span> inEvent) <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-28" title="28">            <span class="kw">this</span>.<span class="at">applyStyle</span>(<span class="st">&quot;background-color&quot;</span><span class="op">,</span> <span class="st">&quot;black&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-29" title="29">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb1-30" title="30">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>The <code>Circle</code> has a <code>kind</code> value of <code>"Control"</code> and therefore inherits and extends the behavior of <code>enyo.Control</code>. Since a control is a component (i.e., <code>enyo.Control</code> extends <a href="../..//#/kind/enyo.Component">enyo.Component</a>), it can publish properties, as is done here.</p>
+<h2 id="manipulating-a-controls-dom-node">Manipulating a Control’s DOM Node</h2>
+<p>A control exposes functionality to manipulate its DOM node. Notice the use of <code>content</code> and <code>style</code> in the <code>Circle</code> object. The <code>content</code> property sets the HTML that the control will render. Since the <code>Control</code> object publishes the <code>content</code> property, you may access the content by calling <code>set()</code> and <code>get()</code>. The <code>style</code> property specifies CSS styles that the control will use to decorate its node. You may also specify classes, attributes, or even a tag type. For example:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1">    <span class="op">{</span><span class="dt">tag</span><span class="op">:</span> <span class="st">&quot;input&quot;</span><span class="op">,</span> <span class="dt">classes</span><span class="op">:</span> <span class="st">&quot;rounded&quot;</span><span class="op">,</span> <span class="dt">attributes</span><span class="op">:</span> <span class="op">{</span><span class="dt">value</span><span class="op">:</span> <span class="st">&quot;foo&quot;</span><span class="op">}}</span></a></code></pre></div>
+<p>These properties may be set either on control configuration blocks or in kind definitions.</p>
+<p>There are also methods available to modify these properties; for example, <code>applyStyle()</code> sets a specific style property to a given value. There are many other such methods, including <code>addStyles()</code>, <code>addClass()</code>, <code>setAttribute()</code>, <code>show()</code>, <code>hide()</code>, and <code>render()</code>. See the API documentation for more info.</p>
+<h2 id="controls-in-controls">Controls in Controls</h2>
+<p>Here is our aforementioned <code>TrafficLight</code> control:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb3-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;TrafficLight&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb3-3" title="3">        <span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;Control&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb3-4" title="4">        <span class="dt">style</span><span class="op">:</span> <span class="st">&quot;position: absolute; padding: 4px; border: 1px solid black; background-color: silver;&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb3-5" title="5">        <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb3-6" title="6">            <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;Circle&quot;</span><span class="op">,</span> <span class="dt">color</span><span class="op">:</span> <span class="st">&quot;red&quot;</span><span class="op">,</span> <span class="dt">ontap</span><span class="op">:</span> <span class="st">&quot;circleTap&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb3-7" title="7">            <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;Circle&quot;</span><span class="op">,</span> <span class="dt">color</span><span class="op">:</span> <span class="st">&quot;yellow&quot;</span><span class="op">,</span> <span class="dt">ontap</span><span class="op">:</span> <span class="st">&quot;circleTap&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb3-8" title="8">            <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;Circle&quot;</span><span class="op">,</span> <span class="dt">color</span><span class="op">:</span> <span class="st">&quot;green&quot;</span><span class="op">,</span> <span class="dt">ontap</span><span class="op">:</span> <span class="st">&quot;circleTap&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb3-9" title="9">        ]<span class="op">,</span></a>
+<a class="sourceLine" id="cb3-10" title="10">        <span class="dt">circleTap</span><span class="op">:</span> <span class="kw">function</span>(inSender<span class="op">,</span> inEvent) <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-11" title="11">            <span class="kw">var</span> lights <span class="op">=</span> <span class="op">{</span><span class="dt">red</span><span class="op">:</span> <span class="st">&quot;tomato&quot;</span><span class="op">,</span> <span class="dt">yellow</span><span class="op">:</span> <span class="st">&quot;#FFFF80&quot;</span><span class="op">,</span> <span class="dt">green</span><span class="op">:</span> <span class="st">&quot;lightgreen&quot;</span><span class="op">};</span></a>
+<a class="sourceLine" id="cb3-12" title="12">            <span class="cf">if</span> (<span class="kw">this</span>.<span class="at">lastCircle</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-13" title="13">                <span class="kw">this</span>.<span class="va">lastCircle</span>.<span class="at">set</span>(<span class="st">&quot;bgColor&quot;</span><span class="op">,</span> <span class="st">&quot;black&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-14" title="14">            <span class="op">}</span></a>
+<a class="sourceLine" id="cb3-15" title="15">            <span class="kw">this</span>.<span class="at">lastCircle</span> <span class="op">=</span> inSender<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-16" title="16">            <span class="kw">this</span>.<span class="va">lastCircle</span>.<span class="at">set</span>(<span class="st">&quot;bgColor&quot;</span><span class="op">,</span> lights[<span class="va">inSender</span>.<span class="at">color</span>])<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-17" title="17">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb3-18" title="18">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<figure>
+<img src="../assets/traffic-light.png" alt="TrafficLight control" /><figcaption><em>TrafficLight control</em></figcaption>
+</figure>
+<p>Because they are components, controls may contain other controls. A control will render any controls contained inside itself. Thus, a <code>TrafficLight</code> will render with three <code>Circle</code> instances inside it and, if our styling is correct, will look like an actual traffic light. Note that if the control contains other controls and also specifies a value for <code>content</code>, it will render the child controls and ignore the value of <code>content</code>.</p>
+<h2 id="controls-and-events">Controls and Events</h2>
+<p>Enyo controls can handle common DOM events. In a component configuration block, specify the handler for a DOM event just as you would for any other Enyo event–with a named delegate. The <code>TrafficLight</code> kind does this for its circle controls by setting <code>ontap: "circleTap"</code>. Since <code>TrafficLight</code> owns its circles, it will process their events; thus, <code>circleTap</code> should be the name of a handler method inside <code>TrafficLight</code>.</p>
+<p>Now, the <code>ontap</code> event is not a DOM event per se; it actually belongs to a set of cross-platform events that behave like DOM events and so are referred to as “DOM-like”. Enyo normalizes these events across different platforms so that users may write a single set of event handlers for applications that run on both mobile and desktop platforms.</p>
+<p>Notice that the <code>Circle</code> kind handles some events itself. It reacts when the user presses down and then releases. DOM (and DOM-like) events that a kind should handle are specified in the <code>handlers</code> block. The <code>Circle</code> kind specifies handlers for the <code>down</code> and <code>up</code> events. These handlers are string delegate names of methods in the <code>Circle</code> kind that will handle the events. Again, strictly speaking, the <code>down</code> and <code>up</code> events are not DOM events, but are DOM-like.</p>
+<p>As with all events, the first argument sent to the event handler is the <code>inSender</code> object, the Enyo control that generated the event. DOM and DOM-like events pass the event object as the second argument.</p>
+<p>Since DOM and DOM-like events bubble up through the DOM, they may be handled by any control in the control hierarchy. For example, a user of <code>TrafficLight</code> could implement an <code>ontap</code> event handler and receive taps on the circles inside the TrafficLight.</p>
+<h2 id="lifecycle-methods-hasnode-and-rendered">Lifecycle Methods: hasNode() and rendered()</h2>
+<p>Since <code>enyo.Control</code> is a kind of Component, it inherits the <code>create()</code> and <code>destroy()</code> methods that we saw in <a href="components.html">Components</a>, as well as the <code>constructor()</code> method that we saw in <a href="kinds.html">Kinds</a>. It also introduces a few additional methods for managing its representation in the DOM.</p>
+<p><code>Control</code> is designed so that most of its methods and properties can be used without regard to whether there is a corresponding DOM node or not. For example, you may call</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1">    <span class="kw">this</span>.<span class="va">$</span>.<span class="va">control</span>.<span class="at">applyStyle</span>(<span class="st">&quot;color&quot;</span><span class="op">,</span> <span class="st">&quot;blue&quot;</span>)<span class="op">;</span></a></code></pre></div>
+<p>If the control is rendered, that style is placed in the DOM; if not, the information is stored until the DOM is created. Either way, when you see it, the text will be blue.</p>
+<p>Now, there are certain things you cannot do unless DOM has been created. Obviously, you cannot do work directly on a DOM node if there is no DOM. Also, some methods (e.g., <code>getBounds()</code>) return values measured from DOM, so if there is no DOM, you won’t get accurate values.</p>
+<p>In a control, if you need to perform an action immediately after the DOM is created, you can do it in the <code>rendered()</code> method:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1">    rendered<span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-2" title="2">        <span class="co">// important! must call the inherited method</span></a>
+<a class="sourceLine" id="cb5-3" title="3">        <span class="kw">this</span>.<span class="at">inherited</span>(<span class="kw">arguments</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-4" title="4">        <span class="co">// this is the first moment that bounds are available</span></a>
+<a class="sourceLine" id="cb5-5" title="5">        <span class="kw">this</span>.<span class="at">firstBounds</span> <span class="op">=</span> <span class="kw">this</span>.<span class="at">getBounds</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-6" title="6">    <span class="op">}</span></a></code></pre></div>
+<p>An important thing to note here is that even though DOM elements have been created when <code>rendered()</code> is called, the visual representation of these elements in the browser is generally not visible yet. Most browsers will not update the display until Enyo yields the JavaScript thread. This means you have the ability to make changes to the DOM in <code>rendered()</code> without causing annoying visual artifacts.</p>
+<p>Whenever you need to access a control’s DOM node directly, use the <code>hasNode()</code> method:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1">    twiddle<span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-2" title="2">        <span class="cf">if</span> (<span class="kw">this</span>.<span class="at">hasNode</span>()) <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-3" title="3">            <span class="at">buffNode</span>(<span class="kw">this</span>.<span class="at">node</span>)<span class="op">;</span> <span class="co">// buffNode is made-up</span></a>
+<a class="sourceLine" id="cb6-4" title="4">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb6-5" title="5">    <span class="op">}</span></a></code></pre></div>
+<p>Remember that even if DOM is rendered, <code>this.node</code> may not have a value. A truthy result from <code>hasNode()</code> means <code>this.node</code> is initialized. Even within <code>rendered()</code>, you need to call <code>hasNode()</code> before using <code>this.node</code>:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1">    rendered<span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-2" title="2">        <span class="kw">this</span>.<span class="at">inherited</span>(<span class="kw">arguments</span>)<span class="op">;</span> <span class="co">// important! must call the inherited method</span></a>
+<a class="sourceLine" id="cb7-3" title="3">        <span class="cf">if</span> (<span class="kw">this</span>.<span class="at">hasNode</span>()) <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-4" title="4">            <span class="at">buffNode</span>(<span class="kw">this</span>.<span class="at">node</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-5" title="5">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb7-6" title="6">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<h2 id="when-controls-are-rendered">When Controls Are Rendered</h2>
+<p>In general, controls are not rendered until you you explicitly say so. Most applications have a <code>renderInto()</code> or <code>write()</code> call at the very top that renders the controls in the application.</p>
+<p>Also, when creating controls dynamically, Enyo will not render those controls until you call <code>render()</code> on them, or on one of their containers. You will often see code like the following:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1">    updateControls<span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-2" title="2">        <span class="co">// destroy controls we made last time </span></a>
+<a class="sourceLine" id="cb8-3" title="3">        <span class="co">// (&#39;destroyClientControls&#39; destroys only dynamic controls;</span></a>
+<a class="sourceLine" id="cb8-4" title="4">        <span class="co">// &#39;destroyControls&#39; destroys everything)</span></a>
+<a class="sourceLine" id="cb8-5" title="5">        <span class="kw">this</span>.<span class="at">destroyClientControls</span>()<span class="op">;</span> </a>
+<a class="sourceLine" id="cb8-6" title="6">        <span class="co">// create new controls</span></a>
+<a class="sourceLine" id="cb8-7" title="7">        <span class="cf">for</span> (<span class="kw">var</span> i<span class="op">=</span><span class="dv">0</span><span class="op">;</span> i<span class="op">&lt;</span><span class="kw">this</span>.<span class="at">count</span><span class="op">;</span> i<span class="op">++</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-8" title="8">            <span class="co">// created but not rendered</span></a>
+<a class="sourceLine" id="cb8-9" title="9">            <span class="kw">this</span>.<span class="at">createComponent</span>(<span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;myCoolControl&quot;</span><span class="op">,</span> <span class="dt">index</span><span class="op">:</span> i<span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-10" title="10">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb8-11" title="11">        <span class="co">// render everything in one shot</span></a>
+<a class="sourceLine" id="cb8-12" title="12">        <span class="kw">this</span>.<span class="at">render</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-13" title="13">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>Destroying a control will cause it to be removed from the DOM right away, as this is a necessary part of the cleanup process. There is no <code>unrender()</code> method.</p>
+<p><strong>Additional Reading</strong></p>
+<ul>
+<li><a href="event-handling.html">Event Handling</a></li>
+<li><a href="kinds.html">Kinds</a></li>
+<li><a href="components.html">Components</a></li>
+</ul>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../js/main.js"></script>
+  <script type="text/javascript" src="../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

@@ -1,0 +1,278 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Pickers</h1>
+<h2 id="moon.simplepicker">moon.SimplePicker</h2>
+<p><a href="../../..//#/kind/moon.SimplePicker">moon.SimplePicker</a> is a basic picker that allows the user to select items from a list.</p>
+<p>In 5-way mode, the arrows are focusable and change the selection when pressed. (Selection state is remembered.)</p>
+<p>In pointer mode, the user points at arrows and clicks to change the selection.</p>
+<p>This control may be used to select from a short list of options. Since only one item is visible at a time, it is recommended that the simple picker be used in situations where the options are limited and easily understood. For example, it is appropriate to use this picker to make a selection from a list of time zones or from a short list of languages; it is not appropriate to use SimplePicker with long, data-driven lists.</p>
+<figure>
+<img src="../../assets/simple-picker.png" alt="Simple Picker" /><figcaption><em>Simple Picker</em></figcaption>
+</figure>
+<h2 id="moon.simpleintegerpicker">moon.SimpleIntegerPicker</h2>
+<p><a href="../../..//#/kind/moon.SimpleIntegerPicker">moon.SimpleIntegerPicker</a> is a control that prompts the user to make a selection from a range of integer-based options.</p>
+<p>The picker may be changed programmatically by calling <code>previous()</code> or <code>next()</code>, or by modifying the published property <code>value</code>.</p>
+<p>Visually, SimpleIntegerPicker is similar to SimplePicker, with the currently selected value flanked by navigation arrows on each side.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1">    <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-2" title="2">        <span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.SimpleIntegerPicker&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-3" title="3">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;picker1&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-4" title="4">        <span class="dt">value</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-5" title="5">        <span class="dt">min</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-6" title="6">        <span class="dt">max</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-7" title="7">        <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-8" title="8">        <span class="dt">unit</span><span class="op">:</span> <span class="st">&quot;sec&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-9" title="9">        <span class="dt">onChange</span><span class="op">:</span> <span class="st">&quot;changed&quot;</span></a>
+<a class="sourceLine" id="cb1-10" title="10">    <span class="op">}</span></a></code></pre></div>
+<figure>
+<img src="../../assets/simple-integer-picker.png" alt="Simple Integer Picker" /><figcaption><em>Simple Integer Picker</em></figcaption>
+</figure>
+<h2 id="moon.integerpicker">moon.IntegerPicker</h2>
+<p><a href="../../..//#/kind/moon.IntegerPicker">moon.IntegerPicker</a> is a control used to display a list of integers and solicit a choice from the user. The integers range from <code>min</code> to <code>max</code>.</p>
+<p>To initialize the IntegerPicker to a particular value, set the <code>value</code> property to the integer that should be selected, as in this example:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1">    <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-2" title="2">        <span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.IntegerPicker&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb2-3" title="3">        <span class="dt">value</span><span class="op">:</span> <span class="dv">2013</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb2-4" title="4">        <span class="dt">min</span><span class="op">:</span> <span class="dv">1900</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb2-5" title="5">        <span class="dt">max</span><span class="op">:</span> <span class="dv">2100</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb2-6" title="6">        <span class="dt">onChange</span><span class="op">:</span> <span class="st">&quot;changed&quot;</span></a>
+<a class="sourceLine" id="cb2-7" title="7">    <span class="op">}</span></a></code></pre></div>
+<figure>
+<img src="../../assets/integer-picker.png" alt="Integer Picker" /><figcaption><em>Integer Picker</em></figcaption>
+</figure>
+<p>The picker may be changed programmatically by modifying the published properties <code>value</code>, <code>min</code>, or <code>max</code>; this is done in the usual way, by calling <code>set()</code> while passing in the name of the property and the desired new value.</p>
+<h2 id="moon.expandablelistitem">moon.ExpandableListItem</h2>
+<p><a href="../../..//#/kind/moon.ExpandableListItem">moon.ExpandableListItem</a> is a control with an expanded state and a collapsed state. As the kind name suggests, ExpandableListItem is suitable for use within lists; it is also important with respect to pickers, because a variety of Moonstone picker kinds are derived from it.</p>
+<p>A <code>moon.ExpandableListItem</code> control displays a header while also allowing additional content to be stored in an <a href="../../..//#/kind/enyo.Drawer">enyo.Drawer</a>; when the header is selected, the drawer opens below. The drawer is closed by tapping on the header text or navigating (via 5-way) back to the top of the drawer.</p>
+<p>The control’s child components may be of any kind; by default, they are instances of <a href="../../..//#/kind/moon.Item">moon.Item</a>.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1">    components<span class="op">:</span> [</a>
+<a class="sourceLine" id="cb3-2" title="2">        <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.ExpandableListItem&quot;</span><span class="op">,</span> <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;This is an expandable list item&quot;</span><span class="op">,</span> <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb3-3" title="3">            <span class="op">{</span><span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Item One&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb3-4" title="4">            <span class="op">{</span><span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Item Two&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb3-5" title="5">            <span class="op">{</span><span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Item Three&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb3-6" title="6">        ]<span class="op">}</span></a>
+<a class="sourceLine" id="cb3-7" title="7">    ]</a></code></pre></div>
+<figure>
+<img src="../../assets/expandable-list-item-collapsed.png" alt="Expandable List Item (Collapsed)" /><figcaption><em>Expandable List Item (Collapsed)</em></figcaption>
+</figure>
+<figure>
+<img src="../../assets/expandable-list-item-expanded.png" alt="Expandable List Item (Expanded)" /><figcaption><em>Expandable List Item (Expanded)</em></figcaption>
+</figure>
+<h2 id="moon.expandablepicker">moon.ExpandablePicker</h2>
+<p>One important subkind of <code>moon.ExpandableListItem</code> is <a href="../../..//#/kind/moon.ExpandablePicker">moon.ExpandablePicker</a>, a drop-down picker menu that solicits a choice from the user. The picker’s child components, instances of <a href="../../..//#/kind/moon.CheckboxItem">moon.CheckboxItem</a> by default, provide the options for the picker.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1">    components<span class="op">:</span> [</a>
+<a class="sourceLine" id="cb4-2" title="2">        <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.ExpandablePicker&quot;</span><span class="op">,</span> <span class="dt">noneText</span><span class="op">:</span> <span class="st">&quot;Nothing selected&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb4-3" title="3">            <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Expandable Picker&quot;</span><span class="op">,</span> <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb4-4" title="4">                <span class="op">{</span><span class="dt">content</span><span class="op">:</span> <span class="st">&quot;English&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb4-5" title="5">                <span class="op">{</span><span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Spanish&quot;</span><span class="op">,</span> <span class="dt">active</span><span class="op">:</span> <span class="kw">true</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb4-6" title="6">                <span class="op">{</span><span class="dt">content</span><span class="op">:</span> <span class="st">&quot;French&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb4-7" title="7">                <span class="op">{</span><span class="dt">content</span><span class="op">:</span> <span class="st">&quot;German&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb4-8" title="8">                <span class="op">{</span><span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Italian&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb4-9" title="9">            ]</a>
+<a class="sourceLine" id="cb4-10" title="10">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb4-11" title="11">    ]</a></code></pre></div>
+<p>The currently selected item is available in the picker’s <code>selected</code> property and may be accessed in the normal manner, by calling <code>get("selected")</code> and <code>set("selected", &lt;value&gt;)</code>. Similarly, the index of the current selection is available in <code>selectedIndex</code>.</p>
+<p>The current selection appears beneath the label when the control is closed.</p>
+<figure>
+<img src="../../assets/expandable-picker-collapsed.png" alt="Expandable Picker (Collapsed)" /><figcaption><em>Expandable Picker (Collapsed)</em></figcaption>
+</figure>
+<figure>
+<img src="../../assets/expandable-picker-expanded.png" alt="Expandable Picker (Expanded)" /><figcaption><em>Expandable Picker (Expanded)</em></figcaption>
+</figure>
+<p>Like <code>moon.ExpandableListItem</code>, <code>moon.ExpandablePicker</code> may also be used inline within lists.</p>
+<h2 id="moon.expandableintegerpicker">moon.ExpandableIntegerPicker</h2>
+<p>Another kind derived from <code>moon.ExpandableListItem</code> is <a href="../../..//#/kind/moon.ExpandableIntegerPicker">moon.ExpandableIntegerPicker</a>, a drop-down picker menu that prompts the user to make a selection from a range of integer-based options.</p>
+<p>The value of the currently selected item is available in the picker’s <code>value</code> property, while the content of the item is available in <code>content</code>.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1">    <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-2" title="2">        <span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.ExpandableIntegerPicker&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb5-3" title="3">        <span class="dt">noneText</span><span class="op">:</span> <span class="st">&quot;Not Selected&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb5-4" title="4">        <span class="dt">autoCollapse</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb5-5" title="5">        <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Integer Picker&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb5-6" title="6">        <span class="dt">value</span><span class="op">:</span> <span class="dv">7</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb5-7" title="7">        <span class="dt">min</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb5-8" title="8">        <span class="dt">max</span><span class="op">:</span> <span class="dv">15</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb5-9" title="9">        <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb5-10" title="10">        <span class="dt">unit</span><span class="op">:</span> <span class="st">&quot;elephants&quot;</span></a>
+<a class="sourceLine" id="cb5-11" title="11">    <span class="op">}</span></a></code></pre></div>
+<figure>
+<img src="../../assets/expandable-integer-picker-collapsed.png" alt="Expandable Integer Picker (Collapsed)" /><figcaption><em>Expandable Integer Picker (Collapsed)</em></figcaption>
+</figure>
+<figure>
+<img src="../../assets/expandable-integer-picker-expanded.png" alt="Expandable Integer Picker (Expanded)" /><figcaption><em>Expandable Integer Picker (Expanded)</em></figcaption>
+</figure>
+<h2 id="moon.datepicker">moon.DatePicker</h2>
+<p><a href="../../..//#/kind/moon.DatePicker">moon.DatePicker</a>, yet another subkind of <code>moon.ExpandableListItem</code>, contains fields that allow the user to choose a day, month, and year.</p>
+<p>An <code>onChange</code> event is fired whenever the user selects a new value for one of the fields. This event contains a standard JavaScript Date object representing the current date.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1">    <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-2" title="2">        <span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.DatePicker&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb6-3" title="3">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;picker&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb6-4" title="4">        <span class="dt">noneText</span><span class="op">:</span> <span class="at">$L</span>(<span class="st">&quot;Pick a Date&quot;</span>)<span class="op">,</span></a>
+<a class="sourceLine" id="cb6-5" title="5">        <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Date&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb6-6" title="6">        <span class="dt">onChange</span><span class="op">:</span> <span class="st">&quot;changed&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb6-7" title="7">        <span class="dt">yearText</span><span class="op">:</span> <span class="at">$L</span>(<span class="st">&quot;year&quot;</span>)<span class="op">,</span></a>
+<a class="sourceLine" id="cb6-8" title="8">        <span class="dt">monthText</span><span class="op">:</span> <span class="at">$L</span>(<span class="st">&quot;month&quot;</span>)<span class="op">,</span></a>
+<a class="sourceLine" id="cb6-9" title="9">        <span class="dt">dayText</span><span class="op">:</span> <span class="at">$L</span>(<span class="st">&quot;day&quot;</span>)</a>
+<a class="sourceLine" id="cb6-10" title="10">    <span class="op">}</span></a></code></pre></div>
+<figure>
+<img src="../../assets/date-picker-collapsed.png" alt="Date Picker (Collapsed)" /><figcaption><em>Date Picker (Collapsed)</em></figcaption>
+</figure>
+<figure>
+<img src="../../assets/date-picker-expanded.png" alt="Date Picker (Expanded)" /><figcaption><em>Date Picker (Expanded)</em></figcaption>
+</figure>
+<h2 id="moon.timepicker">moon.TimePicker</h2>
+<p>The <a href="../../..//#/kind/moon.TimePicker">moon.TimePicker</a> control has fields that allow the user to choose an hour value, minute value, and optional meridiem (AM/PM) value.</p>
+<p>Like <code>moon.DatePicker</code>, <code>moon.TimePicker</code> extends <code>moon.ExpandableListItem</code>, so it has an expanded form and a collapsed form. The expanded form is displayed when the picker has focus.</p>
+<p>An <code>onChange</code> event is fired whenever the user selects a new value for one of the fields. This event contains a standard JavaScript Date object representing the current date.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1">    <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-2" title="2">        <span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.TimePicker&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb7-3" title="3">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;picker&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb7-4" title="4">        <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Time&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb7-5" title="5">        <span class="dt">meridiemEnable</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb7-6" title="6">        <span class="dt">onChange</span><span class="op">:</span> <span class="st">&quot;changed&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb7-7" title="7">        <span class="dt">hourText</span><span class="op">:</span> <span class="at">$L</span>(<span class="st">&quot;hour&quot;</span>)<span class="op">,</span></a>
+<a class="sourceLine" id="cb7-8" title="8">        <span class="dt">minuteText</span><span class="op">:</span> <span class="at">$L</span>(<span class="st">&quot;minute&quot;</span>)<span class="op">,</span></a>
+<a class="sourceLine" id="cb7-9" title="9">        <span class="dt">meridiemText</span><span class="op">:</span> <span class="at">$L</span>(<span class="st">&quot;meridiem&quot;</span>)</a>
+<a class="sourceLine" id="cb7-10" title="10">    <span class="op">}</span></a></code></pre></div>
+<figure>
+<img src="../../assets/time-picker-collapsed.png" alt="Time Picker (Collapsed)" /><figcaption><em>Time Picker (Collapsed)</em></figcaption>
+</figure>
+<figure>
+<img src="../../assets/time-picker-expanded.png" alt="Time Picker (Expanded)" /><figcaption><em>Time Picker (Expanded)</em></figcaption>
+</figure>
+<h2 id="moon.accordion">moon.Accordion</h2>
+<p>An additional subkind of <code>moon.ExpandableListItem</code>, <a href="../../..//#/kind/moon.Accordion">moon.Accordion</a> features an arrow to the right of the header and additional margin space to the left of the drawer containing the item list. The arrow points up when the control is expanded, and down when it is collapsed (the default state).</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1">    <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.Accordion&quot;</span><span class="op">,</span> <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;This is an accordion&quot;</span><span class="op">,</span> <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb8-2" title="2">        <span class="op">{</span><span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Item One&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb8-3" title="3">        <span class="op">{</span><span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Item Two&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb8-4" title="4">    ]<span class="op">}</span></a></code></pre></div>
+<figure>
+<img src="../../assets/accordion-collapsed.png" alt="Accordion (Collapsed)" /><figcaption><em>Accordion (Collapsed)</em></figcaption>
+</figure>
+<p>The drawer’s state may be toggled by tapping on the header text or navigating (via 5-way) back to the top of the drawer.</p>
+<figure>
+<img src="../../assets/accordion-expanded.png" alt="Accordion (Expanded)" /><figcaption><em>Accordion (Expanded)</em></figcaption>
+</figure>
+<p>Multiple accordions may be used together in a group; when this happens, only one accordion in the group may be expanded at any given time.</p>
+<h2 id="moon.calendar">moon.Calendar</h2>
+<p>Though not descended from <code>moon.ExpandableListItem</code>, <a href="../../..//#/kind/moon.Calendar">moon.Calendar</a> does implement picker functionality in the form of a monthly calendar, from which the user may select a particular day.</p>
+<p>Each Calendar instance features the month name at the top and a grid of days, grouped into rows (one per week), below. The header buttons are used to navigate to the desired month; the desired day is selected by tapping on it.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1">    <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&#39;moon.Calendar&#39;</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&#39;calendar&#39;</span><span class="op">,</span> <span class="dt">onChange</span><span class="op">:</span> <span class="st">&#39;changed&#39;</span><span class="op">}</span></a></code></pre></div>
+<figure>
+<img src="../../assets/calendar.png" alt="moon.Calendar" /><figcaption><em>moon.Calendar</em></figcaption>
+</figure>
+<h2 id="moon.calendardate">moon.CalendarDate</h2>
+<p><a href="../../..//#/kind/moon.CalendarDate">moon.CalendarDate</a> is a control that represents a single day; in a <code>moon.Calendar</code> control, each day of the month is a separate CalendarDate instance.</p>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../../js/main.js"></script>
+  <script type="text/javascript" src="../../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

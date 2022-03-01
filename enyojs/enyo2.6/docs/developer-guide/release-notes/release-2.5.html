@@ -1,0 +1,351 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Enyo 2.5 Release Notes</h1>
+<p>Welcome to Enyo 2.5! The following items have changed since the 2.4 release. (Note that this list is not comprehensive; see the commit history in GitHub for a complete list of changes.)</p>
+<h2 id="detailed-release-notes">Detailed Release Notes</h2>
+<h3 id="enyo">enyo</h3>
+<ul>
+<li><p>Reworked data layer code, adding support for relational data objects. Significant changes were made to existing kinds such as <code>enyo.Control</code>, <code>enyo.Binding</code>, <code>enyo.Source</code>, and <code>enyo.Store</code>, and existing mixins such as <code>enyo.BindingSupport</code>, <code>enyo.ComputedSupport</code>, and <code>enyo.ObserverSupport</code>.</p>
+<p>New data-related kinds include <code>enyo.Filter</code>, <code>enyo.BucketFilter</code>, <code>enyo.ProgressiveFilter</code>, <code>enyo.LinkedList</code>, <code>enyo.ObserverChain</code>, <code>enyo.Runloop</code>, <code>enyo.ModelList</code>, <code>enyo.AjaxSource</code>, and <code>enyo.JsonpSource</code>; new mixins include <code>enyo.EventEmitter</code> and <code>enyo.ProxyObject</code>.</p>
+<p>In addition, several stubbed kinds have received proper implementations, including <code>enyo.RelationalModel</code> and <code>enyo.LocalStorageSource</code>.</p>
+<p>Finally, the <code>enyo.RegisteredEventSupport</code> mixin has been removed.</p></li>
+<li><p>Began transition to Mocha-based unit testing.</p></li>
+<li><p>Added <code>enyo.SpriteAnimation</code> kind, which enables the creation of simple animated sprite images. Also added related sample, “SpriteAnimationSample”.</p></li>
+<li><p>Added <code>enyo.Style</code> kind, used to dynamically generate <code>&lt;style&gt;</code> tags.</p></li>
+<li><p>Added <code>enyo.StylesheetSupport</code> mixin, used to add an auxiliary, inline stylesheet (containing programmatically-generated CSS) to a control. Also added related sample, “StylesheetSupportSample”.</p></li>
+<li><p>In <code>enyo.Ajax</code>, added support for synchronous loading of binary files.</p></li>
+<li><p>In <code>enyo.AjaxSource</code>, updated <code>commit()</code> to set default <code>contentType</code> as <code>"application/json"</code>.</p></li>
+<li><p>In <code>enyo.Animator</code>, updated <code>next()</code> to fire <code>onEnd</code> event when animation has finished.</p></li>
+<li><p>In <code>enyo.Binding</code>, added <code>force</code> parameter to <code>sync()</code> method.</p></li>
+<li><p>Made several changes to <code>enyo.Control</code>:</p>
+<ul>
+<li><p>Updated <code>applyStyle()</code> to prevent invalid values from being propagated to the <code>style</code> property.</p></li>
+<li><p>In <code>Control.normalizeCssStyleString()</code>, modified regular expression to fix issue with extra spaces in paths in <code>style</code> attribute.</p></li>
+<li><p>Added code to properly clear the <code>style</code> tag when appropriate.</p></li>
+<li><p>Fixed issue in rendering code causing picker to be dismissed when choosing a locale in “DatePickerSample”.</p></li>
+<li><p>Added call to <code>enyo.dom.updateScaleFactor()</code> in <code>renderInto()</code>.</p></li>
+</ul></li>
+<li><p>In <code>enyo.DataList</code>, updated <code>create()</code> to synchronize the values of <code>showing</code> and <code>absoluteShowing</code>. Also modified <code>modelsRemoved()</code> so that <code>sup</code> call is only made if <code>this.$.scroller.canGenerate</code> is <code>true</code>.</p></li>
+<li><p>In <code>enyo.DataRepeater</code>, modified <code>batchingChanged()</code>, adding call to <code>this.refresh()</code>.</p></li>
+<li><p>In <code>enyo.dom</code>, added properties <code>_bodyScaleFactorX</code> and <code>_bodyScaleFactorY</code>, which represent the ratio of the <code>&lt;body&gt;</code> tag’s size to the window size along the x and y axes. This value is updated via <code>enyo.dom.updateScaleFactor()</code> on page load and window resize.</p></li>
+<li><p>In <code>enyo.gesture</code>, updated <code>makeEvent()</code>, adding code to update mouse/pointer coordinate values (<code>clientX</code> and <code>clientY</code>) if body is being scaled.</p></li>
+<li><p>Modified <code>enyo.HTMLStringDelegate</code> to allow controls to override <code>generateChildHtml()</code>.</p></li>
+<li><p>In <code>enyo.Image</code> and <code>enyo.Video()</code>, updated <code>create()</code> method, adding call to <code>this.srcChanged()</code>.</p></li>
+<li><p>In <code>ObserverSupport.js</code>, modified <code>enyo.concatHandler()</code> so that component overrides don’t wipe out observers of the base kind.</p></li>
+<li><p>In <code>enyo.Option</code>, added <code>selected</code> property, a Boolean value indicating whether the option is currently selected. (Default is <code>false</code>.)</p></li>
+<li><p>In <code>enyo.Popup</code>, added <code>enyo.Popup.concat()</code>, which may be used to specify events to be captured (in addition to the usual <code>ondown</code> and <code>ontap</code>); in a related change, modified the kind to set <code>noDefer: true</code> by default.</p></li>
+<li><p>In <code>enyo.Scroller</code>, used absolute positioning to implement <code>enyo-scrollee-fit</code> style for scroller as a child of flexbox, since flexbox doesn’t support percentage-based sizing.</p></li>
+<li><p>In <code>enyo.ScrollMath</code>, modified <code>animate()</code> and <code>scrollTo()</code> to ensure that final scroll position matches the originally-specified position.</p>
+<p>Also, adjusted value of <code>kFrictionEpsilon</code> when running on webOS for faster scroll stop on TV.</p></li>
+<li><p>In <code>enyo.Select</code>, added <code>value</code> property, which contains the value of the selected option. (Default is <code>null</code>.)</p></li>
+<li><p>In <code>enyo.TouchScrollStrategy</code>, added <code>preventDefault</code> flag. Set this to <code>false</code> to allow default (i.e., platform-native) scrolling behavior. The default value is <code>true</code>, meaning that native scrolling is suppressed.</p></li>
+<li><p>In <code>transform.js</code>, modified <code>enyo.dom.transformsToDom()</code> to set correct style property when control does not have DOM node.</p></li>
+<li><p>In <code>enyo.UiComponent</code>, modified <code>bubble()</code> to call <code>enyo.dom.updateScaleFactor()</code> if window is being resized.</p></li>
+<li><p>In <code>VerticalDelegate.js</code>, modified <code>modelsAdded()</code> to always update scroll thresholds.</p></li>
+<li><p>In <code>VerticalGridDelegate.js</code>, broke out new methods <code>updateIndexBound()</code>, <code>modelsAdded()</code> and <code>modelsRemoved()</code> from existing <code>updateMetrics()</code>. This improves performance by eliminating redundancy.</p></li>
+<li><p>In <code>enyo.xhr</code>, updated <code>request()</code>, fixing error in code for handling synchronous requests.</p></li>
+<li><p>In <code>enyo.XHRSource</code>, updated <code>go()</code> to switch order of parameters when calling <code>opts.fail()</code>.</p></li>
+<li><p>Updated LESS to version 1.7.0.</p></li>
+<li><p>Updated <code>deploy.js</code> to ensure that deployment errors out if a badly-formatted <code>deploy.json</code> file is found.</p></li>
+<li><p>Updated <code>walker.js</code> to allow remapping of files as well as folders.</p></li>
+</ul>
+<h3 id="moonstone">moonstone</h3>
+<ul>
+<li><p>Removed deprecated kinds <code>moon.List</code>, <code>moon.GridFlyweightRepeater</code>, and <code>moon.GridList</code>, along with related samples. Developers should use <code>moon.DataList</code> and <code>moon.DataGridList</code> instead.</p></li>
+<li><p>Deprecated the <code>moon.ToggleText</code> kind, which has been superseded by <code>moon.ToggleSwitch</code>. <code>moon.ToggleText</code> will likely be removed in a future Moonstone release.</p></li>
+<li><p>Replaced all image assets in the library with font-based icons and CSS. When necessary, the icons may be colored using the <code>@moon-accent</code> LESS variable. This change, which involves modifications to kinds across all of Moonstone, makes it easier to implement UI themes, while also reducing the Moonstone library’s file storage footprint.</p></li>
+<li><p>Updated <code>rendered()</code> functions of numerous Moonstone controls so they do not make DOM-related changes that could be made earlier (e.g., in <code>create()</code>). Moved code as needed.</p></li>
+<li><p>In <code>moon.Accordion</code>, added binding from <code>disabled</code> property on Accordion object to <code>disabled</code> property in <code>headerWrapper</code> component. Also updated “AccordionSample” with related example.</p></li>
+<li><p>In <code>moon.Accordion</code>, <code>moon.ExpandableListItem</code>, and <code>moon.RadioItemGroup</code>, corrected property names in code samples.</p></li>
+<li><p>In <code>moon.BodyText</code>, updated <code>contentChanged()</code> to bubble <code>onRequestSetupBounds</code> event.</p></li>
+<li><p>Updated <code>moon.BreadcrumbArranger</code> to gracefully handle unrendered panels.</p></li>
+<li><p>In <code>moon.Button</code>, <code>moon.IconButton</code>, and <code>moon.PagingControl</code>, addressed issue in which, when opening a system popup, the <code>onKeyUp</code> event would not reach the application.</p></li>
+<li><p>Modified <code>moon.Calendar</code> to validate values in generic setter function instead of change handler. Also modified code for determining month length to use new functionality provided by <code>iLib</code>.</p></li>
+<li><p>Added support for locale-aware uppercasing to <code>moon.ChannelInfo</code>, <code>moon.Tooltip</code>, and <code>moon.VideoInfoHeader</code>.</p></li>
+<li><p>Added right-to-left support to <code>moon.ChannelInfoBadge</code> controls.</p></li>
+<li><p>In <code>moon.Clock</code>, added API for setting the date/time “statically”. In static mode, the clock does not tick automatically; instead, it is up to the developer to update the date/time.</p>
+<p>This API is accessed by passing the <code>setDate()</code> method an object with date/time values specified as follows:</p>
+<pre><code>  {year: 2014, month: 2, day: 15, hour: 11, min: 28, sec: 5</code></pre>
+<p>Note that the <code>month</code> value is expressed as a <strong>1-based</strong> index (not a standard JavaScript 0-based index) in order to match iLib conventions (and the way in which numerical month values are normally written).</p></li>
+<li><p>In <code>moon.ContextualPopup</code> and <code>moon.ContextualPopupDecorator</code>, added support for hiding the popup if the activating control is pressed again while the popup is showing. Among other changes, the former kind receives the new method <code>capturedTap()</code>, while the latter kind gains <code>popupShown()</code>, a handler for <code>onShow</code> events.</p></li>
+<li><p>Made several changes to <code>moon.DataGridList</code>:</p>
+<ul>
+<li><p>Added handlers for <code>onSpotlightFocus</code> and <code>onSpotlightBlur</code> events. Now when a DataGridList item receives focus, the z-index value is incremented; when focus is lost, the original z-index is restored. This improves performance for DataGridList items that contain Marquees.</p></li>
+<li><p>Added handler for <code>onSpotlightFocused</code> event as part of fix for up and down arrows’ remaining active when 5-way navigation reaches first or last row, respectively.</p></li>
+<li><p>Fixed issue that could cause scroll bar to cover right side of DataGridList.</p></li>
+</ul></li>
+<li><p>In <code>moon.DataList</code>, fixed issue in which Spotlight (5-way) navigation would not proceed to next page if items at end of current page are disabled. Fix includes introduction of new methods <code>selectItem()</code>, <code>selectPrev()</code> (which handles <code>onSpotlightUp</code> and <code>onSpotlightLeft</code> events), <code>selectNext()</code> (which handles <code>onSpotlightDown</code> and <code>onSpotlightRight</code>), <code>findSpottableControl()</code>, and <code>getNextSpottableChild()</code>.</p></li>
+<li><p>In <code>moon.DataListSpotlightSupport</code>, updated <code>getNextSpottableChild()</code>, replacing <code>for...in</code> loop with <code>for</code> loop using incrementing counter.</p></li>
+<li><p>Updated <code>moon.DatePicker</code> and <code>moon.TimePicker</code> to support null value; also updated related samples “DatePickerSample” and “TimePickerSample”.</p></li>
+<li><p>In <code>moon.Drawer</code>, fixed issue that could cause “dresser” area to be unfocusable.</p></li>
+<li><p>Updated <code>moon.Drawer</code>, <code>moon.Drawers</code>, <code>moon.Panel</code>, and <code>moon.Panels</code> so that panels and drawers are generally not spottable when hidden.</p></li>
+<li><p>In <code>moon.Drawers</code>, modified <code>setupHandles()</code> to check for existence of drawers before trying to work with them. Also modified the <code>pointer-event</code> rule value to unblock mouse events.</p></li>
+<li><p>In <code>moon.Drawers</code> and <code>moon.Panels</code>, replaced <code>for 'x' in 'y'</code> structures with incrementing loop counters.</p></li>
+<li><p>Made several updates to <code>moon.ExpandableInput</code>:</p>
+<ul>
+<li><p>Updated behavior so that a 5-way Down keypress while in the open state causes the input’s content to be submitted and the focus to shift downward (if applicable). Input content will also be submitted in response to a click outside of the control. Code changes include the introduction of two new methods, <code>inputBlur()</code> and <code>closeDrawerAndHighlightHeader()</code>.</p></li>
+<li><p>Changed <code>onkeydown</code> event handler to an <code>onkeyup</code> handler with key code checking.</p></li>
+<li><p>Made change to respot header when closing the drawer while in pointer mode.</p></li>
+</ul></li>
+<li><p>In <code>moon.ExpandableIntegerPicker</code>, added handling for new <code>onRebuilt</code> event, allowing the picker to be reflowed, if necessary.</p></li>
+<li><p>In <code>moon.ExpandableListItem</code>, fixed issue that could prevent Accordion controls from opening. Also addressed issue preventing drawer from opening when the header text area is focused via 5-way navigation, and added new “ExpandableListItemSample”.</p></li>
+<li><p>In <code>moon.ExpandablePicker</code>, added support for selection of multiple items. To enable multi-selection, set the <code>multipleSelect</code> property to <code>true</code> (default is <code>false</code>). Also added related example to “ExpandablePickerSample”.</p></li>
+<li><p>In <code>moon.GridListImageItem</code>, set <code>overflow: hidden</code> to prevent unnecessary re-layout.</p></li>
+<li><p>Made several changes to <code>moon.Header</code>:</p>
+<ul>
+<li><p>Added new <code>type</code> property for controlling header size. Valid values are <code>"small"</code>, <code>"medium"</code>, and <code>"large"</code> (the default). Also added handler for changes to <code>type</code> value.</p></li>
+<li><p>Deprecated <code>small</code> property, which was previously used to distinguish between “small” and “large” headers; updated samples to use <code>type</code> property to specify header size/type.</p></li>
+<li><p>Removed time-delayed auto-marquee behavior from header title.</p></li>
+<li><p>Changed color of horizontal rules.</p></li>
+</ul></li>
+<li><p>In <code>moon.HighlightText</code>, overloaded render delegate to handle special behavior.</p></li>
+<li><p>In <code>moon.Icon</code>, made behavior more intuitive when <code>icon</code> or <code>src</code> property changes. Also, fixed styling of disabled state.</p></li>
+<li><p>In <code>moon.IconButton</code>, fixed issue preventing grouped IconButtons from showing active state when pressed. Also, simplified CSS styles.</p></li>
+<li><p>Modified styling of <code>moon.Image</code> so that it only stretches to fit the full size of its container when the <code>"sized"</code> CSS class has been applied.</p></li>
+<li><p>In <code>moon.InputHeader</code>, added support for ellipsizing overflow content.</p></li>
+<li><p>In <code>moon.IntegerPicker</code>, updated <code>refreshScrollState()</code> and <code>setupItem()</code> to check that node is non-null before scrolling to it. Also, modified <code>valueChanged()</code> to handle out-of-bounds values that may be set statically.</p></li>
+<li><p>Updated <code>moon.ListActions</code> to use CSS transforms for animation, instead of relying on <code>enyo.StyleAnimator</code>.</p></li>
+<li><p>In <code>moon.MarqueeSupport</code>, added <code>marqueeOnRenderDelay</code> property. If <code>marqueeOnRender</code> is <code>true</code>, the marquee animation will begin when this many milliseconds have elapsed after rendering.</p>
+<p>Also added <code>_marquee_startMarqueeCustomDelay()</code>, used internally to trigger the marquee animation.</p></li>
+<li><p>In <code>moon.ObjectActionDecorator</code>, fixed 5-way navigation; also converted Windows line endings to Unix line endings in source file.</p></li>
+<li><p>In <code>moon.Panel</code>, added <code>removeSpottableProps()</code> and updated <code>updatesSpottability()</code> to correct issue in which focus could be lost when using panels within drawers.</p></li>
+<li><p>Made several updates to <code>moon.Panels</code>:</p>
+<ul>
+<li><p>Improved performance by simplifying show/hide animation, and by reworking <code>pushPanel()</code> so that only pushed panels are resized.</p></li>
+<li><p>Added handler for <code>onSpotlightFocused</code> events, to ensure that <code>this.index</code> gets updated when a new panel gains focus.</p></li>
+<li><p>Improved handling of changes to <code>brandingSrc</code> property, used to display a brand image in the lower left corner of an activity panel when a breadcrumb is visible.</p></li>
+<li><p>Updated <code>create()</code> method, adding call to <code>this.showingChanged()</code>. This is part of a fix for an issue that could prevent the sidebar from being invoked when the Always Viewing pattern is used.</p></li>
+<li><p>Updated <code>indexChanged()</code> to address issue preventing active panel from being spotted.</p></li>
+<li><p>In <code>setIndex()</code>, moved value clamping inside conditional statement. This addresses an issue that, under certain conditions, could prevent the Panels from closing as expected.</p></li>
+<li><p>Made change to prevent Spotlight from highlighting controls during panel transition.</p></li>
+<li><p>Fixed issue causing unexpected behavior when right arrow key is pressed twice (panel index advances by one, instead of the expected two).</p></li>
+<li><p>Fixed issue that could prevent panels from expanding when a breadcrumb is clicked. As part of fix, replaced handler for <code>onSpotlightFocused</code> events with handler for <code>onSpotlightFocus</code>.</p></li>
+<li><p>Fixed issue that could cause two panels to overlap during a transition from one to the other.</p></li>
+<li><p>Applied CSS translation to background scrim, enabling hardware acceleration.</p></li>
+<li><p>In <code>spotlightLeft()</code>, fixed problem affecting leftward navigation via 5-way controller in an Always Viewing pattern.</p></li>
+</ul></li>
+<li><p>Updated <code>moon.Popup</code> to prevent focus from escaping when in 5-way mode.</p></li>
+<li><p>In <code>moon.Scroller</code>, updated <code>scrollToControl()</code>, adding new parameter <code>setLastFocusedChild</code>. When set to <code>true</code>, the control being scrolled to is set as the viewport’s last focused child.</p>
+<p>Also, fixed issue causing scroller paging controls to remain visible when exiting the scroller via 5-way.</p></li>
+<li><p>Made several updates to <code>moon.ScrollStrategy</code>:</p>
+<ul>
+<li><p>Cleaned up logic governing paging controls in 5-way mode.</p></li>
+<li><p>Added <code>requestSetupBounds()</code>, handler method for <code>onRequestSetupBounds</code> event. This updates <code>scrollBounds</code> without scrolling into view.</p></li>
+<li><p>Added <code>setLastFocusedChild()</code>, which sets the passed-in control as the last focused child in the viewport.</p></li>
+<li><p>Modified <code>requestScrollIntoView()</code> to address issue with calculation of bounds for an Accordion control at the bottom of the viewport.</p></li>
+</ul></li>
+<li><p>Made several changes to <code>moon.SimpleIntegerPicker</code>:</p>
+<ul>
+<li><p>Added <code>onRebuilt</code> event, which fires when the picker is rebuilt, giving the controls it contains the opportunity to reflow the picker, if necessary.</p></li>
+<li><p>Added ability to easily adjust picker height.</p></li>
+<li><p>Added support for applying <code>iLib</code> number formatting to picker values.</p></li>
+<li><p>Modified arrow button behavior to reflect design spec.</p></li>
+</ul></li>
+<li><p>In <code>moon.SimplePicker</code>, modified <code>selectedIndexChanged()</code> to call <code>startMarquee()</code> after enabling or disabling navigation buttons. This fixes broken marquee behavior.</p>
+<p>Also added handling for repeated keypresses.</p></li>
+<li><p>Modified <code>moon.Slider</code> so the popup label’s text direction is automatically set as right-to-left when the locale’s text direction is right-to-left. Also made change to prevent slider from being Spotlight-unhighlighted if pointer moves away during a drag operation.</p></li>
+<li><p>Made several updates to <code>moon.Spinner</code>:</p>
+<ul>
+<li><p>GPU-accelerated CSS is now used for animations.</p></li>
+<li><p>The font for spinner balls is now set explicitly. This addresses an issue in which the spinner would appear “shrunken” when non-Latin fonts were in use.</p></li>
+<li><p>Added support for using marquees, long text, and <code>components</code> blocks inside a spinner.</p></li>
+</ul></li>
+<li><p>Modified <code>moon.TimePicker</code> to exclude illegal hours based on Daylight Saving Time rules; made related updates to “TimePickerSample”. Also, updated <code>initILib()</code> to fix issue with incorrect localized meridiem values.</p></li>
+<li><p>In <code>moon.ToggleButton</code>, added radio button inside the control to more clearly indicate the active state. Also added support for customizing the text labels for “On” and “Off”.</p></li>
+<li><p>In <code>moon.Tooltip</code>, modified <code>contentChanged()</code>, adding call to <code>detectTextDirectionality()</code> to address right-to-left mode issues.</p></li>
+<li><p>Fixed styling of <code>moon.VideoFeedback</code> in right-to-left mode.</p></li>
+<li><p>Updated <code>moon.VideoFeedback</code> and <code>moon.VideoTransportSlider</code> so that feedback control is updated while in preview mode.</p></li>
+<li><p>Made several changes to <code>moon.VideoPlayer</code>:</p>
+<ul>
+<li><p>Updated <code>onjumpForward()</code> and <code>onjumpBackward()</code> to respond to button presses between 200 ms and 400 ms in duration.</p></li>
+<li><p>In <code>create()</code> method, added call to <code>this.srcChanged()</code>.</p></li>
+<li><p>Corrected icons for “show additional controls” and “hide additional controls”.</p></li>
+<li><p>Fixed problems with Spotlight behavior when VideoPlayer is used inside a Panels. (A related change was made to the <code>_show()</code> method in <code>moon.Panels</code>.)</p></li>
+<li><p>Addressed issue in which playback controls could not be invoked using 5-way Up or Down keys.</p></li>
+</ul></li>
+<li><p>Updated <code>moon.VideoTransportSlider</code> to watch Enyo <code>move</code> event instead of DOM <code>mousemove</code> event. This improves the tracking of mouse movement when screen content is upscaled.</p></li>
+<li><p>Added <code>moon-body-large-text</code> CSS style, for use when a large font size is needed. Also added related sample, “BodyLargeTextSample”.</p></li>
+<li><p>Added CSS styling for selected text in input controls.</p></li>
+<li><p>Fixed issues with sizing of Thai characters in input controls.</p></li>
+<li><p>Modified CSS for paging controls so that disabled controls do not display an active state.</p></li>
+<li><p>Updated HTML pages in samples with proper <code>&lt;meta&gt;</code> tags specifying UTF-8 character set.</p></li>
+<li><p>Updated samples to refer to LESS version 1.7.0.</p></li>
+<li><p>In “CalendarSample”, fixed functionality of Reset button.</p></li>
+<li><p>Updated “ContextualPopupSample” to set <code>value</code> property on ToggleButton instead of setting <code>active</code> property.</p></li>
+<li><p>Made several updates to “DataGridListSample”:</p>
+<ul>
+<li><p>Fixed behavior on refresh, replacing call to <code>removeAll()</code> (which currently does not exist on <code>enyo.Collection</code>) with call to <code>remove(collection.models)</code>.</p></li>
+<li><p>Addressed problem causing loss of checkbox selection state when popup list is closed.</p></li>
+<li><p>Modified <code>generateRecords()</code> to reference <code>this.modelIndex</code> instead of <code>this.index</code>.</p></li>
+</ul></li>
+<li><p>Made several updates to “DataListSample”:</p>
+<ul>
+<li><p>Fixed issue causing unexpected focus behavior on 5-way Down keypress from drawer.</p></li>
+<li><p>Modified <code>scrollToIndex()</code> to allow the method to be called when scrolling has occurred or when the current index differs from the desired index.</p></li>
+<li><p>Updated <code>generateRecords()</code> and <code>recordCountChanged()</code> to reference <code>models</code> property on <code>enyo.Collection</code> instead of outdated <code>records</code> property.</p></li>
+</ul></li>
+<li><p>In “DatePickerSample”, fixed issue causing input fields to be obscured in right-to-left mode.</p></li>
+<li><p>In “DrawerSample”, fixed spelling of “Third”.</p></li>
+<li><p>In “HighlightTextSample”, temporarily removed filtering from sample until new implementation is ready.</p></li>
+<li><p>Added new examples of <code>moon.Item</code> usage to “ItemSample”.</p></li>
+<li><p>In “MarqueeSample”, fixed behavior of “Stop Marquee” button.</p></li>
+<li><p>Updated “ScrollerTextSample” to work with <code>value</code> property of ToggleButtons instead of <code>active</code> property when declaring initial values and data bindings.</p></li>
+<li><p>In “SpinnerSample”, added examples of spinners containing long text and <code>components</code> blocks.</p></li>
+<li><p>Updated “TimePickerSample” so the picker’s locale is updated when the user selects a new locale. Also fixed exception thrown when setting locale, and updated method names for consistency.</p></li>
+</ul>
+<h3 id="layout">layout</h3>
+<ul>
+<li><p>In <code>enyo.FittableLayout</code>, implemented CSS flexbox-based layout for improved performance on supported platforms. To use flexbox, set <code>useFlex: true</code> on a Fittable container. Otherwise, the existing JavaScript-based layout will be used. Related samples were also updated.</p></li>
+<li><p>Updated <code>enyo.FlyweightRepeater</code> to use delegate pattern, removing interim fix based on whether control was overloading the generator method. Also made changes for compatibility with recent changes to <code>enyo.Control</code></p></li>
+<li><p>In <code>enyo.Panels</code>, implemented improved narrow fit detection using media queries (in CSS) and platform detection at initialization time (in new <code>isNarrowDevice()</code> method). With these changes, resizing functionality has been restored.</p>
+<p>Also, modified <code>finishTransition()</code> so that <code>popOnBack</code> is not ignored during transitions.</p></li>
+</ul>
+<h3 id="spotlight">spotlight</h3>
+<ul>
+<li><p>Made several updates to <code>enyo.Spotlight</code>:</p>
+<ul>
+<li><p>Exposed <code>highlight()</code> and <code>unhighlight()</code> functions, and added <code>bIgnoreMute</code> parameter to <code>_highlight()</code>. When set to <code>true</code>, the highlighting code will run regardless of the muting state.</p></li>
+<li><p>Moved firing of <code>onSpotlightSelect</code> event from <code>this.onSpotlightKeyDown()</code> to <code>this.onSpotlightKeyUp()</code>. Also added emulation of <code>holdPulse</code> for <code>onSpotlightKeyDown</code> event.</p></li>
+<li><p>Fixed issue preventing show-on-focus captions from appearing when the activating control receives focus through a transition from pointer mode to 5-way mode.</p></li>
+</ul></li>
+<li><p>Updated <code>enyo.Spotlight</code> and <code>enyo.Spotlight.Accelerator</code> to cancel acceleration when Spotlight container boundary is reached.</p></li>
+<li><p>In <code>enyo.Spotlight.Container</code>, modified <code>setLastFocusedChild()</code> so that <code>getFirstChild()</code> is called on <code>enyo.Spotlight</code> instead of on <code>this</code>; also removed logging code that could cause unhandled exception.</p></li>
+<li><p>In <code>enyo.Spotlight.Muter</code>, added calls to <code>enyo.Spotlight.highlight()</code> and <code>enyo.Spotlight.unhighlight()</code>.</p></li>
+</ul>
+<h3 id="onyx">onyx</h3>
+<ul>
+<li>In <code>onyx.ContextualPopup</code>, <code>onyx.Menu</code>, <code>onyx.Picker</code>, <code>onyx.TabBar</code>, and <code>onyx.Tooltip</code>, renamed <code>resizeHandler()</code> as <code>handleResize()</code> to match updated method name in Enyo superkinds.</li>
+</ul>
+<h3 id="enyo-ilib">enyo-ilib</h3>
+<ul>
+<li><p>Modified library so that, when running on webOS, time zone information is loaded from the system instead of from <code>iLib</code>, if possible. Changes include the addition of new files <code>packedbuffer.js</code>, used to represent packed buffers of bytes, and <code>zoneinfo.js</code>, used to represent a binary time zone info file. Also added related tests.</p></li>
+<li><p>Updated <code>iLib</code> to version <code>20140530-build-6.0-004</code>.</p></li>
+<li><p>In <code>glue.js</code>, fixed issue affecting loading of localized resources. Also, added <code>enyo.isNonLatinLocale()</code>, which returns a boolean indicating whether a given locale is treated as non-Latin.</p></li>
+</ul>
+<h3 id="enyo-webos">enyo-webos</h3>
+<ul>
+<li>Renamed <code>enyo.LS2Source</code> as <code>enyo.LunaSource</code> and corrected order of parameters passed to <code>options.success</code>.</li>
+</ul>
+<h3 id="bootplate-moonstone">bootplate-moonstone</h3>
+<ul>
+<li>Bumped versions of submodules.</li>
+</ul>
+<h2 id="known-issues-and-limitations">Known Issues and Limitations</h2>
+<ul>
+<li>In right-to-left mode, in certain complex layouts involving scrollers, users may be unable to reach certain UI elements via 5-way keypresses.</li>
+</ul>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../js/main.js"></script>
+  <script type="text/javascript" src="../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

@@ -1,0 +1,277 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Spotlight</h1>
+<ol type="1">
+<li><a href="#1">What Is Spotlight?</a></li>
+<li><a href="#2">Modes</a></li>
+<li><a href="#3">Navigation</a></li>
+<li><a href="#4">Containers</a></li>
+<li><a href="#5">Nesting</a></li>
+<li><a href="#6">Events</a>
+<ol type="1">
+<li><a href="#6.1">List of Spotlight Events</a></li>
+<li><a href="#6.2">Preventing/Allowing Default DOM Events</a></li>
+<li><a href="#6.3">Sequence of Spotlight Events</a></li>
+<li><a href="#6.4">Accelerated keydown Events</a></li>
+<li><a href="#6.5">Scroll Events</a></li>
+<li><a href="#6.6">Customizing Response to 5-way Events</a></li>
+</ol></li>
+<li><a href="#7">Extending Spotlight</a>
+<ol type="1">
+<li><a href="#7.1">Extending Controls</a></li>
+</ol></li>
+<li><a href="#8">Control Parameters</a></li>
+</ol>
+<p><a name="1"></a></p>
+<h2 id="what-is-spotlight">What Is Spotlight?</h2>
+<p>Spotlight is an extensible utility that enables users to navigate Enyo applications using a keyboard or television remote control. Responding to input from the <strong>UP</strong>, <strong>DOWN</strong>, <strong>LEFT</strong>, <strong>RIGHT</strong>, and <strong>RETURN</strong> keys, Spotlight provides a navigation experience that compares favorably to that of a computer-with-mouse.</p>
+<p>In addition, Spotlight includes support for point-and-click events, so all bases are covered.</p>
+<p>To add Spotlight to an application, simply include the <code>spotlight</code> package in your <code>package.js</code> file. Note that when you use the <code>bootplate-moonstone</code> app template, this is already done for you, since <code>source/package.js</code> includes the <code>spotlight</code> library:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1">    <span class="co">// Focus support library for TV applications</span></a>
+<a class="sourceLine" id="cb1-2" title="2">    <span class="st">&quot;$lib/spotlight&quot;</span><span class="op">,</span></a></code></pre></div>
+<p><a name="2"></a></p>
+<h2 id="modes">Modes</h2>
+<p>Spotlight operates in two mutually exclusive modes: <strong>5-way mode</strong> and <strong>Pointer mode</strong>. By default, Spotlight is configured to switch between these modes whenever suitable input is received–i.e., it switches to pointer mode on <code>mousemove</code> and back to 5-way mode on <code>keydown</code>.</p>
+<p>The Spotlight API also provides a way to make the switch explicitly:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1">    <span class="va">enyo</span>.<span class="va">Spotlight</span>.<span class="at">setPointerMode</span>(<span class="op">&lt;</span>Boolean<span class="op">&gt;</span>)<span class="op">;</span></a></code></pre></div>
+<p><a name="3"></a></p>
+<h2 id="navigation">Navigation</h2>
+<p>Spotlight enables navigation between Enyo controls by assigning focus to one control at a time. When a control is focused, it takes on the CSS class <code>.spotlight</code>, which allows focused controls to be styled on a per-kind basis using <code>.&lt;kindClass&gt;.spotlight</code> selectors.</p>
+<p>In order to make a control focusable (or “spottable”) with Spotlight, simply set its <code>spotlight</code> property to <code>true</code>, like so:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1">    <span class="op">{</span><span class="dt">name</span><span class="op">:</span> <span class="st">&#39;mybutton&#39;</span><span class="op">,</span> <span class="dt">tag</span><span class="op">:</span> <span class="st">&#39;button&#39;</span><span class="op">,</span> <span class="dt">spotlight</span><span class="op">:</span> <span class="kw">true</span><span class="op">}</span></a></code></pre></div>
+<p>When the application loads, Spotlight searches for a control with the name specified in its <code>defaultControl</code> property; if <code>defaultControl</code> is not specified, Spotlight assigns focus to the first available spottable control.</p>
+<p>In 5-way mode, Spotlight uses the <a href="https://github.com/enyojs/spotlight/blob/master/enyo.Spotlight.NearestNeighbor.js">Nearest Neighbor Algorithm</a> to determine which spottable control is the nearest one in the direction of navigation. The coordinates of a spottable control are derived from its actual position on the screen.</p>
+<p>It’s worth noting that spottable controls may be found on different hierarchical levels of an Enyo component tree. Spotlight facilitates seamless navigation between the topmost spottable components found in the tree.</p>
+<p>For a demonstration of the Nearest Neighbor algorithm’s behavior, see “ContainerSample” in the Spotlight repo’s <a href="https://github.com/enyojs/spotlight/tree/master/samples">samples</a> folder.</p>
+<p><a name="4"></a></p>
+<h2 id="containers">Containers</h2>
+<p>In order to organize controls into navigation groups, we have created Spotlight containers.</p>
+<p>A good example of how containers should be used is a set of radio buttons that must be navigable separate from the rest of the app’s controls.</p>
+<p>When a Spotlight container is focused, it passes the focus to its own hierarchy of spottable child controls–specifically, to the last spottable child to hold focus before the focus moved outside of the container. If the container in question has never been focused, it passes focus to its first spottable child.</p>
+<p>To define a container, set a control’s <code>spotlight</code> property to <code>"container"</code>:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1">    <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&#39;mycontainer&#39;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb4-3" title="3">        <span class="dt">spotlight</span><span class="op">:</span> <span class="st">&#39;container&#39;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb4-4" title="4">        <span class="dt">components</span><span class="op">:</span> [<span class="op">&lt;</span>A list <span class="kw">of</span> controls <span class="cf">with</span> <span class="vs">`spotlight:true`</span><span class="op">&gt;</span>]</a>
+<a class="sourceLine" id="cb4-5" title="5">    <span class="op">}</span></a></code></pre></div>
+<p>In a way, containers may be thought of as the branches–and spottable controls as the leaves–of the Spotlight navigation tree.</p>
+<p>For a demonstration of container behavior, see “ContainerSample” in the Spotlight repo’s <a href="https://github.com/enyojs/spotlight/tree/master/samples">samples</a> folder).</p>
+<p><a name="5"></a></p>
+<h2 id="nesting">Nesting</h2>
+<p>Spotlight containers may be nested. The inner containers may be remembered as “last focused children” of the outer ones, thus acting as conduits of focus passed by the outer containers.</p>
+<p>We have not found it useful to nest spottable controls. For now, these controls act as the leaves of the spottable tree and do not conduct focus; however, this behavior may be overridden on a per-control basis.</p>
+<p><a name="6"></a></p>
+<h2 id="events">Events</h2>
+<p>All Spotlight events are dispatched directly to the currently spotted control, which may prevent bubbling to define custom behavior. (See <a href="#7">Extending Spotlight</a> below.)</p>
+<p>If Spotlight events are allowed to bubble to the application level, the app responds to them with default behavior.</p>
+<p><br /></p>
+<p><a name="6.1"></a></p>
+<h3 id="list-of-spotlight-events">List of Spotlight Events</h3>
+<p>The following events are dispatched by the main Spotlight module:</p>
+<ul>
+<li><p><code>onSpotlightKeyDown</code>: Dispatched in response to <code>keydown</code></p></li>
+<li><p><code>onSpotlightKeyUp</code>: Dispatched in response to <code>keyup</code></p></li>
+<li><p><code>onSpotlightLeft</code>: Dispatched in response to <code>onSpotlightKeyDown</code> event’s bubbling to app level with keyCode 37</p></li>
+<li><p><code>onSpotlightRight</code>: Dispatched in response to <code>onSpotlightKeyDown</code> event’s bubbling to app level with keyCode 39</p></li>
+<li><p><code>onSpotlightUp</code>: Dispatched in response to <code>onSpotlightKeyDown</code> event’s bubbling to app level with keyCode 38</p></li>
+<li><p><code>onSpotlightDown</code>: Dispatched in response to <code>onSpotlightKeyDown</code> event’s bubbling to app level with keyCode 40</p></li>
+<li><p><code>onSpotlightSelect</code>: Dispatched in response to <code>onSpotlightKeyDown</code> event’s bubbling to app level with keyCode 13</p></li>
+<li><p><code>onSpotlightFocus</code>: Dispatched when focus is transferred to a new control in response to one of the 5-way events (<code>onSpotlightLeft</code>, <code>onSpotlightRight</code>, <code>onSpotlightUp</code>, <code>onSpotlightDown</code>, or <code>onSpotlightSelect</code>).</p></li>
+<li><p><code>onSpotlightBlur</code>: Dispatched when focus is transferred away from a control</p></li>
+<li><p><code>onSpotlightFocused</code>: Dispatched in response to <code>onSpotlightFocus</code> event’s bubbling to app level right after its originator is set as current</p></li>
+<li><p><code>onSpotlightScrollUp</code>: Dispatched when <code>mousewheel</code> event delta exceeds <code>enyo.Spotlight.Scrolling.frequency</code> (Default: 40)</p></li>
+<li><p><code>onSpotlightScrollDown</code>: Dispatched when <code>mousewheel</code> negative event delta exceeds <code>-enyo.Spotlight.Scrolling.frequency</code> (Default: 40)</p></li>
+</ul>
+<p><br /></p>
+<p><a name="6.2"></a></p>
+<h3 id="preventing-or-allowing-default-dom-events">Preventing or Allowing Default DOM Events</h3>
+<p>By default, if a <code>keydown</code> event carries a 5-way keyCode (13, 37, 38, 39 or 40), it will be prevented from bubbling and triggering default browser behavior. This is done to disable default browser scrolling, because in the presence of Spotlight, scrolling is handled using components such as Scroller.</p>
+<p>Of course, there are some cases where you may want to allow the default browser behavior. For example, in text inputs, you may want to allow the cursor to move to the next character when the right arrow key is pressed, without any interference from JavaScript.</p>
+<p>For such cases, we have included an “Allow DOM Default” feature. The events <code>onSpotlightKeyDown</code>, <code>onSpotlightLeft</code>, <code>onSpotlightRight</code>, <code>onSpotlightUp</code>, <code>onSpotlightDown</code> and <code>onSpotlightSelect</code> pass their handlers an event object with an added <code>allowDomDefault()</code> method:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1">    onSpotlightKeyDown<span class="op">:</span> <span class="kw">function</span>(oSender<span class="op">,</span> oEvent) <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-2" title="2">        <span class="va">oEvent</span>.<span class="at">allowDomDefault</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-3" title="3">    <span class="op">}</span></a></code></pre></div>
+<p>In the above handler, if the Spotlight event is allowed to propagate, it will allow the original DOM <code>keydown</code> to trigger default browser behavior. (See <a href="#A">Figure A</a>).</p>
+<p><br /></p>
+<p><a name="6.3"></a></p>
+<h3 id="sequence-of-spotlight-events">Sequence of Spotlight Events</h3>
+<p><a name="A"></a></p>
+<figure>
+<img src="../assets/chart_spotlight_5way_events.jpg" alt="Figure A: Spotlight keyboard events" /><figcaption><em>Figure A: Spotlight keyboard events</em></figcaption>
+</figure>
+<p><a href="#A">Figure A</a> illustrates the sequence of events in Spotlight’s 5-way mode. At each step, the sequence may be modified (bubbling may be prevented) on the level of the currently focused control. (See <a href="#7">Extending Spotlight</a> below.)</p>
+<p>For instance, when <code>onSpotlightKeyDown</code> is dispatched to the focused control, the control may choose to prevent it from ever reaching the app level (where it would be handled by Spotlight) and replace the default behavior with its own custom handling.</p>
+<p>If, however, <code>onSpotlightKeydown</code> is allowed to propagate and Spotlight recognizes its keyCode as one of 5-way key codes, it dispatches an <code>onSpotlight&lt;5-Way Direction&gt;</code> event back to the focused control. At this point, the control once again has the option of overriding default behavior.</p>
+<p>If <code>the onSpotlight&lt;5-Way Direction&gt;</code> event bubbles up to the app level, Spotlight employs its Nearest Neighbor Algorithm to figure out which spottable control is closest in the <code>&lt;5-Way Direction&gt;</code>. It then dispatches an <code>onSpotlightBlur</code> event to the current control (which also has the <code>.spotlight</code> CSS class removed) and an <code>onSpotlightFocus</code> event to the nearest neighbor (which has the <code>.spotlight</code> CSS class applied).</p>
+<p>If <code>onSpotlightFocus</code> is allowed to bubble from the newly focused control, Spotlight sets its originator as <code>current</code>, and it officially becomes the focused control. In recognition of this fact, Spotlight dispatches an <code>onSpotlightFocused</code> event to the control.</p>
+<p><br /></p>
+<p><a name="6.4"></a></p>
+<h3 id="accelerated-keydown-events">Accelerated keydown Events</h3>
+<p><a name="B"></a></p>
+<figure>
+<img src="../assets/chart_spotlight_accelerator_events.jpg" alt="Figure B: Accelerated keydown sequence" /><figcaption><em>Figure B: Accelerated keydown sequence</em></figcaption>
+</figure>
+<p>While a key is depressed, the browser dispatches <code>keydown</code> events at equal (or nearly equal) intervals.</p>
+<p>Looking at <a href="#B">Figure B</a>, we can see that not all of these events affect the application. The function of the <a href="https://github.com/enyojs/spotlight/blob/master/kind.Spotlight.Accelerator.js">Spotlight Accelerator</a> is to distribute events over time (according to its configuration).</p>
+<p>Spotlight Accelerator may be configured via its array property, <code>enyo.Spotlight.Accelerator.frequency</code>. The default configuration is as follows:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1">    <span class="co">//* Firing configuration. At n-th second use every frequency[n] subsequent keydown event</span></a>
+<a class="sourceLine" id="cb6-2" title="2">    frequency <span class="op">:</span> [<span class="dv">3</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span> ...</a></code></pre></div>
+<p>This tells the Accelerator to do the following:</p>
+<ul>
+<li><p>In the first, second, and third seconds after the key is depressed, only let through every third <code>keydown</code> event.</p></li>
+<li><p>In the fourth, fifth, and sixth seconds, allow every second <code>keydown</code> event.</p></li>
+<li><p>In the seventh second and later, allow every <code>keydown</code> event.</p></li>
+</ul>
+<p>This causes Spotlight focus to move across the screen with apparent acceleration while a 5-way key is depressed.</p>
+<p><br /></p>
+<p><a name="6.5"></a></p>
+<h3 id="scroll-events">Scroll Events</h3>
+<p>In response to <code>mousewheel</code> events from the browser, Spotlight dispatches <code>onSpotlightScrollUp</code> and <code>onSpotlightScrollDown</code>. Here’s how the process works:</p>
+<p>The <code>mousewheel</code> event has a <code>wheelDeltaY</code> property, which translates to a given amount of wheel rotation. <a href="https://github.com/enyojs/spotlight/blob/master/enyo.Spotlight.Scrolling.js">Spotlight Scrolling</a> accumulates <code>wheelDeltaY</code> values in a given direction of rotation (up or down).</p>
+<p>Once the cumulative value exceeds <code>enyo.Spotlight.Scrolling.frequency</code>, either <code>onSpotlightScrollUp</code> or <code>onSpotlightScrollDown</code> is dispatched and the cumulative value is reset to 0.</p>
+<p>In this way, Spotlight scrolling events are made to behave more like repeating keydown events, which is useful for controls (like pickers and list scrollers) that don’t use smooth scrolling, but instead animate from one item to the next.</p>
+<p>Note: In <a href="#2">Pointer Mode</a>, Spotlight treats the first scroll event as the first keyboard event; in response, Spotlight returns from pointer mode and re-spots the item that was previously spotted. No scrolling happens on the first scroll event when returning from pointer mode.</p>
+<p><a name="6.6"></a></p>
+<h3 id="customizing-response-to-5-way-events">Customizing Response to 5-way Events</h3>
+<p>There may be times when the Nearest Neighbor algorithm does not meet your needs. For example, UI specs for an app may require you to specify where Spotlight focus should move in response to specific 5-way events.</p>
+<p>For such cases, Spotlight offers a set of convenience properties:</p>
+<ul>
+<li><code>defaultSpotlightUp</code></li>
+<li><code>defaultSpotlightDown</code></li>
+<li><code>defaultSpotlightLeft</code></li>
+<li><code>defaultSpotlightRight</code></li>
+<li><code>defaultSpotlightSelect</code></li>
+</ul>
+<p>Simply add the appropriate property to your control, and if the corresponding event is allowed to bubble, Spotlight will move focus to the control whose name is specified in the property’s value:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1">    <span class="op">{</span><span class="dt">name</span><span class="op">:</span> <span class="st">&#39;control1&#39;</span><span class="op">,</span> <span class="dt">spotlight</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">defaultSpotlightRight</span><span class="op">:</span> <span class="st">&#39;control2&#39;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb7-2" title="2">    <span class="op">{</span><span class="dt">name</span><span class="op">:</span> <span class="st">&#39;control2&#39;</span><span class="op">,</span> <span class="dt">spotlight</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">defaultSpotlightRight</span><span class="op">:</span> <span class="st">&#39;control1&#39;</span><span class="op">}</span></a></code></pre></div>
+<p>In this example, focus will pass from one control to the other each time the right arrow button is pressed.</p>
+<p><a name="7"></a></p>
+<h2 id="extending-spotlight">Extending Spotlight</h2>
+<p><a name="7.1"></a></p>
+<h3 id="extending-controls">Extending Controls</h3>
+<p>Extending an Enyo control to use Spotlight functionality does not require knowledge of anything beyond Enyo’s inheritance patterns and the information presented in this document.</p>
+<p>To extend a control to use Spotlight, simply create a subkind of the kind you want to extend and define event handlers to handle Spotlight events.</p>
+<p>Please refer to the <a href="https://github.com/enyojs/moonstone/">Moonstone</a> package for examples.</p>
+<p><a name="8"></a></p>
+<h2 id="control-parameters">Control Parameters</h2>
+<p>Two optional properties may be set on controls to change the way that Spotlight interacts with them:</p>
+<ul>
+<li><p><strong>spotlightDisabled [boolean]</strong> - When set to <code>true</code>, temporarily makes a component non-spottable without changing its <code>spotlight</code> property.</p></li>
+<li><p><strong>spotlightIgnoredKeys [number | array]</strong> - Specifies a set of keys to be ignored by Spotlight when they originate from the component.</p></li>
+</ul>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../js/main.js"></script>
+  <script type="text/javascript" src="../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

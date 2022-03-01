@@ -1,0 +1,210 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Browser-Based Debugging</h1>
+<p>While acknowledging that debugging is a subject on which entire books are written, and that each software project presents its own unique challenges, the Enyo team would like to offer some general guidance as you work to perfect your application.</p>
+<p>Whatever the details of your situation, there are two essential rules of Enyo debugging:</p>
+<ul>
+<li><p>It’s much easier to debug an Enyo app running in a desktop browser than one running on a device, so debug in a desktop browser whenever possible.</p></li>
+<li><p>When debugging, load your app’s <code>debug.html</code> file and not its <code>index.html</code> file.</p></li>
+</ul>
+<p>We’ll discuss both of these points in detail below.</p>
+<p>Of course, there will likely be times when debugging in a browser won’t satisfy your needs–if your app interacts with on-device services, for example, or if it exhibits bad behavior only when running on a particular device platform. So we’ll also look at the options available for debugging Enyo apps running on devices.</p>
+<h2 id="desktop-browsers">Desktop Browsers</h2>
+<p>As an Enyo app developer, you have an assortment of powerful, free debugging tools at your disposal, since all of the major desktop browsers now have built-in tools for JavaScript developers. Modern browsers combine standard debug tools–a console for displaying log output (from calls to <a href="../../..//#/namespace/enyo:log">enyo.log</a>), the ability to set breakpoints, and so on–with Web-specific tools, such as DOM and CSS inspectors (which are particularly useful for tracking down UI glitches).</p>
+<p>Refer to the following instructions to access the developer tools in your browser of choice.</p>
+<h3 id="chrome">Chrome</h3>
+<p>To access the WebKit Inspector, enter <code>Command-Option-I</code> on Mac or <code>Control-Shift-I</code> on Windows.</p>
+<h3 id="safari">Safari</h3>
+<p>To enable the <code>Develop</code> menu, select <code>Edit &gt; Preferences &gt; Advanced</code>; then check the box marked <code>"Show Develop menu in menu bar"</code>.</p>
+<p>To access the WebKit Inspector, enter <code>Command-Option-I</code> on Mac, or <code>Control-Alt-I</code> on Windows.</p>
+<h3 id="firefox">Firefox</h3>
+<p>To install the Firebug debugger, open <code>Firefox &gt; Web Developer &gt; Get More Tools</code>; then click the <code>Add to Firefox</code> button.</p>
+<p>Once installed, access Firebug by opening <code>Firefox &gt; Web Developer &gt; Firebug &gt; Open Firebug</code>.</p>
+<p>To access the Developer Toolbar, enter <code>Shift-F2</code> on Mac or Windows.</p>
+<h3 id="internet-explorer">Internet Explorer</h3>
+<p>To access the Developer Tools, enter <code>F12</code>.</p>
+<h2 id="mobile-browsers">Mobile Browsers</h2>
+<p>Whenever you debug an app that’s running on a device, you’ll follow the same basic process–first, establish a connection between the device and a more powerful machine (typically a desktop or laptop computer), then use tools on that machine to remotely monitor output from your app on the device.</p>
+<p>For detailed information on how to proceed on a variety of mobile platforms, follow the links listed below.</p>
+<h3 id="ios">iOS</h3>
+<h4 id="ios-6">iOS 6+</h4>
+<p>In iOS 6 and later, you can debug a Safari or Cordova/PhoneGap app on a device or in the simulator through a remote WebKit Inspector connection via Safari 6 on Mac.</p>
+<ul>
+<li>On the device, select <code>Settings &gt; Safari &gt; Advanced &gt; Enable Web Inspector</code>.</li>
+<li>Connect the device to your Mac via USB.</li>
+<li>In Safari 6 on your Mac, select <code>Develop menu &gt; select iOS Device</code>.</li>
+<li><a href="http://webdesign.tutsplus.com/tutorials/workflow-tutorials/quick-tip-using-web-inspector-to-debug-mobile-safari/">More details</a></li>
+</ul>
+<h4 id="ios-5">iOS 5</h4>
+<p>In iOS 5, you can debug a Safari or Cordova/PhoneGap app in the simulator only (not on a device) using <a href="http://www.iwebinspector.com/">iWebInspector</a>.</p>
+<h3 id="android">Android</h3>
+<h4 id="chrome-for-android">Chrome for Android</h4>
+<ul>
+<li><a href="https://developers.google.com/chrome/mobile/docs/debugging">Guide to Remote Debugging</a></li>
+</ul>
+<h4 id="firefox-for-android">Firefox for Android</h4>
+<ul>
+<li><a href="https://hacks.mozilla.org/2012/08/remote-debugging-on-firefox-for-android/">Setting Up Remote Debugging</a></li>
+<li><a href="http://starkravingfinkle.org/blog/2012/10/firefox-for-android-remote-web-console-is-here">Remote Web Console</a></li>
+</ul>
+<h3 id="cross-platform">Cross-Platform</h3>
+<ul>
+<li><p><a href="http://debug.phonegap.com/">Weinre</a>: Remote debugging for mobile Web apps. Part of the <a href="http://incubator.apache.org/cordova/">Cordova</a> (PhoneGap) open source project.</p></li>
+<li><p><a href="http://socketbug.com">Socketbug</a>: An open-source remote debugging utility using <a href="http://socket.io/">Socket.IO</a></p></li>
+</ul>
+<h2 id="other-tools">Other Tools</h2>
+<ul>
+<li><p>Some third-party JavaScript IDEs include their own debuggers. One example is <a href="http://www.jetbrains.com/webstorm/">JetBrains WebStorm</a>, a commercial product compatible with Windows, Mac, and Linux.</p></li>
+<li><p><a href="http://www.jsonlint.com/">JSONLint</a>: This Web site takes amorphous blobs of JSON data and makes them readable. It complains about JSONP results, but still manages to reformat all of the internals for viewing.</p></li>
+</ul>
+<h2 id="loading-debug-source-debug.html">Loading Debug Source (debug.html)</h2>
+<p>If your app is based on <code>bootplate-moonstone</code> (or some other variation of the Bootplate template), be sure to load the <code>debug.html</code> file (rather than <code>index.html</code>) when debugging. This will ensure that the app is loaded without using any minimized files (i.e., the optimized versions of <code>app.js</code>, <code>app.css</code>, <code>enyo.js</code>, and <code>enyo.css</code> that are created when you run the <code>deploy</code> script). These files are best suited to final deployment; when loaded during development, they make it harder to pin down the source of any errors that occur. Moreover, even if you debug with the optimized files loaded, any fixes you make will eventually need to go in the original, non-optimized source code–so it makes sense to work with the original source throughout the debugging process.</p>
+<p>If you’re not using the Bootplate template, you can still prevent your app from loading the minimized files by editing your host HTML file. Be sure to load <code>enyo.js</code> from the top level of a full <code>enyo</code> distribution and <code>package.js</code> from your application’s source folder. For example, the <code>&lt;head&gt;</code> section of the host HTML file might contain the following:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb1-1" title="1">    <span class="co">&lt;!-- enyo (debug) --&gt;</span></a>
+<a class="sourceLine" id="cb1-2" title="2">    <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;enyo/enyo.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></a>
+<a class="sourceLine" id="cb1-3" title="3">    <span class="co">&lt;!-- application (debug) --&gt;</span></a>
+<a class="sourceLine" id="cb1-4" title="4">    <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;source/package.js&quot;</span><span class="ot"> type=</span><span class="st">&quot;text/javascript&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></a></code></pre></div>
+<h2 id="basic-tips">Basic Tips</h2>
+<p>Most of the time, your Enyo app will be running in one of two states–initial application generation or normal runtime event handling. If you suspect a problem is occurring during app creation, you could put a breakpoint on the main <code>renderInto()</code> call for your app object and step through the code from there. However, this will take you through a lot of internal framework code. Instead, you may find it helpful to set breakpoints on particularly complex <code>create()</code> or <code>rendered()</code> calls in your kinds.</p>
+<p>(Keep in mind that you may invoke the JavaScript keyword <code>"debugger"</code> in your code to force a break at a given line, in addition to using the breakpoint-setting capabilities of your browser’s debugger.)</p>
+<p>All named Enyo components are available from the <code>enyo.$</code> hash, so inspecting that variable will show all the created objects in your application. The generated ids are based on the hierarchy of your application, so you can use names to help with auto-completion. For an individual Enyo object, its own <code>$</code> hash shows what is owned by that object.</p>
+<p>For tracing events, it’s often useful to set a conditional breakpoint on <code>enyo.dispatcher.dispatch</code> based on the value of <code>e.type</code>. This will let you avoid stopping on events you don’t care about. You can then step through the code to see how the event is routed from its original target up through the ownership hierarchy.</p>
+<h2 id="console-debugging">Console Debugging</h2>
+<p>By watching the console in the debugger, you can sometimes detect errors from the JavaScript engine that aren’t caught by exception handlers.</p>
+<p>In general, you should use the <a href="../../..//#/namespace/enyo:log">enyo.log</a> methods (<code>enyo.log()</code>, <code>enyo.warn()</code>, and <code>enyo.error()</code>) instead of calling <code>console.log()</code> directly, since <code>enyo.log()</code> has better cross-platform support. (For example, you’ll get errors in IE8 if you call <code>console.log()</code> when the Developer Tools aren’t open, since the act of opening the tools creates the <code>window.console</code> object, which otherwise doesn’t exist.)</p>
+<p>A little-known (but very useful) fact is that calling <code>this.log()</code> from any Enyo kind will prepend the kind and function names to the log message, saving you the time and effort of manually logging that basic data.</p>
+<h2 id="common-pitfalls">Common Pitfalls</h2>
+<h3 id="startup">Startup</h3>
+<ul>
+<li>Remember to call <code>this.inherited(arguments)</code> when overriding <code>create()</code>. Failure to do this usually results in bad references on <code>this.$</code>, since the owned components aren’t instantiated.</li>
+</ul>
+<h3 id="rendering">Rendering</h3>
+<ul>
+<li>Remember to call <code>this.inherited(arguments)</code> when overriding <code>render()</code>. Failure to do so usually results in layout code’s failing to run, resulting in bad layout, but often no errors.</li>
+</ul>
+<h3 id="layout">Layout</h3>
+<ul>
+<li><p>Scrollers and Lists always need a height. This is typically assigned in one of the following ways:</p>
+<ul>
+<li>By specifying an explicit CSS height</li>
+<li>By applying the <code>'enyo-fit'</code> class</li>
+<li>By setting <code>'fit: true'</code> on the object in a <a href="../../..//#/kind/enyo.FittableLayout">Fittable layout</a></li>
+<li>By being placed in an <a href="../../..//#/kind/enyo.Panels">enyo.Panels</a> whose arranger fits the panel height</li>
+</ul></li>
+<li><p>A Fittable may only have <code>'fit: true'</code> set for one component; doing so for multiple components will result in bad layout.</p></li>
+</ul>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../../js/main.js"></script>
+  <script type="text/javascript" src="../../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

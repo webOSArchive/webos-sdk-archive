@@ -1,0 +1,161 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Style Guide</h1>
+<p>We ask that developers respect the following guidelines when contributing pull requests to Enyo.</p>
+<h2 id="indentation">Indentation</h2>
+<p>The Enyo source code uses leading tabs for indentation of code.</p>
+<h2 id="blocks">Blocks</h2>
+<p>Curly braces should always be used.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1">    <span class="co">// bad</span></a>
+<a class="sourceLine" id="cb1-2" title="2">    <span class="cf">if</span> (x) <span class="at">foo</span>()<span class="op">;</span> </a>
+<a class="sourceLine" id="cb1-3" title="3"></a>
+<a class="sourceLine" id="cb1-4" title="4">    <span class="co">// good</span></a>
+<a class="sourceLine" id="cb1-5" title="5">    <span class="cf">if</span> (x) <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-6" title="6">        <span class="at">foo</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-7" title="7">    <span class="op">}</span></a></code></pre></div>
+<p>Place the opening curly brace at the end of its line and the closing curly brace on a line by itself.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1">    <span class="cf">for</span> (<span class="kw">var</span> i<span class="op">=</span><span class="dv">0</span><span class="op">;</span> i<span class="op">&lt;</span><span class="dv">100</span><span class="op">;</span> i<span class="op">++</span>) <span class="op">{</span> <span class="co">// opening curly brace at end of line</span></a>
+<a class="sourceLine" id="cb2-2" title="2">        ...</a>
+<a class="sourceLine" id="cb2-3" title="3">    <span class="op">}</span> <span class="co">// closing curly brace on a line by itself</span></a></code></pre></div>
+<p>In <code>"else"</code> clauses, place the keyword <code>else</code> (or <code>else if</code>) between the braces.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1">    <span class="cf">if</span> (x) <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-2" title="2">        ...</a>
+<a class="sourceLine" id="cb3-3" title="3">    <span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> (y) <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-4" title="4">        ...</a>
+<a class="sourceLine" id="cb3-5" title="5">    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-6" title="6">        ...</a>
+<a class="sourceLine" id="cb3-7" title="7">    <span class="op">}</span></a></code></pre></div>
+<h2 id="punctuation">Punctuation</h2>
+<p>We use a like-English rule whenever possible. For example, there should be no spaces on the inside of associations, and one space after a colon:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1">    <span class="kw">var</span> x <span class="op">=</span> (x <span class="op">+</span> <span class="dv">7</span>) <span class="op">*</span> <span class="dv">3</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb4-2" title="2">    <span class="kw">var</span> y <span class="op">=</span> <span class="op">{</span><span class="dt">neft</span><span class="op">:</span> <span class="st">&#39;zap&#39;</span><span class="op">};</span></a>
+<a class="sourceLine" id="cb4-3" title="3">    <span class="kw">var</span> z <span class="op">=</span> [<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> (<span class="dv">4</span> <span class="op">+</span> <span class="dv">5</span>)]<span class="op">;</span></a></code></pre></div>
+<p>Use a single space after any keyword, except <code>function</code>:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1">    <span class="cf">for</span> (<span class="kw">var</span> i<span class="op">=</span><span class="dv">0</span><span class="op">;</span> i<span class="op">&lt;</span><span class="dv">100</span><span class="op">;</span> i<span class="op">++</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-2" title="2">        ...</a>
+<a class="sourceLine" id="cb5-3" title="3">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb5-4" title="4"></a>
+<a class="sourceLine" id="cb5-5" title="5">    <span class="cf">while</span> (x <span class="op">=</span> <span class="dv">3</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-6" title="6">        ... </a>
+<a class="sourceLine" id="cb5-7" title="7">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb5-8" title="8"></a>
+<a class="sourceLine" id="cb5-9" title="9">    x <span class="op">=</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-10" title="10">        ...</a>
+<a class="sourceLine" id="cb5-11" title="11">    <span class="op">}</span></a></code></pre></div>
+<h2 id="commenting">Commenting</h2>
+<p>For code commenting guidelines, see <a href="api-reference.html#documenting-code-for-the-api-reference">Documenting Code for the API Reference</a>.</p>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../js/main.js"></script>
+  <script type="text/javascript" src="../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

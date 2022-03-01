@@ -1,0 +1,166 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Header/List Actions</h1>
+<h2 id="about">About</h2>
+<p>A Header is a predefined area at the top of each Panel.</p>
+<p>The Header contains several text areas: a panel number, panel name, and optional subheader and sub-subheader. It also contains an optional Action Bar, which contains Action Buttons.</p>
+<p>An optional List Actions Menu appears in the Header when an Action Button is pressed. This menu allows the user to perform actions on an associated list of content in the panel below.</p>
+<h2 id="api-reference">API Reference</h2>
+<p><a href="../../..//#/kind/moon.Header">moon.Header</a>, <a href="../../..//#/kind/moon.ListActions">moon.ListActions</a></p>
+<h2 id="behavior-and-states">Behavior and States</h2>
+<h3 id="behavior">Behavior</h3>
+<h4 id="header">Header</h4>
+<p>The Header is comprised of the following parts:</p>
+<ul>
+<li>Panel Title - Defined by application</li>
+<li>Panel Number - Automatically calculated</li>
+<li>Subheader - Optional</li>
+<li>Sub-Subheader - Optional</li>
+<li>Action Bar - In large headers, spans the full width; in small headers, spans half-width</li>
+<li>Background Image - Optional, may or may not repeat throughout the application</li>
+</ul>
+<p>The Header’s main purpose is to reflect the number of the Panel that the user is currently in. The Panel Number is automatically generated and depends on the number of Panels that the user has navigated through.</p>
+<p>Buttons, which may be found in the Action Bar within the Header, should behave according to the normal Button control guidelines. The buttons may be either left-aligned or right-aligned, and may use Tool Tips to provide more context.</p>
+<h4 id="action-bar">Action Bar</h4>
+<p>The Action Bar is an optional button area that provides a consistent location for actions performed in the context of the current panel or current state of the panel. Common actions include: Filter, Sort, Search, Edit, Move, Delete, Switch View, Share To, Add To, Favorite, Download, Buy, Rent, etc.</p>
+<p>By default, all actions are aligned to the right. When the user selects an action that enables a mode (e.g., multi-select or edit), all actions in the action bar may be replaced with confirmation actions such as OK or Cancel. (See <a href="../patterns/acting-on-data/multi-select-mode.html">Multi-Select Mode</a> and <a href="../patterns/acting-on-data/edit-mode.html">Edit Mode</a>.)</p>
+<h4 id="list-actions-optional">List Actions (Optional)</h4>
+<p>The List Actions menu is an optional menu invoked from a button in the header’s action bar. It is only used when the selected action bar button has a list of related actions, such as:</p>
+<ul>
+<li>Sort (by date, alpha, etc.)</li>
+<li>Filter (genre, release date, tv shows, movies, etc.)</li>
+<li>Share to (Facebook, Twitter, email, etc.)</li>
+<li>Add to (queue, playlist, album, etc.)</li>
+</ul>
+<p>The List Actions menu should only be used for these kinds of actions; it should not be used for any other purpose, such as navigation, shopping carts, or any other complicated UI. (See <a href="../patterns/acting-on-data/sort-and-filter.html">Sort and Filter</a>.)</p>
+<p>The List Actions menu may contain any control used in lists, such as checkbox items or toggle items. You may stack these lists or arrange them side-by-side in columns. When the lists are arranged in columns, they cannot exceed the width of the menu. Even though the List Actions Menu can scroll, if possible, lists should not be stacked in a way that hides them from the user. (See Patterns for more examples of the types of controls used in the List Actions menu.)</p>
+<p>The menu may be automatically closed after a selection, or manually closed by selecting the “X” in the upper-right corner. Auto-close should only be used for single-select lists. Any changes made will be reflected when the List Actions menu is closed.</p>
+<h3 id="states">States</h3>
+<p>The Header has only one state. When the Action Menu is open, the list control has its usual states and behaviors.</p>
+<h3 id="sizing">Sizing</h3>
+<p>The Header occupies the full width of a panel at a fixed height. If the panel’s title is longer than the panel’s width, the text is truncated and ellipsized, and marquees (scrolls horizontally) when hovered over.</p>
+<p>There are two sizes of Header, large and small. In a large header, the Action Bar spans the full width of the header; in a small header, the Action Bar shares the header width with the subheader and sub-subheader. Either size may be used throughout an application. The large header may be optionally configured to automatically collapse into the small header when a list is scrolled. (See Patterns for examples of using the large and small header.)</p>
+<p>The Action Menu opens on top of the Header and is the same size. If the number of controls in a list extends beyond the height of the Action Menu, the list should scroll to reavel those items.</p>
+<p>Lists within an Action Menu automatically expand to occupy the full width of the Action Menu. It is possible for a single list to be stretched to fill a wide Action Menu.</p>
+<h2 id="illustration">Illustration</h2>
+<h3 id="header-with-list-actions-button">Header with List Actions Button</h3>
+<p><img src="../../assets/dg-controls-header-list-actions-1.png" /></p>
+<h3 id="list-actions-menu-open">List Actions Menu Open</h3>
+<p><img src="../../assets/dg-controls-header-list-actions-2.png" /></p>
+<h3 id="different-variation-of-header">Different Variation of Header</h3>
+<p><img src="../../assets/dg-controls-header-list-actions-3.png" /></p>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../../js/main.js"></script>
+  <script type="text/javascript" src="../../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

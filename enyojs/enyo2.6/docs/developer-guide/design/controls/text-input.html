@@ -1,0 +1,148 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Text Input</h1>
+<h2 id="about">About</h2>
+<p>Text Inputs are regions for displaying text or entering text via a keyboard. Moonstone provides both Single-Line and Multi-Line text inputs.</p>
+<h2 id="api-reference">API Reference</h2>
+<p><a href="../../..//#/kind/moon.Input">moon.Input</a>, <a href="../../..//#/kind/moon.RichText">moon.RichText</a>, <a href="../../..//#/kind/moon.TextArea">moon.TextArea</a></p>
+<h2 id="behavior-and-states">Behavior and States</h2>
+<h3 id="behavior">Behavior</h3>
+<h4 id="single-line-input">Single-Line Input</h4>
+<p>Single-line inputs (e.g., Input and RichText) are typically used in forms or as search fields. If necessary, a small icon may be shown on the right side of the input to clarify its purpose.</p>
+<h4 id="multi-line-input">Multi-Line Input</h4>
+<p>Multiple-line inputs (e.g., TextArea) may be used for entering larger amounts of text. They should be used sparingly, however, as we discourage a lot typing in the TV environment.</p>
+<p>Multi-line inputs scroll when the user types beyond the limits of the container.</p>
+<p>While typing, if the entered text grows beyond the size of the text field, the beginning characters move offscreen in a marquee fashion. The 5-way may be used to return to the offscreen content.</p>
+<p>If the final entered text is longer than what the field can display, it will appear as truncated and ellipsized in the normal state. In the focused state, either the full text will marquee (in Single-Line Inputs) or the user will be able to scroll (in Multi-Line Inputs).</p>
+<p>Both types of inputs can display hint text; this text should be limited to a few words and should not go beyond the size of the text field. Once the user types in the field, the hint text is replaced by what the user has entered; depending on the context, the hint text may be retained or reset. The hint text is shown in both normal and focused states, but in the active state it is replaced with a blinking cursor.</p>
+<p>The virtual keyboard launches onscreen as soon as the user clicks on a text input. Until then, the keyboard remains hidden in order to maximize screen real estate.</p>
+<h3 id="states">States</h3>
+<ul>
+<li><p><strong>Normal (up/unpressed)</strong></p>
+<p>The Text Input is available for use and is not selected.</p></li>
+<li><p><strong>Focused (hover)</strong></p>
+<p>The Text Input currently has focus from the remote and is ready to be selected.</p></li>
+<li><p><strong>Active (down/pressed)</strong></p>
+<p>The Text Input has been selected and is ready to accept text entry via the onscreen keyboard.</p></li>
+</ul>
+<h3 id="sizing">Sizing</h3>
+<p>Text inputs have a default minimum width of 300 pixels, but the maximum width is configurable. The text entered may extend beyond the size of the text field.</p>
+<p>The height of a Multi-line Text Field may be configured as needed, while the Single-Line Text Field is constrained to a single line.</p>
+<p>The optional small icon that may be displayed in the single-line text field is 20px.</p>
+<h2 id="illustration">Illustration</h2>
+<p><img src="../../assets/dg-controls-text-input.png" /></p>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../../js/main.js"></script>
+  <script type="text/javascript" src="../../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

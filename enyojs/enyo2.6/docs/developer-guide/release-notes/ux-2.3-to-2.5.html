@@ -1,0 +1,177 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Enyo 2.3.0-rc.24 to 2.5.0 UX Notes</h1>
+<p>Enyo 2.5.0 includes numerous enhancements to the user experience, including (but not limited to) the following:</p>
+<ul>
+<li><p>Assets</p>
+<ul>
+<li>Bitmap assets have been replaced with font-based icons in all Moonstone controls to improve theming support and reduce the library’s asset footprint.</li>
+</ul></li>
+<li><p>Contextual Popup Button</p>
+<ul>
+<li><p>Added gray arrow to deactivated state indicator.</p></li>
+<li><p>Added option to stop focus at specified edge instead of closing popup.</p></li>
+<li><p>Pressing a contextual popup button now toggles the popup’s open/closed state.</p></li>
+</ul></li>
+<li><p>Dialog</p>
+<ul>
+<li>Added support for new extra-small header component to be used in popups.</li>
+</ul></li>
+<li><p>Expandable Input</p>
+<ul>
+<li>Updated behavior so that a 5-way Down keypress while in the open state causes the input’s content to be submitted and the focus to shift downward (if applicable). Input content will also be submitted in response to a click outside of the control.</li>
+</ul></li>
+<li><p>Expandable Picker</p>
+<ul>
+<li>Added support for multiple selection.</li>
+</ul></li>
+<li><p>Focus</p>
+<ul>
+<li>Changed behavior during transition from pointer to 5-way navigation. Previously, if you pressed an arrow while in pointer mode, focus would return to the last-focused clickable object. Now focus will move to the nearest clickable object in the direction of the 5-way keypress.</li>
+</ul></li>
+<li><p>Header</p>
+<ul>
+<li><p>Added support for new extra-small header.</p></li>
+<li><p>Added support for displaying image in header.</p></li>
+<li><p>Adapted ListActions to automatically expand small header to standard header size when opened.</p></li>
+<li><p>Removed time-delayed auto-marquee behavior from header title. Now the title will only marquee on hover.</p></li>
+<li><p>Moved Drawer position down by 2px.</p></li>
+</ul></li>
+<li><p>Image Grid</p>
+<ul>
+<li>Implemented new visual design for multiple selection–now the grey checkmark will not be displayed when no item is selected.</li>
+</ul></li>
+<li><p>Light Theme</p>
+<ul>
+<li>Updated color used to indicate “deactivated” state.</li>
+</ul></li>
+<li><p>Panels</p>
+<ul>
+<li>Added API to allow the specification of a branding image, to be displayed in the lower-left corner of the Panels control.</li>
+</ul></li>
+<li><p>Toggle Button</p>
+<ul>
+<li><p>Added a radio button to more clearly indicate the control’s “active” state.</p></li>
+<li><p>Added support for customizing the text labels for “On” and “Off”.</p></li>
+</ul></li>
+<li><p>Video Feedback</p>
+<ul>
+<li>Fast Forward and Rewind feedback are now shown as lower-case.</li>
+</ul></li>
+</ul>
+<p><strong>See also:</strong> <a href="release-2.3-to-2.5.html">Enyo 2.3.0-rc.24 to 2.5.0 Release Notes</a></p>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../js/main.js"></script>
+  <script type="text/javascript" src="../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

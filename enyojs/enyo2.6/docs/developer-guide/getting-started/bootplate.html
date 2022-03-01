@@ -1,0 +1,201 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Bootplate</h1>
+<p>The enyojs project includes a set of application templates, known as “Bootplate” (BOOTstrap + boilerPLATE) templates. These may be used to facilitate both the creation of new projects and their ultimate deployment.</p>
+<h2 id="quick-start-with-bootplate">Quick Start with Bootplate</h2>
+<p>While each Bootplate template lives in its own GitHub repo (e.g., <a href="https://github.com/enyojs/bootplate">bootplate</a> and <a href="https://github.com/enyojs/bootplate-moonstone">bootplate-moonstone</a>), we provide two easy ways to use Bootplate without dealing directly with Git.</p>
+<h3 id="generator-enyo">generator-enyo</h3>
+<p><code>generator-enyo</code> is the preferred method for starting an app with Bootplate. It is implemented using <a href="http://yeoman.io/">Yeoman</a>, an open-source suite of Web development tools.</p>
+<p><strong>Note:</strong> To use <code>generator-enyo</code>, you will first need to have <a href="http://nodejs.org">Node.js</a> and the <a href="https://npmjs.org">Node Package Manager</a> installed on your Mac OS or Linux computer.</p>
+<ol type="1">
+<li><p>Use the Node Package Manager <code>(npm)</code> to install <code>generator-enyo</code>:</p>
+<pre><code>    sudo npm install -g generator-enyo</code></pre>
+<p>Note that this will install Yeoman, if it is not already installed. (Also note that <code>sudo</code> may not be necessary on all platforms.)</p></li>
+<li><p>Run the generator, specifying the name of your new app:</p>
+<pre><code>    yo enyo &lt;myApp&gt;</code></pre>
+<p>This will create the <code>&lt;myApp&gt;</code> directory and populate it with the necessary files for an Enyo application. The Onyx UI library is included by default; to choose a different UI library, use the <code>-m</code> or <code>--mode</code> flag, e.g.:</p>
+<pre><code>    yo enyo -m=moonstone &lt;myApp&gt;
+
+    yo enyo --mode=moonstone &lt;myApp&gt;</code></pre></li>
+</ol>
+<h3 id="the-other-way">The Other Way</h3>
+<ol type="1">
+<li><p>Download a bootplate zip archive from <a href="http://enyojs.com/get-enyo/">enyojs.com</a>, unzip the archive, and open the <code>bootplate-moonstone</code> folder (or <code>bootplate</code> folder, for the Onyx version).</p></li>
+<li><p>Load <code>debug.html</code> in a browser and see “Hello World”.</p></li>
+</ol>
+<h2 id="development">Development</h2>
+<p>At this point, you would refine your project through the normal cycle of development and testing, starting with the <code>source/app.js</code> file provided in the template. As your app grows to include more and more JavaScript and CSS files, and libraries with their own <code>package.js</code> files, make sure to include these in your top-level <code>source/package.js</code> and the <code>deploy</code> script described below will combine them all into optimized JavaScript and CSS files for deployment.</p>
+<p>For the purposes of this article, let’s assume that you’ve completed all of your work on the “HelloWorld” app, and turn our attention to the deployment process.</p>
+<h2 id="deployment">Deployment</h2>
+<h3 id="with-generator-enyo">With generator-enyo</h3>
+<p>One advantage of installing <code>generator-enyo</code> is that it makes deploying your app extremely easy. Just enter the application directory and issue the command:</p>
+<pre><code>    yo enyo:deploy</code></pre>
+<p>The optimized app will be created in a directory called <code>deploy</code> within the application directory.</p>
+<p>Your project is now ready to deploy to various HTML5-ready targets. For details about deploying apps to specific platforms, see <a href="../deploying-apps/platform-specific-deployment.html">Platform-Specific Deployment</a>.</p>
+<h3 id="the-other-way-1">The Other Way</h3>
+<p>If you’re not using <code>generator-enyo</code>, deploy your app by following these steps:</p>
+<ol type="1">
+<li><p>Make sure that you have the Node.js runtime (version 0.8 or later) installed on your system.</p></li>
+<li><p>Make a deployment build as follows:</p>
+<ul>
+<li><p>Open a command prompt (Windows) or terminal window (Mac/Linux).</p></li>
+<li><p>On the command line, navigate to root of your bootplate folder.</p></li>
+<li><p>Run the <code>tools\deploy.bat</code> script (Windows) or <code>./tools/deploy.sh</code> (Mac/Linux).</p></li>
+</ul>
+<p>When the build is complete, there will be two compressed JavaScript files and two compressed CSS files in a folder called <code>build</code>; <code>app.js</code> and <code>app.css</code> contain your application code, while <code>enyo.js</code> and <code>enyo.css</code> contain framework code.</p>
+<p>The <code>build</code> folder and a set of complementary files (an <code>index.html</code> file that loads your app, any images or other resources used by the app, etc.) are then copied into the final deployment folder, called <code>deploy</code>.</p></li>
+<li><p>Open the <code>deploy</code> folder, load <code>index.html</code> in a browser, and see “Hello World” (but faster!).</p></li>
+</ol>
+<h2 id="additional-notes-on-bootplate-projects">Additional Notes on Bootplate Projects</h2>
+<h3 id="embedded-enyo">Embedded Enyo</h3>
+<p>Bootplate projects are set up to use <em>embedded</em> Enyo. In other words, the Enyo library and other dependencies are stored completely inside the project folder. These resources are relatively small, and keeping all the dependencies together allows the developer to control versions and to easily deploy sealed packages (e.g., PhoneGap builds).</p>
+<h3 id="development-vs.-deployment">Development vs. Deployment</h3>
+<p>When developing and debugging your project, it’s common to need various source files and helper tools that are not needed in the final package. For this reason, we have the concept of making an application <em>deployment</em>. A deployment refers to a final production package, ready for inclusion in an app store or other method of distribution.</p>
+<p>An important feature of bootplate projects is that you can generate deployments from them with relative ease.</p>
+<h3 id="folder-structure">Folder Structure</h3>
+<p>A bootplate project has the following structure:</p>
+<pre><code>    assets/
+    build/
+    enyo/
+    lib/
+    source/
+    tools/
+    debug.html
+    index.html</code></pre>
+<ul>
+<li><p><code>assets</code> contains images or other data files for you projects. Files in this folder are intended to be necessary for deployment.</p></li>
+<li><p><code>build</code> contains JavaScript and CSS source files that have passed through the optimization script. If the <code>build</code> folder does not exist, it will be created when the <code>deploy</code> script is run.</p></li>
+<li><p><code>enyo</code> contains the Enyo framework source files. This folder is only necessary for debugging, and may be deleted for deployment.</p></li>
+<li><p><code>lib</code> contains various plugin files. Individual folders in <code>lib</code> may come from various sources and may have custom rules for deployment. In general, <code>assets</code> or <code>images</code> folders are required, and other files are only for debugging.</p></li>
+<li><p><code>source</code> contains the code source files or other debug-only materials.</p></li>
+<li><p><code>tools</code> contains the <code>deploy</code> shell script.</p></li>
+<li><p><code>debug.html</code> loads the application without using any built files; loading <code>debug.html</code> is generally the easiest way to debug.</p></li>
+<li><p><code>index.html</code> loads the application using built files only. If built files are not available, it will redirect to <code>debug.html</code>.</p></li>
+</ul>
+<h3 id="updating-the-framework-code">Updating the Framework Code</h3>
+<p><code>generator-enyo</code> uses the latest stable version of each Bootplate template. (And each version of Bootplate, in turn, references a particular version of Enyo core and each of its associated libraries.) From time to time, the Bootplate versions specified by the <code>generator-enyo</code> tool will be updated, as new stable builds become available.</p>
+<p>To check for updates to <code>generator-enyo</code>, use the command</p>
+<pre><code>    sudo npm update -g generator-enyo</code></pre>
+<p>If an updated version was found and installed, you may update the framework code for a given application by entering the app’s directory and issuing the command</p>
+<pre><code>    yo enyo:update</code></pre>
+<p>(Note that <code>generator-enyo</code> supports a number of additional options, which we will be documenting shortly.)</p>
+<p><strong>Additional Reading</strong></p>
+<ul>
+<li><a href="moonstone-app-tutorial.html">Moonstone App Tutorial</a></li>
+<li><a href="../deploying-apps/platform-specific-deployment.html">Platform-Specific Deployment</a></li>
+</ul>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../js/main.js"></script>
+  <script type="text/javascript" src="../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

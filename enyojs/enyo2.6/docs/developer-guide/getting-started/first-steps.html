@@ -1,0 +1,158 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">First Steps with Enyo</h1>
+<h2 id="preparing-your-development-environment">Preparing Your Development Environment</h2>
+<p>As an Enyo developer, you have a great deal of freedom in choosing the platform and tools you use to code your applications. You may work in a Windows, Mac, or Linux environment. Only a few simple tools are needed to get up and running.</p>
+<h3 id="text-editor">Text Editor</h3>
+<p>To write Enyo code, the only requirement is a text editor. Just about any text editor will suffice, including basic freeware options such as <a href="http://notepad-plus-plus.org/">Notepad++</a> (Windows) or <a href="http://www.barebones.com/products/textwrangler/">TextWrangler</a> (Mac). For what it’s worth, members of the Enyo team tend to use either <a href="http://www.sublimetext.com/">Sublime Text</a>, which is available for Mac and Windows, or the Mac-only <a href="http://macromates.com/">TextMate</a>.</p>
+<h3 id="git-client">Git Client</h3>
+<p>Currently, the primary mechanism for distribution of Enyo core, libraries, and “bootplate” project templates is via GitHub, so you’ll need to have a modern Git client installed on your machine. In our documentation, we present git commands on the command line, but you are free to use your favorite GUI Git client as well.</p>
+<p>You can download the latest Git client for your operating system at <a href="http://git-scm.com/downloads">git-scm.com</a>.</p>
+<p>(Note that the Enyo “bootplate” templates are also distributed in the <strong>LG webOS TV SDK</strong> and may be generated using the <code>ares-generate</code> command line tool included in the SDK, without the use of Git. If you are using the <strong>LG webOS TV SDK</strong> and don’t plan to version-control your application in Git, you won’t need to install a Git client.</p>
+<h3 id="node.js">Node.js</h3>
+<p>The Enyo framework includes tools based on <code>Node.js</code> for minifying and deploying your applications. <code>Node.js</code> is a server-side JavaScript runtime (similar to the server-side interpreters for Perl, Python, Ruby, and other languages) used for running JavaScript scripts on a server. It’s even possible to use <code>Node.js</code> itself as a barebones Web server (as we’ll see below).</p>
+<p>You can download the latest version of <code>Node.js</code> for your operating system at <a href="http://nodejs.org/">nodejs.org</a>.</p>
+<h3 id="web-browser-and-web-server">Web Browser and Web Server</h3>
+<p>During your development process, you may test your code using any modern Web browser. While it is possible to test by loading files into the browser directly from the local file system, we strongly suggest that you access the application through an HTTP server. This approach provides numerous benefits, including the ability to test from remote devices.</p>
+<p>Running your app on a Web server will also let you avoid dealing with the Chrome browser’s AJAX security restrictions. If you choose to develop in Chrome <em>and</em> load your app directly from the file system, you’ll need to launch the browser using the command-line switch <code>"--allow-file-access-from-files"</code>. (On Windows, you can do this by creating a shortcut to <code>chrome.exe</code> and adding the switch to the end of the shortcut’s Target property. Then use the shortcut each time you launch the browser. A similar approach should work on Mac and Linux as well.)</p>
+<p>If you are not currently running a local Web server, you may find it convenient to install an Apache/MySQL/PHP software bundle, such as <a href="http://bitnami.org/stack/wampstack">BitNami WAMPStack</a> (Windows) or <a href="http://www.mamp.info/en/index.html">MAMP</a> (Mac).</p>
+<p>As mentioned earlier, another alternative is to create your own simple HTTP server using <code>Node.js</code>. Here’s how to do it:</p>
+<ul>
+<li><p>Install <code>Node.js</code>.</p></li>
+<li><p>Use npm to install the <code>serve</code> package:</p></li>
+</ul>
+<pre><code>        npm install -g serve</code></pre>
+<ul>
+<li><p>Create a directory to house your application files, then enter that directory and start the server by running <code>serve</code>, e.g.:</p>
+<ul>
+<li><code>mkdir &lt;my_doc_root&gt;</code></li>
+<li><code>cd &lt;my_doc_root&gt;</code></li>
+<li><code>serve</code></li>
+</ul></li>
+<li><p>Your application will be accessible on port 3000, at a URL such as <code>http://localhost:3000/debug.html</code>.</p></li>
+</ul>
+<h2 id="obtaining-the-enyo-source-code">Obtaining the Enyo Source Code</h2>
+<h3 id="bootplate">Bootplate</h3>
+<p>If you are new to Enyo development, you will want to obtain the Enyo source as part of a ready-made project template. The enyojs project includes a number of these, which we refer to as “bootplate” (BOOTstrap + boilerPLATE) templates. Each bootplate template comes with the Enyo core code, one or more optional libraries relevant to the project type, a “Hello World”-type application, and a recommended folder structure for organizing your application files. For more on bootplate templates, including setup instructions, see <a href="bootplate.html">Bootplate: 0-60 with Enyo in 5 Minutes</a>.</p>
+<h3 id="individual-repos">Individual Repos</h3>
+<p>Of course, you’re also free to clone <code>enyo</code> or any of the library repos individually, e.g.:</p>
+<pre><code>    git clone https://github.com/enyojs/enyo.git &lt;myEnyoDirectory&gt;</code></pre>
+<p>If you plan to submit changes back to a repository, be sure to create your own fork of the repository and clone the fork to your local machine.</p>
+<h2 id="next-steps">Next Steps</h2>
+<p>If you haven’t already done so, read through the <a href="moonstone-app-tutorial.html">Moonstone App Tutorial</a>. Now that you have all the necessary tools, try following the steps in the tutorial to run the code on your own computer.</p>
+<p>If you get stuck, or you’d rather explore on your own, see the <a href="bootplate.html">Bootplate</a> documentation for some useful pointers.</p>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../js/main.js"></script>
+  <script type="text/javascript" src="../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

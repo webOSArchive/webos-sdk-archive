@@ -1,0 +1,181 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Enyo 2.0 Release Notes</h1>
+<p>Welcome to Enyo 2.0. The following items have changed since the 2.0 beta 5 release. (Note that this list is not comprehensive; see the commit history in GitHub for a complete list of changes.)</p>
+<h2 id="sampler">Sampler</h2>
+<ul>
+<li>A new Sampler app has been added, along with its own new repository at https://github.com/enyojs/sampler.</li>
+</ul>
+<h2 id="bootplate">Bootplate</h2>
+<ul>
+<li>The Bootplate template has been updated with the 2.0GA code and an improved API Viewer tool.</li>
+</ul>
+<h2 id="enyo">Enyo</h2>
+<ul>
+<li>In <code>enyo.platform</code>, added a regex to detect desktop versions of Safari.</li>
+<li>In <code>enyo.RichText</code>, fixed issue causing RichText objects to not be recognized as text fields.</li>
+<li>Changed <code>getSelected()</code> to <code>getValue()</code> in the code sample from the opening comments in <code>enyo.Select</code>.</li>
+<li>In <code>enyo.TouchScrollStrategy</code>, removed trailing comma from overscroll data.</li>
+<li>In <code>enyo.UiComponent</code>, blocked resize events for hidden UiComponents.</li>
+<li>In <code>enyo.WebService</code>, changed name of <code>callback</code> property to <code>callbackName</code> to match the name expected by <code>JsonpRequest</code>.</li>
+<li>In the Playground sample, a missing style has been added to <code>Playground.css</code>.</li>
+<li>In ScrollerSample, the Picker now listens for <code>onSelect</code> instead of <code>onChange</code>.</li>
+</ul>
+<h2 id="layout">Layout</h2>
+<ul>
+<li>In <code>enyo.Arranger</code>, fixed several issues related to positioning and visibility. Also implemented <code>destroy()</code> for each of the Arranger kinds, so they leave child controls in a reasonable state when changing arrangers.</li>
+<li>In FittableSample, fixed layout issues on iOS.</li>
+<li>Added new <code>FittableTests</code> sample.</li>
+<li>In <code>enyo.List</code>, fixed issue that could cause lists in nested panels to become unscrollable.</li>
+<li>Fixed issue causing list-flickr example to not load on IE9.</li>
+<li>In <code>enyo.Node</code>, added cross-platform CSS3 compatibility and an optional <code>onlyIconExpands</code> property.</li>
+<li>In <code>enyo.Panels</code>, blocked resize events for hidden panels. Also eliminated visual artifacts (flashing) when deleting a panel.</li>
+<li>Fixed titles in panelMatters.</li>
+<li>In <code>PanelsSample.html</code>, added scroller to Arrangers menu to fix sizing issue in Safari on iOS; also fixed associated CSS file.</li>
+<li>Fixed titles in <code>PanelsSample.js</code>. Also set arranger scroller size depending on media query (set max-height for smaller screens, allow natural sizing for larger screens).</li>
+<li>In <code>enyo.PulldownList</code>, made Puller dynamically reference the list being pulled, allowing you to use multiple PulldownLists.</li>
+</ul>
+<h2 id="onyx">Onyx</h2>
+<ul>
+<li>Added new widgets: <code>Drawer</code>, <code>Item</code>, <code>Menu</code>, <code>MoreToolbar</code>, <code>Picker</code>, <code>FlyweightPicker</code>, <code>Scrim</code>, <code>Spinner</code>, and <code>Tooltip</code>.</li>
+<li>Added code samples for new widgets.</li>
+<li>Changed <code>onyx.MenuDecorator</code> to allow menus, pickers, etc. to work inside <code>MoreToolbar</code>.</li>
+<li>In <code>onyx.Popup</code>, added scrim support and z-index support.</li>
+<li>Updated menus and pickers to use separate events for internal and client communication.</li>
+<li>Updated code samples for numerous widgets, including ButtonSample, GroupBoxSample, InputSample, and PopupSample.</li>
+</ul>
+<h2 id="tools">Tools</h2>
+<ul>
+<li>Fixed the <code>minify.js</code> build script for Node 0.8.2.</li>
+<li>In <code>AjaxTest.js</code>, fixed testCors bad response in Firefox by using YQL API call instead of YouTube API call.</li>
+</ul>
+<h2 id="documentation">Documentation</h2>
+<ul>
+<li>The documentation available in the API Viewer tool has been reviewed and significant additions have been made.</li>
+<li>The API Viewer now shows the package a kind comes from at the top of the details view.</li>
+</ul>
+<h2 id="known-issues">Known Issues</h2>
+<p>The following issues are under investigation for fixing in future versions of Enyo:</p>
+<ul>
+<li>Many controls aren’t working in Google Chrome for Android.</li>
+<li>In Firefox, some draggable items don’t behave properly if they’re not in a control with the <code>enyo-unselectable</code> style applied. Instead of dragging, they show a content icon and continue to respond after the mouse button has been released.</li>
+<li>In WebKit-based browsers, dragging in text fields can cause unscrollable divs (such as those used in panel arrangers) to scroll, causing the layout code to misbehave.</li>
+<li>In Internet Explorer, controls are not marked as unselectable.</li>
+<li>Nested <code>onyx.Drawer</code> controls don’t open correctly.</li>
+</ul>
+<p>For more information, see our bug database at https://enyojs.atlassian.net.</p>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../js/main.js"></script>
+  <script type="text/javascript" src="../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

@@ -1,0 +1,151 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">UI Patterns</h1>
+<p>The webOS Pattern Language provides a consistent and easy-to-understand experience for users across multiple applications in a manner appropriate for TV. It supports “lean back” experiences with simple and intuitive UI, while also facilitating the transformation of more traditional “lean forward” applications into the sort of “lean back” experiences users expect to find on their TVs. By using the webOS Pattern Language, you can seamlessly merge your simple UI with a highly immersive and personalized TV experience, enlivening your app and making it more engaging. Before we dig into the individual patterns, let’s look at the topics we’ll cover and define our terms.</p>
+<h2 id="selecting-patterns">Selecting Patterns</h2>
+<ul>
+<li><p><a href="patterns/the-big-picture.html">The Big Picture</a></p>
+<p>The first step in designing your application is to understand The Big Picture. In this section, we review the three personas of typical TV users, the type of application you are offering, and how to make the app engaging for your users.</p></li>
+<li><p><a href="patterns/app-structure.html">Application Structure</a></p>
+<p>Is your app better suited to a flat structure or a hierarchical one? Here we examine this critical question, while also exploring the layers of a Moonstone app, and the structure of panels. Once you’ve read through this material, you should be able to <a href="patterns/app-structure/panel-patterns.html">choose your first pattern</a>, either “Always Viewing” or “Activity”.</p></li>
+<li><p>Subpatterns</p>
+<p>After identifying the structure of your application and choosing the overarching pattern, you’ll choose subpatterns based on the main pattern and the scope of the application. Our discussion of subpatterns is organized into the following areas:</p>
+<ul>
+<li><a href="patterns/navigation.html">Navigation</a></li>
+<li><a href="patterns/displaying-data.html">Displaying Data</a></li>
+<li><a href="patterns/acting-on-data.html">Acting on Data</a></li>
+<li><a href="patterns/user-input.html">User Input</a></li>
+<li>Notifications</li>
+</ul></li>
+<li><p>Custom Patterns</p>
+<p>After you’ve selected all the appropriate subpatterns from the webOS Pattern Language, include your own patterns–ones that you may have developed (or may want to create) in order to address any additional recurring issues in your application.</p>
+<p>When adding your own patterns, be careful not to include new patterns that do not match the character of the subpatterns already selected. A single pattern that clashes with the app pattern language can create confusion for the user–and for yourself as you try to make connections between your patterns, whatever the virtues of that single pattern may be. Try to recreate your custom patterns using the Moonstone UI Controls, as this will help maintain consistency with the pattern language.</p></li>
+<li><p><a href="controls.html">UI Controls</a></p>
+<p>Each of the webOS UI Patterns cross-references the UI Controls used in the pattern. Once you have created your Application Pattern Sublanguage by selecting the patterns that support your needs, read about the related UI Controls to gain a deeper understanding of how they work.</p></li>
+</ul>
+<h2 id="definitions">Definitions</h2>
+<ul>
+<li><p><strong>Lean Back:</strong> UI experienced at a distance of 10 feet, controlled through a remote from the couch.</p></li>
+<li><p><strong>Lean Forward:</strong> UI experienced at a distance of 3 feet, controlled through a mouse and keyboard at a desk.</p>
+<p>The relevance of the terms “Lean Back” and “Lean Forward” has come into question as new technologies change the way that users engage with their devices. Therefore, we use these terms only as shorthand for describing the user’s distance from the device, posture, and tools for interacting with the device, and not as actual engagement styles that define the user’s experience. (For more on this topic, see <a href="patterns/the-big-picture.html#engagement-styles">Engagement Styles</a>.)</p></li>
+<li><p><strong>Pattern Language:</strong> A Pattern Language is a structured method of describing good design practices that may be used to solve common design problems. A pattern language includes a collection of solutions to common problems, with each solution having a name and description. Each solution describes how it fits into the larger design and solves a problem (while enumerating the benefits produced). Each pattern cross-references the building blocks (UI Controls) that have been configured to form the pattern solution.</p></li>
+<li><p><strong>Pattern Sublanguage:</strong> A sublanguage is a specialized form of a root or parent language, used in the context of a particular domain or subject area. A sublanguage is characterized by a specialized vocabulary, semantic relationships, and, in many cases, specialized syntax. A sublanguage may also include extensions of the root language.</p></li>
+<li><p><strong>Patterns</strong> vs <strong>Controls</strong>: It is important to have a clear understanding of the difference between a pattern and a control.</p>
+<p>A few examples of websOS Moonstone controls are the expandable picker, the button, and the input field (see <a href="controls.html">UI Controls</a> for more examples). All UI controls exist as coded parts of the webOS framework.</p>
+<p>A pattern is the repeated configuration and use of a control (or set of controls) to address a particular design problem. A pattern is not code; it is simply a design solution for a common problem that application designers face. Subpatterns are patterns that are directly related to a specific parent pattern or pattern group; they are intended to solve more specialized problems.</p></li>
+</ul>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../js/main.js"></script>
+  <script type="text/javascript" src="../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

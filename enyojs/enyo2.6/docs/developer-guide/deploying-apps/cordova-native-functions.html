@@ -1,0 +1,188 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Making Use of Cordova’s Native Functions</h1>
+<p>In this document, we examine the relationship between Enyo and Cordova (a.k.a. “PhoneGap”), making reference to a simple app that consists of the following code inside an <code>index.html</code> file:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb1-1" title="1">    <span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></a>
+<a class="sourceLine" id="cb1-2" title="2">    <span class="kw">&lt;html&gt;</span></a>
+<a class="sourceLine" id="cb1-3" title="3">    <span class="kw">&lt;head&gt;</span></a>
+<a class="sourceLine" id="cb1-4" title="4">        <span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;viewport&quot;</span><span class="ot"> content=</span><span class="st">&quot;width=device-width, height=device-height,</span></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="st">            initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot;</span> <span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb1-6" title="6">        <span class="kw">&lt;meta</span><span class="ot"> http-equiv=</span><span class="st">&quot;Content-type&quot;</span><span class="ot"> content=</span><span class="st">&quot;text/html; charset=utf-8&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb1-7" title="7"></a>
+<a class="sourceLine" id="cb1-8" title="8">        <span class="kw">&lt;title&gt;</span>Enyo and Cordova<span class="kw">&lt;/title&gt;</span></a>
+<a class="sourceLine" id="cb1-9" title="9"></a>
+<a class="sourceLine" id="cb1-10" title="10">        <span class="co">&lt;!-- Cordova (i.e., PhoneGap) --&gt;</span></a>
+<a class="sourceLine" id="cb1-11" title="11">        <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;cordova-1.8.1.js&quot;</span><span class="ot"> type=</span><span class="st">&quot;text/javascript&quot;</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></a>
+<a class="sourceLine" id="cb1-12" title="12"></a>
+<a class="sourceLine" id="cb1-13" title="13">        <span class="co">&lt;!-- Enyo --&gt;</span></a>
+<a class="sourceLine" id="cb1-14" title="14">        <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;enyo/enyo.js&quot;</span><span class="ot"> type=</span><span class="st">&quot;text/javascript&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></a>
+<a class="sourceLine" id="cb1-15" title="15">    <span class="kw">&lt;/head&gt;</span></a>
+<a class="sourceLine" id="cb1-16" title="16">    <span class="kw">&lt;body&gt;</span></a>
+<a class="sourceLine" id="cb1-17" title="17">        <span class="kw">&lt;script&gt;</span></a>
+<a class="sourceLine" id="cb1-18" title="18">            <span class="co">// Application kind</span></a>
+<a class="sourceLine" id="cb1-19" title="19">            <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb1-20" title="20">                <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;App&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-21" title="21">                <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb1-22" title="22">                    <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;Signals&quot;</span><span class="op">,</span> <span class="dt">ondeviceready</span><span class="op">:</span> <span class="st">&quot;deviceReady&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb1-23" title="23">                    <span class="op">{</span><span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Hello, World!&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb1-24" title="24">                ]<span class="op">,</span></a>
+<a class="sourceLine" id="cb1-25" title="25">                <span class="dt">deviceReady</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-26" title="26">                    <span class="co">// respond to deviceready event</span></a>
+<a class="sourceLine" id="cb1-27" title="27">                <span class="op">}</span></a>
+<a class="sourceLine" id="cb1-28" title="28">            <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-29" title="29">            <span class="kw">new</span> <span class="at">App</span>().<span class="at">renderInto</span>(<span class="va">document</span>.<span class="at">body</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-30" title="30">        <span class="kw">&lt;/script&gt;</span></a>
+<a class="sourceLine" id="cb1-31" title="31">    <span class="kw">&lt;/body&gt;</span></a>
+<a class="sourceLine" id="cb1-32" title="32">    <span class="kw">&lt;/html&gt;</span></a></code></pre></div>
+<h2 id="enyo-and-cordova">Enyo and Cordova</h2>
+<p>When an application is first launched, Cordova sends a <code>"deviceready"</code> event to the document body. This event tells us that the application has been launched and Cordova has been loaded. It is at this point that we can use Enyo to render the application.</p>
+<p>Fortunately, Enyo 2 has added native support for listening to this event. If you are using the <a href="https://github.com/enyojs/enyo">latest Enyo 2 build</a> from GitHub, you already have the file that provides this ability, namely, <code>enyo/source/dom/cordova.js</code>.</p>
+<p>In Enyo 2, <code>cordova.js</code> automatically sends notifications via <a href="../..//#/kind/enyo.Signals">enyo.Signals</a> when certain Cordova events are detected.</p>
+<p>The following Cordova events are supported:</p>
+<ul>
+<li>deviceready</li>
+<li>pause</li>
+<li>resume</li>
+<li>online</li>
+<li>offline</li>
+<li>backbutton</li>
+<li>batterycritical</li>
+<li>batterylow</li>
+<li>batterystatus</li>
+<li>menubutton</li>
+<li>searchbutton</li>
+<li>startcallbutton</li>
+<li>endcallbutton</li>
+<li>volumedownbutton</li>
+<li>volumeupbutton</li>
+</ul>
+<p>In order to respond to one of these events, we add an <code>enyo.Signals</code> instance to our application, e.g.:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb2-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;App&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb2-3" title="3">        <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb2-4" title="4">            <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;Signals&quot;</span><span class="op">,</span> <span class="dt">ondeviceready</span><span class="op">:</span> <span class="st">&quot;deviceReady&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb2-5" title="5">            <span class="op">{</span><span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Hello, World!&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb2-6" title="6">        ]<span class="op">,</span></a>
+<a class="sourceLine" id="cb2-7" title="7">        <span class="dt">deviceReady</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-8" title="8">            <span class="co">// respond to deviceready event</span></a>
+<a class="sourceLine" id="cb2-9" title="9">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-10" title="10">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p><strong>Additional Reading</strong></p>
+<ul>
+<li><a href="../key-concepts/event-handling.html">Event Handling</a></li>
+</ul>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../js/main.js"></script>
+  <script type="text/javascript" src="../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

@@ -1,0 +1,704 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 id="building-data-driven-apps">Building Data-Driven Apps</h1>
+<h2 id="overview">Overview</h2>
+<p>Working with data is a key part of building any application. In a typical application, you may need to load records and lists of records from a back-end service, display that data in your application’s views, accept input from users that changes or creates new data, keep views in sync with the changing data, and persist the data to a back-end location. Enyo provides many features to make developing rich, data-driven applications as easy as possible using a minimal amount of code.</p>
+<p>At the heart of Enyo’s data layer is the concept of data observation and binding–the ability to observe changes to an object’s properties and have the changes be automatically synced to properties of related objects. While this is most useful for binding view properties to your back-end data, bindings in Enyo are very flexible and may be created between any two Enyo objects.</p>
+<p>All Enyo objects and components support binding by default when property values are changed using the <code>set()</code> method of <a href="../../..//#/kind/enyo.Object">enyo.Object</a>. However, to make changes to properties observable on plain old JavaScript objects (e.g., JSON objects loaded from a back-end service), Enyo also provides <a href="../../..//#/kind/enyo.Model">enyo.Model</a>, an object that wraps a plain JavaScript object and adds support for observation, thus allowing your back-end data to be easily bound to Enyo objects and controls. In addition, Enyo provides <a href="../../..//#/kind/enyo.Collection">enyo.Collection</a>, which wraps arrays of models and allows observation of additions to (and removals from) the collection.</p>
+<p>Using these features, the properties of <code>enyo.Object</code> and <code>enyo.Model</code> instances may be bound to any view properties (which will then be automatically kept in sync with any object or model changes). Furthermore, “collection-aware” view kinds such as <a href="../../..//#/kind/enyo.DataRepeater">enyo.DataRepeater</a>, <a href="../../..//#/kind/enyo.DataList">enyo.DataList</a>, and <a href="../../..//#/kind/enyo.DataGridList">enyo.DataGridList</a>, which generate repeated controls based on a list of data, may be bound to an <code>enyo.Collection</code>. The views will then be automatically re-rendered when the models in the collection change.</p>
+<p>Finally, Enyo provides APIs on <code>enyo.Model</code> and <code>enyo.Collection</code> that let you easily fetch data from (and persist data to) back-end sources such as HTTP-based Ajax and Jsonp endpoints. You may also customize these APIs to accommodate other data sources, such as third-party libraries or SDKs, by subclassing and registering new <a href="../../..//#/kind/enyo.Source">enyo.Source</a> objects.</p>
+<h2 id="observers-bindings-and-computed-properties">Observers, Bindings, and Computed Properties</h2>
+<p><a href="../../..//#/kind/enyo.Component">enyo.Component</a> provides both declarative and programmatic APIs for observing property changes and binding properties of objects in the scope of the component.</p>
+<h3 id="observers">Observers</h3>
+<p>In Enyo, an observer is simply a function that is called when the value of a property being observed changes. By convention, Enyo automatically calls change observers for properties in the form of <code>&lt;property&gt;Changed()</code> functions. For example:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb1-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;MyControl&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-3" title="3">        <span class="dt">foo</span><span class="op">:</span> <span class="st">&quot;&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-4" title="4">        <span class="dt">fooChanged</span><span class="op">:</span> <span class="kw">function</span>(inOld) <span class="op">{</span>    <span class="co">// Called when foo changes</span></a>
+<a class="sourceLine" id="cb1-5" title="5">            <span class="co">// Do something with &quot;this.foo&quot;</span></a>
+<a class="sourceLine" id="cb1-6" title="6">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb1-7" title="7">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>In this example, <code>fooChanged()</code> will be called when <code>foo</code> is set with the <code>set()</code> method:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1">    tapHandler<span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-2" title="2">        <span class="kw">this</span>.<span class="at">set</span>(<span class="st">&quot;foo&quot;</span><span class="op">,</span> <span class="st">&quot;bar&quot;</span>)<span class="op">;</span>      <span class="co">// Causes fooChanged() to be called</span></a>
+<a class="sourceLine" id="cb2-3" title="3">    <span class="op">}</span></a></code></pre></div>
+<p>You may declare your own property change observers by adding entries to your kind’s <code>observers</code> block:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb3-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;MyControl&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb3-3" title="3">        <span class="dt">publicProperty</span><span class="op">:</span> <span class="dv">10</span></a>
+<a class="sourceLine" id="cb3-4" title="4">        <span class="dt">_protectedProperty</span><span class="op">:</span> <span class="dv">42</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb3-5" title="5">        <span class="dt">observers</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb3-6" title="6">            <span class="op">{</span> <span class="dt">method</span><span class="op">:</span> <span class="st">&quot;watchValues&quot;</span><span class="op">,</span> <span class="dt">path</span><span class="op">:</span> [<span class="st">&quot;publicProperty&quot;</span><span class="op">,</span> <span class="st">&quot;_protectedProperty&quot;</span>] <span class="op">}</span></a>
+<a class="sourceLine" id="cb3-7" title="7">        ]<span class="op">,</span></a>
+<a class="sourceLine" id="cb3-8" title="8">        <span class="dt">watchValues</span><span class="op">:</span> <span class="kw">function</span>(previous<span class="op">,</span> current<span class="op">,</span> property) <span class="op">{</span>  <span class="co">// Called when either property changes</span></a>
+<a class="sourceLine" id="cb3-9" title="9">            <span class="co">// Do something with &quot;this.publicProperty&quot; and &quot;this._protectedProperty&quot;</span></a>
+<a class="sourceLine" id="cb3-10" title="10">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb3-11" title="11">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>Note that, as long as property changes are made via the <code>set()</code> function of <code>enyo.Object</code>, any property (published or otherwise) is observable. Also note that the long-form setters generated for published properties (e.g., <code>setPublicProperty()</code> for the current example) call the generic <code>set()</code> function internally.</p>
+<p>After a kind has been created, you may add or remove observers programmatically using the <code>addObserver()</code> and <code>removeObserver()</code> functions on <code>enyo.Object</code> (provided by the <a href="../../..//#/mixin/enyo.ObserverSupport">enyo.ObserverSupport</a> mixin).</p>
+<h3 id="bindings">Bindings</h3>
+<p>Bindings in Enyo are built on the basic observation capability outlined above. A binding is responsible for propagating property value changes between two points–the source and target of the binding. When the source of a binding changes, the new value is set to the target property.</p>
+<p>You may declare bindings between properties in the scope of a component by adding entries to your kind’s <code>bindings</code> block. In the following example, the binding will automatically keep the content of the label (<code>label.content</code>) in sync with the value of the slider (<code>slider.value</code>) as the user drags the slider knob.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb4-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;MyValueSlider&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb4-3" title="3">        <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb4-4" title="4">            <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.Slider&quot;</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;slider&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb4-5" title="5">            <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.Control&quot;</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;label&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb4-6" title="6">        ]<span class="op">,</span></a>
+<a class="sourceLine" id="cb4-7" title="7">        <span class="dt">bindings</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb4-8" title="8">            <span class="op">{</span><span class="dt">from</span><span class="op">:</span> <span class="st">&quot;$.slider.value&quot;</span><span class="op">,</span> <span class="dt">to</span><span class="op">:</span> <span class="st">&quot;$.label.content&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb4-9" title="9">        ]</a>
+<a class="sourceLine" id="cb4-10" title="10">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>Note that the source (<code>from</code>) and target (<code>to</code>) properties of the binding are specified as string paths. By convention, when the path starts with a dot (<code>.</code>) as in this example, the path is relative to <code>this</code>. If the path starts with a caret (<code>^</code>), the path is relative to the global scope.</p>
+<p>By default, bindings are one-way, from the source to the target. However, a binding may be specified as “two-way” by setting the <code>oneWay</code> flag to <code>false</code>:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb5-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;MyValueSlider&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb5-3" title="3">        <span class="dt">sliderValue</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span>    <span class="co">// Initial value of slider</span></a>
+<a class="sourceLine" id="cb5-4" title="4">        <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb5-5" title="5">            <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.Slider&quot;</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span><span class="st">&quot;slider&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb5-6" title="6">            <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.Control&quot;</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span><span class="st">&quot;label&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb5-7" title="7">        ]<span class="op">,</span></a>
+<a class="sourceLine" id="cb5-8" title="8">        <span class="dt">bindings</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb5-9" title="9">            <span class="op">{</span><span class="dt">from</span><span class="op">:</span> <span class="st">&quot;sliderValue&quot;</span><span class="op">,</span> <span class="dt">to</span><span class="op">:</span> <span class="st">&quot;$.slider.value&quot;</span><span class="op">,</span> <span class="dt">oneWay</span><span class="op">:</span> <span class="kw">false</span><span class="op">},</span>    <span class="co">// two-way binding</span></a>
+<a class="sourceLine" id="cb5-10" title="10">            <span class="op">{</span><span class="dt">from</span><span class="op">:</span> <span class="st">&quot;$.slider.value&quot;</span><span class="op">,</span> <span class="dt">to</span><span class="op">:</span> <span class="st">&quot;$.label.content&quot;</span><span class="op">}</span>                <span class="co">// one-way binding</span></a>
+<a class="sourceLine" id="cb5-11" title="11">        ]</a>
+<a class="sourceLine" id="cb5-12" title="12">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>Note that in two-way bindings, the order of the <code>from</code> and <code>to</code> values is still meaningful, since the initial value will be determined by the source (<code>from</code>) end. In the current example, we are binding the <code>sliderValue</code> property to the child slider’s <code>value</code> property. At creation time, the binding will propagate the value of <code>sliderValue</code> to the child slider’s <code>value</code> property (not the other way around), but on any subsequent changes to the child slider, <code>value</code> will be propagated from <code>value</code> back to <code>sliderValue</code>.</p>
+<p>An optional <code>transform</code> function may be provided for a binding to transform the value as it passes from the source to the target (and vice-versa, for two-way bindings):</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb6-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;MyValueSlider&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb6-3" title="3">        <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb6-4" title="4">            <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.Slider&quot;</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span><span class="st">&quot;slider&quot;</span><span class="op">,</span> <span class="dt">min</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">max</span><span class="op">:</span> <span class="dv">1</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb6-5" title="5">            <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.Control&quot;</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span><span class="st">&quot;label&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb6-6" title="6">        ]<span class="op">,</span></a>
+<a class="sourceLine" id="cb6-7" title="7">        <span class="dt">bindings</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb6-8" title="8">            <span class="op">{</span><span class="dt">from</span><span class="op">:</span> <span class="st">&quot;$.slider.value&quot;</span><span class="op">,</span> <span class="dt">to</span><span class="op">:</span> <span class="st">&quot;$.label.content&quot;</span><span class="op">,</span> <span class="dt">transform</span><span class="op">:</span> <span class="kw">function</span>(val) <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-9" title="9">                <span class="cf">return</span> <span class="st">&quot;The slider value is &quot;</span> <span class="op">+</span> <span class="va">Math</span>.<span class="at">round</span>(val <span class="op">*</span> <span class="dv">100</span>) <span class="op">+</span> <span class="st">&quot;%&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb6-10" title="10">            <span class="op">}}</span></a>
+<a class="sourceLine" id="cb6-11" title="11">        ]</a>
+<a class="sourceLine" id="cb6-12" title="12">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>If necessary, a bi-directional transform may be provided for a two-way binding; check the second argument to the <code>transform</code> function to determine the direction in which the binding is firing:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1">    <span class="op">{</span><span class="dt">from</span><span class="op">:</span> <span class="st">&quot;$.slider.value&quot;</span><span class="op">,</span> <span class="dt">to</span><span class="op">:</span> <span class="st">&quot;$.input.value&quot;</span><span class="op">,</span> <span class="dt">oneWay</span><span class="op">:</span><span class="kw">false</span><span class="op">,</span> <span class="dt">transform</span><span class="op">:</span> <span class="kw">function</span>(val<span class="op">,</span> dir) <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-2" title="2">        <span class="cf">if</span> (dir <span class="op">==</span> <span class="dv">1</span>) <span class="op">{</span> <span class="co">//source (`from`) setting value for target (`to`)</span></a>
+<a class="sourceLine" id="cb7-3" title="3">            <span class="cf">return</span> (val <span class="op">*</span> <span class="dv">100</span>) <span class="op">+</span> <span class="st">&quot;%&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb7-4" title="4">        <span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> (dir <span class="op">==</span> <span class="dv">2</span>) <span class="op">{</span> <span class="co">//target (`to`) setting value for source (`from`)</span></a>
+<a class="sourceLine" id="cb7-5" title="5">            <span class="cf">return</span> <span class="at">parseInt</span>(val) / <span class="dv">100</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb7-6" title="6">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb7-7" title="7">    <span class="op">}}</span></a></code></pre></div>
+<h3 id="computed-properties">Computed Properties</h3>
+<p>Computed properties allow you to observe and bind to changes in properties that are computed based on one or more dependent properties. When any dependencies of the computed property change (resulting in a change to the computed value), observers and bindings for that property fire.</p>
+<p>Here’s a simple example of a computed property based on two properties:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb8-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;MyForecastControl&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb8-3" title="3">        <span class="dt">weather</span><span class="op">:</span> <span class="st">&quot;sunny&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb8-4" title="4">        <span class="dt">city</span><span class="op">:</span> <span class="st">&quot;San Francisco&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb8-5" title="5">        <span class="dt">computed</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb8-6" title="6">            <span class="op">{</span> <span class="dt">method</span><span class="op">:</span> <span class="st">&quot;forecast&quot;</span><span class="op">,</span> <span class="dt">path</span><span class="op">:</span> [<span class="st">&quot;weather&quot;</span><span class="op">,</span> <span class="st">&quot;city&quot;</span>] <span class="op">}</span>    <span class="co">// &quot;forecast&quot; method depends on properties in list</span></a>
+<a class="sourceLine" id="cb8-7" title="7">        ]<span class="op">,</span></a>
+<a class="sourceLine" id="cb8-8" title="8">        <span class="dt">forecast</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-9" title="9">            <span class="cf">return</span> <span class="st">&quot;It&#39;s always &quot;</span> <span class="op">+</span> <span class="kw">this</span>.<span class="at">get</span>(<span class="st">&quot;weather&quot;</span>) <span class="op">+</span> <span class="st">&quot; in &quot;</span> <span class="op">+</span> <span class="kw">this</span>.<span class="at">get</span>(<span class="st">&quot;city&quot;</span>)</a>
+<a class="sourceLine" id="cb8-10" title="10">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb8-11" title="11">    <span class="op">}</span>)<span class="op">;</span> </a></code></pre></div>
+<p>We may now bind the computed <code>forecast</code> property to a view control, e.g.:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb9-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;MyForecastControl&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb9-3" title="3">        <span class="dt">weather</span><span class="op">:</span> <span class="st">&quot;sunny&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb9-4" title="4">        <span class="dt">city</span><span class="op">:</span> <span class="st">&quot;San Francisco&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb9-5" title="5">        <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb9-6" title="6">            <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.Control&quot;</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;forecastLabel&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb9-7" title="7">        ]<span class="op">,</span></a>
+<a class="sourceLine" id="cb9-8" title="8">        <span class="dt">bindings</span><span class="op">:</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb9-9" title="9">            <span class="op">{</span><span class="dt">from</span><span class="op">:</span> <span class="st">&quot;forecast&quot;</span><span class="op">,</span> <span class="dt">to</span><span class="op">:</span> <span class="st">&quot;$.forecastLabel.content&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb9-10" title="10">        <span class="op">},</span></a>
+<a class="sourceLine" id="cb9-11" title="11">        <span class="dt">computed</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb9-12" title="12">            <span class="op">{</span> <span class="dt">method</span><span class="op">:</span> <span class="st">&quot;forecast&quot;</span><span class="op">,</span> <span class="dt">path</span><span class="op">:</span> [<span class="st">&quot;weather&quot;</span><span class="op">,</span> <span class="st">&quot;city&quot;</span>] <span class="op">}</span>    <span class="co">// &quot;forecast&quot; method depends on properties in list</span></a>
+<a class="sourceLine" id="cb9-13" title="13">        ]<span class="op">,</span></a>
+<a class="sourceLine" id="cb9-14" title="14">        <span class="dt">forecast</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb9-15" title="15">            <span class="cf">return</span> <span class="st">&quot;It&#39;s always &quot;</span> <span class="op">+</span> <span class="kw">this</span>.<span class="at">get</span>(<span class="st">&quot;weather&quot;</span>) <span class="op">+</span> <span class="st">&quot; in &quot;</span> <span class="op">+</span> <span class="kw">this</span>.<span class="at">get</span>(<span class="st">&quot;city&quot;</span>)</a>
+<a class="sourceLine" id="cb9-16" title="16">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb9-17" title="17">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>Then, when either dependent property changes, the view will automatically update:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1">    <span class="kw">this</span>.<span class="at">set</span>(<span class="st">&quot;weather&quot;</span><span class="op">,</span> <span class="st">&quot;rainy&quot;</span>)<span class="op">;</span>    </a>
+<a class="sourceLine" id="cb10-2" title="2">    <span class="co">// forecastLabel&#39;s content becomes &quot;It&#39;s always rainy in San Francisco&quot;</span></a>
+<a class="sourceLine" id="cb10-3" title="3"></a>
+<a class="sourceLine" id="cb10-4" title="4">    <span class="kw">this</span>.<span class="at">set</span>(<span class="st">&quot;city&quot;</span><span class="op">,</span> <span class="st">&quot;Seattle&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb10-5" title="5">    <span class="co">// forecastLabel&#39;s content becomes &quot;It&#39;s always rainy in Seattle&quot;</span></a></code></pre></div>
+<h2 id="models">Models</h2>
+<p><a href="../../..//#/kind/enyo.Model">enyo.Model</a> is a very lightweight base kind that is specially designed to wrap plain-old JavaScript objects (POJOs), such as data fetched as JSON from a remote server. It allows for observation and binding using the APIs described above.</p>
+<p>Note that <code>enyo.Model</code> is <strong>NOT</strong> an <code>enyo.Component</code>; it may not be used within declarative <code>components</code> blocks, but is instead instanced using the <code>new</code> keyword. In fact, <code>enyo.Model</code> is not even derived from <code>enyo.Object</code>, as it is intended to be as lightweight as possible.</p>
+<h3 id="creating-and-using-models">Creating and Using Models</h3>
+<p>A generic <code>enyo.Model</code> may be instanced and initialized by simply using the <code>new</code> keyword and passing the constructor an optional object containing the desired initial attribute values:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb11-1" title="1">    <span class="kw">var</span> myModel <span class="op">=</span> <span class="kw">new</span> <span class="va">enyo</span>.<span class="at">Model</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb11-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Kevin&quot;</span><span class="op">,</span> </a>
+<a class="sourceLine" id="cb11-3" title="3">        <span class="dt">hometown</span><span class="op">:</span> <span class="st">&quot;San Francisco&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb11-4" title="4">        <span class="dt">avatar</span><span class="op">:</span> <span class="st">&quot;/assets/kevin.png&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb11-5" title="5">        <span class="dt">height</span><span class="op">:</span> <span class="fl">6.0</span></a>
+<a class="sourceLine" id="cb11-6" title="6">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>We may get and set properties of the model using the <code>set()</code> and <code>get()</code> functions, just as we would do with <code>enyo.Object</code>:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb12-1" title="1">    <span class="va">myModel</span>.<span class="at">get</span>(<span class="st">&quot;name&quot;</span>)<span class="op">;</span> <span class="co">// returns &quot;Kevin&quot;</span></a>
+<a class="sourceLine" id="cb12-2" title="2">    <span class="va">myModel</span>.<span class="at">set</span>(<span class="st">&quot;name&quot;</span><span class="op">,</span> <span class="st">&quot;Bob&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-3" title="3">    <span class="va">myModel</span>.<span class="at">get</span>(<span class="st">&quot;name&quot;</span>)<span class="op">;</span> <span class="co">// returns &quot;Bob&quot;</span></a></code></pre></div>
+<p>The properties of the model may be observed or bound to properties of components or other models using the same API described above:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb13-1" title="1">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb13-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;ContactView&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb13-3" title="3">        <span class="dt">personModel</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb13-4" title="4">        <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb13-5" title="5">            <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.Image&quot;</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;avatar&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb13-6" title="6">            <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.Control&quot;</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;nameLabel&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb13-7" title="7">            <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.Control&quot;</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;townLabel&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb13-8" title="8">        ]<span class="op">,</span></a>
+<a class="sourceLine" id="cb13-9" title="9">        <span class="dt">bindings</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb13-10" title="10">            <span class="op">{</span><span class="dt">from</span><span class="op">:</span> <span class="st">&quot;personModel.name&quot;</span><span class="op">,</span> <span class="dt">to</span><span class="op">:</span> <span class="st">&quot;$.nameLabel.content&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb13-11" title="11">            <span class="op">{</span><span class="dt">from</span><span class="op">:</span> <span class="st">&quot;personModel.hometown&quot;</span><span class="op">,</span> <span class="dt">to</span><span class="op">:</span> <span class="st">&quot;$.townLabel.content&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb13-12" title="12">            <span class="op">{</span><span class="dt">from</span><span class="op">:</span> <span class="st">&quot;personModel.avatar&quot;</span><span class="op">,</span> <span class="dt">to</span><span class="op">:</span> <span class="st">&quot;$.avatar.src&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb13-13" title="13">        ]</a>
+<a class="sourceLine" id="cb13-14" title="14">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>If we set the <code>personModel</code> property of a <code>ContactView</code> instance to a model with the expected schema, the avatar, name, and town components of the view will automatically be synced with the corresponding properties of the model:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb14-1" title="1">    <span class="kw">var</span> myModel <span class="op">=</span> <span class="kw">new</span> <span class="va">enyo</span>.<span class="at">Model</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb14-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Kevin&quot;</span><span class="op">,</span> </a>
+<a class="sourceLine" id="cb14-3" title="3">        <span class="dt">hometown</span><span class="op">:</span> <span class="st">&quot;San Francisco&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb14-4" title="4">        <span class="dt">avatar</span><span class="op">:</span> <span class="st">&quot;/assets/kevin.png&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb14-5" title="5">        <span class="dt">height</span><span class="op">:</span> <span class="fl">6.0</span></a>
+<a class="sourceLine" id="cb14-6" title="6">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb14-7" title="7"></a>
+<a class="sourceLine" id="cb14-8" title="8">    <span class="kw">this</span>.<span class="va">$</span>.<span class="va">contactView</span>.<span class="at">set</span>(<span class="st">&quot;personModel&quot;</span><span class="op">,</span> myModel)<span class="op">;</span></a></code></pre></div>
+<p>Furthermore, if any properties of the model are changed, the view will automatically update:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb15-1" title="1">    <span class="va">myModel</span>.<span class="at">set</span>(<span class="st">&quot;name&quot;</span><span class="op">,</span> <span class="st">&quot;Bob&quot;</span>)<span class="op">;</span>        <span class="co">// The &quot;nameLabel&quot; component of the view will update</span></a></code></pre></div>
+<h3 id="creating-model-subkinds">Creating Model Subkinds</h3>
+<p>You may subkind <code>enyo.Model</code> to provide an explicit schema and default values via the <code>attributes</code> property, or to override any other default behavior:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb16-1" title="1">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb16-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;ContactModel&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb16-3" title="3">        <span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.Model&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb16-4" title="4">        <span class="dt">attributes</span><span class="op">:</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb16-5" title="5">            <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Unknown&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb16-6" title="6">            <span class="dt">hometown</span><span class="op">:</span> <span class="st">&quot;Unknown&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb16-7" title="7">            <span class="dt">avatar</span><span class="op">:</span> <span class="st">&quot;/assets/unknown.png&quot;</span></a>
+<a class="sourceLine" id="cb16-8" title="8">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb16-9" title="9">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb16-10" title="10"></a>
+<a class="sourceLine" id="cb16-11" title="11">    <span class="kw">var</span> myModel <span class="op">=</span> <span class="kw">new</span> <span class="at">ContactModel</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb16-12" title="12">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Bob&quot;</span>        <span class="co">// other attributes will reflect the defaults in ContactModel</span></a>
+<a class="sourceLine" id="cb16-13" title="13">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<h3 id="fetching-models-from-rest-endpoints">Fetching Models from REST Endpoints</h3>
+<p>Although it is often useful to initialize a model using an object literal (as seen above), <code>enyo.Model</code> instances are often populated based on data from a remote source. To simplify this process, the Enyo data layer uses <a href="#sources">Sources</a> to configure data endpoints.</p>
+<p>In the following example, we create a <code>ContactModel</code> subkind, providing a <code>getUrl()</code> method to customize the URL for the REST endpoint for this resource. This allows us to pass along the model property that is used to reference the resource we need:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb17-1" title="1">    <span class="kw">new</span> <span class="va">enyo</span>.<span class="at">AjaxSource</span>(<span class="op">{</span><span class="dt">name</span><span class="op">:</span> <span class="st">&quot;ajax&quot;</span><span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb17-2" title="2"></a>
+<a class="sourceLine" id="cb17-3" title="3">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb17-4" title="4">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;ContactModel&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb17-5" title="5">        <span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.Model&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb17-6" title="6">        <span class="dt">source</span><span class="op">:</span> <span class="st">&quot;ajax&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb17-7" title="7">        <span class="dt">getUrl</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb17-8" title="8">            <span class="cf">return</span> <span class="st">&quot;http://myservice.com/users/&quot;</span> <span class="op">+</span> <span class="kw">this</span>.<span class="at">get</span>(<span class="st">&quot;user_id&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb17-9" title="9">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb17-10" title="10">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb17-11" title="11"></a>
+<a class="sourceLine" id="cb17-12" title="12">    <span class="kw">var</span> myModel <span class="op">=</span> <span class="kw">new</span> <span class="at">ContactModel</span>(<span class="op">{</span><span class="dt">user_id</span><span class="op">:</span> <span class="dv">1234</span><span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb17-13" title="13">    <span class="va">myModel</span>.<span class="at">fetch</span>()<span class="op">;</span>  <span class="co">// Results in an XHR request to http://myservice.com/users/1234</span></a></code></pre></div>
+<h3 id="parsing-and-converting-fetched-data">Parsing and Converting Fetched Data</h3>
+<p>Often, you may need to adjust or convert the structure of data returned from a service (especially one that you don’t control) in order to make it suitable for use in your application. For this reason, <code>enyo.Model</code> provides a <code>parse()</code> API, to be called after the data is fetched but before the data is transferred to the internal <code>attributes</code> hash and observers are notified. To enable this feature, set the <code>parse</code> option to <code>true</code>.</p>
+<p>For example, a service might return metadata about a request that is not relevant to the data for your model:</p>
+<pre><code>    {
+        &quot;status&quot;: {
+            &quot;error&quot;: &quot;none&quot;,
+            &quot;last_request&quot;: 1230394903
+        },
+        &quot;result&quot;: {
+            &quot;user_id&quot;: 1234,
+            &quot;name&quot;: &quot;Kevin&quot;,
+            &quot;hometown&quot;: &quot;San Francisco&quot;
+            &quot;avatar&quot;: &quot;/images/kevin.png&quot;,
+            &quot;height&quot;: 6.0
+        }
+    }</code></pre>
+<p>In this case, you could overload the <code>parse()</code> function to tell <code>enyo.Model</code> to only use the <code>result</code> sub-tree of the fetched data for the model attributes:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb19-1" title="1">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb19-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;ContactModel&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb19-3" title="3">        <span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.Model&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb19-4" title="4">        <span class="dt">options</span><span class="op">:</span> <span class="op">{</span><span class="dt">parse</span><span class="op">:</span> <span class="kw">true</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb19-5" title="5">        <span class="dt">source</span><span class="op">:</span> <span class="st">&quot;ajax&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb19-6" title="6">        <span class="dt">url</span><span class="op">:</span> <span class="st">&quot;http://myservice.com/users&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb19-7" title="7">        <span class="dt">getUrl</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb19-8" title="8">            <span class="cf">return</span> <span class="st">&quot;http://myservice.com/users/&quot;</span> <span class="op">+</span> <span class="kw">this</span>.<span class="at">get</span>(<span class="st">&quot;user_id&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb19-9" title="9">        <span class="op">},</span></a>
+<a class="sourceLine" id="cb19-10" title="10">        <span class="dt">parse</span><span class="op">:</span> <span class="kw">function</span>(data) <span class="op">{</span>        <span class="co">// incoming data contains {status:..., result:...}</span></a>
+<a class="sourceLine" id="cb19-11" title="11">            <span class="cf">return</span> <span class="va">data</span>.<span class="at">result</span><span class="op">;</span>        <span class="co">// returned data contains {user_id:..., name:..., ...}</span></a>
+<a class="sourceLine" id="cb19-12" title="12">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb19-13" title="13">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>If the data from the REST endpoint did not arrive in JSON format, you would also use <code>parse()</code> to parse the data (string) returned from the service into a JavaScript object. Although Enyo does not provide XML-to-JSON parsing as part of the core framework, there are several open-source libraries that provide this functionality, such as <a href="https://code.google.com/p/x2js/">X2JS</a>:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb20-1" title="1">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb20-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;ContactModel&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb20-3" title="3">        <span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.Model&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb20-4" title="4">        <span class="dt">options</span><span class="op">:</span> <span class="op">{</span><span class="dt">parse</span><span class="op">:</span> <span class="kw">true</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb20-5" title="5">        <span class="dt">source</span><span class="op">:</span> <span class="st">&quot;ajax&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb20-6" title="6">        <span class="dt">getUrl</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb20-7" title="7">            <span class="cf">return</span> <span class="st">&quot;http://myservice.com/users/&quot;</span> <span class="op">+</span> <span class="kw">this</span>.<span class="at">get</span>(<span class="st">&quot;user_id&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb20-8" title="8">        <span class="op">},</span></a>
+<a class="sourceLine" id="cb20-9" title="9">        <span class="dt">parser</span><span class="op">:</span> <span class="kw">new</span> <span class="at">X2JS</span>()<span class="op">,</span></a>
+<a class="sourceLine" id="cb20-10" title="10">        <span class="dt">parse</span><span class="op">:</span> <span class="kw">function</span>(data) <span class="op">{</span>        <span class="co">// incoming data: &quot;&lt;root&gt;&lt;user_id&gt;1234&lt;/user_id&gt;&lt;name&gt;...&lt;/name&gt;...&lt;/root&gt;&quot;</span></a>
+<a class="sourceLine" id="cb20-11" title="11">            <span class="kw">var</span> json <span class="op">=</span> <span class="kw">this</span>.<span class="va">parser</span>.<span class="at">xml_str2json</span>(data)<span class="op">;</span></a>
+<a class="sourceLine" id="cb20-12" title="12">            <span class="cf">return</span> <span class="va">json</span>.<span class="at">root</span><span class="op">;</span>        <span class="co">// returned data: {user_id:..., name:..., ...}</span></a>
+<a class="sourceLine" id="cb20-13" title="13">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb20-14" title="14">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>For performance, <code>enyo.Model</code> does not support binding to nested data structures within a model. If a service returns nested data that your app needs to bind to, you could use the <code>parse()</code> function to flatten the structure. For example, if the fetched model data looked like this…</p>
+<pre><code>    {
+        &quot;user_id&quot;: 1234,
+        &quot;name&quot;: &quot;Kevin&quot;,
+        &quot;department&quot;: {
+            &quot;dept_id&quot;: 42,
+            &quot;name&quot;: &quot;Encabulator Marketing&quot;
+        },
+        &quot;manager&quot;: {
+            &quot;user_id&quot;: 933,
+            &quot;name&quot;: &quot;Gray&quot;
+        }
+    }</code></pre>
+<p>…the following() <code>parse</code> function would wrap the <code>department</code> and <code>manager</code> fields with <code>enyo.Model</code>, making those nested sub-objects bindable as well:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb22-1" title="1">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb22-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;ContactModel&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb22-3" title="3">        <span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.Model&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb22-4" title="4">        <span class="dt">options</span><span class="op">:</span> <span class="op">{</span><span class="dt">parse</span><span class="op">:</span> <span class="kw">true</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb22-5" title="5">        <span class="dt">source</span><span class="op">:</span> <span class="st">&quot;ajax&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb22-6" title="6">        <span class="dt">getUrl</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb22-7" title="7">            <span class="cf">return</span> <span class="st">&quot;http://myservice.com/users/&quot;</span> <span class="op">+</span> <span class="kw">this</span>.<span class="at">get</span>(<span class="st">&quot;user_id&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb22-8" title="8">        <span class="op">},</span></a>
+<a class="sourceLine" id="cb22-9" title="9">        <span class="dt">parse</span><span class="op">:</span> <span class="kw">function</span>(data) <span class="op">{</span></a>
+<a class="sourceLine" id="cb22-10" title="10">            <span class="va">data</span>.<span class="at">dept_id</span> <span class="op">=</span> <span class="va">data</span>.<span class="va">department</span>.<span class="at">dept_id</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb22-11" title="11">            <span class="va">data</span>.<span class="at">dept_name</span> <span class="op">=</span> <span class="va">data</span>.<span class="va">department</span>.<span class="at">name</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb22-12" title="12">            <span class="kw">delete</span> <span class="va">data</span>.<span class="at">department</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb22-13" title="13">            <span class="va">data</span>.<span class="at">manager_id</span> <span class="op">=</span> <span class="va">data</span>.<span class="va">manager</span>.<span class="at">user_id</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb22-14" title="14">            <span class="va">data</span>.<span class="at">manager_name</span> <span class="op">=</span> <span class="va">data</span>.<span class="va">manager</span>.<span class="at">name</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb22-15" title="15">            <span class="kw">delete</span> <span class="va">data</span>.<span class="at">manager</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb22-16" title="16">            <span class="cf">return</span> data<span class="op">;</span></a>
+<a class="sourceLine" id="cb22-17" title="17">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb22-18" title="18">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<h2 id="collections">Collections</h2>
+<p>While <code>enyo.Model</code> wraps plain JavaScript objects to make them observable, <a href="../../..//#/kind/enyo.Collection">enyo.Collection</a> wraps arrays of JavaScript objects, providing observation support for the addition of objects to (and removal of objects from) the array, and automatically “upgrading” plain JavaScript objects to <code>enyo.Model</code> status.</p>
+<p>Note: Although collections have many features and APIs in common with <code>enyo.Model</code>, such as the ability to fetch and parse data from a back-end server, <code>enyo.Collection</code> is actually a subkind of <code>enyo.Component</code>. As such, a collection may be instantiated either declaratively, in the <code>components</code> block of a component or control, or programmatically, using the standard keyword <code>new</code>.</p>
+<h3 id="creating-and-using-collections">Creating and Using Collections</h3>
+<p>A generic <code>enyo.Collection</code> may be instanced and initialized by simply using the <code>new</code> keyword and passing the constructor an optional object containing the initial model data:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb23-1" title="1">    <span class="kw">var</span> myCollection <span class="op">=</span> <span class="kw">new</span> <span class="va">enyo</span>.<span class="at">Collection</span>([</a>
+<a class="sourceLine" id="cb23-2" title="2">        <span class="op">{</span></a>
+<a class="sourceLine" id="cb23-3" title="3">            <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Kevin&quot;</span><span class="op">,</span> </a>
+<a class="sourceLine" id="cb23-4" title="4">            <span class="dt">hometown</span><span class="op">:</span> <span class="st">&quot;San Francisco&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb23-5" title="5">            <span class="dt">avatar</span><span class="op">:</span> <span class="st">&quot;/assets/kevin.png&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb23-6" title="6">            <span class="dt">height</span><span class="op">:</span> <span class="fl">6.0</span></a>
+<a class="sourceLine" id="cb23-7" title="7">        <span class="op">},</span></a>
+<a class="sourceLine" id="cb23-8" title="8">        <span class="op">{</span></a>
+<a class="sourceLine" id="cb23-9" title="9">            <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Gray&quot;</span><span class="op">,</span> </a>
+<a class="sourceLine" id="cb23-10" title="10">            <span class="dt">hometown</span><span class="op">:</span> <span class="st">&quot;San Jose&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb23-11" title="11">            <span class="dt">avatar</span><span class="op">:</span> <span class="st">&quot;/assets/gray.png&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb23-12" title="12">            <span class="dt">height</span><span class="op">:</span> <span class="fl">6.1</span></a>
+<a class="sourceLine" id="cb23-13" title="13">        <span class="op">},</span></a>
+<a class="sourceLine" id="cb23-14" title="14">        <span class="op">{</span></a>
+<a class="sourceLine" id="cb23-15" title="15">            <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Cole&quot;</span><span class="op">,</span> </a>
+<a class="sourceLine" id="cb23-16" title="16">            <span class="dt">hometown</span><span class="op">:</span> <span class="st">&quot;Santa Clara&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb23-17" title="17">            <span class="dt">avatar</span><span class="op">:</span> <span class="st">&quot;/assets/cole.png&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb23-18" title="18">            <span class="dt">height</span><span class="op">:</span> <span class="fl">5.9</span></a>
+<a class="sourceLine" id="cb23-19" title="19">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb23-20" title="20">    ])<span class="op">;</span></a></code></pre></div>
+<p>We can retrieve models from the collection using the <code>at()</code> function:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb24-1" title="1">    <span class="va">myCollection</span>.<span class="at">at</span>(<span class="dv">0</span>)<span class="op">;</span>                 <span class="co">// returns enyo.Model instance for &quot;Kevin&quot; record</span></a>
+<a class="sourceLine" id="cb24-2" title="2">    <span class="va">myCollection</span>.<span class="at">at</span>(<span class="dv">2</span>).<span class="at">get</span>(<span class="st">&quot;name&quot;</span>)<span class="op">;</span>     <span class="co">// returns &quot;Cole&quot;</span></a></code></pre></div>
+<p>We can add models using the <code>add()</code> function. Note that <code>add()</code> will accept either <code>enyo.Model</code> objects or plain JavaScript objects. The latter are converted into <code>enyo.Model</code> objects when first retrieved.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb25-1" title="1">    <span class="va">myCollection</span>.<span class="at">add</span>(<span class="op">{</span><span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Ben&quot;</span><span class="op">,</span> <span class="dt">hometown</span><span class="op">:</span> <span class="st">&quot;Austin&quot;</span><span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb25-2" title="2">    <span class="va">myCollection</span>.<span class="at">at</span>(<span class="va">myCollection</span>.<span class="at">length</span><span class="dv">-1</span>).<span class="at">get</span>(<span class="st">&quot;name&quot;</span>)<span class="op">;</span> <span class="co">// returns &quot;Ben&quot;</span></a>
+<a class="sourceLine" id="cb25-3" title="3"></a>
+<a class="sourceLine" id="cb25-4" title="4">    <span class="va">myCollection</span>.<span class="at">add</span>(<span class="kw">new</span> <span class="at">ContactModel</span>(<span class="op">{</span><span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Aaron&quot;</span><span class="op">,</span> <span class="dt">hometown</span><span class="op">:</span> <span class="st">&quot;San Mateo&quot;</span><span class="op">}</span>))<span class="op">;</span></a>
+<a class="sourceLine" id="cb25-5" title="5">    <span class="va">myCollection</span>.<span class="at">at</span>(<span class="va">myCollection</span>.<span class="at">length</span><span class="dv">-1</span>).<span class="at">get</span>(<span class="st">&quot;name&quot;</span>)<span class="op">;</span> <span class="co">// returns &quot;Aaron&quot;</span></a></code></pre></div>
+<p>See the documentation for <a href="../../..//#/kind/enyo.Collection">enyo.Collection</a> for the full list of APIs available for manipulating records.</p>
+<h3 id="creating-collection-subkinds">Creating Collection Subkinds</h3>
+<p>You may subkind <code>enyo.Collection</code> to indicate an explicit model type to be used for wrapping its array data, or to override any other default behavior:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb26-1" title="1">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb26-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;MyContactCollection&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb26-3" title="3">        <span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.Collection&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb26-4" title="4">        <span class="dt">model</span><span class="op">:</span> <span class="st">&quot;MyContactModel&quot;</span></a>
+<a class="sourceLine" id="cb26-5" title="5">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb26-6" title="6"></a>
+<a class="sourceLine" id="cb26-7" title="7">    <span class="kw">var</span> myCollection <span class="op">=</span> <span class="kw">new</span> <span class="at">MyContactCollection</span>([</a>
+<a class="sourceLine" id="cb26-8" title="8">        <span class="op">{</span></a>
+<a class="sourceLine" id="cb26-9" title="9">            <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Kevin&quot;</span><span class="op">,</span> </a>
+<a class="sourceLine" id="cb26-10" title="10">            <span class="dt">hometown</span><span class="op">:</span> <span class="st">&quot;San Francisco&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb26-11" title="11">            <span class="dt">avatar</span><span class="op">:</span> <span class="st">&quot;/assets/kevin.png&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb26-12" title="12">            <span class="dt">height</span><span class="op">:</span> <span class="fl">6.0</span></a>
+<a class="sourceLine" id="cb26-13" title="13">        <span class="op">},</span></a>
+<a class="sourceLine" id="cb26-14" title="14">        ...</a>
+<a class="sourceLine" id="cb26-15" title="15">    ])<span class="op">;</span></a>
+<a class="sourceLine" id="cb26-16" title="16"></a>
+<a class="sourceLine" id="cb26-17" title="17">    <span class="va">myCollection</span>.<span class="at">at</span>(<span class="dv">0</span>)<span class="op">;</span>        <span class="co">// returns instance of &quot;MyContactModel&quot; for &quot;Kevin&quot; record</span></a></code></pre></div>
+<h3 id="fetching-collections-from-rest-endpoints">Fetching Collections from REST Endpoints</h3>
+<p>Like <code>enyo.Model</code>, <code>enyo.Collection</code> uses sources for fetching array data from REST endpoints. Specify the resource’s <code>url</code> and call <code>fetch()</code> to retrieve data.</p>
+<p>In the following example, the collection is loaded from a fixed URL:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb27-1" title="1">    <span class="kw">new</span> <span class="va">enyo</span>.<span class="at">AjaxSource</span>(<span class="op">{</span><span class="dt">name</span><span class="op">:</span> <span class="st">&quot;ajax&quot;</span><span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb27-2" title="2"></a>
+<a class="sourceLine" id="cb27-3" title="3">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb27-4" title="4">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;MyContactCollection&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb27-5" title="5">        <span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.Collection&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb27-6" title="6">        <span class="dt">source</span><span class="op">:</span> <span class="st">&quot;ajax&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb27-7" title="7">        <span class="dt">url</span><span class="op">:</span> <span class="st">&quot;http://myservice.com/users&quot;</span></a>
+<a class="sourceLine" id="cb27-8" title="8">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb27-9" title="9"></a>
+<a class="sourceLine" id="cb27-10" title="10">    <span class="kw">var</span> myCollection <span class="op">=</span> <span class="kw">new</span> <span class="at">MyContactCollection</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb27-11" title="11">    <span class="va">myCollection</span>.<span class="at">fetch</span>()<span class="op">;</span></a></code></pre></div>
+<p>If the URL for the collection needs to be customized, simply overload <code>getUrl()</code> to provide a custom URL–based on properties of the collection, for example:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb28-1" title="1">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb28-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;MyContactCollection&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb28-3" title="3">        <span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.Collection&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb28-4" title="4">        <span class="dt">source</span><span class="op">:</span> <span class="st">&quot;ajax&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb28-5" title="5">        <span class="dt">getUrl</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb28-6" title="6">            <span class="cf">return</span> <span class="st">&quot;http://myservice.com/departments/&quot;</span> <span class="op">+</span> <span class="kw">this</span>.<span class="at">get</span>(<span class="st">&quot;dept_id&quot;</span>) <span class="op">+</span> <span class="st">&quot;/users&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb28-7" title="7">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb28-8" title="8">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb28-9" title="9"></a>
+<a class="sourceLine" id="cb28-10" title="10">    <span class="kw">new</span> <span class="at">MyContactCollection</span>(<span class="op">{</span><span class="dt">dept_id</span><span class="op">:</span> <span class="dv">42</span><span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb28-11" title="11">    <span class="va">myCollection</span>.<span class="at">fetch</span>()<span class="op">;</span></a></code></pre></div>
+<h3 id="parsing-and-converting-fetched-data-1">Parsing and Converting Fetched Data</h3>
+<p>Also like <code>enyo.Model</code>, <code>enyo.Collection</code> has a <code>parse()</code> function to allow fetched data to be processed before being used.</p>
+<p>For example, if your service provided request metadata in addition to the data array…</p>
+<pre><code>    {
+        &quot;status&quot;: {
+            &quot;error&quot;: &quot;none&quot;,
+            &quot;last_request&quot;: 1230394903
+        },
+        &quot;result&quot;: [
+            {
+                &quot;user_id&quot;: 1234,
+                &quot;name&quot;: &quot;Kevin&quot;,
+                &quot;hometown&quot;: &quot;San Francisco&quot;
+                &quot;avatar&quot;: &quot;/images/kevin.png&quot;,
+                &quot;height&quot;: 6.0
+            },
+            {
+                &quot;user_id&quot;: 2345,
+                &quot;name&quot;: &quot;Gray&quot;,
+                &quot;hometown&quot;: &quot;San Jose&quot;
+                &quot;avatar&quot;: &quot;/images/gray.png&quot;,
+                &quot;height&quot;: 6.1
+            },
+            {
+                &quot;user_id&quot;: 4567,
+                &quot;name&quot;: &quot;Cole&quot;,
+                &quot;hometown&quot;: &quot;Santa Clara&quot;
+                &quot;avatar&quot;: &quot;/images/cole.png&quot;,
+                &quot;height&quot;: 5.9
+            }
+        ]
+    }</code></pre>
+<p>…you could implement the following function to use only the <code>result</code> sub-array:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb30-1" title="1">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb30-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;MyContactCollection&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb30-3" title="3">        <span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.Collection&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb30-4" title="4">        <span class="dt">options</span><span class="op">:</span> <span class="op">{</span><span class="dt">parse</span><span class="op">:</span> <span class="kw">true</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb30-5" title="5">        <span class="dt">source</span><span class="op">:</span> <span class="st">&quot;ajax&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb30-6" title="6">        <span class="dt">url</span><span class="op">:</span> <span class="st">&quot;http://myservice.com/users&quot;</span></a>
+<a class="sourceLine" id="cb30-7" title="7">        <span class="dt">parse</span><span class="op">:</span> <span class="kw">function</span>(data) <span class="op">{</span>        <span class="co">// incoming data contains {status:..., result:...}</span></a>
+<a class="sourceLine" id="cb30-8" title="8">            <span class="cf">return</span> <span class="va">data</span>.<span class="at">result</span><span class="op">;</span>        <span class="co">// returned data contains {[{user_id:..., name:...}, {...}]}</span></a>
+<a class="sourceLine" id="cb30-9" title="9">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb30-10" title="10">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<h2 id="sources">Sources</h2>
+<h3 id="overview-1">Overview</h3>
+<p><a href="../../..//#/kind/enyo.Source">enyo.Source</a> is an abstraction provided by Enyo’s data layer that encapsulates knowledge of how to fetch models from and commit collections to a data source. The data source could be a remote service exposed as REST endpoints accessed via Ajax or Jsonp, a complex Web API accessed through a third-party JavaScript library, or even <code>localStorage</code>.</p>
+<p>The abstract API for <code>enyo.Source</code> is as follows:</p>
+<ul>
+<li><p><code>fetch()</code> - Retrieves a model or collection, typically based on a unique resource identifier.</p></li>
+<li><p><code>commit()</code> - Persists a model’s current state to the source, creating a new record on the source if the model was created locally and not originally fetched from the source (not required for read-only sources).</p></li>
+<li><p><code>destroy()</code> - Deletes a model from the source (not required for read-only sources).</p></li>
+<li><p><code>find()</code> - Queries the source for a model or collection based on query attributes (optional).</p></li>
+</ul>
+<p>Enyo currently provides default sources for Ajax and Jsonp REST endpoints via the <a href="../../..//#/kind/enyo.AjaxSource">enyo.AjaxSource</a> and <a href="../../..//#/kind/enyo.JsonpSource">enyo.JsonpSource</a> subkinds, respectively.</p>
+<h3 id="specifying-a-source">Specifying a source</h3>
+<p>When defining a custom <code>enyo.Model</code> or <code>enyo.Collection</code> subkind, you must specify the <code>source</code> property to indicate which source to use for fetching and committing records, using the shorthand name for the source (e.g., “<code>ajax</code>”, “<code>jsonp</code>”, etc.).</p>
+<p>For example:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb31-1" title="1">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb31-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;MyContactCollection&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb31-3" title="3">        <span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.Collection&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb31-4" title="4">        <span class="dt">model</span><span class="op">:</span> <span class="st">&quot;MyContactModel&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb31-5" title="5">        <span class="dt">url</span><span class="op">:</span> <span class="st">&quot;http://myservice.com/users&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb31-6" title="6">        <span class="dt">source</span><span class="op">:</span> <span class="st">&quot;jsonp&quot;</span>        <span class="co">// use jsonp source instead of ajax for fetching</span></a>
+<a class="sourceLine" id="cb31-7" title="7">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<h3 id="creating-source-subkinds">Creating Source Subkinds</h3>
+<p>You may subkind existing sources to specify options to configure the fetching strategy, or to create brand new sources for accessing data not supported by existing source kinds. Newly-created sources must be registered with the data layer by instantiating a source with a name.</p>
+<p>For example, to create a subkind of <code>enyo.JsonpSource</code> to provide a custom <code>callback</code> property required by the JSONP endpoint, you could do the following:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb32-1" title="1">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb32-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;MyJsonpSource&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb32-3" title="3">        <span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.JsonpSource&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb32-4" title="4">        <span class="dt">fetch</span><span class="op">:</span> <span class="kw">function</span>(opts) <span class="op">{</span></a>
+<a class="sourceLine" id="cb32-5" title="5">            <span class="va">opts</span>.<span class="at">callbackName</span> <span class="op">=</span> <span class="st">&quot;kallback&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb32-6" title="6">            <span class="kw">this</span>.<span class="at">inherited</span>(<span class="kw">arguments</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb32-7" title="7">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb32-8" title="8">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb32-9" title="9">    <span class="kw">new</span> <span class="at">MyJsonpSource</span>(<span class="op">{</span><span class="dt">name</span><span class="op">:</span> <span class="st">&quot;mysource&quot;</span><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>To create a brand new source, implement the abstract API as necessary:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb33-1" title="1">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb33-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;MySource&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb33-3" title="3">        <span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.Source&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb33-4" title="4">        <span class="dt">fetch</span><span class="op">:</span> <span class="kw">function</span>(rec<span class="op">,</span> opts) <span class="op">{</span></a>
+<a class="sourceLine" id="cb33-5" title="5">            <span class="co">// implement code to fetch records</span></a>
+<a class="sourceLine" id="cb33-6" title="6">            <span class="va">opts</span>.<span class="at">success</span>(data)<span class="op">;</span>        <span class="co">// call success callback to return data</span></a>
+<a class="sourceLine" id="cb33-7" title="7">        <span class="op">},</span></a>
+<a class="sourceLine" id="cb33-8" title="8">        <span class="dt">commit</span><span class="op">:</span> <span class="kw">function</span>(rec<span class="op">,</span> opts) <span class="op">{</span></a>
+<a class="sourceLine" id="cb33-9" title="9">            <span class="co">// implement code to store records</span></a>
+<a class="sourceLine" id="cb33-10" title="10">            <span class="va">opts</span>.<span class="at">success</span>()<span class="op">;</span>        <span class="co">// call success callback</span></a>
+<a class="sourceLine" id="cb33-11" title="11">        <span class="op">},</span></a>
+<a class="sourceLine" id="cb33-12" title="12">        <span class="dt">destroy</span><span class="op">:</span> <span class="kw">function</span>(rec<span class="op">,</span> opts) <span class="op">{</span></a>
+<a class="sourceLine" id="cb33-13" title="13">            <span class="co">// implement code to destroy records</span></a>
+<a class="sourceLine" id="cb33-14" title="14">            <span class="va">opts</span>.<span class="at">success</span>()<span class="op">;</span>        <span class="co">// call success callback</span></a>
+<a class="sourceLine" id="cb33-15" title="15">        <span class="op">},</span></a>
+<a class="sourceLine" id="cb33-16" title="16">        <span class="dt">find</span><span class="op">:</span> <span class="kw">function</span>(rec<span class="op">,</span> opts) <span class="op">{</span></a>
+<a class="sourceLine" id="cb33-17" title="17">            <span class="co">// implement code to find records</span></a>
+<a class="sourceLine" id="cb33-18" title="18">            <span class="va">opts</span>.<span class="at">success</span>(data)<span class="op">;</span>        <span class="co">// call success callback to return data</span></a>
+<a class="sourceLine" id="cb33-19" title="19">        <span class="op">},</span></a>
+<a class="sourceLine" id="cb33-20" title="20">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb33-21" title="21">    <span class="kw">new</span> <span class="at">MySource</span>(<span class="op">{</span><span class="dt">name</span><span class="op">:</span> <span class="st">&quot;mysource&quot;</span><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>As an example, you could easily implement an <code>enyo.Source</code> that uses the <a href="https://developers.facebook.com/docs/reference/javascript/">Facebook JavaScript SDK</a> to read or add posts to a user’s news feed as follows. (Note that the authentication required for this particular SDK is out of the scope of this article.)</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb34-1" title="1">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb34-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;FacebookFeedSource&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb34-3" title="3">        <span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.Source&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb34-4" title="4">        <span class="dt">fetch</span><span class="op">:</span> <span class="kw">function</span>(rec<span class="op">,</span> opts) <span class="op">{</span></a>
+<a class="sourceLine" id="cb34-5" title="5">            <span class="kw">var</span> resource<span class="op">;</span></a>
+<a class="sourceLine" id="cb34-6" title="6">            <span class="cf">if</span> (rec <span class="kw">instanceof</span> <span class="va">enyo</span>.<span class="at">Collection</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb34-7" title="7">                <span class="kw">var</span> user <span class="op">=</span> <span class="va">rec</span>.<span class="at">get</span>(<span class="st">&quot;user&quot;</span>) <span class="op">||</span> <span class="st">&quot;me&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb34-8" title="8">                resource <span class="op">=</span> <span class="st">&quot;/&quot;</span> <span class="op">+</span> user <span class="op">+</span> <span class="st">&quot;/feed&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb34-9" title="9">            <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb34-10" title="10">                resource <span class="op">=</span> <span class="st">&quot;/&quot;</span> <span class="op">+</span> <span class="va">rec</span>.<span class="at">id</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb34-11" title="11">            <span class="op">}</span></a>
+<a class="sourceLine" id="cb34-12" title="12">            <span class="va">FB</span>.<span class="at">api</span>(resource<span class="op">,</span> <span class="kw">function</span>(response) <span class="op">{</span></a>
+<a class="sourceLine" id="cb34-13" title="13">                <span class="cf">if</span> (response <span class="op">&amp;&amp;</span> <span class="op">!</span><span class="va">response</span>.<span class="at">error</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb34-14" title="14">                    <span class="va">opts</span>.<span class="at">success</span>(response)<span class="op">;</span></a>
+<a class="sourceLine" id="cb34-15" title="15">                <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb34-16" title="16">                    <span class="va">opts</span>.<span class="at">fail</span>(response)<span class="op">;</span></a>
+<a class="sourceLine" id="cb34-17" title="17">                <span class="op">}</span></a>
+<a class="sourceLine" id="cb34-18" title="18">            <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb34-19" title="19">        <span class="op">},</span></a>
+<a class="sourceLine" id="cb34-20" title="20">        <span class="dt">commit</span><span class="op">:</span> <span class="kw">function</span>(rec<span class="op">,</span> opts) <span class="op">{</span></a>
+<a class="sourceLine" id="cb34-21" title="21">            <span class="cf">if</span> (<span class="va">rec</span>.<span class="at">isNew</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb34-22" title="22">                <span class="va">FB</span>.<span class="at">api</span>(<span class="st">&quot;/me/feed&quot;</span><span class="op">,</span> <span class="st">&quot;POST&quot;</span><span class="op">,</span> rec<span class="op">,</span> <span class="kw">function</span>(response) <span class="op">{</span></a>
+<a class="sourceLine" id="cb34-23" title="23">                    <span class="cf">if</span> (response <span class="op">&amp;&amp;</span> <span class="op">!</span><span class="va">response</span>.<span class="at">error</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb34-24" title="24">                        <span class="va">opts</span>.<span class="at">success</span>(response)<span class="op">;</span></a>
+<a class="sourceLine" id="cb34-25" title="25">                    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb34-26" title="26">                        <span class="va">opts</span>.<span class="at">fail</span>(response)<span class="op">;</span></a>
+<a class="sourceLine" id="cb34-27" title="27">                    <span class="op">}</span></a>
+<a class="sourceLine" id="cb34-28" title="28">                <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb34-29" title="29">            <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb34-30" title="30">                <span class="va">opts</span>.<span class="at">fail</span>()<span class="op">;</span>  <span class="co">// FB only supports adding new posts, not editing</span></a>
+<a class="sourceLine" id="cb34-31" title="31">            <span class="op">}</span></a>
+<a class="sourceLine" id="cb34-32" title="32">        <span class="op">},</span></a>
+<a class="sourceLine" id="cb34-33" title="33">        <span class="dt">destroy</span><span class="op">:</span> <span class="kw">function</span>(rec<span class="op">,</span> opts) <span class="op">{</span></a>
+<a class="sourceLine" id="cb34-34" title="34">            <span class="va">FB</span>.<span class="at">api</span>(<span class="va">rec</span>.<span class="at">id</span><span class="op">,</span> <span class="st">&quot;DELETE&quot;</span><span class="op">,</span> <span class="kw">function</span>(response) <span class="op">{</span></a>
+<a class="sourceLine" id="cb34-35" title="35">                <span class="cf">if</span> (response <span class="op">&amp;&amp;</span> <span class="op">!</span><span class="va">response</span>.<span class="at">error</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb34-36" title="36">                    <span class="va">opts</span>.<span class="at">success</span>(response)<span class="op">;</span></a>
+<a class="sourceLine" id="cb34-37" title="37">                <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb34-38" title="38">                    <span class="va">opts</span>.<span class="at">fail</span>(response)<span class="op">;</span></a>
+<a class="sourceLine" id="cb34-39" title="39">                <span class="op">}</span></a>
+<a class="sourceLine" id="cb34-40" title="40">            <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb34-41" title="41">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb34-42" title="42">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb34-43" title="43">    <span class="kw">new</span> <span class="at">FacebookFeedSource</span>(<span class="op">{</span><span class="dt">name</span><span class="op">:</span> <span class="st">&quot;fbfeed&quot;</span><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<h2 id="binding-models-and-collections-to-views">Binding Models and Collections to Views</h2>
+<p>As discussed above, in Enyo we can easily bind properties from any <code>enyo.Object</code> or <code>enyo.Model</code> to properties of the controls that make up your app views. Without using bindings, one would typically initialize the view’s properties programmatically and handle view events programmatically to keep the view and model data in sync.</p>
+<h3 id="binding-to-normal-view-properties">Binding to Normal View Properties</h3>
+<p>The following example features a view that gets its data from a model with <code>name</code> and <code>value</code> properties. The slider value, input value, and name label are initialized based on the model at creation time. The <code>value</code> property may be changed by dragging the slider or typing in the input, and when the change is complete, the new value should be reflected in the model.</p>
+<p>This is the typical way to implement such a view without using bindings:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb35-1" title="1">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb35-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;MyControl&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb35-3" title="3">        <span class="dt">model</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb35-4" title="4">        <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb35-5" title="5">            <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.Control&quot;</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;nameLabel&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb35-6" title="6">            <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;onyx.Slider&quot;</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;slider&quot;</span><span class="op">,</span> <span class="dt">onChanging</span><span class="op">:</span> <span class="st">&quot;sliderChanging&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb35-7" title="7">            <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.Input&quot;</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;input&quot;</span><span class="op">,</span> <span class="dt">oninput</span><span class="op">:</span> <span class="st">&quot;inputChanged&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb35-8" title="8">        ]<span class="op">,</span></a>
+<a class="sourceLine" id="cb35-9" title="9">        <span class="dt">create</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb35-10" title="10">            <span class="kw">this</span>.<span class="at">inherited</span>(<span class="kw">arguments</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb35-11" title="11">            <span class="kw">this</span>.<span class="at">set</span>(<span class="st">&quot;$.nameLabel.content&quot;</span><span class="op">,</span> <span class="kw">this</span>.<span class="at">get</span>(<span class="st">&quot;model.name&quot;</span>))<span class="op">;</span></a>
+<a class="sourceLine" id="cb35-12" title="12">            <span class="kw">this</span>.<span class="at">set</span>(<span class="st">&quot;$.slider.value&quot;</span><span class="op">,</span> <span class="kw">this</span>.<span class="at">get</span>(<span class="st">&quot;model.value&quot;</span>))<span class="op">;</span></a>
+<a class="sourceLine" id="cb35-13" title="13">            <span class="kw">this</span>.<span class="at">set</span>(<span class="st">&quot;$.input.value&quot;</span><span class="op">,</span> <span class="kw">this</span>.<span class="at">get</span>(<span class="st">&quot;model.value&quot;</span>))<span class="op">;</span></a>
+<a class="sourceLine" id="cb35-14" title="14">        <span class="op">},</span></a>
+<a class="sourceLine" id="cb35-15" title="15">        <span class="dt">sliderChanging</span><span class="op">:</span> <span class="kw">function</span>(inSender<span class="op">,</span> inEvent) <span class="op">{</span></a>
+<a class="sourceLine" id="cb35-16" title="16">            <span class="kw">this</span>.<span class="at">set</span>(<span class="st">&quot;$.input.value&quot;</span><span class="op">,</span> <span class="va">inEvent</span>.<span class="at">value</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb35-17" title="17">            <span class="kw">this</span>.<span class="at">set</span>(<span class="st">&quot;model.value&quot;</span><span class="op">,</span> <span class="va">inEvent</span>.<span class="at">value</span>)</a>
+<a class="sourceLine" id="cb35-18" title="18">        <span class="op">},</span></a>
+<a class="sourceLine" id="cb35-19" title="19">        <span class="dt">inputChanged</span><span class="op">:</span> <span class="kw">function</span>(inSender<span class="op">,</span> inEvent) <span class="op">{</span></a>
+<a class="sourceLine" id="cb35-20" title="20">            <span class="kw">this</span>.<span class="at">set</span>(<span class="st">&quot;$.slider.value&quot;</span><span class="op">,</span> <span class="va">inSender</span>.<span class="at">get</span>(<span class="st">&quot;value&quot;</span>))<span class="op">;</span></a>
+<a class="sourceLine" id="cb35-21" title="21">            <span class="kw">this</span>.<span class="at">set</span>(<span class="st">&quot;model.value&quot;</span><span class="op">,</span> <span class="va">inSender</span>.<span class="at">get</span>(<span class="st">&quot;value&quot;</span>))<span class="op">;</span></a>
+<a class="sourceLine" id="cb35-22" title="22">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb35-23" title="23">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p><a href="http://jsfiddle.net/enyojs/Q45NW/">Link to jsFiddle</a></p>
+<p>Using bindings, the implementation requires significantly less code, and may be done completely declaratively, making your code easier to read and maintain:</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb36-1" title="1">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb36-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;MyControl&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb36-3" title="3">        <span class="dt">model</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb36-4" title="4">        <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb36-5" title="5">            <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.Control&quot;</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;nameLabel&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb36-6" title="6">            <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;onyx.Slider&quot;</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;slider&quot;</span><span class="op">,</span> <span class="dt">onChanging</span><span class="op">:</span> <span class="st">&quot;sliderChanging&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb36-7" title="7">            <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.Input&quot;</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;input&quot;</span><span class="op">,</span> <span class="dt">oninput</span><span class="op">:</span> <span class="st">&quot;inputChanged&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb36-8" title="8">        ]<span class="op">,</span></a>
+<a class="sourceLine" id="cb36-9" title="9">        <span class="dt">bindings</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb36-10" title="10">            <span class="op">{</span><span class="dt">from</span><span class="op">:</span> <span class="st">&quot;model.name&quot;</span><span class="op">,</span> <span class="dt">to</span><span class="op">:</span> <span class="st">&quot;$.nameLabel.content&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb36-11" title="11">            <span class="op">{</span><span class="dt">from</span><span class="op">:</span> <span class="st">&quot;model.value&quot;</span><span class="op">,</span> <span class="dt">to</span><span class="op">:</span> <span class="st">&quot;$.slider.value&quot;</span><span class="op">,</span> <span class="dt">oneWay</span><span class="op">:</span> <span class="kw">false</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb36-12" title="12">            <span class="op">{</span><span class="dt">from</span><span class="op">:</span> <span class="st">&quot;model.value&quot;</span><span class="op">,</span> <span class="dt">to</span><span class="op">:</span> <span class="st">&quot;$.input.value&quot;</span><span class="op">,</span> <span class="dt">oneWay</span><span class="op">:</span> <span class="kw">false</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb36-13" title="13">        ]</a>
+<a class="sourceLine" id="cb36-14" title="14">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p><a href="http://jsfiddle.net/enyojs/4n343/">Link to jsFiddle</a></p>
+<h3 id="binding-in-collection-aware-controls">Binding in Collection-Aware Controls</h3>
+<p>Enyo includes several “collection-aware” controls, whose APIs allow you to pass in an <code>enyo.Collection</code>; child controls are then automatically generated based on the data in the collection, and are kept in sync with changes made to the underlying collection and models.</p>
+<p>The base kind for these controls is <a href="../../..//#/kind/enyo.DataRepeater">enyo.DataRepeater</a>. This is similar to <a href="../../..//#/kind/enyo.Repeater">enyo.Repeater</a> in that its child controls serve as a template for controls to be generated by the repeater (one for each child in the underlying data set). However, instead of setting a count and responding to <code>setupItem</code> events to sync generated controls to the data models, <code>enyo.DataRepeater</code> generates one control for each model in the collection and then assigns the corresponding model to each control, allowing bindings on that control to sync data to and from the models.</p>
+<p>Without collections or bindings, one might implement a simple repeater as follows:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb37-1" title="1">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb37-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb37-3" title="3">        <span class="dt">data</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span> <span class="co">// expects plain JS array array</span></a>
+<a class="sourceLine" id="cb37-4" title="4">        <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb37-5" title="5">            <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.Repeater&quot;</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;repeater&quot;</span><span class="op">,</span> <span class="dt">onSetupItem</span><span class="op">:</span> <span class="st">&quot;setupItem&quot;</span><span class="op">,</span> <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb37-6" title="6">                <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.Control&quot;</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;nameLabel&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb37-7" title="7">                <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.Control&quot;</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;ageLabel&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb37-8" title="8">            ]<span class="op">}</span></a>
+<a class="sourceLine" id="cb37-9" title="9">        ]<span class="op">,</span></a>
+<a class="sourceLine" id="cb37-10" title="10">        <span class="dt">create</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb37-11" title="11">            <span class="kw">this</span>.<span class="at">inherited</span>(<span class="kw">arguments</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb37-12" title="12">            <span class="kw">this</span>.<span class="at">dataChanged</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb37-13" title="13">        <span class="op">},</span></a>
+<a class="sourceLine" id="cb37-14" title="14">        <span class="dt">dataChanged</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb37-15" title="15">            <span class="cf">if</span> (<span class="kw">this</span>.<span class="at">data</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb37-16" title="16">                <span class="kw">this</span>.<span class="va">$</span>.<span class="va">repeater</span>.<span class="at">set</span>(<span class="st">&quot;count&quot;</span><span class="op">,</span> <span class="va">data</span>.<span class="at">length</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb37-17" title="17">            <span class="op">}</span></a>
+<a class="sourceLine" id="cb37-18" title="18">        <span class="op">},</span></a>
+<a class="sourceLine" id="cb37-19" title="19">        <span class="dt">setupItem</span><span class="op">:</span> <span class="kw">function</span>(inSender<span class="op">,</span> inEvent) <span class="op">{</span></a>
+<a class="sourceLine" id="cb37-20" title="20">            <span class="kw">var</span> record <span class="op">=</span> <span class="kw">this</span>.<span class="at">data</span>[<span class="va">inEvent</span>.<span class="at">index</span>]<span class="op">;</span></a>
+<a class="sourceLine" id="cb37-21" title="21">            <span class="kw">this</span>.<span class="va">$</span>.<span class="va">nameLabel</span>.<span class="at">set</span>(<span class="st">&quot;content&quot;</span><span class="op">,</span> <span class="va">record</span>.<span class="at">name</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb37-22" title="22">            <span class="kw">this</span>.<span class="va">$</span>.<span class="va">ageLabel</span>.<span class="at">set</span>(<span class="st">&quot;content&quot;</span><span class="op">,</span> <span class="va">record</span>.<span class="at">age</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb37-23" title="23">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb37-24" title="24">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>However, this code has a significant downside: if any records in the <code>data</code> array change, this kind has no way of knowing. Additional communication would be needed between the kind that is changing records and this view in order to know that the repeater needs to be refreshed.</p>
+<p>By contrast, using the collection-aware <code>enyo.DataRepeater</code> with an <code>enyo.Collection</code> will let us implement the view with much less code, with the DataRepeater automatically keeping the view in sync when records in the collection are changed:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb38-1" title="1">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb38-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb38-3" title="3">        <span class="dt">data</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span> <span class="co">// expects an enyo.Collection</span></a>
+<a class="sourceLine" id="cb38-4" title="4">        <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb38-5" title="5">            <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.DataRepeater&quot;</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;repeater&quot;</span><span class="op">,</span> <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb38-6" title="6">                <span class="op">{</span></a>
+<a class="sourceLine" id="cb38-7" title="7">                    <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb38-8" title="8">                        <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.Control&quot;</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;nameLabel&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb38-9" title="9">                        <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.Control&quot;</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;ageLabel&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb38-10" title="10">                    ]<span class="op">,</span></a>
+<a class="sourceLine" id="cb38-11" title="11">                    <span class="dt">bindings</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb38-12" title="12">                        <span class="op">{</span><span class="dt">from</span><span class="op">:</span> <span class="st">&quot;model.name&quot;</span><span class="op">,</span> <span class="dt">to</span><span class="op">:</span> <span class="st">&quot;$.nameLabel.content&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb38-13" title="13">                        <span class="op">{</span><span class="dt">from</span><span class="op">:</span> <span class="st">&quot;model.age&quot;</span><span class="op">,</span> <span class="dt">to</span><span class="op">:</span> <span class="st">&quot;$.ageLabel.content&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb38-14" title="14">                    ]</a>
+<a class="sourceLine" id="cb38-15" title="15">                <span class="op">}</span></a>
+<a class="sourceLine" id="cb38-16" title="16">            ]<span class="op">}</span></a>
+<a class="sourceLine" id="cb38-17" title="17">        ]</a>
+<a class="sourceLine" id="cb38-18" title="18">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../../js/main.js"></script>
+  <script type="text/javascript" src="../../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

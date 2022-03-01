@@ -1,0 +1,203 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Enyo Apps on Windows 8</h1>
+<p>In this article, we present instructions for developers wishing to deploy Enyo applications to PCs and tablets running Windows 8, via the Windows Store.</p>
+<h2 id="before-you-begin">Before You Begin</h2>
+<p>In order to build and test your Enyo application for Windows 8, you will first need the following:</p>
+<ul>
+<li><a href="../getting-started/bootplate.html">Enyo 2.2 or later</a></li>
+<li>A PC running Windows 8 (and, optionally, a tablet running Windows 8)</li>
+<li>Visual Studio 2012 (Professional, Premium, or Ultimate edition) or <a href="http://www.microsoft.com/visualstudio/eng/products/visual-studio-express-for-windows-8">Visual Studio Express 2012 for Windows 8</a></li>
+</ul>
+<h2 id="building-and-testing">Building and Testing</h2>
+<h3 id="create-your-enyo-application">1. Create Your Enyo Application</h3>
+<p>Build your Enyo application using the Bootplate template, as described <a href="../getting-started/bootplate.html">here</a>.</p>
+<h3 id="create-a-new-visual-studio-project">2. Create a New Visual Studio Project</h3>
+<ul>
+<li><p>Open Visual Studio and select <strong>File &gt; New Project</strong>.</p></li>
+<li><p>Your project structure will be built with your main page named <code>default.html</code>. Change the name of this file to <code>index.html</code> to match your Enyo application. In the <strong>Solution Explorer</strong> on the right-hand side of the screen, double-click the <code>package.appxmanifest</code> file to open it. You will see a field labeled <strong>Start Page</strong>. Update this field value to match your <code>index.html</code> starting page.</p></li>
+<li><p>Your project will include <code>css</code> and <code>js</code> folders by default. Feel free to delete these from the project.</p></li>
+<li><p>Copy your Enyo bootplate app into your Visual Studio project structure. Make sure that your application files are included in the project by right-clicking on your files and folders and selecting the <strong>Include in Project</strong> contextual menu item.</p>
+<p><img src="../assets/enyo-apps-on-windows-8-a.png" /></p></li>
+<li><p>Replace your project’s <code>index.html</code> file with the <code>index.html</code> from your Bootplate app, or else edit it to look like the following:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb1-1" title="1">    <span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></a>
+<a class="sourceLine" id="cb1-2" title="2">    <span class="kw">&lt;html&gt;</span></a>
+<a class="sourceLine" id="cb1-3" title="3">    <span class="kw">&lt;head&gt;</span></a>
+<a class="sourceLine" id="cb1-4" title="4">        <span class="kw">&lt;meta</span><span class="ot"> http-equiv=</span><span class="st">&quot;X-UA-Compatible&quot;</span><span class="ot"> content=</span><span class="st">&quot;IE=edge&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb1-5" title="5">        <span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span> <span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb1-6" title="6">        <span class="kw">&lt;title&gt;</span>Enyo 2 Sampler<span class="kw">&lt;/title&gt;</span></a>
+<a class="sourceLine" id="cb1-7" title="7"></a>
+<a class="sourceLine" id="cb1-8" title="8">        <span class="co">&lt;!-- css --&gt;</span></a>
+<a class="sourceLine" id="cb1-9" title="9">        <span class="kw">&lt;link</span><span class="ot"> href=</span><span class="st">&quot;build/enyo.css&quot;</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb1-10" title="10">        <span class="kw">&lt;link</span><span class="ot"> href=</span><span class="st">&quot;build/app.css&quot;</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb1-11" title="11"></a>
+<a class="sourceLine" id="cb1-12" title="12">        <span class="co">&lt;!-- js --&gt;</span></a>
+<a class="sourceLine" id="cb1-13" title="13">        <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;build/enyo.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></a>
+<a class="sourceLine" id="cb1-14" title="14">        <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;build/app.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></a>
+<a class="sourceLine" id="cb1-15" title="15">    <span class="kw">&lt;/head&gt;</span></a>
+<a class="sourceLine" id="cb1-16" title="16">    <span class="kw">&lt;body</span><span class="ot"> class=</span><span class="st">&quot;enyo-unselectable&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb1-17" title="17">        <span class="kw">&lt;script&gt;</span></a>
+<a class="sourceLine" id="cb1-18" title="18">            <span class="kw">new</span> <span class="at">App</span>().<span class="at">renderInto</span>(<span class="va">document</span>.<span class="at">body</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-19" title="19">        <span class="kw">&lt;/script&gt;</span></a>
+<a class="sourceLine" id="cb1-20" title="20">    <span class="kw">&lt;/body&gt;</span></a>
+<a class="sourceLine" id="cb1-21" title="21">    <span class="kw">&lt;/html&gt;</span></a></code></pre></div></li>
+</ul>
+<h3 id="build-and-deploy-your-project-locally">3. Build and Deploy Your Project Locally</h3>
+<p>In Visual Studio, select <strong>Debug &gt; Start Debugging</strong> to build and debug your project on your local PC.</p>
+<h3 id="build-and-deploy-your-project-on-a-remote-device-surface">4. Build and Deploy Your Project on a Remote Device (Surface)</h3>
+<p>First, install Remote Tools for Visual Studio 2012 on your Microsoft Surface.</p>
+<ul>
+<li><p>On the Surface, open Internet Explorer and navigate to <a href="http://www.microsoft.com/visualstudio/eng/downloads#d-additional-software" class="uri">http://www.microsoft.com/visualstudio/eng/downloads#d-additional-software</a>.</p></li>
+<li><p>Select the item <strong>Remote Tools for Visual Studio 2012</strong>.</p></li>
+<li><p>Download and install the <strong>Remote Tools for Visual Studio 2012 (ARM) – English</strong>.</p></li>
+</ul>
+<p>Then, launch and configure the debugger that you just installed.</p>
+<ul>
+<li><p>On your Surface, open the Remote Debugger application. (Note that it will open in the PC environment.)</p></li>
+<li><p>Select <strong>Tools &gt; Options</strong>.</p></li>
+<li><p>Select <strong>No Authentication</strong> and ensure that <strong>Allow any user to debug</strong> is checked. (You may need to set authentication based on your network situation.)</p></li>
+<li><p>Make sure that your computer and your Surface are on the same network. In Visual Studio, select <strong>Remote Machine</strong> as your debug/build target.</p>
+<p><img src="../assets/enyo-apps-on-windows-8-b.png" /></p>
+<p>Once <strong>Remote Machine</strong> is selected, you should be able to locate your Surface on the network.</p></li>
+</ul>
+<h2 id="enyo-sampler-on-windows-8">Enyo Sampler on Windows 8</h2>
+<p>It’s also possible to install the Enyo Sampler app on your Windows 8 PC or tablet. To do so, you’ll need to download the built app (in an archive called <code>ProjectOutputFolder.zip</code>), either from the <a href="https://enyojs.atlassian.net/browse/ENYO-1899">Enyo Bug Tracker</a> or from the <a href="www.dropbox.com">Dropbox</a> file sharing service.</p>
+<p>To obtain the file from Dropbox, connect to Dropbox (via browser or client app) using the following credentials:</p>
+<pre><code>    username: enyojs@hotmail.com
+    password: olympus</code></pre>
+<p>The zip file is in the <code>Win8Sampler</code> folder.</p>
+<p>Once you have the file, unzip it and open the resulting folder (<code>ProjectOutputFolder</code>) in Explorer. Then do the following:</p>
+<ul>
+<li><p>Navigate to the folder called <code>ProjectOutputFolder\AppPackages\EnyoSampler_0.0.1.0_AnyCPU_Debug_Test</code>.</p></li>
+<li><p>Right-click the <code>Add-AppDevPackage.ps1</code> file and select <strong>Run with PowerShell</strong>.</p>
+<p>If the PowerShell window flashes and disappears:</p>
+<ul>
+<li>Press <strong>Start</strong> and type <code>PowerShell</code>.</li>
+<li>Right-click the PowerShell shortcut and select <strong>Run as Administrator</strong>.</li>
+<li>In the new PowerShell window, type <code>Set-ExecutionPolicy -ExecutionPolicy Unrestricted</code>.</li>
+<li>Answer <strong>Y</strong> at the security prompt.</li>
+<li>Go back to the Explorer window and try running the <code>Add-AppDevPackage.ps1</code> script again.</li>
+</ul>
+<p>(For more information on installing app packages in Windows 8, see <a href="http://msdn.microsoft.com/en-us/library/windows/apps/hh975356.aspx" class="uri">http://msdn.microsoft.com/en-us/library/windows/apps/hh975356.aspx</a>.)</p></li>
+<li><p>If you are prompted to acquire a Developer License, answer <strong>Y</strong> and use these credentials:</p>
+<pre><code>    user: enyojs@hotmail.com
+    pass: olympus</code></pre></li>
+<li><p>If you are prompted to install a local certificate, answer <strong>Y</strong>.</p></li>
+<li><p>The installation script should proceed until it says <code>"Successfully installed"</code>.</p></li>
+<li><p>Press <strong>Start</strong>, swipe all the way to the right and find the Enyo Sampler app; tap or click it to launch.</p></li>
+</ul>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../js/main.js"></script>
+  <script type="text/javascript" src="../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

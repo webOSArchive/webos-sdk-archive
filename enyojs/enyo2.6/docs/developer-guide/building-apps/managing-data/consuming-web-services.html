@@ -1,0 +1,204 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Consuming Web Services</h1>
+<p>In this article, we look at how the Enyo framework enables apps to work with services in general, and Web services in particular.</p>
+<p>In Enyo, Web requests are made using either the <a href="../../..//#/kind/enyo.Ajax">enyo.Ajax</a> object or the <a href="../../..//#/kind/enyo.WebService">enyo.WebService</a> component. <code>enyo.Ajax</code> derives directly from <a href="../../..//#/kind/enyo.Async">enyo.Async</a>, the base kind for handling asynchronous operations. <code>enyo.WebService</code> manages HTTP transactions by using either <code>enyo.Ajax</code> or <a href="../../..//#/kind/enyo.JsonpRequest">enyo.JsonpRequest</a>, which is another subkind of <code>enyo.Async</code>.</p>
+<p>Considering the central role of <code>Async</code>, it makes sense to begin our discussion there.</p>
+<h2 id="enyo.async">enyo.Async</h2>
+<p><a href="../../..//#/kind/enyo.Async">enyo.Async</a>, again, is a generalized kind for dealing with asynchronous transactions.</p>
+<p><code>enyo.Async</code> is an <strong>Object</strong>, not a <strong>Component</strong>; thus, you may not declare an <code>Async</code> in a <code>components</code> block. If you want to use <code>Async</code> as a component, you should probably be using <a href="../../..//#/kind/enyo.WebService">enyo.WebService</a> instead. (See the section on <code>WebService</code> below.)</p>
+<p>An Async object represents a task that has not yet completed. You may attach callback functions to an Async, to be called when the task completes or encounters an error.</p>
+<p>To use an Async, create a new instance of <code>enyo.Async</code> or a kind derived from it, then register handlers in the <code>response()</code> and <code>error()</code> methods.</p>
+<p>Start the asynchronous operation by calling <code>go()</code>.</p>
+<p>Handlers may either be methods with the signature <code>(asyncObject, value)</code> or new instances of <code>enyo.Async</code> or its subkinds. This allows for chaining of Async objects (e.g., when calling a Web API).</p>
+<p>If a response method returns a value (other than <code>undefined</code>), that value is sent to subsequent handlers in the chain, replacing the original value.</p>
+<p>A failure method may call <code>recover()</code> to undo the error condition and switch to calling response methods.</p>
+<p>The default implementation of <code>go()</code> causes all the response handlers to be called (asynchronously).</p>
+<p>The following (rather complicated) example demonstrates many of the aforementioned features:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1">    <span class="kw">var</span> transaction <span class="op">=</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-2" title="2">        <span class="co">// Create a transaction object.</span></a>
+<a class="sourceLine" id="cb1-3" title="3">        <span class="kw">var</span> <span class="kw">async</span> <span class="op">=</span> <span class="kw">new</span> <span class="va">enyo</span>.<span class="at">Async</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-4" title="4">        <span class="co">// Cause handlers to fire asynchronously (sometime after we yield this thread).</span></a>
+<a class="sourceLine" id="cb1-5" title="5">        <span class="co">// &quot;initial response&quot; will be sent to handlers as inResponse</span></a>
+<a class="sourceLine" id="cb1-6" title="6">        <span class="kw">async</span>.<span class="at">go</span>(<span class="st">&quot;intial response&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-7" title="7">        <span class="co">// Until we yield the thread, we can continue to add handlers.</span></a>
+<a class="sourceLine" id="cb1-8" title="8">        <span class="kw">async</span>.<span class="at">response</span>(<span class="kw">function</span>(inSender<span class="op">,</span> inResponse) <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-9" title="9">            <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;first response: returning a string,&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-10" title="10">                <span class="st">&quot;subsequent handlers receive this value for &#39;inResponse&#39;&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-11" title="11">            <span class="cf">return</span> <span class="st">&quot;some response&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb1-12" title="12">        <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-13" title="13">        <span class="cf">return</span> <span class="kw">async</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb1-14" title="14">    <span class="op">};</span></a></code></pre></div>
+<p>Users of the <code>transaction()</code> function may add handlers to the Async object until all functions return (synchronously):</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1">    <span class="co">// Get a new transaction; it&#39;s been started, but we can add more handlers</span></a>
+<a class="sourceLine" id="cb2-2" title="2">    <span class="co">// synchronously.</span></a>
+<a class="sourceLine" id="cb2-3" title="3">    <span class="kw">var</span> x <span class="op">=</span> <span class="at">transaction</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-4" title="4"></a>
+<a class="sourceLine" id="cb2-5" title="5">    <span class="co">// Add a handler that will be called if an error is detected. This handler</span></a>
+<a class="sourceLine" id="cb2-6" title="6">    <span class="co">// recovers and sends a custom message.</span></a>
+<a class="sourceLine" id="cb2-7" title="7">    <span class="va">x</span>.<span class="at">error</span>(<span class="kw">function</span>(inSender<span class="op">,</span> inResponse) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-8" title="8">        <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;error: calling recover&quot;</span><span class="op">,</span> inResponse)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-9" title="9">        <span class="kw">this</span>.<span class="at">recover</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-10" title="10">        <span class="cf">return</span> <span class="st">&quot;recovered message&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb2-11" title="11">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-12" title="12"></a>
+<a class="sourceLine" id="cb2-13" title="13">    <span class="co">// Add a response handler that halts response handler and triggers the</span></a>
+<a class="sourceLine" id="cb2-14" title="14">    <span class="co">// error chain. The error will be sent to the error handler registered</span></a>
+<a class="sourceLine" id="cb2-15" title="15">    <span class="co">// above, which will restart the handler chain.</span></a>
+<a class="sourceLine" id="cb2-16" title="16">    <span class="va">x</span>.<span class="at">response</span>(<span class="kw">function</span>(inSender<span class="op">,</span> inResponse) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-17" title="17">        <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;response: calling fail&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-18" title="18">        <span class="kw">this</span>.<span class="at">fail</span>(inResponse)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-19" title="19">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-20" title="20"></a>
+<a class="sourceLine" id="cb2-21" title="21">    <span class="co">// Recovered message will end up here.</span></a>
+<a class="sourceLine" id="cb2-22" title="22">    <span class="va">x</span>.<span class="at">response</span>(<span class="kw">function</span>(inSender<span class="op">,</span> inResponse) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-23" title="23">        <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;response: &quot;</span><span class="op">,</span> inResponse)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-24" title="24">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<h2 id="enyo.ajax">enyo.Ajax</h2>
+<p><a href="../../..//#/kind/enyo.Ajax">enyo.Ajax</a> extends <code>enyo.Async</code>, providing a wrapper for JavaScript’s XmlHttpRequest (XHR) API.</p>
+<p><code>enyo.Ajax</code> publishes all the properties of the <a href="../../..//#/namespace/enyo.AjaxProperties">enyo.AjaxProperties</a> object. You may set values for these properties to customize different aspects of your HTTP request, such as the url, method, optional headers, and username and password for authentication.</p>
+<p>Like <code>enyo.Async</code>, <code>enyo.Ajax</code> is an Object, not a Component. Do not try to make <code>enyo.Ajax</code> objects inside a <code>components</code> block.</p>
+<p>Also like <code>enyo.Async</code>, if you find yourself wanting to use <code>enyo.Ajax</code> as a component, you should probably be using <code>WebService</code> instead. (By default, <code>WebService</code> uses <code>enyo.Ajax</code> internally to manage HTTP transactions.)</p>
+<p>The following example uses <code>enyo.Ajax</code> to retrieve a unique id from Yahoo! corresponding to the passed-in place name:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1">    getWoeid<span class="op">:</span> <span class="kw">function</span>(inPlace) <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-2" title="2">        <span class="co">// set up enyo.AjaxProperties by sending them to the enyo.Ajax constructor</span></a>
+<a class="sourceLine" id="cb3-3" title="3">        <span class="kw">var</span> x <span class="op">=</span> <span class="kw">new</span> <span class="va">enyo</span>.<span class="at">Ajax</span>(<span class="op">{</span><span class="dt">url</span><span class="op">:</span> <span class="st">&quot;http://query.yahooapis.com/v1/public/yql?format=json&quot;</span><span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-4" title="4">        <span class="co">// send parameters the remote service using the &#39;go()&#39; method</span></a>
+<a class="sourceLine" id="cb3-5" title="5">        <span class="va">x</span>.<span class="at">go</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb3-6" title="6">            <span class="dt">q</span><span class="op">:</span> <span class="st">&#39;select woeid from geo.placefinder where text=&quot;&#39;</span> <span class="op">+</span> inPlace <span class="op">+</span> <span class="st">&#39;&quot;&#39;</span></a>
+<a class="sourceLine" id="cb3-7" title="7">        <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-8" title="8">        <span class="co">// attach responders to the transaction object</span></a>
+<a class="sourceLine" id="cb3-9" title="9">        <span class="va">x</span>.<span class="at">response</span>(<span class="kw">this</span><span class="op">,</span> <span class="kw">function</span>(inSender<span class="op">,</span> inResponse) <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-10" title="10">            <span class="co">// extra information from response object</span></a>
+<a class="sourceLine" id="cb3-11" title="11">            <span class="kw">var</span> woeid <span class="op">=</span> <span class="va">inResponse</span>.<span class="va">data</span>.<span class="va">query</span>.<span class="va">results</span>.<span class="va">Result</span>.<span class="at">woeid</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb3-12" title="12">            <span class="co">// do something with it</span></a>
+<a class="sourceLine" id="cb3-13" title="13">            <span class="kw">this</span>.<span class="at">setWoeid</span>(inPlace<span class="op">,</span> woeid)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-14" title="14">        <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-15" title="15">    <span class="op">}</span></a></code></pre></div>
+<p>For additional examples of <code>enyo.Ajax</code> in action, look under <code>"Enyo Core &gt; Ajax"</code> in the <a href="http://enyojs.com/sampler/">Sampler app</a> on enyojs.com. (The Sampler also includes examples using <code>JsonpRequest</code> and <code>WebService</code>.)</p>
+<h2 id="enyo.jsonprequest">enyo.JsonpRequest</h2>
+<p><a href="../../..//#/kind/enyo.JsonpRequest">enyo.JsonpRequest</a> is a specialized form of <code>enyo.Async</code> used for making JSONP requests to a remote server (which must, of course, support such requests). This differs from the normal XmlHttpRequest call in that the external resource is loaded using a <code>&lt;script&gt;</code> tag.</p>
+<p><code>enyo.JsonpRequest</code> is useful when an application needs to load data from a different domain. JSONP lets us work around the browser security model for cross-origin requests, in which cross-origin XHRs can only be made to the same server the page is loaded from (unless the server supports cross-origin resource sharing, aka “CORS”). In a JSONP request, this restriction does not come into play because a browser will load scripts from any address.</p>
+<p>In addition to using <code>enyo.JsonpRequest</code> directly, you can make a JSONP request using <code>WebService</code> by setting <code>jsonp: true</code> on the <code>WebService</code> instance. When you do this, <code>WebService</code> will use <code>enyo.JsonpRequest</code> internally to manage the HTTP transaction.</p>
+<h2 id="enyo.webservice">enyo.WebService</h2>
+<p><a href="../../..//#/kind/enyo.WebService">enyo.WebService</a> is a component that performs XHR requests; it acts as a wrapper for the <code>Async</code> subkinds <code>enyo.Ajax</code> and <code>enyo.JsonpRequest</code>, using these subkinds internally to manage HTTP transactions.</p>
+<p><code>enyo.WebService</code> uses <code>enyo.Ajax</code> by default and, like <code>enyo.Ajax</code>, it publishes all the properties of the <a href="../../..//#/namespace/enyo.AjaxProperties">enyo.AjaxProperties</a> object. You may customize your HTTP request by setting values for these properties on a given <code>WebService</code> instance.</p>
+<p>To have a <code>WebService</code> instance use <code>enyo.JsonpRequest</code> instead of <code>enyo.Ajax</code>, set <code>jsonp: true</code> on the instance.</p>
+<p>The <code>send()</code> method sends the request, returning the Async instance used. The response data comes in the <code>data</code> field of an incoming <code>onResponse</code> or <code>onError</code> event object.</p>
+<h2 id="enyo.ajax-vs.-enyo.webservice">enyo.Ajax vs. enyo.WebService</h2>
+<p>By this point, you may have noticed that there is a lot of overlap in what <code>enyo.WebService</code> and <code>enyo.Ajax</code> can do. In general, we recommend using <code>enyo.Ajax</code>, as it has the advantage of not needing to be declared as a component. However, <code>enyo.WebService</code> works better if you want to declare your AJAX endpoints as part of the <code>components</code> block.</p>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../../js/main.js"></script>
+  <script type="text/javascript" src="../../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

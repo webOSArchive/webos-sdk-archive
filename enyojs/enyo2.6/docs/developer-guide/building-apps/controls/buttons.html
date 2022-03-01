@@ -1,0 +1,181 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Buttons</h1>
+<h2 id="behavior">Behavior</h2>
+<p>In Moonstone, a button will always be in one of four states:</p>
+<ol type="1">
+<li><p><strong>Normal</strong> (up)</p>
+<p><img src="../../assets/button-normal.png" /></p></li>
+<li><p><strong>Pressed</strong> (down)</p>
+<p><img src="../../assets/button-pressed.png" /></p></li>
+<li><p><strong>Focused</strong> (hover)</p>
+<p><img src="../../assets/button-focused.png" /></p></li>
+<li><p><strong>Disabled</strong> (dimmed)</p>
+<p><img src="../../assets/button-disabled.png" /></p></li>
+</ol>
+<p>When using a 5-way or Pointer remote, focusing and then pressing a button will result in the execution of the corresponding action (upon release of the button).</p>
+<p>Note that the focused state may be animated.</p>
+<h2 id="moon.button">moon.Button</h2>
+<p><a href="../../..//#/kind/moon.Button">moon.Button</a> derives directly from <a href="../../..//#/kind/enyo.Button">enyo.Button</a> and provides the same basic functionality, along with a dose of Moonstone visual styling.</p>
+<p>When a <code>moon.Button</code> is tapped, it generates an <code>ontap</code> event; you may respond to the event by specifying a handler method, e.g.:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1">    <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.Button&quot;</span><span class="op">,</span> <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;tap me&quot;</span><span class="op">,</span> <span class="dt">ontap</span><span class="op">:</span> <span class="st">&quot;buttonTapped&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb1-2" title="2"></a>
+<a class="sourceLine" id="cb1-3" title="3">    ...</a>
+<a class="sourceLine" id="cb1-4" title="4"></a>
+<a class="sourceLine" id="cb1-5" title="5">    buttonTapped<span class="op">:</span> <span class="kw">function</span>(inSender<span class="op">,</span> inEvent) <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-6" title="6">        <span class="co">// respond to the tap event</span></a>
+<a class="sourceLine" id="cb1-7" title="7">    <span class="op">}</span></a></code></pre></div>
+<p>You may apply a caption to a button by wrapping it inside a <a href="../../..//#/kind/moon.CaptionDecorator">moon.CaptionDecorator</a>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1">    components<span class="op">:</span> [</a>
+<a class="sourceLine" id="cb2-2" title="2">        <span class="op">{</span><span class="dt">name</span><span class="op">:</span> <span class="st">&#39;scroller&#39;</span><span class="op">,</span> <span class="dt">kind</span><span class="op">:</span> <span class="st">&#39;moon.Scroller&#39;</span><span class="op">,</span> <span class="dt">fit</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">touch</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb2-3" title="3">            <span class="op">{</span><span class="dt">classes</span><span class="op">:</span> <span class="st">&quot;moon-button-sample-wrapper&quot;</span><span class="op">,</span> <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb2-4" title="4">                <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.CaptionDecorator&quot;</span><span class="op">,</span> <span class="dt">side</span><span class="op">:</span> <span class="st">&quot;top&quot;</span><span class="op">,</span> <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Pow&quot;</span><span class="op">,</span> <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb2-5" title="5">                    <span class="op">{</span><span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Captioned Button A&quot;</span><span class="op">,</span> <span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.Button&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb2-6" title="6">                        <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;A&quot;</span><span class="op">,</span> <span class="dt">ontap</span><span class="op">:</span> <span class="st">&quot;buttonTapped&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb2-7" title="7">                ]<span class="op">},</span></a>
+<a class="sourceLine" id="cb2-8" title="8">                <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.CaptionDecorator&quot;</span><span class="op">,</span> <span class="dt">side</span><span class="op">:</span> <span class="st">&quot;right&quot;</span><span class="op">,</span> <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Boom&quot;</span><span class="op">,</span> <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb2-9" title="9">                    <span class="op">{</span><span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Captioned Button B&quot;</span><span class="op">,</span> <span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.Button&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb2-10" title="10">                        <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;B&quot;</span><span class="op">,</span> <span class="dt">ontap</span><span class="op">:</span> <span class="st">&quot;buttonTapped&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb2-11" title="11">                ]<span class="op">},</span></a>
+<a class="sourceLine" id="cb2-12" title="12">                <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.CaptionDecorator&quot;</span><span class="op">,</span> <span class="dt">side</span><span class="op">:</span> <span class="st">&quot;bottom&quot;</span><span class="op">,</span> <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Crash&quot;</span><span class="op">,</span> <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb2-13" title="13">                    <span class="op">{</span><span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Captioned Button C&quot;</span><span class="op">,</span> <span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.Button&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb2-14" title="14">                        <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;C&quot;</span><span class="op">,</span> <span class="dt">ontap</span><span class="op">:</span> <span class="st">&quot;buttonTapped&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb2-15" title="15">                ]<span class="op">},</span></a>
+<a class="sourceLine" id="cb2-16" title="16">                <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.CaptionDecorator&quot;</span><span class="op">,</span> <span class="dt">side</span><span class="op">:</span> <span class="st">&quot;left&quot;</span><span class="op">,</span> <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Bang&quot;</span><span class="op">,</span> <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb2-17" title="17">                    <span class="op">{</span><span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Captioned Button D&quot;</span><span class="op">,</span> <span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.Button&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb2-18" title="18">                        <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;D&quot;</span><span class="op">,</span> <span class="dt">ontap</span><span class="op">:</span> <span class="st">&quot;buttonTapped&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb2-19" title="19">                ]<span class="op">}</span></a>
+<a class="sourceLine" id="cb2-20" title="20">            ]<span class="op">}</span></a>
+<a class="sourceLine" id="cb2-21" title="21">        ]<span class="op">}</span></a>
+<a class="sourceLine" id="cb2-22" title="22">    ]</a></code></pre></div>
+<figure>
+<img src="../../assets/buttons-captioned.png" alt="Captioned Buttons" /><figcaption><em>Captioned Buttons</em></figcaption>
+</figure>
+<p>You may create a button with smaller visible dimensions (but a normal-sized tap target) by setting <code>small: true</code> when declaring the button.</p>
+<h2 id="moon.iconbutton">moon.IconButton</h2>
+<p><a href="../../..//#/kind/moon.IconButton">moon.IconButton</a>, which extends the <a href="../../..//#/kind/moon.Icon">moon.Icon</a> kind, provides a button with an image inside.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1">    components<span class="op">:</span> [</a>
+<a class="sourceLine" id="cb3-2" title="2">        <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.IconButton&quot;</span><span class="op">,</span> <span class="dt">src</span><span class="op">:</span> <span class="st">&quot;assets/icon-list.png&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb3-3" title="3">            <span class="dt">ontap</span><span class="op">:</span> <span class="st">&quot;buttonTapped&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb3-4" title="4">        <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.IconButton&quot;</span><span class="op">,</span> <span class="dt">src</span><span class="op">:</span> <span class="st">&quot;assets/icon-list.png&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb3-5" title="5">            <span class="dt">ontap</span><span class="op">:</span> <span class="st">&quot;buttonTapped&quot;</span><span class="op">,</span> <span class="dt">disabled</span><span class="op">:</span> <span class="kw">true</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb3-6" title="6">    ]</a></code></pre></div>
+<figure>
+<img src="../../assets/icon-buttons.png" alt="moon.IconButton" /><figcaption><em>moon.IconButton</em></figcaption>
+</figure>
+<p>To create a button with an image and accompanying text inside, use a <code>moon.Icon</code> as a component inside a <code>moon.Button</code>.</p>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../../js/main.js"></script>
+  <script type="text/javascript" src="../../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

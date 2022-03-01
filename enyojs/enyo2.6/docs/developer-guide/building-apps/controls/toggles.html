@@ -1,0 +1,163 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Toggles</h1>
+<h2 id="moon.toggletext">moon.ToggleText</h2>
+<p><a href="../../..//#/kind/moon.ToggleText">moon.ToggleText</a>, a control that inherits from <a href="../../..//#/kind/moon.Checkbox">moon.Checkbox</a>, looks like a switch with labels for two states. Each time it is tapped, it switches its state and fires an <code>onChange</code> event.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1">    <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.ToggleText&quot;</span><span class="op">,</span> <span class="dt">onContent</span><span class="op">:</span> <span class="st">&quot;foo&quot;</span><span class="op">,</span> <span class="dt">offContent</span><span class="op">:</span> <span class="st">&quot;bar&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-2" title="2">        <span class="dt">onChange</span><span class="op">:</span> <span class="st">&quot;toggleTextToggle&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb1-3" title="3"></a>
+<a class="sourceLine" id="cb1-4" title="4">    ...</a>
+<a class="sourceLine" id="cb1-5" title="5"></a>
+<a class="sourceLine" id="cb1-6" title="6">    toggleTextToggle<span class="op">:</span> <span class="kw">function</span>(inSender<span class="op">,</span> inEvent) <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-7" title="7">        <span class="kw">this</span>.<span class="at">log</span>(<span class="st">&quot;Toggled to value &quot;</span> <span class="op">+</span> <span class="va">inEvent</span>.<span class="at">value</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-8" title="8">    <span class="op">}</span></a></code></pre></div>
+<p>You may customize the appearance of the control’s “on” state by setting the background color as a CSS style:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1">    <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.ToggleText&quot;</span><span class="op">,</span> <span class="dt">style</span><span class="op">:</span> <span class="st">&quot;background-color: #35A8EE;&quot;</span><span class="op">}</span></a></code></pre></div>
+<p>Finally, you may determine whether the toggle is currently “on” by querying its <code>value</code> property. The returned value will be a Boolean <code>true</code> or <code>false</code>:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1">    queryToggleValue<span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-2" title="2">        <span class="cf">return</span> <span class="kw">this</span>.<span class="va">$</span>.<span class="va">toggleText</span>.<span class="at">get</span>(<span class="st">&quot;value&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-3" title="3">    <span class="op">}</span></a></code></pre></div>
+<h2 id="moon.toggleswitch">moon.ToggleSwitch</h2>
+<p><a href="../../..//#/kind/moon.ToggleSwitch">moon.ToggleSwitch</a>, which also inherits from <code>moon.Checkbox</code>, is a control that looks like a switch with an “on” state and an “off” state. When the ToggleSwitch is tapped, it switches its state and fires an <code>onChange</code> event.</p>
+<p><code>moon.ToggleSwitch</code> differs from <code>moon.ToggleText</code> mainly in that the “on” and “off” states are represented visually instead of textually. (For a look at ToggleSwitch controls in various states, see the illustration for <code>moon.ToggleItem</code> below.)</p>
+<h2 id="moon.toggleitem">moon.ToggleItem</h2>
+<p><a href="../../..//#/kind/moon.ToggleItem">moon.ToggleItem</a> derives from <a href="../../..//#/kind/moon.CheckboxItem">moon.CheckboxItem</a> and provides a convenient way to combine a ToggleSwitch with a text label.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1">    components<span class="op">:</span> [</a>
+<a class="sourceLine" id="cb4-2" title="2">        <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.Divider&quot;</span><span class="op">,</span> <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Toggle Items&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb4-3" title="3">        <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.ToggleItem&quot;</span><span class="op">,</span> <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Option 1&quot;</span><span class="op">,</span> <span class="dt">checked</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb4-4" title="4">            <span class="dt">onchange</span><span class="op">:</span> <span class="st">&quot;itemChanged&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb4-5" title="5">        <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.ToggleItem&quot;</span><span class="op">,</span> <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Option 2&quot;</span><span class="op">,</span> <span class="dt">onchange</span><span class="op">:</span> <span class="st">&quot;itemChanged&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb4-6" title="6">        <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.ToggleItem&quot;</span><span class="op">,</span> <span class="dt">disabled</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Disabled&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb4-7" title="7">            <span class="dt">onchange</span><span class="op">:</span> <span class="st">&quot;itemChanged&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb4-8" title="8">        <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.ToggleItem&quot;</span><span class="op">,</span> <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Option 4&quot;</span><span class="op">,</span> <span class="dt">checked</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb4-9" title="9">            <span class="dt">onchange</span><span class="op">:</span> <span class="st">&quot;itemChanged&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb4-10" title="10">    ]</a></code></pre></div>
+<figure>
+<img src="../../assets/toggle-items.png" alt="Toggle Items" /><figcaption><em>Toggle Items</em></figcaption>
+</figure>
+<p>Toggle items may be used with Enyo’s group API. You may specify multiple toggle items as components within an <a href="../../..//#/kind/enyo.Group">enyo.Group</a> to create a control in which only one of the items may be in the “on” state (i.e., <code>checked: true</code>) at a given time.</p>
+<h2 id="moon.togglebutton">moon.ToggleButton</h2>
+<p><a href="../../..//#/kind/moon.ToggleButton">moon.ToggleButton</a>, which extends <a href="../../..//#/kind/moon.Button">moon.Button</a>, is a button with two states (“on” and “off”), each of which has an associated text label. When the button is tapped, the state switches (as evidenced by updates to the text label and visual styling), and an <code>onChange</code> event is fired.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1">    <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.ToggleButton&quot;</span><span class="op">,</span> <span class="dt">toggleOnLabel</span><span class="op">:</span> <span class="st">&quot;wifi is on&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb5-2" title="2">        <span class="dt">toggleOffLabel</span><span class="op">:</span> <span class="st">&quot;wifi is off&quot;</span><span class="op">,</span> <span class="dt">ontap</span><span class="op">:</span> <span class="st">&quot;buttonTapped&quot;</span><span class="op">}</span></a></code></pre></div>
+<figure>
+<img src="../../assets/toggle-button-on.png" alt="Toggle Button (On)" /><figcaption><em>Toggle Button (On)</em></figcaption>
+</figure>
+<figure>
+<img src="../../assets/toggle-button-off.png" alt="Toggle Button (Off)" /><figcaption><em>Toggle Button (Off)</em></figcaption>
+</figure>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../../js/main.js"></script>
+  <script type="text/javascript" src="../../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

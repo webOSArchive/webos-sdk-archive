@@ -1,0 +1,137 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Encapsulation in Enyo</h1>
+<p>One of the most important features that Enyo brings to Web development is the ability to encapsulate useful blocks of presentation code and associated logic into reusable components with defined interfaces. While you are completely free to structure your code as you see best, we have prepared a set of recommended practices that we think will help you make the most of Enyo’s encapsulation model.</p>
+<h2 id="send-events-up-and-call-functions-down">Send events up and call functions down</h2>
+<p>In order to provide good functional boundaries that encourage reuse, you should generally follow the rule that children of a component should have no <em>a priori</em> knowledge of their parents. For example, a function call like <code>this.owner.doSomething()</code> is strongly discouraged, since it tightly binds the child to a specific owner, restricting its ability to be reused in new scenarios.</p>
+<p>Instead, Enyo encourages the use of events as the mechanism for children to communicate with their parents. By declaring events such as <code>onSomethingHappened</code> (sent by calling <code>doSomethingHappened()</code>), children bubble events up to their owner, allowing the owner to decide whether handling <code>onSomethingHappened</code> is important to its current use case.</p>
+<p>Conversely, parents <em>always</em> have <em>a priori</em> knowledge of their children–they have to create them, after all, usually by declaring them in the <code>components</code> block. Thus, tight binding from the parent to the child is normal. Parents should communicate with their children by calling functions defined in their APIs. Although JavaScript lacks a clean way to enforce the separation between public API and private functions, we use the <code>@public</code> JSDoc tag to mark functions designated as public APIs, and the <code>@private</code> tag to mark non-public functions. These tags are parsed when we compile the API Reference to display the Enyo API.</p>
+<p>Finally, you should never make assumptions about how a component you are using is built internally. For example, say you are using a widget that includes a title and descriptive text, and you want to change the color of the title. Calling <code>this.$.myWidget.$.title.applyStyle("color", "red")</code> would clearly break encapsulation, since you are assuming a lot about the construction of <code>myWidget</code> (i.e., that its title component is called <code>title</code> and that applying a style on that component will change the color of the text). Instead, <code>myWidget</code> should provide an API that its owner may call to make this change, such as <code>this.$.myWidget.setTitleColor("red")</code>.</p>
+<p>In summary: “Send events up and call functions down.”</p>
+<h2 id="keep-related-code-close">Keep related code close</h2>
+<p>Because writing an app usually involves refactoring code as the app grows, you will often find yourself creating useful chunks of functionality that can be reused in other apps. In the traditional (non-MVC) approach to Enyo app development, we generally try to organize code into self-contained units that are easy to move around as whole, useful chunks (including whatever view, model, control, CSS, etc. is required for that chunk to do its job), as opposed to organizing files by function.</p>
+<p>As an analogy, think of all the parts that make up a chest of drawers that you might buy from Ikea–panels, screws, washers, handles, and so on. There are two ways in which Ikea could distribute the parts. They could give you all of the screws in one bag, all the washers in another, and so on, and to build a new drawer you would take some materials from each bag. Alternatively, they could give you one bag per drawer, with each bag containing everything needed to build the drawer.</p>
+<p>Each approach has its merits. For instance, the latter model (which approximates traditional Enyo) is more conducive to code refactoring and reuse, since it’s easy to identify one drawer’s worth of material and move it to a new location where you need to make a new drawer. But the former model’s decoupling of data and app logic from presentation makes it easier to divide the work for a project among multiple developers, and to implement automated testing.</p>
+<p>With all of this in mind, we’ve introduced support for MVC in Enyo 2.3 while retaining the existing Enyo component model, to give you the flexibility to organize each project as you see fit.</p>
+<h2 id="separate-into-packages-for-reuse">Separate into packages for reuse</h2>
+<p>Enyo provides a higher level of encapsulation at the file level, via <code>package.js</code> files and the <code>enyo.depends()</code> loader mechanism. This is especially useful for third-party components and libraries, since it allows the author to specify all the JavaScript and CSS files a component or library depends on. As a result, the user does not have to worry about the library’s internal structure, but can simply include the path to its top-level <code>package.js</code> and then use the library’s public kinds and APIs.</p>
+<p>As your app grows larger, you may find it useful to split it into multiple packages. Rather than maintain one top-level <code>package.js</code> file that references all the source and CSS in your app, you can separate chunks of functionality into individual packages, which are then referenced by the top-level <code>package.js</code>. While this is ultimately a matter of personal preference, a good rule of thumb is to create separate packages for independently useful sets of kinds.</p>
+<p><strong>Additional Reading</strong></p>
+<ul>
+<li><a href="../key-concepts/event-handling.html">Event Handling</a></li>
+</ul>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../js/main.js"></script>
+  <script type="text/javascript" src="../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

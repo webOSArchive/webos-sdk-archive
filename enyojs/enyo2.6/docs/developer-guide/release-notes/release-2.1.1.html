@@ -1,0 +1,159 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Enyo 2.1.1 Release Notes</h1>
+<p>Welcome to Enyo 2.1.1. The following items have changes since the Enyo 2.1 release. (Note that this list is not comprehensive; see the commit history in GitHub for a complete list of changes.)</p>
+<h2 id="enyo">Enyo</h2>
+<ul>
+<li><p>In <code>msevents.js</code>, rewrote event handling for IE10 to exclusively use new <code>MSPointer</code> events.</p></li>
+<li><p>In <code>platform.js</code> and <code>touch.js</code>, added detection for Silk browser to fix compatibility issues with Kindle Fire HD.</p></li>
+<li><p>In <code>platform.js</code>, added <code>blackberry</code> property, referring to major version number of BlackBerry OS; in <code>Control.js</code> and <code>Scroller.js</code>, made change to use JavaScript scroller instead of <code>-webkit-overflow-scrolling:touch</code> on BlackBerry platform.</p></li>
+<li><p>In <code>Button.js</code>, explicitly set the <code>enyo.Button</code> type to <code>"button"</code>, since the default type (<code>"submit"</code>) could cause unintentional form submission.</p></li>
+<li><p>Addressed multiple issues relating to <code>Ajax.js</code>:</p>
+<ul>
+<li><p>Added <code>xhrResponse</code> property to preserve status, header, and body data in case the request fails and is canceled.</p></li>
+<li><p>Fixed issue causing bad <code>"Content-Type"</code> header to be sent when the request body is a FormData object.</p></li>
+<li><p>Fixed issue that could cause parameters passed to <code>go()</code> to not be added to the query string.</p></li>
+<li><p>Fixed new CORS problems in IE.</p></li>
+</ul></li>
+</ul>
+<h2 id="onyx">Onyx</h2>
+<ul>
+<li><p>Modified <code>DatePicker.js</code> and <code>TimePicker.js</code> to use <code>"en_us"</code> as default locale if <code>g11n</code> library isn’t loaded.</p></li>
+<li><p>In <code>PickerButton.js</code>, added check for undefined content before call to <code>setContent</code>.</p></li>
+<li><p>Added <code>"onyx-menu-label"</code> CSS class for <code>onyx.Menu</code> objects.</p></li>
+<li><p>Removed focused inner-border style for <code>onyx.Button</code> objects in Firefox on Windows.</p></li>
+</ul>
+<h2 id="layout">Layout</h2>
+<ul>
+<li><p>Added new <code>ImageViewPin</code> control, which may be used to display non-zoomable content (“pins”) inside a zoomable <code>ImageView</code> control.</p></li>
+<li><p>In <code>Arranger.js</code>, added workaround for click target issues when using CSS transforms to position panels in IE10.</p></li>
+<li><p>In <code>Panels.js</code>, added code to skip <code>removeComponent</code> transition logic when a Panels object is destroyed, to prevent transition events from being sent to the application.</p></li>
+</ul>
+<h2 id="samples">Samples</h2>
+<ul>
+<li>Fixed “GestureSample” to properly handle being relaunched.</li>
+</ul>
+<h2 id="tools">Tools</h2>
+<ul>
+<li><p>Added new file <code>deploy.js</code>, a Node-based cross-platform app deployment script that supersedes the existing <code>deploy.sh</code> and <code>deploy.bat</code>. The latter two scripts continue to be available, although they are now simply wrappers for <code>deploy.js</code>. Updated Bootplate template to use <code>deploy.js</code>, while moving <code>deploy.sh</code> and <code>deploy.bat</code> to <code>bootplate/tools</code> directory.</p>
+<p>Note: The <code>tools/deploy.sh</code> and <code>tools/deploy.bat</code> scripts must now be run from the root of the bootplate project (prior to 2.1.1 they were run from within the <code>tools</code> folder).</p></li>
+</ul>
+<h2 id="documentation">Documentation</h2>
+<ul>
+<li>Fixed display issues with API documentation for <code>enyo.ImageView</code>.</li>
+</ul>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../js/main.js"></script>
+  <script type="text/javascript" src="../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

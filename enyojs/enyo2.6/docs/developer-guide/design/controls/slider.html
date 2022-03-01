@@ -1,0 +1,154 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Slider</h1>
+<h2 id="about">About</h2>
+<p>A Slider is a control for setting a value along a defined range. It is commonly used for adjusting system settings such as contrast and brightness.</p>
+<h2 id="api-reference">API Reference</h2>
+<p><a href="../../..//#/kind/moon.Slider">moon.Slider</a></p>
+<h2 id="behavior-and-states">Behavior and States</h2>
+<h3 id="behavior">Behavior</h3>
+<p>A Slider consists of a Bar (whose ends represent the Slider’s upper and lower limits), the Current Value, and the Selector. There is also an optional Buffering bar that may be used, if needed.</p>
+<p>The value of the Slider may be changed using either the Magic Remote or 5-way navigation. Using the Magic Remote, press and hold <strong>Select</strong> while moving the remote. Releasing the Select button returns the Slider to its normal state. Using 5-way, first press Select, then use the arrow buttons to move the Selector. To exit active state, press Select again.</p>
+<p>There are several options that may be configured to customize the Slider and its behavior. These include the following:</p>
+<ul>
+<li><p><strong>Lock Bar</strong></p>
+<p>When disabled, Lock Bar prevents the Current Value from changing in response to selector movement.</p></li>
+<li><p><strong>Constrain</strong></p>
+<p>When enabled, Constrain will prevent the Current Value and Selector from going past the Buffering position.</p></li>
+<li><p><strong>Tool Tip</strong></p>
+<p>The Tool Tip is used to display either a value or a percentage when the Selector is moved.</p></li>
+<li><p><strong>Tappable</strong></p>
+<p>When Tappable is enabled, users with a remote may point at a location on the slider and press <strong>Select</strong> to change the value.</p></li>
+<li><p><strong>Animation</strong></p>
+<p>Animation works in conjunction with Tappable. With Tappable enabled, after tapping on the slider, the Selector will either slide to the new location if animation is enabled), or jump to the location (if animation is disabled).</p></li>
+</ul>
+<h3 id="states">States</h3>
+<ul>
+<li><p><strong>Normal (up/unpressed)</strong></p>
+<p>The Slider is available for use and is not selected.</p></li>
+<li><p><strong>Focus (hover)</strong></p>
+<p>The Slider current has focus from the remote and is ready to be selected.</p></li>
+<li><p><strong>Active (down/pressed)</strong></p>
+<p>The Slider has been selected and the value may be changed.</p></li>
+<li><p><strong>Deactivated (disabled)</strong></p>
+<p>The Slider cannot be selected or changed.</p></li>
+</ul>
+<h3 id="sizing">Sizing</h3>
+<p>The Bar dictates the overall width of the control; it has a default width of 300 pixels. While this width is configurable by the developer, the height is not. The Current Value may not exceed the limits from the Bar, but may be constrained due to the Lock Bar or Constrain properties. In addition, the Buffering bar’s width may not exceed that of the Bar, but is otherwise not constrained.</p>
+<h2 id="illustration">Illustration</h2>
+<p><img src="../../assets/dg-controls-slider.png" /></p>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../../js/main.js"></script>
+  <script type="text/javascript" src="../../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

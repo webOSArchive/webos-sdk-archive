@@ -1,0 +1,176 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Using webOS Features</h1>
+<h2 id="built-in-webos-events">Built-in webOS Events</h2>
+<p>Included within the webOS system itself are the following custom document events:</p>
+<ul>
+<li><p><code>webOSLaunch</code>: Dispatched when the application launches and the launch parameters are received. The launch parameters are included within the event data. Note that this does not necessarily mean that the application has been loaded or rendered.</p></li>
+<li><p><code>webOSRelaunch</code>: Dispatched when an already-running application is launched, potentially with new launch parameters.</p></li>
+<li><p><code>webOSLocaleChange</code>: Dispatched when the system changes its language settings.</p></li>
+</ul>
+<h2 id="enyo-cordova">enyo-cordova</h2>
+<p>Cordova features a cross-platform standard for <a href="http://docs.phonegap.com/en/2.7.0/index.html">various device APIs</a> such as geolocation and in-app-browser. The Enyo library <code>enyo-cordova</code> encapsulates Cordova for all platforms, dynamically choosing the right version based on the device running the application (e.g., the webOS version of Cordova on webOS TVs).</p>
+<p>In addition, <a href="../..//#/kind/enyo.Signals">Enyo signals</a> are set up for all <a href="http://docs.phonegap.com/en/2.7.0/index.html">Cordova-based events</a> for easy use within Enyo applications. For example:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb1-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;App&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-3" title="3">        <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb1-4" title="4">            <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;Signals&quot;</span><span class="op">,</span> <span class="dt">ondeviceready</span><span class="op">:</span> <span class="st">&quot;deviceready&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb1-5" title="5">            ...</a>
+<a class="sourceLine" id="cb1-6" title="6">        ]<span class="op">,</span></a>
+<a class="sourceLine" id="cb1-7" title="7">        <span class="dt">deviceready</span><span class="op">:</span> <span class="kw">function</span>(inSender<span class="op">,</span> inEvent) <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-8" title="8">            <span class="co">// After deviceready, Cordova is loaded and ready to be used</span></a>
+<a class="sourceLine" id="cb1-9" title="9">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb1-10" title="10">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<h2 id="enyo-webos">enyo-webos</h2>
+<p>The <code>enyo-webos</code> library has a number of features designed exclusively for the webOS platform. These include components that make webOS service calls easier to manage, as well as Enyo signal generation for the webOS events mentioned above.</p>
+<h3 id="servicerequest-and-lunaservice">ServiceRequest and LunaService</h3>
+<p>Two components that allow for integration of webOS services into Enyo applications are <code>enyo.ServiceRequest</code> and <code>enyo.LunaService</code>. They may be viewed as being analogous to <code>enyo.Ajax</code> and <code>enyo.WebService</code>, respectively.</p>
+<p>ServiceRequest is based on <code>enyo.Async</code>; the constructor takes the service name, method, parameters, and an optional subscription flag.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1">    <span class="kw">var</span> request <span class="op">=</span> <span class="kw">new</span> <span class="va">enyo</span>.<span class="at">ServiceRequest</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb2-2" title="2">        <span class="dt">service</span><span class="op">:</span> <span class="st">&quot;luna://com.palm.connectionmanager&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb2-3" title="3">        <span class="dt">method</span><span class="op">:</span> <span class="st">&quot;getstatus&quot;</span></a>
+<a class="sourceLine" id="cb2-4" title="4">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-5" title="5">    <span class="va">request</span>.<span class="at">response</span>(<span class="kw">this</span><span class="op">,</span> <span class="kw">function</span>(inSender<span class="op">,</span> inResponse) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-6" title="6">        <span class="co">// service request succeeded with returned data within inResponse</span></a>
+<a class="sourceLine" id="cb2-7" title="7">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-8" title="8">    <span class="va">request</span>.<span class="at">go</span>(<span class="op">{}</span>)<span class="op">;</span></a></code></pre></div>
+<p>Building upon this, LunaService provides a reusable component for interacting with webOS services.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb3-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;App&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb3-3" title="3">        <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb3-4" title="4">            <span class="op">{</span><span class="dt">name</span><span class="op">:</span><span class="st">&quot;netstat&quot;</span><span class="op">,</span> <span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;LunaService&quot;</span><span class="op">,</span> <span class="dt">service</span><span class="op">:</span> <span class="st">&quot;luna://com.palm.connectionmanager&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb3-5" title="5">                <span class="dt">method</span><span class="op">:</span> <span class="st">&quot;getstatus&quot;</span><span class="op">,</span> <span class="dt">onResponse</span><span class="op">:</span><span class="st">&quot;serviceResponse&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb3-6" title="6">            ...</a>
+<a class="sourceLine" id="cb3-7" title="7">        ]<span class="op">,</span></a>
+<a class="sourceLine" id="cb3-8" title="8">        <span class="dt">getConnectionStatus</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-9" title="9">            <span class="kw">var</span> request <span class="op">=</span> <span class="kw">this</span>.<span class="va">$</span>.<span class="va">netstat</span>.<span class="at">send</span>(<span class="op">{}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-10" title="10">        <span class="op">},</span></a>
+<a class="sourceLine" id="cb3-11" title="11">        <span class="dt">serviceResponse</span><span class="op">:</span> <span class="kw">function</span>(inSender<span class="op">,</span> inResponse) <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-12" title="12">            <span class="co">// service request succeeded with returned data within inResponse</span></a>
+<a class="sourceLine" id="cb3-13" title="13">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb3-14" title="14">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<h3 id="webos.js">webOS.js</h3>
+<p>In much the same way that <code>enyo-cordova</code> includes the standalone Cordova library, <code>enyo-webos</code> includes the standalone <code>webOS.js</code> library. <code>webOS.js</code> focuses on providing webOS-specific functionality in a streamlined package, with support for both Open webOS and webOS for TV in a single API set. Included in <code>webOS.js</code> are the following modules:</p>
+<ul>
+<li>Application</li>
+<li>DeviceInfo</li>
+<li>PmLogLib</li>
+<li>Service Core</li>
+<li>System Notifications</li>
+<li>Window</li>
+</ul>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../js/main.js"></script>
+  <script type="text/javascript" src="../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

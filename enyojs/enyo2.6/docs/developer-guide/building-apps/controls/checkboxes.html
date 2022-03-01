@@ -1,0 +1,148 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Checkboxes</h1>
+<h2 id="behavior">Behavior</h2>
+<p>Checkboxes are used to select multiple items from a range of options. In Moonstone, the selected state is represented visually as a checkmark, while the unselected state is the absence of a checkmark (i.e., there is no visual marker).</p>
+<p>Single selection from a range of options is implemented via <a href="radio-items.html">radio items</a> (otherwise known as radio buttons).</p>
+<h2 id="enyo.checkbox">enyo.Checkbox</h2>
+<p><a href="../../..//#/kind/enyo.Checkbox">enyo.Checkbox</a> implements an HTML checkbox input, with support for grouping.</p>
+<p>The <code>onActivate</code> event is fired when the checkbox is tapped.</p>
+<p>The state of the checkbox is available as a boolean (<code>true</code> if checked; <code>false</code> if not) in the <code>checked</code> property.</p>
+<h2 id="moon.checkbox-and-moon.checkboxitem">moon.Checkbox and moon.CheckboxItem</h2>
+<p><a href="../../..//#/kind/moon.Checkbox">moon.Checkbox</a> extends <code>enyo.Checkbox</code>, adding Moonstone visual styling.</p>
+<p>Instead of creating <code>moon.Checkbox</code> objects directly, you may find it convenient to use the <a href="../../..//#/kind/moon.CheckboxItem">moon.CheckboxItem</a> kind, which combines a checkbox with a text label, as in this example taken from the Enyo Sampler:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1">    components<span class="op">:</span> [</a>
+<a class="sourceLine" id="cb1-2" title="2">        <span class="op">{</span><span class="dt">classes</span><span class="op">:</span> <span class="st">&quot;checkbox-sample-wrapper&quot;</span><span class="op">,</span> <span class="dt">components</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb1-3" title="3">            <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.CheckboxItem&quot;</span><span class="op">,</span> <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Option 1&quot;</span><span class="op">,</span> <span class="dt">checked</span><span class="op">:</span> <span class="kw">true</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb1-4" title="4">            <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.CheckboxItem&quot;</span><span class="op">,</span> <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Option 2&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb1-5" title="5">            <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.CheckboxItem&quot;</span><span class="op">,</span> <span class="dt">disabled</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Disabled&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb1-6" title="6">            <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.CheckboxItem&quot;</span><span class="op">,</span> <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Option 4&quot;</span><span class="op">,</span> <span class="dt">checked</span><span class="op">:</span> <span class="kw">true</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb1-7" title="7">        ]<span class="op">}</span></a>
+<a class="sourceLine" id="cb1-8" title="8">    ]</a></code></pre></div>
+<p><img src="../../assets/checkbox-items.png" /></p>
+<h2 id="moon.formcheckbox">moon.FormCheckbox</h2>
+<p><a href="../../..//#/kind/moon.FormCheckbox">moon.FormCheckbox</a> extends <code>moon.Checkbox</code>, providing a labeled checkbox (similar to <code>moon.CheckboxItem</code>) for use in form layouts. Unlike <code>moon.CheckboxItem</code>, <code>moon.FormCheckbox</code> has a circular “tap target” area that is always visible, regardless of whether the checkbox is currently checked.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1">    components<span class="op">:</span> [</a>
+<a class="sourceLine" id="cb2-2" title="2">        <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.Divider&quot;</span><span class="op">,</span> <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;FormCheckbox Items (Default)&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb2-3" title="3">        <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.FormCheckbox&quot;</span><span class="op">,</span> <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Option 1&quot;</span><span class="op">,</span> <span class="dt">checked</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb2-4" title="4">            <span class="dt">onchange</span><span class="op">:</span> <span class="st">&quot;itemChanged&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb2-5" title="5">        <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.FormCheckbox&quot;</span><span class="op">,</span> <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Option 2&quot;</span><span class="op">,</span> <span class="dt">onchange</span><span class="op">:</span> <span class="st">&quot;itemChanged&quot;</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb2-6" title="6">        <span class="op">{</span><span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;moon.FormCheckbox&quot;</span><span class="op">,</span> <span class="dt">disabled</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">content</span><span class="op">:</span> <span class="st">&quot;Disabled&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb2-7" title="7">            <span class="dt">onchange</span><span class="op">:</span> <span class="st">&quot;itemChanged&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb2-8" title="8">    ]</a></code></pre></div>
+<p><img src="../../assets/form-checkbox-items.png" /></p>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../../js/main.js"></script>
+  <script type="text/javascript" src="../../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

@@ -1,0 +1,182 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Enyo 2.1 Release Notes</h1>
+<p>Welcome to Enyo 2.1. The following items have changes since the Enyo 2.0.1 release. (Note that this list is not comprehensive; see the commit history in GitHub for a complete list of changes.)</p>
+<h2 id="enyo">Enyo</h2>
+<ul>
+<li>Made numerous changes to Enyo core for compatibility with Google Chrome Packaged Apps.</li>
+<li>In <code>Control.js</code>, made fix restoring the ability to add components directly to an <code>enyo.Scroller</code> by calling its <code>createComponent</code> method.</li>
+<li>In <code>Button.js</code>, fixed issue that could cause disabled buttons to receive (and respond to) certain events.</li>
+<li>In <code>Scroller.js</code>, fixed issue that could cause scrolling to not work in Chrome and Firefox browsers on Android.</li>
+<li>In <code>animation.js</code>, added workaround for issue causing animations to not work properly on iOS 6. Also moved <code>animation.js</code> from <code>kernel</code> package to <code>dom</code> package.</li>
+<li>In <code>gesture.js</code>, made changes to improve drag event handling on open webOS platform.</li>
+<li>In <code>touch.js</code>, made changes to fix behavior of tap events in environments where mouse and touch inputs co-exist (e.g., Windows 7 devices with touchscreen). Also worked around issue in which Android Chrome could erroneously register single-taps as double-taps.</li>
+<li>In <code>Ajax.js</code>, added CORS handling for IE8 and IE9; also improved timeout support by canceling XHR after timeout fires.</li>
+<li>In <code>jsonp.js</code>, removed unnecessary call to <code>removeScriptElement()</code>.</li>
+<li>In <code>xhr.js</code>, fixed issue that could cause sync requests to fail in IE8.</li>
+<li>In <code>loader.js</code>, fixed error when loading from a package directory whose name ends in <code>"js"</code> or <code>"css"</code>.</li>
+</ul>
+<h2 id="onyx">Onyx</h2>
+<ul>
+<li>Overhauled Onyx’s handling of CSS, adding support for dynamic stylesheets (via LESS).</li>
+<li>Added new <code>DatePicker</code> and <code>TimePicker</code> controls, both of which support localization. Also added <code>RangeSlider</code> and <code>ToggleIconButton</code>.</li>
+<li>In <code>Drawer.js</code>, added <code>"animated"</code> property, used to temporarily disable animation when changing drawer status.</li>
+<li>In <code>Menu.js</code>, fixed issue that could cause menus to be cut off on the left-hand side, along with an issue that could cause menus to be positioned off-screen.</li>
+<li>In <code>ToggleButton.js</code>, fixed issue causing <code>onChange</code> event to fire on app startup without any user interaction.</li>
+<li>In <code>onyx.css</code>, fixed style controlling toggle button appearance in IE8.</li>
+</ul>
+<h2 id="layout">Layout</h2>
+<ul>
+<li>Added new <code>AroundList</code> control, a list that may have content around its rows. Also added new <code>ImageView</code> and <code>ImageCarousel</code> kinds.</li>
+<li>In <code>List.js</code> and <code>FlyweightRepeater.js</code>, added new <code>noSelect</code> property. When set to <code>true</code>, list items are not automatically re-rendered when tapped.</li>
+<li>In <code>Panels.js</code>, fixed issue preventing deletion of panels when wrapping is enabled. Also addressed positioning issues when transitioning from two-panel state to one-panel state, along with potential layout problems related to browser scroll events.</li>
+<li>In <code>List.css</code>, fixed issue with <code>"enyo-list-port"</code> style, which was causing display problems in Firefox.</li>
+</ul>
+<h2 id="globalizationlocalization">Globalization/Localization</h2>
+<ul>
+<li>Added new <code>g11n</code> library for globalization/localization.</li>
+</ul>
+<h2 id="bootplate">Bootplate</h2>
+<ul>
+<li>Fixed issue that could cause Bootplate-based apps to open in “IE7 document mode” in IE9.</li>
+<li>In <code>deploy</code> script, added ability to specify the directory that files are deployed to.</li>
+</ul>
+<h2 id="samples">Samples</h2>
+<ul>
+<li>Added samples for new <code>g11n</code> library and new controls. Also added “GestureSample” and “PlatformSample”.</li>
+<li>In “Sampler” app, fixed issue causing odd scroll bar behavior in Chrome.</li>
+<li>In “ListContactsSample”, fixed issues surrounding deletion of list items.</li>
+<li>In “ListPulldownSample”, fixed problem causing “Pull down to refresh…” text to not appear in Android Chrome browser.</li>
+<li>In “FlyweightRepeaterSample”, made changes to improve layout on phone-sized screens.</li>
+<li>In “PanelsFlickrSample”, added check to avoid re-loading images that have already been loaded; this could cause problems on iOS 6.</li>
+<li>In “PickerSample”, corrected visual alignment issues.</li>
+<li>In “TreeSample”, fixed overlapping text in Android Chrome browser.</li>
+</ul>
+<h2 id="tools">Tools</h2>
+<ul>
+<li>Fixed issue causing API Viewer to not load properly in IE9.</li>
+<li>Fixed various API Viewer glitches caused by inconsistent application of <code>"public"</code> and <code>"protected"</code> tags across the framework.</li>
+<li>In <code>minify.js</code>, implemented more robust parsing of options with <code>nopt</code> npm package; also shimmed the <code>path.relative</code> function for old versions of Node.</li>
+</ul>
+<h2 id="documentation">Documentation</h2>
+<ul>
+<li>Added documentation for UI Theming.</li>
+<li>Added documentation for new <code>g11n</code> library.</li>
+<li>In Panels document, added information on which arrangers support wrapping.</li>
+<li>Added warning to avoid renaming <code>package.js</code> files.</li>
+</ul>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../js/main.js"></script>
+  <script type="text/javascript" src="../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

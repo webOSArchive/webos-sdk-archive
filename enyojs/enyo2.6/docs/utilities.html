@@ -1,0 +1,459 @@
+<div class="row">
+	<div class="col-sm-4 col-sm-push-8 features">
+		
+		<div class="utilities">
+	<h2>Utilities</h2>
+	<ul>
+		
+		<li class="method public ">
+			<a href="javascript:find(':error');">error</a>
+		</li>
+		
+		<li class="method public ">
+			<a href="javascript:find(':log');">log</a>
+		</li>
+		
+		<li class="method public ">
+			<a href="javascript:find(':macroize');">macroize</a>
+		</li>
+		
+		<li class="method public ">
+			<a href="javascript:find(':quickMacroize');">quickMacroize</a>
+		</li>
+		
+		<li class="method public ">
+			<a href="javascript:find(':quickReplace');">quickReplace</a>
+		</li>
+		
+		<li class="method public ">
+			<a href="javascript:find(':warn');">warn</a>
+		</li>
+		
+	</ul>
+</div>
+	</div>
+	<div class="col-sm-8 col-sm-pull-4 utilities main-container">
+
+		
+
+
+		<div class="header">
+			<h2>UTILITIES</h2>
+		</div>
+
+		<div class="section description">
+			<div>The Enyo framework provides the following utility methods.</div>
+		</div>
+
+		<div class="section utilities">
+			<a name="utilities"></a>
+
+			
+			<a name="methods"></a>
+<h1>Methods</h1>
+
+
+<a name="enyo.error"></a>
+<div class="entry method public ">
+	<div class="header">
+		<span class="access public">public</span>
+		<span class="name">enyo.error&#040;<span class="header-params"><span class="param "></span></span>&#041;</span><span>&rarr;</span>
+		<span class="header-returns"><a class="glossary" href="#/glossary:undefined">undefined</a></span></div>
+	<div class="content">
+		
+		<div class="description"><p>A wrapper for <a class="glossary" href="#/glossary:console.error">console.error()</a>, compatible
+across supported platforms. Will output only if the current
+<a href="#/namespace/enyo.logging:level">log level</a> allows it. <a class="glossary" href="#/glossary:Object">Object</a>
+parameters will be serialized via <a class="glossary" href="#/glossary:JSON.stringify">JSON.stringify()</a>
+automatically.</p></div>
+		
+<div class="subsection params">
+	<h3>Parameters</h3>
+	<ul>
+	
+	<li>
+		<span class="name "></span>
+		
+		
+		
+		<div class="type">Type: *</div>
+		
+		<div class="description"><p>The arguments to be logged.</p></div>
+	</li>
+	
+	</ul>
+</div>
+
+
+		
+		
+		
+		<div class="see">
+	<h3>See Also</h3>
+	<ul>
+	
+		<li><a class="glossary" href="#/glossary:console.error">console.error</a></li>
+	
+	</ul>
+</div>
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/enyo/source/kernel/log.js</span>
+			<span class="line">:165</span>
+		</div>
+	</div>
+</div>
+
+
+<a name="enyo.log"></a>
+<div class="entry method public ">
+	<div class="header">
+		<span class="access public">public</span>
+		<span class="name">enyo.log&#040;<span class="header-params"><span class="param "></span></span>&#041;</span><span>&rarr;</span>
+		<span class="header-returns"><a class="glossary" href="#/glossary:undefined">undefined</a></span></div>
+	<div class="content">
+		
+		<div class="description"><p>A wrapper for <a class="glossary" href="#/glossary:console.log">console.log()</a>, compatible
+across supported platforms. Will output only if the current
+<a href="#/namespace/enyo.logging:level">log level</a> allows it. <a class="glossary" href="#/glossary:Object">Object</a>
+parameters will be serialized via <a class="glossary" href="#/glossary:JSON.stringify">JSON.stringify()</a>
+automatically.</p></div>
+		
+<div class="subsection params">
+	<h3>Parameters</h3>
+	<ul>
+	
+	<li>
+		<span class="name "></span>
+		
+		
+		
+		<div class="type">Type: *</div>
+		
+		<div class="description"><p>The arguments to be logged.</p></div>
+	</li>
+	
+	</ul>
+</div>
+
+
+		
+		
+		
+		<div class="see">
+	<h3>See Also</h3>
+	<ul>
+	
+		<li><a class="glossary" href="#/glossary:console.log">console.log</a></li>
+	
+	</ul>
+</div>
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/enyo/source/kernel/log.js</span>
+			<span class="line">:133</span>
+		</div>
+	</div>
+</div>
+
+
+<a name="enyo.macroize"></a>
+<div class="entry method public ">
+	<div class="header">
+		<span class="access public">public</span>
+		<span class="name">enyo.macroize&#040;<span class="header-params"><span class="param ">text</span><span class="param ">, map</span><span class="param optional">, regex</span></span>&#041;</span><span>&rarr;</span>
+		<span class="header-returns"><a class="glossary" href="#/glossary:String">String</a></span></div>
+	<div class="content">
+		
+		<div class="description"><p>Populates a <a class="glossary" href="#/glossary:String">String</a> template with values from an <a class="glossary" href="#/glossary:Object">Object</a>.
+Can be used with custom macro patterns.</p>
+<p>The default macro pattern is of the form <code>{$name}</code>.</p>
+<pre class="prettyprint source lang-javascript"><code>// returns 'My name is Barney.'
+enyo.macroize('My name is {$name}.', {name: 'Barney'});</code></pre><p>Dot notation is supported like so:</p>
+<pre class="prettyprint source lang-javascript"><code>var info = {
+    product_0: {
+        name: 'Gizmo',
+        weight: 3
+    }
+};
+
+// returns 'Each Gizmo weighs 3 pounds.'
+enyo.macroize('Each {$product_0.name} weighs {$product_0.weight} pounds.', info);</code></pre></div>
+		
+<div class="subsection params">
+	<h3>Parameters</h3>
+	<ul>
+	
+	<li>
+		<span class="name ">text</span>
+		
+		
+		
+		<div class="type">Type: <a class="glossary" href="#/glossary:String">String</a></div>
+		
+		<div class="description"><p>The template text in which to insert values via macro.</p></div>
+	</li>
+	
+	<li>
+		<span class="name ">map</span>
+		
+		
+		
+		<div class="type">Type: <a class="glossary" href="#/glossary:Object">Object</a></div>
+		
+		<div class="description"><p>The <a class="glossary" href="#/glossary:Object">Object</a> containing the data to be inserted
+into the <code>text</code>.</p></div>
+	</li>
+	
+	<li>
+		<span class="name optional">regex</span>
+		
+		<div class="optional">This parameter is optional</div>
+		
+		
+		
+		<div class="type">Type: <a class="glossary" href="#/glossary:RegExp">RegExp</a></div>
+		
+		<div class="description"><p>The optional pattern to use to match the entries in
+the <code>text</code>.</p></div>
+	</li>
+	
+	</ul>
+</div>
+
+
+		
+<div class="subsection returns">
+	<h3>Returns</h3>
+		<div class="description"><p>The modified <code>text</code> value.</p></div>
+</div>
+
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/enyo/source/ext/macroize.js</span>
+			<span class="line">:37</span>
+		</div>
+	</div>
+</div>
+
+
+<a name="enyo.quickMacroize"></a>
+<div class="entry method public ">
+	<div class="header">
+		<span class="access public">public</span>
+		<span class="name">enyo.quickMacroize&#040;<span class="header-params"><span class="param ">text</span><span class="param ">, map</span><span class="param optional">, regex</span></span>&#041;</span><span>&rarr;</span>
+		<span class="header-returns"><a class="glossary" href="#/glossary:String">String</a></span></div>
+	<div class="content">
+		
+		<div class="description"><p>A non-recursing version of <a href="#/function/enyo.macroize">enyo.macroize()</a>. This means it
+will not expand the same macro more than once in the <a class="glossary" href="#/glossary:String">String</a>, but it
+is much more efficient than the recursing version.</p></div>
+		
+<div class="subsection params">
+	<h3>Parameters</h3>
+	<ul>
+	
+	<li>
+		<span class="name ">text</span>
+		
+		
+		
+		<div class="type">Type: <a class="glossary" href="#/glossary:String">String</a></div>
+		
+		<div class="description"><p>The template text in which tokens will be replaced via macro.</p></div>
+	</li>
+	
+	<li>
+		<span class="name ">map</span>
+		
+		
+		
+		<div class="type">Type: <a class="glossary" href="#/glossary:Object">Object</a></div>
+		
+		<div class="description"><p>The <a class="glossary" href="#/glossary:Object">Object</a> containing the data to be inserted into
+the <code>text</code>.</p></div>
+	</li>
+	
+	<li>
+		<span class="name optional">regex</span>
+		
+		<div class="optional">This parameter is optional</div>
+		
+		
+		
+		<div class="type">Type: <a class="glossary" href="#/glossary:RegExp">RegExp</a></div>
+		
+		<div class="description"><p>The optional pattern to use to match the entries in the <code>text</code>.</p></div>
+	</li>
+	
+	</ul>
+</div>
+
+
+		
+<div class="subsection returns">
+	<h3>Returns</h3>
+		<div class="description"><p>The modified <code>text</code> value.</p></div>
+</div>
+
+		
+		
+		<div class="see">
+	<h3>See Also</h3>
+	<ul>
+	
+		<li><a href="#/function/enyo.macroize">enyo.macroize</a></li>
+	
+	</ul>
+</div>
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/enyo/source/ext/macroize.js</span>
+			<span class="line">:97</span>
+		</div>
+	</div>
+</div>
+
+
+<a name="enyo.quickReplace"></a>
+<div class="entry method public ">
+	<div class="header">
+		<span class="access public">public</span>
+		<span class="name">enyo.quickReplace&#040;<span class="header-params"><span class="param ">text</span><span class="param ">, map</span><span class="param optional">, regex</span></span>&#041;</span><span>&rarr;</span>
+		<span class="header-returns"><a class="glossary" href="#/glossary:String">String</a></span></div>
+	<div class="content">
+		
+		<div class="description"><p>Uses a <a class="glossary" href="#/glossary:RegExp">regular expression</a> pattern to replace tokens in a
+<a class="glossary" href="#/glossary:String">String</a>. This is just like <a href="#/function/enyo.macroize">enyo.macroize()</a>,
+except it does not support nested structures (i.e., dot notation).</p></div>
+		
+<div class="subsection params">
+	<h3>Parameters</h3>
+	<ul>
+	
+	<li>
+		<span class="name ">text</span>
+		
+		
+		
+		<div class="type">Type: <a class="glossary" href="#/glossary:String">String</a></div>
+		
+		<div class="description"><p>The template text in which tokens will be replaced via macro.</p></div>
+	</li>
+	
+	<li>
+		<span class="name ">map</span>
+		
+		
+		
+		<div class="type">Type: <a class="glossary" href="#/glossary:Object">Object</a></div>
+		
+		<div class="description"><p>The <a class="glossary" href="#/glossary:Object">Object</a> containing the data to be inserted into
+the <code>text</code>.</p></div>
+	</li>
+	
+	<li>
+		<span class="name optional">regex</span>
+		
+		<div class="optional">This parameter is optional</div>
+		
+		
+		
+		<div class="type">Type: <a class="glossary" href="#/glossary:RegExp">RegExp</a></div>
+		
+		<div class="description"><p>The optional pattern to use to match the entries in the
+<code>text</code>.</p></div>
+	</li>
+	
+	</ul>
+</div>
+
+
+		
+<div class="subsection returns">
+	<h3>Returns</h3>
+		<div class="description"><p>The modified <code>text</code> value.</p></div>
+</div>
+
+		
+		
+		<div class="see">
+	<h3>See Also</h3>
+	<ul>
+	
+		<li><a href="#/function/enyo.macroize">enyo.macroize</a></li>
+	
+	</ul>
+</div>
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/enyo/source/ext/macroize.js</span>
+			<span class="line">:74</span>
+		</div>
+	</div>
+</div>
+
+
+<a name="enyo.warn"></a>
+<div class="entry method public ">
+	<div class="header">
+		<span class="access public">public</span>
+		<span class="name">enyo.warn&#040;<span class="header-params"><span class="param "></span></span>&#041;</span><span>&rarr;</span>
+		<span class="header-returns"><a class="glossary" href="#/glossary:undefined">undefined</a></span></div>
+	<div class="content">
+		
+		<div class="description"><p>A wrapper for <a class="glossary" href="#/glossary:console.warn">console.warn()</a>, compatible
+across supported platforms. Will output only if the current
+<a href="#/namespace/enyo.logging:level">log level</a> allows it. <a class="glossary" href="#/glossary:Object">Object</a>
+parameters will be serialized via <a class="glossary" href="#/glossary:JSON.stringify">JSON.stringify()</a>
+automatically.</p></div>
+		
+<div class="subsection params">
+	<h3>Parameters</h3>
+	<ul>
+	
+	<li>
+		<span class="name "></span>
+		
+		
+		
+		<div class="type">Type: *</div>
+		
+		<div class="description"><p>The arguments to be logged.</p></div>
+	</li>
+	
+	</ul>
+</div>
+
+
+		
+		
+		
+		<div class="see">
+	<h3>See Also</h3>
+	<ul>
+	
+		<li><a class="glossary" href="#/glossary:console.warn">console.warn</a></li>
+	
+	</ul>
+</div>
+		
+		<div class="source">
+			<span>From </span>
+			<span class="file">enyo26/enyo/source/kernel/log.js</span>
+			<span class="line">:149</span>
+		</div>
+	</div>
+</div>
+
+
+
+		</div>
+
+	</div>
+</div>

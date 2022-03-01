@@ -1,0 +1,335 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Enyo 2.4 Release Notes</h1>
+<p>Welcome to Enyo 2.4! The following items have changed since the 2.3.0-pre.10 public preview release. (Note that this list is not comprehensive; see the commit history in GitHub for a complete list of changes.)</p>
+<h2 id="new-libraries">New Libraries</h2>
+<p>The 2.4 release marks the public introduction of Moonstone, Enyo’s UI library for TV apps, and Spotlight, a library for managing focus states. Also new are the repos <code>bootplate-moonstone</code>, a Moonstone-specific version of the Bootplate starter template, and <code>enyo-webos</code> and <code>enyo-cordova</code>, which provide support for development on webOS for TV and a range of popular third-party platforms, respectively.</p>
+<h2 id="detailed-release-notes">Detailed Release Notes</h2>
+<h3 id="enyo">enyo</h3>
+<ul>
+<li><p>Enyo now supports the W3C pointer events recommendation and will use these events instead of mouse events when available. The existing support for MSPointer events is now enabled only when W3C pointer events aren’t detected, which fixes a touch-recognition problem in Internet Explorer 11.</p></li>
+<li><p>Enyo provides support for the W3C Page Visibility API in the new file <code>page_visibility.js</code>, under the <code>dom</code> package. This normalizes <code>visibilitychange</code> events, as well as the <code>document.hidden</code> and <code>document.visibilityState</code> properties. Fallbacks are used to support older browsers.</p></li>
+<li><p>Added <code>enyo.Video</code>. Also updated base kind <code>enyo.Media</code> to support different playback states (fast forward, rewind, slow forward, slow rewind).</p></li>
+<li><p>Added <code>keymap.js</code> to <code>dom</code> package. This adds a new key mapping feature to the dispatcher; key events gain a new <em>keySymbol</em> property based on a global key mapping. To map a keyCode to a keySymbol, call <code>enyo.dispatcher.registerKeyMap()</code> and pass in the mapping as a simple hash.</p>
+<p>Note that all key events are now dispatched via Signals.</p></li>
+<li><p>Added <code>rendered.js</code> to <code>boot</code> module. <code>enyo.rendered()</code> registers callbacks to be called when <code>renderInto()</code> finishes rendering root component tree.</p></li>
+<li><p>Added <code>scrollToIndex()</code> API method to <code>enyo.DataList</code> and <code>enyo.DataGridList</code>.</p></li>
+<li><p>Deprecated <code>enyo.GridList</code>. Developers should use <code>enyo.DataGridList</code> instead.</p></li>
+<li><p>Made several changes to <code>enyo.Collection</code>:</p>
+<ul>
+<li><p><code>enyo.Collection</code> is once again a subkind of <code>enyo.Component</code>.</p></li>
+<li><p>The <code>filtered</code>, <code>filters</code>, <code>filterProps</code>, and <code>activeFilter</code> properties have been removed, and the <code>filter()</code> method no longer can be used to clear the active filter. The whole filtering mechnanism is being rewritten for greater flexibility and improved performance.</p></li>
+<li><p>Added support for destroying all local records. The <code>destroyAll()</code> method now accepts a <code>local</code> parameter; pass in <code>true</code> to destroy local records via <code>destroyLocal()</code>. Alternatively, you may use the new convenience method <code>destroyAllLocal()</code>.</p>
+<p>Also added convenience method <code>fetchAndDestroyLocal()</code>, which fetches the data for the collection before destroying local records.</p></li>
+<li><p>Added <code>isFetching</code> property, whose value is a boolean indicating whether data is currently being fetched. Typically used to show/hide an “in-progress” spinner control.</p></li>
+</ul></li>
+<li><p>In <code>enyo.Application</code>, removed the <code>controllers</code> property and made <code>enyo.Controller</code> the <code>defaultKind</code>. Controllers should be declared as normal components.</p>
+<p>In a related change, added support for <code>global</code> property to <code>enyo.Controller</code>.</p></li>
+<li><p>Made numerous changes to <code>enyo.Binding</code>:</p>
+<ul>
+<li><p>Removed <code>dirty</code> property, which was found to be not worth supporting.</p></li>
+<li><p>Added <code>allowUndefined</code> property, which defaults to <code>true</code>, allowing propagation of the <code>undefined</code> object. If set to <code>false</code>, <code>undefined</code> will not be propagated without the use of a transform or an overloaded binding kind.</p></li>
+<li><p>You may now call <code>stop()</code> from within a binding’s <code>transform</code> function to stop propagation based on user-defined conditions.</p></li>
+<li><p><code>enyo.Binding</code> now registers for an entire path, and will update in response to changes anywhere in the path.</p></li>
+</ul></li>
+<li><p>Made several updates to <code>enyo.DataRepeater</code>:</p>
+<ul>
+<li><p><code>controller</code> is no longer a special property; this affects DataRepeater, DataList, DataGridList, UiComponent (and its child kinds), and Application. DataRepeater, DataList, and DataGridList should use the <code>collection</code> property instead. For all other kinds, there is no direct replacement for the previous functionality. Instead, use a binding from the path to the desired local property.</p></li>
+<li><p>The <code>length</code> property is no longer bound. Developers are advised to check for the existence of the <code>collection</code> property, and then check the length of the collection (if it exists). This change affects DataList and DataGridList as well as DataRepeater.</p></li>
+<li><p>Fixed issue causing DataRepeater not to render in response to collection changes.</p></li>
+<li><p>Added new <code>selectionEvents</code> property to enable mapping of events other than <code>ontap</code> to the selection process.</p></li>
+</ul></li>
+<li><p>Made several updates to <code>enyo.Model</code>:</p>
+<ul>
+<li><p><code>enyo.Model</code> now employs the default <code>enyo.ObserverSupport</code> and <code>enyo.BindingSupport</code>; as a result, it shares the limitation of working only with the <code>attributes</code> of a data record.</p></li>
+<li><p>Added support for <code>force</code> parameter in <code>set()</code> method. Setting the value to <code>true</code> forces change notifications to fire, even if the new value is the same as the old one.</p></li>
+<li><p>Added support for <code>opts.success</code> callback in <code>didDestroy()</code> (which is itself an internal callback, called before any user-provided callbacks when a record is successfully destroyed).</p></li>
+<li><p>Made changes to improve Model initialization time.</p></li>
+<li><p>Fixed issue in <code>setObject()</code> that could result in failure to detect whether a model has changed. Added related unit test to <code>DataModelingTest.js</code>.</p></li>
+<li><p>Fixed issue in which calling <code>destroy()</code> on previously fetched models would destroy the models locally, but not in the remote data source.</p></li>
+</ul></li>
+<li><p>Reworked the registered event system used by <code>enyo.Model</code> and <code>enyo.Collection</code>, creating a new mixin file, <code>RegisteredEventSupport.js</code>. The new system no longer depends on <code>enyo.Store</code>; thus, the API methods previously available via <code>enyo.Store</code> no longer exist.</p></li>
+<li><p>In <code>enyo.TouchScrollStrategy</code>, added published properties <code>fixedTime</code> and <code>frame</code>, which facade the <code>ScrollMath</code> properties with the same names. Also added change handler methods <code>fixedTimeChanged()</code> and <code>frameChanged()</code>.</p></li>
+<li><p>In <code>enyo.UiComponent</code>, removed the base method <code>modelChanged()</code> and deprecated <code>controllerChanged()</code>; as a result, any developer code calling <code>this.inherited(arguments)</code> from within an overloaded <code>modelChanged()</code> method will fail, and should be removed.</p></li>
+<li><p>Updated XHR references in <code>xhr.js</code> to avoid potential circular references. Also implemented <code>destroy()</code> method in <code>enyo.Ajax</code> and <code>enyo.Async</code> for improved reference cleanup.</p></li>
+<li><p>In <code>BindingSupport.js</code>, addressed issue preventing <code>destroy()</code> from completely destroying component bindings when called on a component. Added related unit test to <code>BindingTest.js</code>.</p></li>
+<li><p>In <code>boot.js</code>, updated <code>enyo.load()</code> to work properly at load time.</p></li>
+<li><p>Made multiple updates to <code>enyo.Collection</code>:</p>
+<ul>
+<li><p>Updated <code>add()</code> to monitor <code>change</code> and <code>destroy</code> events from instantiated models.</p></li>
+<li><p>Added ability to call <code>filter()</code> with no parameters to easily apply the active filter.</p></li>
+<li><p>Fixed issue preventing records from being added at index 0.</p></li>
+</ul></li>
+<li><p>In <code>enyo.Component</code>, added <code>triggerHandler()</code> method, a public API for triggering the handler for a particular type of event. Also modified <code>toString()</code> to return <code>id</code> as well as <code>kindName</code>.</p></li>
+<li><p>In <code>ComputedSupport.js</code>, added default value support to computed properties. Simply provide a configuration object with a key named <code>defaultValue</code> and any value (even <code>undefined</code>). Also updated associated unit tests.</p></li>
+<li><p>Made several updates to <code>enyo.Control</code>:</p>
+<ul>
+<li><p>Added <code>detectTextDirectionality()</code>, which determines the control’s script orientation (i.e., left-to-right or right-to-left) based on its content.</p></li>
+<li><p>Added <code>getDomCssText()</code>, used internally in <code>enyo.Control</code>.</p></li>
+<li><p>Added <code>invalidateStyles()</code>, called by <code>enyo.dom.transformsToDom()</code> in <code>transform.js</code>.</p></li>
+<li><p>Added <code>sendShowingChangedEvent()</code>, which waterfalls an <code>onShowingChanged</code> event when a control’s <code>showing</code> value is modified; also added <code>showingChangedHandler()</code> as default handler for the event. If the control is not showing, the handler will stop propagation of the event. <code>showingChangedHandler()</code> may be overloaded to provide additional handling for the <code>onShowingChanged</code> event.</p></li>
+<li><p>Modified <code>getAbsoluteShowing()</code> so that it now accepts an optional boolean parameter. If <code>true</code> is passed in, computed bounds will not be retrieved to force a layout; instead, the method will rely on the return value of <code>getShowing()</code>. Also fixed issue preventing focus from entering a popup if its owner is a hidden control.</p></li>
+<li><p>Addressed issue that could cause focus to be lost when all items are removed from a list.</p></li>
+<li><p>Fixed deprecated warnings triggered by calls to <code>getAbsoluteBounds()</code>.</p></li>
+<li><p>Updated documentation for <code>hasNode()</code>.</p></li>
+</ul></li>
+<li><p>Made multiple updates to <code>enyo.DataList</code></p>
+<ul>
+<li><p>Added public property <code>fixedChildSize</code>, used to optimize performance when the items in a list have fixed dimensions. This property should be set for any list whose items are of uniform height or width.</p></li>
+<li><p>Added overload version of <code>showingChangedHandler()</code>.</p></li>
+<li><p>Added overload version of <code>destroy()</code> method to address problems with <code>scrollToIndex()</code>.</p></li>
+<li><p>Deprecated the <code>controlsPerPage</code> property because it was not being used properly, leading to problems in some apps; in its place, added <code>pageSizeMultiplier</code> property, which now dynamically determines the optimal number of controls for a given page. Apps should not need to modify <code>pageSizeMultiplier</code> except in very rare circumstances.</p></li>
+<li><p>Modified <code>rendered()</code> to give overloaded kinds the opportunity to respond to the <code>finished</code> event, even when it is delayed.</p></li>
+<li><p>Reworked code to delay certain actions until the list is showing.</p></li>
+<li><p>Updated <code>didScroll()</code> and <code>didResize()</code> to avoid firing events if no collection is available.</p></li>
+<li><p>Fixed issue causing layout problems in DataLists with horizontal orientation.</p></li>
+<li><p>Removed misleading documentation.</p></li>
+</ul></li>
+<li><p>In <code>enyo.DataList</code> and <code>enyo.DataRepeater</code>, renamed <code>getChildForIndex()</code> as <code>childForIndex()</code> and made sure that it returns <code>undefined</code> when that value is expected.</p></li>
+<li><p>In <code>enyo.DataList</code> and <code>VerticalDelegate.js</code>, fixed issue preventing proper updating of properties; also fixed code for determining scrolling threshold in horizontal orientation.</p></li>
+<li><p>In <code>enyo.dispatcher</code>, added <code>enyo.getPosition()</code>, a new API for retrieving the coordinates of the last known mouse/cursor position (or touch, if applicable). Also added related sample, “PositionSample”.</p></li>
+<li><p>In <code>dom.js</code>, added method <code>enyo.dom.getAbsoluteBounds()</code>, which takes into account translateX, translateY, and matrix3d transforms. The existing <code>enyo.Control.getAbsoluteBounds()</code> API is unchanged, but its implementation now utilizes the new method on <code>enyo.dom</code>.</p></li>
+<li><p>In <code>gesture.js</code>, introduced <code>configureHoldPulse()</code> method, used in <code>down()</code> to configure subsequent <code>holdpulse</code> events. <code>configureHoldPulse()</code> accepts a hash of options that may include values for <code>"delay"</code>, <code>"moveTolerance"</code>, <code>"endHold"</code>, and <code>"resume"</code>. Default values are defined in <code>enyo.gesture.drag.holdPulseDefaultConfig</code>.</p></li>
+<li><p>In <code>enyo.Group</code>, added published property <code>allowHighlanderDeactivate</code>. A value of <code>true</code> means that an active highlander item may be deactivated (default is <code>false</code>). The value may be changed at runtime by sending the group an <code>onActivate</code> event with the desired value set on the event’s <code>allowHighlanderDeactivate</code> property.</p></li>
+<li><p>In <code>hooks.js</code>, modfied <code>enyo.updateLocale()</code> so that it is the emitter of the <code>onLocaleChange</code> event.</p></li>
+<li><p>In <code>HorizontalDelegate.js</code> and <code>VerticalDelegate.js</code>, modified <code>initList()</code> to allow scroller settings to be overridden by a subkind or instance. Also added new property <code>posProp</code>, part of reworked support for right-to-left scripts.</p></li>
+<li><p>Made several changes to <code>enyo.Image</code>:</p>
+<ul>
+<li><p>Added published properties <code>sizing</code> and <code>position</code>. When <code>sizing</code> is set, the image is rendered as a <code>&lt;div&gt;</code> with <code>background-image</code>. Valid values are <code>"cover"</code> and <code>"constrain"</code>. When <code>sizing</code> is used, <code>position</code> determines the positioning of the image within its bounds (default is <code>"center"</code>).</p></li>
+<li><p>Modified <code>srcChanged()</code> to guard against regex failure if <code>src</code> property is null.</p></li>
+<li><p>Fixed issue in which some browsers could not read placeholder image data.</p></li>
+</ul></li>
+<li><p>In <code>enyo.Input</code>, modified <code>valueChanged()</code> to manually update the cached value to ensure we have the correct value the next time the attribute is requested or the control is re-rendered.</p></li>
+<li><p>Made several updates to <code>lang.js</code>:</p>
+<ul>
+<li><p>Added <code>enyo.perfNow()</code>, a high-precision, high performance monotonic timestamp, which is independent of changes to the system clock and safer for use in animation, etc. <code>enyo.perfNow()</code> falls back to <code>enyo.now()</code> (based on the JavaScript <code>Date</code> object) on platforms where <code>window.performance.now()</code> is not available. Also modified numerous kinds across the framework to use <code>enyo.perfNow()</code> instead of <code>enyo.now()</code> for tracking duration.</p></li>
+<li><p>Added methods <code>enyo.toUpperCase()</code> and <code>enyo.toLowerCase()</code>. These should be used to replace calls to <code>String.toUpperCase()</code> and <code>String.toLowerCase()</code> in code that needs to be locale-aware.</p></li>
+<li><p>Modified <code>enyo.asyncMethod()</code> to accept an anonymous function as the lone parameter. The previous signature is still valid, as well.</p></li>
+<li><p>Addressed problems with <code>enyo.getPath()</code>, <code>enyo.getPath.fast()</code>, <code>enyo.setPath()</code>, and <code>enyo.setPath.fast()</code> when dealing with computed properties.</p></li>
+</ul></li>
+<li><p>In <code>loader.js</code>, updated <code>decodePackagePath()</code> to properly handle URLs that begin with <code>//</code>.</p></li>
+<li><p>In <code>log.js</code>, added <code>validateArgs()</code> to prevent (or gracefully handle) circular reference errors when stringifying objects.</p></li>
+<li><p>In <code>modal.js</code>, modified the <code>enyo.dispatcher.capture()</code> API so that it no longer bubbles all captured events through the normal event chain, but rather notifies the captureTarget when specific events occur, according to a map of callbacks passed as a parameter to <code>capture()</code>.</p>
+<p>While this is, technically, a breaking change to the <code>enyo.dispatcher.capture()</code> API, the API has not been publicized and is fairly difficult to use. Among the set of controls developed by the Enyo team, it was only used in <code>enyo.Popup</code>, so we assume this change will have minimal impact on the general public.</p></li>
+<li><p>Fixed problem affecting initialization of <code>model</code> property in <code>enyo.ModelController</code> and added unit test to <code>ControllerTest.js</code>. Also addressed a similar situation involving <code>controller</code> property in <code>enyo.UiComponent</code>.</p></li>
+<li><p>In <code>msevents.js</code>, added pointer event support for IE11 and fixed handling of touch events in IE10.</p></li>
+<li><p>Updated <code>enyo.platform</code> to include <code>platformName</code>. Also updated platform detection for Silk 3.x.</p></li>
+<li><p>In <code>enyo.Object</code>, made <code>destroyed</code> flag observable and updated documentation for <code>set()</code>.</p></li>
+<li><p>In <code>enyo.Popup</code>, added <code>allowDefault</code> flag. Default value is <code>false</code>. Setting this to <code>true</code> will stop <code>preventDefault()</code> from being called on captured events. Also, improved centering code in <code>updatePosition()</code>.</p></li>
+<li><p>Updated <code>ready.js</code> so that it no longer uses other Enyo code.</p></li>
+<li><p>In <code>enyo.Repeater</code>, updated documentation for <code>build()</code> method.</p></li>
+<li><p>Optimized <code>RepeaterChildSupport.js</code> to avoid claiming node until necessary.</p></li>
+<li><p>In <code>enyo.RichText</code>, modified <code>disabledChanged()</code> to bubble <code>onDisabledChange</code> event. This is needed because <code>disabledChanged()</code> doesn’t call the parent method in <code>enyo.Input</code>.</p></li>
+<li><p>Made several modifications to <code>enyo.Scroller</code>:</p>
+<ul>
+<li><p>Added overload version of <code>resized()</code> that only propagates <code>resize</code> events to children if the <code>showing</code> property is <code>true</code>. This is part of a fix for issues seen while scrolling or paging in <code>enyo.DataList</code> or <code>enyo.DataGridList</code>.</p></li>
+<li><p>Rewrote <code>cacheScrollPosition()</code> to address caching bug.</p></li>
+<li><p>Modified <code>setScrollLeft()</code> and <code>setScrollTop()</code> to update the cached scroll position when the scroller is hidden or re-rendered.</p></li>
+<li><p>Set <code>noDefer: true</code> for API compatibility.</p></li>
+<li><p>Set the touch strategy to “TranslateScrollStrategy” (instead of “TouchScrollStrategy”) for webOS version 4 and later.</p></li>
+</ul></li>
+<li><p>Updated <code>enyo.Scroller</code> and <code>enyo.ScrollStrategy</code> to normalize new properties returned by <code>getScrollBounds()</code>.</p></li>
+<li><p>In <code>enyo.ScrollMath</code>, updated <code>mousewheel()</code> to allow horizontal scrolling from <code>mousewheel</code> event.</p></li>
+<li><p>In <code>enyo.ScrollMath</code> and <code>enyo.TouchScrollStrategy</code>, addressed issue that could cause touch scrolling to get stuck in overscroll at the bottom of a DataGridList.</p></li>
+<li><p>Modified <code>enyo.Store</code> to throw an error (instead of a warning) when unique records in the same store are found to have the same <code>primaryKey</code>.</p></li>
+<li><p>In <code>enyo.Store</code>, fixed context binding in <code>addListener()</code>, adding related unit test to <code>DataModelingTest.js</code>. Also fixed issues seen when calling <code>findLocal()</code> with no previous entry of data for the record kind.</p></li>
+<li><p>In <code>touch.js</code>, fixed issue causing <code>document.ongesturechange</code> event to not fire on iOS 7.</p></li>
+<li><p>In <code>enyo.UiComponent</code>, addressed issue in which <code>addBefore()</code> did not work correctly if the container had a control parent; added related unit test to <code>ControlTest.js</code>.</p></li>
+<li><p>Made several updates to <code>VerticalDelegate.js</code>:</p>
+<ul>
+<li><p>Fixed problems with item selection.</p></li>
+<li><p>Fixed issue causing display of truncated list after deletion of an item.</p></li>
+<li><p>Added check to refresh page only if it actually has children.</p></li>
+<li><p>Modified <code>didScroll()</code> to update scroll bounds before comparing bounds to scroll threshold.</p></li>
+<li><p>Modified <code>setScrollThreshold()</code> to better handle case in which a DataGridList has a small data set and page 2 has no controls.</p></li>
+</ul></li>
+<li><p>In <code>VerticalGridDelegate.js</code>, modified <code>layout()</code> to add support for right-to-left positioning of grid items. Also rounded values used for positioning and sizing to avoid floating point positioning glitches in WebKit.</p></li>
+<li><p>Made several changes to <code>enyo.xhr</code>:</p>
+<ul>
+<li><p>Added support for boolean request parameters <code>mozSystem</code> and <code>mozAnon</code>. Set <code>mozSystem</code> to <code>true</code> to create a cross-domain XHR; set <code>mozAnon</code> to <code>true</code> to create an anonymous XHR that does not send cookies or authentication headers. Both parameters are currently supported on Firefox OS only.</p></li>
+<li><p>Updated previous change to <code>simplifyFileURL()</code> that disabled use of local file access when fetching a page from a Windows file share. With this update, the hostname is now only omitted for devices running webOS 3 or earlier.</p></li>
+<li><p>Modified <code>request()</code> to call <code>enyo.path.rewrite()</code> on passed-in URL before calling <code>simplifyFileURL()</code>. This fixes the loading of <code>$</code>-prefixed paths from <code>file://</code> URLs.</p></li>
+</ul></li>
+<li><p>Added samples for Enyo core UI controls.</p></li>
+<li><p>Updated “DataRepeaterSample” to show how <code>index</code> property may be used to get item number. Also removed <code>"enyo-fit"</code> CSS class, which was causing the DataRepeater not to scroll on initial upward swipe.</p></li>
+<li><p>In “GroupSample”, fixed issue with grouping in Firefox.</p></li>
+<li><p>In “ImageSample”, fixed issue causing placeholder image to be stretched.</p></li>
+<li><p>Updated <code>AjaxText.js</code> to limit cache control test to iOS 6 only.</p></li>
+<li><p>In <code>enyo/tools</code>, updated npm dependencies (<code>nopt</code> and <code>shelljs</code> packages).</p></li>
+<li><p>Updated <code>lessc.js</code> and <code>minify.js</code> to use relative URLs when compiling LESS files, to be compatible with the bootplate <code>Theme.less</code> scheme for importing and then overriding library variables.</p></li>
+<li><p>In <code>minify.js</code>, fixed handling of non-relative paths, alternate <code>package.js</code> files, and CSS/LESS assets with spaces in their filenames. Also fixed extra quote in external URLs that caused problems external CSS in Firefox.</p></li>
+<li><p>In <code>package.json</code>, reformatted dependencies as a hash map to match npm documentation specifications.</p></li>
+<li><p>Updated Travis CI configuration to use npm cache and PHP 5.5. Temporarily disabled AJAX tests’ ability to affect Travis pass/fail status due to problems with PHP server.</p></li>
+<li><p>Updated <code>enyo.design</code> file, used by the Ares IDE.</p></li>
+</ul>
+<h3 id="onyx">onyx</h3>
+<ul>
+<li><p>Updated components and samples to support the <code>iLib</code> localization library (via <code>enyo-ilib</code>).</p></li>
+<li><p>Updated <code>onyx.Button</code> to prevent pressed state from appearing when button is disabled.</p></li>
+<li><p>In <code>onyx.ContextualPopup</code>, modified action buttons so they behave like standard Enyo buttons.</p></li>
+<li><p>In <code>onyx.IconButton</code>, added code to verify that the IconButton is not disabled before firing events.</p></li>
+<li><p>In <code>onyx.Popup</code>, made <code>defaultZ</code> a published property.</p></li>
+<li><p>In <code>onyx.TabBar</code>, fixed several issues related to changing or removing tabs.</p></li>
+<li><p>In <code>onyx.TabBar.Item</code>, removed unnecessary call to <code>render()</code>.</p></li>
+<li><p>Fixed issue with delayed <code>:active:hover</code> button styling in response to touch.</p></li>
+<li><p>Updated <code>.less</code> files to ensure that <code>&lt;script&gt;</code> tag content isn’t visible.</p></li>
+<li><p>Removed <code>:active:hover</code> button styling, instead applying or removing <code>pressed</code> class in response to appropriate events. Also fixed issues with <code>pressed</code> state as applied to sliders.</p></li>
+<li><p>Updated “DatePickerSample” and “TimePickerSample” to set locale on picker initialization.</p></li>
+<li><p>In “InputSample”, fixed “alwaysLookFocused” checkbox so that unchecking the box actually results in the expected action.</p></li>
+<li><p>In “ListPulldownSample”, added CSS <code>overflow</code> property.</p></li>
+<li><p>In “PickerSample”, replaced <code>onyx.PickerButton</code> with <code>onyx.Button</code> in the “Picker with Static Button”. Also replaced one-off date picker with generic name picker based on <code>onyx.FlyweightPicker</code>.</p></li>
+<li><p>Updated <code>onyx.design</code> file, used by the Ares IDE.</p></li>
+</ul>
+<h3 id="layout">layout</h3>
+<ul>
+<li><p>Removed <code>enyo.GridList</code>, the supporting kind <code>enyo.GridFlyweightRepeater</code>, and “GridListSample”. Developers should use the new <code>enyo.DataGridList</code> kind instead.</p></li>
+<li><p>In <code>enyo.Arranger</code>, disabled translation for any panel containing video.</p></li>
+<li><p>In <code>enyo.ContextualLayout</code>, fixed miscalculation in <code>applyHorizontalPositioning()</code> that could cause contextual popups to bleed off the screen.</p></li>
+<li><p>In <code>enyo.FittableLayout</code>, added overload <code>constructor()</code> method to ensure that correct CSS class is applied if control is explicitly marked as not right-to-left.</p></li>
+<li><p>In <code>enyo.GridListImageItem</code>, fixed documentation for <code>useSubCaption</code> property.</p></li>
+<li><p>In <code>enyo.ImageView</code>, fixed issue in which image would not render on initial load in Safari, but would after resize.</p></li>
+<li><p>In <code>enyo.List</code>, modified behavior of persistent swipeable items so that the <code>persistentItemVisible</code> flag is only set to <code>true</code> if a swipe has completed. Previously, it had been set to <code>true</code> on incomplete swipes as well, leading to unexpected behavior on the subsequent swipe.</p>
+<p>Also, reworked handling of right-to-left scripts.</p></li>
+<li><p>Made several changes to <code>enyo.Panels</code>:</p>
+<ul>
+<li><p>Updated <code>isScreenNarrow()</code> to support Android Chrome browser and Android version 4.4 and higher.</p></li>
+<li><p>Modified <code>setIndex()</code> so that, when <code>wrap</code> is <code>true</code>, the index value wraps to its initial value when moving forward from the last index, and to its last value when moving backward from the initial index.</p>
+<p>Also in <code>setIndex()</code>, ensured that observers are sent the correct index value when value is clamped.</p></li>
+<li><p>Removed <code>disableTranslation</code> hack, as the webOS bug it worked around has been fixed.</p></li>
+</ul></li>
+<li><p>In <code>enyo.PanZoomView</code>, fixed ownership of unscaled components.</p></li>
+<li><p>Updated <code>layout.design</code> file, used by the Ares IDE.</p></li>
+</ul>
+<h3 id="enyo-ilib">enyo-ilib</h3>
+<ul>
+<li><p>Updated <code>iLib</code> to version <code>20140409-build-5.0-012</code>.</p></li>
+<li><p>Made numerous updates to <code>glue.js</code>:</p>
+<ul>
+<li><p>Updated <code>enyo.updateI18NClasses()</code> to apply the <code>enyo-locale-non-latin</code> CSS class to the <code>&lt;body&gt;</code> tag for languages having missing glyphs in either the Miso or Museo Sans fonts. This lets us avoid the “ransom note” effect, in which multiple fonts are used in the same word.</p></li>
+<li><p>Added the class <code>&lt;enyo-locale&gt;-non-italic</code> for locales that use scripts that do not commonly use italic fonts. This may be used in the Enyo CSS classes to determine whether or not to turn on italics for some parts of the UI.</p></li>
+<li><p>Added support for passing a locale string as an argument to <code>enyo.updateLocale()</code>.</p></li>
+<li><p>Added support for locale-safe string case-changing.</p></li>
+<li><p>Restored code that updates locale settings at library load time.</p></li>
+<li><p>Allowed caching of JSON files.</p></li>
+<li><p>Added override to display Latin characters in Korean.</p></li>
+<li><p>Added Croatian and Bosnian to list of languages using characters that have glyphs missing from Miso/Museo (<code>nonLatinLanguageOverrides</code>).</p></li>
+<li><p>Fixed ISO code for Polish language.</p></li>
+<li><p>Minor updates for IE8 compatibility.</p></li>
+</ul></li>
+<li><p>Restored Onyx-based samples.</p></li>
+</ul>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../js/main.js"></script>
+  <script type="text/javascript" src="../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>

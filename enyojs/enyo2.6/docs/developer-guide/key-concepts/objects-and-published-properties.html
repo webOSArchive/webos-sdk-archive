@@ -1,0 +1,150 @@
+  <!DOCTYPE html>
+  <html>
+  	<head>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Enyo API Reference</title>
+  		<link rel="shortcut icon" href="/favicon.ico"/>
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+  		<meta name="apple-mobile-web-app-capable" content="yes"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  
+  		<link rel="stylesheet" type="text/css" href="../../css/prism.css" />
+  		
+  		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+  
+  		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  		<!--[if lt IE 9]>
+  		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  		<![endif]-->
+  
+  
+  	</head>
+  	<body>
+  		<div class="container-fluid">
+  			<div class="row" id="header">
+  				<div class="col-xs-12">
+  					<div class="row">
+  						<!-- PLACEHOLDER FOR LOGO -->
+  						<div class="col-sm-6 title">
+  							<span>ENYODOCS</span>
+  						</div>
+  						<div class="col-sm-6 primary-nav">
+  								<a href="http://enyojs.com">ENYOJS.COM</a>
+  								<a href="../../index.html#/home">DOCS HOME</a>
+  						</div>
+  					</div>
+  					<div class="row">
+  
+  						<nav role="navigation" class="navbar navbar-default fixed-nav">
+  							<!-- Brand and toggle get grouped for better mobile display -->
+  							<div class="navbar-header">
+  								<button id="navbarButton" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  									<span class="sr-only">Toggle navigation</span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  									<span class="icon-bar"></span>
+  								</button>
+  								<!--<a href="#" class="navbar-brand">Enyo Docs</a>-->
+  							</div>
+  							<!-- Collection of nav links and other content for toggling -->
+  							<div id="navbarCollapse" class="collapse navbar-collapse">
+  								<ul class="nav navbar-nav">
+  									<li><a href="../../index.html#/namespaces">Namespaces</a></li>
+  									<li><a href="../../index.html#/kinds">Kinds</a></li>
+  									<li><a href="../../index.html#/glossary">Glossary</a></li>
+  									<li><a href="../../index.html#/utilities">Utilities</a></li>
+  									<li><a href="../index.html">Developer Guide</a></li>
+  									<li><a href="http://enyojs.com/sampler">Enyo Sampler</a></li>
+  									<li class="top hidden-xs hidden-sm"><a id="top-link" href="javascript:void(0);">top</a></li>
+  									<li class="show-hide-private"><a id="show-hide-link" href="javascript:void(0);">show private</a></li>
+  								</ul>
+  							</div>
+  						</nav>
+  
+  					</div>
+  				</div>
+  			</div>
+  
+  		</div>
+
+<div id="index" class="hide-private">
+
+  <div id="content" class="guide container">
+
+<h1 class="title">Objects and Published Properties</h1>
+<h2 id="enyo.object">enyo.Object</h2>
+<p><a href="../..//#/kind/enyo.Object">enyo.Object</a> implements the Enyo framework’s property publishing system. Published properties are declared in a hash called <code>published</code> within a call to <a href="../..//#/namespace/enyo.kind">enyo.kind()</a>. To get the value of a published property, call <code>get(&lt;propertyName&gt;)</code>; to set the value, call <code>set(&lt;propertyName&gt;, value)</code>.</p>
+<p>By convention, the setter for a published property will trigger an optional <code>&lt;propertyName&gt;Changed</code> method when called.</p>
+<p>In the following example, <code>myValue</code> becomes a regular property on the <code>"MyObject"</code> prototype, with a default value of 3:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1">    <span class="va">enyo</span>.<span class="at">kind</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb1-2" title="2">        <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;MyObject&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-3" title="3">        <span class="dt">kind</span><span class="op">:</span> <span class="st">&quot;enyo.Object&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-4" title="4"></a>
+<a class="sourceLine" id="cb1-5" title="5">        <span class="co">// declare &#39;published&#39; properties</span></a>
+<a class="sourceLine" id="cb1-6" title="6">        <span class="dt">published</span><span class="op">:</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-7" title="7">            <span class="dt">myValue</span><span class="op">:</span> <span class="dv">3</span></a>
+<a class="sourceLine" id="cb1-8" title="8">        <span class="op">},</span></a>
+<a class="sourceLine" id="cb1-9" title="9"></a>
+<a class="sourceLine" id="cb1-10" title="10">        <span class="co">// optional method that is called whenever set(&quot;myValue&quot;, &lt;value&gt;) is called</span></a>
+<a class="sourceLine" id="cb1-11" title="11">        <span class="dt">myValueChanged</span><span class="op">:</span> <span class="kw">function</span>(inOldValue) <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-12" title="12">            <span class="kw">this</span>.<span class="at">delta</span> <span class="op">=</span> <span class="kw">this</span>.<span class="at">myValue</span> <span class="op">-</span> inOldValue<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-13" title="13">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb1-14" title="14">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>Since we have declared a property-changed method (i.e., <code>myValueChanged</code>) to observe <code>set()</code> calls on the <code>myValue</code> property, it will be called when <code>set("myValue", &lt;value&gt;)</code> is called, as illustrated by the following:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1">    myobj <span class="op">=</span> <span class="kw">new</span> <span class="at">MyObject</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-2" title="2">    <span class="kw">var</span> x <span class="op">=</span> <span class="va">myobj</span>.<span class="at">get</span>(<span class="st">&quot;myValue&quot;</span>)<span class="op">;</span> <span class="co">// x gets 3</span></a>
+<a class="sourceLine" id="cb2-3" title="3"></a>
+<a class="sourceLine" id="cb2-4" title="4">    <span class="va">myobj</span>.<span class="at">set</span>(<span class="st">&quot;myValue&quot;</span><span class="op">,</span> <span class="dv">7</span>)<span class="op">;</span> <span class="co">// myValue becomes 7; myValueChanged side-effect sets delta to 4</span></a></code></pre></div>
+<p>Property-changed methods are only called when setters are invoked with a different value. If you were to call <code>set()</code> a second time with the same value, the changed handler would not be invoked:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1">        <span class="va">myobj</span>.<span class="at">set</span>(<span class="st">&quot;myValue&quot;</span><span class="op">,</span> <span class="dv">7</span>)<span class="op">;</span> <span class="co">// myValue stays 7; myValueChanged is *not* called</span></a></code></pre></div>
+<p>Published properties are stored as regular properties on the object prototype, so it’s possible to query or set their values directly:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1">        <span class="kw">var</span> x <span class="op">=</span> <span class="va">myobj</span>.<span class="at">myValue</span><span class="op">;</span></a></code></pre></div>
+<p>Note that when you set a property’s value directly, the property-changed method is not called.</p>
+<h2 id="object-and-array-values">Object and Array Values</h2>
+<p>In most cases, published properties should only contain basic values, such as numbers and strings. If you use an array or an object as the value of a property, the mechanism that detects changes will likely fail. This is because of the way that JavaScript handles comparisons between arrays and objects.</p>
+<p>In JavaScript, two arrays or objects are not considered equal if they merely share the same data in the same structure; they must also be the same <em>instance</em>. A <code>get(&lt;propertyName&gt;)</code> call that returns an object or array returns a reference to the internal state, since if you then modify that object or array, you modify the same instance that’s held inside the kind instance.</p>
+<p>You could work around this by overriding <code>get()</code> to have it use <code>enyo.clone()</code> to make a shallow copy of the object or array. Then, if you pass that object into <code>set()</code>, it won’t be considered equal to the internal one, since it’s a different object in memory. However, you would have a new problem in that the property-changed method will be called even if the two objects have all the same contents.</p>
+
+  </div>
+
+</div>
+
+  <div class="container-fluid">
+    <div class="row" id="footer">
+  	<div class="license">
+  		<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  	</div>
+      <div class="text-right generated">
+        Generated Monday, February 28, 2022
+      </div>
+    </div>
+  </div>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript">$.browser = {}; $.browser.msie = navigator.userAgent.match(/msie/i); /* Patch for hashchange */</script>
+  <script type="text/javascript" src="../../js/jquery.ba-hashchange.min.js"></script>
+  <script type="text/javascript" src="../../js/main.js"></script>
+  <script type="text/javascript" src="../../js/prism.js"></script>
+  
+  <script type="text/javascript">
+  
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28416388-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  
+  </script>
+  
+  </body>
+  </html>
