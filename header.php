@@ -217,8 +217,10 @@
 
                   <li><a href="https://github.com/enyojs/enyo/wiki"><img src="assets/check.png" style="vertical-align:top;"> EnyoJS Wiki</a></li>
 
-                   <li><a href="http://sdk.webosarchive.com/enyojs" target="_top"><img src="assets/check.png" style="vertical-align:top;"> EnyoJS Docs</a></li>
+                   <li><a href="http://sdk.webosarchive.com/enyojs" target="_top"><img src="assets/check.png" style="vertical-align:top;"> EnyoJS 2.6 Docs</a></li>
 
+                   <li><a href="http://nightly.enyojs.com/enyo-nightly-20180402014451/docs/#/home" target="_top"><img src="assets/check.png" style="vertical-align:top;"> EnyoJS 2.7 Docs</a></li>
+                   
                   <li><a href="https://github.com/codepoet80/enyo2-bootplate" target="_top"><img src="assets/check.png" style="vertical-align:top;"> Cross Platform Bootplate</a></li>
                 </ul>
               </div>
