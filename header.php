@@ -211,7 +211,7 @@
                   <li><a href="https://webos-internals.org/wiki/Main_Page"><img src="assets/check.png" style="vertical-align:top;"> WebOS Internals Wiki</a></li>
                 </ul>
 
-                <h4 class="menu-heading"><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/design_resources.html" target="_top">Cross Platform (Enyo 2)</a></h4>
+                <h4 class="menu-heading"><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/design_resources.html" target="_top">Cross Platform</a></h4>
                 <ul class="nav-list last">
                   <li><a href="http://www.webosarchive.com/enyo2sampler"><img src="assets/check.png" style="vertical-align:top;"> EnyoJS 2.5.1 Sampler</a></li>
 
