@@ -152,6 +152,8 @@
 
                   <li><a href="http://twitter.com/webosdev" target="_blank"><img src="assets/check.png" style="vertical-align:top;"> Twitter</a></li>
 
+                  <li><a href="http://www.webosarchive.com/docs/community" target="_blank"><img src="assets/check.png" style="vertical-align:top;"> Discord</a></li>
+
                   <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/community/irc.html" target="_top"><img src="assets/wayback.png" style="vertical-align:top;"> IRC</a></li>
 
                   <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/rss_feeds.html" target="_top"><img src="assets/wayback.png" style="vertical-align:top;"> RSS</a></li>
