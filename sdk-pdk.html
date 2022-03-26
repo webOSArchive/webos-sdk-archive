@@ -233,32 +233,39 @@
 
                 <p class="nomargin">Download and install the latest version of Java&trade; supported on your version of OS X.<br>
 
-                    <p class="def-button"><a href="https://support.apple.com/en-us/HT204036" target="_blank">Download Java</a></p>
+                <p class="def-button"><a href="https://support.apple.com/en-us/HT204036" target="_blank">Download Java</a></p>
 
-                    <h3>Install Drivers</h3>
+                <h3>Install Drivers</h3>
 
-                    <p class="bodytext">The official Novacom drivers are available for all supported 32-bit OS X/macOS versions.</p>
-                    <p class="def-button"><a href="http://stacks.webosarchive.com/sdk/palm-novacom_all-platforms.zip" target="_blank">Download Drivers</a>
+                <p class="bodytext">The official Novacom drivers are available for all supported 32-bit OS X/macOS versions.</p>
+                <p class="def-button"><a href="http://stacks.webosarchive.com/sdk/palm-novacom_all-platforms.zip" target="_blank">Download Drivers</a>
 
-                        <p class="bodytext">Unfortunately, 64-bit macOS was not a supported platform. However, hobby developer <a href="https://github.com/incidentist/">Dan Kurtz</a> has compiled a set of drivers that work with macOS Catalina and beyond, in 64-bit clean
-                            mode:
-                        </p>
-                        <p class="def-button"><a href="https://github.com/incidentist/novacomd/releases/tag/macos64" target="_blank">64-bit macOS Drivers</a>
+                <p class="bodytext">Unfortunately, 64-bit macOS was not a supported platform. However, hobby developer <a href="https://github.com/incidentist/">Dan Kurtz</a> has compiled a set of drivers that work with macOS Catalina and beyond, in 64-bit clean
+                    mode:
+                </p>
+                <p class="def-button"><a href="https://github.com/incidentist/novacomd/releases/tag/macos64" target="_blank">64-bit macOS Drivers</a>
+                <p class="bodytext">
+                    <b>Note:</b> Apple Silicon based Macs (eg: M1) can use the 64-bit macOS drivers above via Rosetta, but you'll need to use <a href="https://brew.sh/">brew</a> with <a href="https://gist.github.com/progrium/b286cd8c82ce0825b2eb3b0b3a0720a0">forced x86 emulation</a>, and libusb compatibility.
+<pre>
+arch -x86_64 zsh /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+arch -x86_64 /usr/local/bin/brew install libusb-compat
+</pre>
+                </p>
 
-                            <h3>Install VirtualBox&trade;</h3>
+                <h3>Install VirtualBox&trade;</h3>
 
-                            <p class="bodytext">The webOS emulator is built on VirtualBox, virtual machine software that you can download free from Oracle&reg;. VirtualBox is required before installing the HP webOS SDK. <b>Note:</b> The emulator now supports Virtualbox 4.0.36
-                                r71416 and 4.1.0 r73009.</p>
+                <p class="bodytext">The webOS emulator is built on VirtualBox, virtual machine software that you can download free from Oracle&reg;. VirtualBox is required before installing the HP webOS SDK. <b>Note:</b> The emulator now supports Virtualbox 4.0.36
+                    r71416 and 4.1.0 r73009.</p>
 
-                            <p class="def-button"><a href="https://www.virtualbox.org/wiki/Download_Old_Builds" target="_blank">Download
-            VirtualBox</a></p>
+                <p class="def-button"><a href="https://www.virtualbox.org/wiki/Download_Old_Builds" target="_blank">Download VirtualBox</a></p>
 
-                            <h3>Download the SDK/PDK disk image file</h3>
+                <h3>Download the SDK/PDK disk image file</h3>
 
-                            <p class="def-button"><a href="http://stacks.webosarchive.com/sdk/Palm_webOS_SDK.3.0.5.676.dmg" target="_blank">Download
-            SDK/PDK</a></p>
+                <br/>
+                <p class="def-button"><a href="http://stacks.webosarchive.com/sdk/Palm_webOS_SDK.3.0.5.676.dmg" target="_blank">Download SDK/PDK</a></p>
 
-                            <h3><br> Uninstall any existing SDK/PDK installations</h3>
+                <h3><br> Uninstall any existing SDK/PDK installations</h3>
+
             </div>
             <a id="c23382" name="c23382"></a>
 
