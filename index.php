@@ -79,7 +79,7 @@ if (strstr($browserAsString, " Mobi"))
   echo("<br><div style='margin:auto; width:60%; padding: 25px; border: 1px solid red;background: white;'><p align='center'><b><em>Note: ");
   if (strstr($browserAsString, " AppleWebKit/"))
   {
-    echo("Due to the age of this site, the menus do not work with mobile Safari, and a significant portion of the site content will be unaccessible to you. To use the menus please use Chrome or Firefox, or switch to a Desktop environment.");
+    echo("Due to the age of this site, some menus may not work with mobile Safari, and a significant portion of the site content may be unaccessible to you. You may need to switch to a Desktop environment.");
   }
   else
   {
