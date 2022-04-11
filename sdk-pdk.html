@@ -246,7 +246,7 @@
                 <p class="bodytext">
                     <b>Note:</b> Apple Silicon based Macs (eg: M1) can use the 64-bit macOS drivers above via Rosetta, but you'll need to to install libusb with <a href="https://brew.sh/">brew</a> in <a href="https://gist.github.com/progrium/b286cd8c82ce0825b2eb3b0b3a0720a0">forced x86 compatibility mode</a>.
 <pre>
-arch -x86_64 zsh /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 arch -x86_64 /usr/local/bin/brew install libusb-compat
 </pre>
                 </p>
