@@ -219,7 +219,7 @@
 
                   <li><a href="https://github.com/enyojs/enyo/wiki"><img src="assets/check.png" style="vertical-align:top;"> EnyoJS Wiki</a></li>
 
-                   <li><a href="http://sdk.webosarchive.com/enyojs" target="_top"><img src="assets/check.png" style="vertical-align:top;"> EnyoJS 2.6 Docs</a></li>
+                   <li><a href="http://sdk.webosarchive.com/enyojs/enyo2.6/docs/#/home" target="_top"><img src="assets/check.png" style="vertical-align:top;"> EnyoJS 2.6 Docs</a></li>
 
                    <li><a href="http://nightly.enyojs.com/enyo-nightly-20180402014451/docs/#/home" target="_top"><img src="assets/check.png" style="vertical-align:top;"> EnyoJS 2.7 Docs</a></li>
                    
