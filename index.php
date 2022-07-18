@@ -1,7 +1,7 @@
 <?php
 //Figure out which page to load
 $theContent = "sdk-pdk";
-if ($_GET['page'] != "") {
+if (isset($_GET['page']) && $_GET['page'] != "") {
   $thePage = $_GET['page'];
   $thePage = str_replace(".html", "", $thePage);
   $theContent = $thePage;
