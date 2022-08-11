@@ -10,4 +10,4 @@ None of the original rights holders have approved or endorsed the maintenance or
 
 ## Online Version
 
-You can view a deployed version of this sdk at http://sdk.webosarchive.com
+You can view a deployed version of this sdk at http://sdk.webosarchive.org

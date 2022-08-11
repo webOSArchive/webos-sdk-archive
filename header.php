@@ -1,11 +1,11 @@
 <div id="header" style="min-width:1095">
     <div id="header_inner">
       <div class="hp-center">
-        <a href="http://sdk.webosarchive.com" id="logo" name="logo"><img src="assets/logo24.png" alt="Palm Developer Center" width="227" height="41" /></a>
+        <a href="http://sdk.webosarchive.org" id="logo" name="logo"><img src="assets/logo24.png" alt="Palm Developer Center" width="227" height="41" /></a>
 
         <ul class="hp-nav" id="nav">
 
-        <li><a href="http://www.webosarchive.com" title="webOS Archive" target="_top" class="top">webOS Archive</a></li>
+        <li><a href="http://www.webosarchive.org" title="webOS Archive" target="_top" class="top">webOS Archive</a></li>
 
         <li class="current">
             <a title="Resources" target="_top" class="top">Resources</a>
@@ -152,7 +152,7 @@
 
                   <li><a href="http://twitter.com/webosdev" target="_blank"><img src="assets/check.png" style="vertical-align:top;"> Twitter</a></li>
 
-                  <li><a href="http://www.webosarchive.com/docs/community" target="_blank"><img src="assets/check.png" style="vertical-align:top;"> Discord</a></li>
+                  <li><a href="http://www.webosarchive.org/docs/community" target="_blank"><img src="assets/check.png" style="vertical-align:top;"> Discord</a></li>
 
                   <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/community/irc.html" target="_top"><img src="assets/wayback.png" style="vertical-align:top;"> IRC</a></li>
 
@@ -178,7 +178,7 @@
                 <h4 class="menu-heading">Community Sites</h4>
 
                 <ul class="nav-list last">
-                  <li><a href="http://www.webosarchive.com" target="_blank"><img src="assets/check.png" style="vertical-align:top;"> webOS Archive</a></li>
+                  <li><a href="http://www.webosarchive.org" target="_blank"><img src="assets/check.png" style="vertical-align:top;"> webOS Archive</a></li>
 
                   <li><a href="https://web.archive.org/web/20130130211140/http://www.mobspot.com/" target="_blank"><img src="assets/wayback.png" style="vertical-align:top;"> mobspot</a></li>
 
@@ -215,11 +215,11 @@
 
                 <h4 class="menu-heading"><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/design_resources.html" target="_top">Cross Platform</a></h4>
                 <ul class="nav-list last">
-                  <li><a href="http://sdk.webosarchive.com/enyo2sampler"><img src="assets/check.png" style="vertical-align:top;"> EnyoJS 2.5.1 Sampler</a></li>
+                  <li><a href="http://sdk.webosarchive.org/enyo2sampler"><img src="assets/check.png" style="vertical-align:top;"> EnyoJS 2.5.1 Sampler</a></li>
 
                   <li><a href="https://github.com/enyojs/enyo/wiki"><img src="assets/check.png" style="vertical-align:top;"> EnyoJS Wiki</a></li>
 
-                   <li><a href="http://sdk.webosarchive.com/enyojs/enyo2.6/docs/#/home" target="_top"><img src="assets/check.png" style="vertical-align:top;"> EnyoJS 2.6 Docs</a></li>
+                   <li><a href="http://sdk.webosarchive.org/enyojs/enyo2.6/docs/#/home" target="_top"><img src="assets/check.png" style="vertical-align:top;"> EnyoJS 2.6 Docs</a></li>
 
                    <li><a href="http://nightly.enyojs.com/enyo-nightly-20180402014451/docs/#/home" target="_top"><img src="assets/check.png" style="vertical-align:top;"> EnyoJS 2.7 Docs</a></li>
                    
