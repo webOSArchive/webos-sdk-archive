@@ -339,12 +339,14 @@ arch -x86_64 /usr/local/bin/brew install libusb-compat
                     the device. If you are running a 32-bit i686 Linux desktop, you should be able to use the standard&nbsp;g++ compiler. (On x64 Linux, the native desktop toolchain will generate x64 code, which will not work in the emulator.)</p>
 
                 <h4>Note:</h4>
-                These instructions were originally written for Ubuntu 14.04.5 LTS (Trusty Tahr), notes have been added where the installation process differs for more modern releases, and the update process has been tested on Ubuntu 20.04 LTS.</p>
+                These instructions were originally written for Ubuntu 14.04.5 LTS (Trusty Tahr), notes have been added where the installation process differs for more modern releases, and have been tested on Ubuntu 20.04 LTS.</p>
 
                 <h3>Update the Package Repository Information</h3>
                 <pre>sudo apt-get update</pre>
 
                 <h3>Install Java&trade;</h3>
+
+                <p><b>Note:</b> The following steps for installing Java no longer work and have been preserved for archival purposes only. Instead, <a href="https://www.fosstechnix.com/install-oracle-java-8-on-ubuntu-20-04/">install Oracle Java 8 by following these instructions</a>.</p>
 
                 <p class="bodytext">Download and install the OpenJRE Java Runtime Environment (JRE). The SDK is incompatible with the default Ubuntu GNU Compiler for Java (GCJ), and the Java JRE is no longer available. Example:</p>
 
@@ -353,9 +355,6 @@ arch -x86_64 /usr/local/bin/brew install libusb-compat
                 <p class="bodytext">To set Oracle JDK8 as default, install the "oracle-java8-set-default" package.
                     <pre>sudo apt install oracle-java8-set-default</pre> On Ubuntu systems, oracle-java8-set-default is most probably installed automatically with this package.
                 </p>
-
-                <p><b>Note:</b> The above steps no longer work and have been preserved for archival purposes only. Instead, <a href="https://www.fosstechnix.com/install-oracle-java-8-on-ubuntu-20-04/">install Oracle Java 8 by following these instructions</a>.</p>
-
 
                 <h3>Install VirtualBox</h3>
 
