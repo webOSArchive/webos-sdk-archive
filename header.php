@@ -223,7 +223,9 @@
 
                    <li><a href="http://nightly.enyojs.com/enyo-nightly-20180402014451/docs/#/home" target="_top"><img src="assets/check.png" style="vertical-align:top;"> EnyoJS 2.7 Docs</a></li>
                    
-                  <li><a href="https://github.com/codepoet80/enyo2-bootplate" target="_top"><img src="assets/check.png" style="vertical-align:top;"> Cross Platform Bootplate</a></li>
+                  <li><a href="https://github.com/webosarchive/enyo2-bootplate" target="_top"><img src="assets/check.png" style="vertical-align:top;"> Cross Platform Bootplate</a></li>
+
+                  <li><a href="https://cordova.apache.org/docs/en/2.2.0/ target="_top"><img src="assets/check.png" style="vertical-align:top;"> Cordova API Reference</a></li>
 
                   <li><a href="https://github.com/webOS-ports/webos-ports-sdk" target="_top"><img src="assets/check.png" style="vertical-align:top;"> LuneOS SDK Tools</a></li>
 
