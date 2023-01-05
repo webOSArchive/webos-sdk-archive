@@ -208,6 +208,8 @@
 
                   <li><a href="docs/index.php?reference.html"><img src="assets/check.png" style="vertical-align:top;"> API Reference</a></li>
 
+                  <li><a href="https://www.webosbrew.org/pages/luna-service-bus.html"><img src="assets/check.png" style="vertical-align:top;"> Luna Service Bus</a></li>
+
                   <li><a href="https://kylemaas.github.io/luna-sysmgr/index.htm"><img src="assets/check.png" style="vertical-align:top;"> Luna Service Reference</a></li>
                   
                   <li><a href="https://webos-internals.org/wiki/Main_Page"><img src="assets/check.png" style="vertical-align:top;"> WebOS Internals Wiki</a></li>
