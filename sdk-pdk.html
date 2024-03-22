@@ -131,86 +131,86 @@
                 <p class="bodytext">The Novacom drivers are available for both 32-bit and 64-bit Windows (7-10).</p>
                 <p class="def-button"><a href="https://www.webosarchive.org/sdk/palm-novacom_all-platforms.zip" target="_blank">Supported Platform Drivers</a>
 
-                    <h3>Install VirtualBox</h3>
+                <h3>Install VirtualBox (Optional)</h3>
 
-                    <p class="bodytext">The webOS emulator is built on VirtualBox&trade;, virtual machine software that you can download free from Oracle&reg;. VirtualBox is required before installing the HP webOS SDK. <b>Note:</b> The webOS emulator now runs on Virtualbox
-                        4.0.36 r71416 and 4.1.0 r73009.</p>
+                <p class="bodytext">The webOS emulator is built on VirtualBox&trade;, virtual machine software that you can download free from Oracle&reg;. VirtualBox is required before installing the HP webOS SDK. <b>Note:</b> The webOS emulator now runs on Virtualbox
+                    4.0.36 r71416 and 4.1.0 r73009.</p>
 
-                    <p class="def-button"><a href="https://www.virtualbox.org/wiki/Download_Old_Builds" target="_blank">Download
-            VirtualBox</a></p>
+                <p class="def-button"><a href="https://www.virtualbox.org/wiki/Download_Old_Builds" target="_blank">Download
+                VirtualBox</a></p>
 
-                    <h3>Install the HP webOS SDK for Windows</h3>
+                <h3>Install the HP webOS SDK for Windows</h3>
 
-                    <ol>
-                        <li>Download the appropriate Windows SDK installer (Windows Vista and higher only):
+                <ol>
+                    <li>Download the appropriate Windows SDK installer (Windows Vista and higher only):
 
-                            <p><a class="def-button" href="https://www.webosarchive.org/sdk/HP_webOS_SDK-Win-3.0.5-676-x86.exe" target="_tab">Download</a>&nbsp; SDK/PDK for 32-bit machines.</p>
+                        <p><a class="def-button" href="https://www.webosarchive.org/sdk/HP_webOS_SDK-Win-3.0.5-676-x86.exe" target="_tab">Download</a>&nbsp; SDK/PDK for 32-bit machines.</p>
 
-                            <p><a class="def-button" href="https://www.webosarchive.org/sdk/HP_webOS_SDK-Win-3.0.5-676-x64.exe" target="_tab">Download</a>&nbsp; SDK/PDK for 64-bit machines.</p>
-                        </li>
+                        <p><a class="def-button" href="https://www.webosarchive.org/sdk/HP_webOS_SDK-Win-3.0.5-676-x64.exe" target="_tab">Download</a>&nbsp; SDK/PDK for 64-bit machines.</p>
+                    </li>
 
-                        <li>Ensure VirtualBox is not running before starting the webOS SDK Installer.
-                        </li>
+                    <li>Ensure VirtualBox is not running before starting the webOS SDK Installer.
+                    </li>
 
-                        <li>Double-click the webOS SDK Installer file.</li>
+                    <li>Double-click the webOS SDK Installer file.</li>
 
-                        <li>Proceed through the licensing agreements.</li>
+                    <li>Proceed through the licensing agreements.</li>
 
-                        <li>Click "Finish" to complete the installation.</li>
-                    </ol>
+                    <li>Click "Finish" to complete the installation.</li>
+                </ol>
 
-                    <h3>Download the CodeSourcery Toolchain (PDK only)</h3>
+                <h3>Download the CodeSourcery Toolchain (PDK only)</h3>
 
-                    <p class="bodytext">Perform this step only if you intend to do plug-in or other C/C++ development.</p>
+                <p class="bodytext">Perform this step only if you intend to do plug-in or other C/C++ development.</p>
 
-                    <p class="bodytext">If not already installed, download the CodeSourcery Toolchain&mdash;Sourcery G++ Lite for ARM GNU/Linux.&nbsp;You can download this from the <a href="http://www.codesourcery.com/" target="_blank">CodeSourcery</a>&nbsp;website.</p>
+                <p class="bodytext">If not already installed, download the CodeSourcery Toolchain&mdash;Sourcery G++ Lite for ARM GNU/Linux.&nbsp;You can download this from the <a href="http://www.codesourcery.com/" target="_blank">CodeSourcery</a>&nbsp;website.</p>
 
-                    <p class="bodytext">To download the CodeSourcery Toolchain, go to:</p>
+                <p class="bodytext">To download the CodeSourcery Toolchain, go to:</p>
 
-                    <p class="bodytext"><a href="https://sourcery.mentor.com/sgpp/lite/arm/portal/subscription3057" target="_blank">https://sourcery.mentor.com/sgpp/lite/arm/portal/subscription3057</a></p>
+                <p class="bodytext"><a href="https://sourcery.mentor.com/sgpp/lite/arm/portal/subscription3057" target="_blank">https://sourcery.mentor.com/sgpp/lite/arm/portal/subscription3057</a></p>
 
-                    <p class="bodytext">Click on the "Sourcery G++ Lite 2009q1-203" link, and download the&nbsp;Windows Installer.</p>
+                <p class="bodytext">Click on the "Sourcery G++ Lite 2009q1-203" link, and download the&nbsp;Windows Installer.</p>
 
-                    <p class="bodytext">If you have problems with this version, you can also try version 2007q3-51.&nbsp;This is an older version for developers who&nbsp;run into the following problems:</p>
+                <p class="bodytext">If you have problems with this version, you can also try version 2007q3-51.&nbsp;This is an older version for developers who&nbsp;run into the following problems:</p>
 
-                    <ul class="def-list">
-                        <li>C++ exception handling &mdash; Unresolved links to versioned symbols.
-                        </li>
+                <ul class="def-list">
+                    <li>C++ exception handling &mdash; Unresolved links to versioned symbols.
+                    </li>
 
-                        <li><span class="inline_code">_libc_csu_init/fini</span> calls &mdash; Unresolved links to versioned symbols.</li>
+                    <li><span class="inline_code">_libc_csu_init/fini</span> calls &mdash; Unresolved links to versioned symbols.</li>
 
-                        <li><span class="inline_code">__isoc99_sscanf</span> &mdash; Symbol added in GLIBC 2.7 that gets used for calls to <span class="inline_code">sscanf</span> unless you use <span class="inline_code">_USE_GNU</span> in your code. This
-                            issue also requires a header file change and can not be fixed with just changing libraries. This is also true of other <span class="inline_code">__isoc99</span> calls.</li>
-                    </ul>
+                    <li><span class="inline_code">__isoc99_sscanf</span> &mdash; Symbol added in GLIBC 2.7 that gets used for calls to <span class="inline_code">sscanf</span> unless you use <span class="inline_code">_USE_GNU</span> in your code. This
+                        issue also requires a header file change and can not be fixed with just changing libraries. This is also true of other <span class="inline_code">__isoc99</span> calls.</li>
+                </ul>
 
-                    <h3>Verify the SDK Installation</h3>
+                <h3>Verify the SDK Installation</h3>
 
-                    <ol>
-                        <li>Start the webOS emulator.</li>
+                <ol>
+                    <li>Start the webOS emulator.</li>
 
-                        <li>Click OK to dismiss the dialog boxes.</li>
+                    <li>Click OK to dismiss the dialog boxes.</li>
 
-                        <li>Create or choose a directory to use as your development workspace.</li>
+                    <li>Create or choose a directory to use as your development workspace.</li>
 
-                        <li>Open a Command Prompt window, and then type:
-                            <pre>palm-generate</pre>
+                    <li>Open a Command Prompt window, and then type:
+                        <pre>palm-generate</pre>
 
-                            <p>to verify that the tools are installed:</p>
+                        <p>to verify that the tools are installed:</p>
 
-                            <ul class="def-list">
-                                <li>If help information appears, the tools are correctly installed.</li>
+                        <ul class="def-list">
+                            <li>If help information appears, the tools are correctly installed.</li>
 
-                                <li>If palm-generate is not recognized as a command, the tools are not correctly installed.</li>
+                            <li>If palm-generate is not recognized as a command, the tools are not correctly installed.</li>
 
-                                <li>If java is not recognized as a command, Java is not correctly installed
-                                </li>
-                            </ul>
-                        </li>
+                            <li>If java is not recognized as a command, Java is not correctly installed
+                            </li>
+                        </ul>
+                    </li>
 
-                        <li>Exit both the Command Prompt window and the emulator.</li>
-                    </ol>
+                    <li>Exit both the Command Prompt window and the emulator.</li>
+                </ol>
 
-                    <div class="hr"></div>
+                <div class="hr"></div>
             </div>
 
             <div style="height:20px;">
@@ -255,7 +255,7 @@ arch -x86_64 /usr/local/bin/brew install libusb-compat
 
                 <p class="bodytext">Instructions for installation can be found on <a href="https://www.webosarchive.org/docs/macos-install/" target="_blank">webOS Archive's Docs site.</a></p>
 
-                <h3>Install VirtualBox&trade;</h3>
+                <h3>Install VirtualBox (Optional)</h3>
 
                 <p class="bodytext">The webOS emulator is built on VirtualBox, virtual machine software that you can download free from Oracle&reg;. VirtualBox is required before installing the HP webOS SDK. <b>Note:</b> The emulator now supports Virtualbox 4.0.36
                     r71416 and 4.1.0 r73009.</p>
@@ -360,7 +360,7 @@ arch -x86_64 /usr/local/bin/brew install libusb-compat
                     <pre>sudo apt install oracle-java8-set-default</pre> On Ubuntu systems, oracle-java8-set-default is most probably installed automatically with this package.
                 </p>
 
-                <h3>Install VirtualBox</h3>
+                <h3>Install VirtualBox (Optional)</h3>
 
                 <p class="bodytext">The webOS emulator is built on VirtualBox&trade;, virtual machine software that you can download free from Oracle. VirtualBox is required before installing the HP webOS SDK. <b>Note:</b> The webOS emulator now works with Virtualbox 4.0.36
                     r71416 and 4.1.0 r73009.</p>
