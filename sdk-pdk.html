@@ -436,6 +436,8 @@ Restart=always
 WantedBy=multi-user.target</pre>
                     <p class="nomargin">Then, from the command line execute:</p>
                     <pre>sudo chmod 733 /etc/systemd/system/palm-novacomd.service</pre>
+                    <p class="nomargin">Next, reload the service daemon:</p>
+                    <pre>sudo systemctl daemon-reload</pre>
                     <p class="nomargin">Now you can start the service with:</p>
                     <pre>sudo service palm-novacomd start</pre>
                     <p class="nomargin">Finally, call this command to auto-start the service on boot:</p>
