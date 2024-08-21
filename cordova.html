@@ -1,0 +1,194 @@
+<!-- Actual Content Starts Here -->
+<div id="main" class="clearfix two-columns-right">
+    <div id="intro">
+        <ol class="hp-breadcrumbs">
+            <li><a href="/" target="_top" onfocus="blurLink(this);">Home</a></li>
+
+            <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources.html" target="_top" onfocus="blurLink(this);">Resources</a></li>
+
+            <li class="ctx-last">Building With Cordova</li>
+        </ol>
+
+        <h1 class="page-title">Building With Cordova</h1>
+
+        <ul class="inline-icon-list">
+            <li><a onclick="window.print(); return false;" href="javascript:%20void(0);" class="icon-print">Print</a></li>
+
+            <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/develop/sdk_pdk_download.html" target="_top" class="icon-mail addthis_button_email at300b" title="Email"><span class="at16nc at300bs at15nc at15t_email at16t_email"><span class=
+        "at_a11y"></span></span>Email</a></li>
+
+            <li class="last">
+                <div class="addthis_toolbox addthis_default_style">
+                    <a class="icon-share addthis_button_compact at300m" href="#"><span class=
+            "at16nc at300bs at15nc at15t_compact at16t_compact"><span class=
+            "at_a11y"></span></span>Share</a>
+
+                    <div class="atclear"></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div id="content" class="col-content">
+        <div class="default-content article-content">
+            <a id="c23262" name="c23262"></a>
+
+            <div class="csc-textpic-text">
+                <h2 class="intro">Enyo Apps on Android</h2>
+
+                <p class="bodytext"><img src="assets/RTEmagicC_ref-sdk.png" alt="" width="118" height="117" align="right">
+                    webOS apps written in Enyo can be compiled to run on Android, using Cordova. If you follow all of Google's rules, you can even distribute them on Google Play. This page provides brief notes on how to set up an environment to cross-compile Enyo webOS apps for Android devices.<br/>
+                    These instructions were created on Ubuntu, but should be adaptable to other platforms.
+                </p>
+
+                <div class="hr"></div>
+            </div>
+
+            <h2>Install the webOS SDK</h2>
+
+            <div class="csc-textpic-text">
+                <p class="bodytext">
+                    Follow the steps on this site to <a href="sdk-pdk.html">install the SDK</a> on your Platform.
+                </p>
+
+            </div>
+
+            <h2>Install NodeJS 14 LTS</h2>
+
+            <div class="csc-textpic-text">
+                <p class="bodytext">
+                    <h3>Install NVM from the <a href="https://github.com/nvm-sh/nvm">official source</a></h3>
+                    <div class="inline_code">nvm install --lts 14.21.3</div>
+                    <h3>Set NodeJS 14 LTS to default</h3>
+                    <div class="inline_code">nvm use 14.21.3</div>
+                </p>
+            </div>
+
+            <h2>Install Cordova</h2>
+
+            <div class="csc-textpic-text">
+                <p class="bodytext">
+                    <h3>Install Cordova globally using the NPM package manager</h3>
+                    <div class="inline_code">npm install -g cordova</div>
+                </p>
+            </div>
+
+            <h2>Install Android Studio</h2>
+
+            <div class="csc-textpic-text">
+                <p class="bodytext">
+                    Follow Google's instructions to install Android Studio.<br/>
+                    You might want to create an empty Android project to initialize the environment. Once installed:
+                    <ul>
+                        <li>Tools > "Create Desktop Entry"</li>
+                        <li>View > Appearance > "Show Main Menu in Separate Toolbar"</li>
+                    </ul>
+                </p>
+            </div>
+
+            <h2>Add Older Device Support for Android</h2>
+
+            <div class="csc-textpic-text">
+                <p class="bodytext">
+                    Use the SDK Manager to <a href="https://cordova.apache.org/docs/en/11.x/guide/platforms/android/">install support for older versions</a> of Android<br/>
+                    <ul>
+                        <li>In "SDK Tools" check the box for "Show Package Details"</li>
+                        <li>In "SDK Tools" uncheck the box for "Hide Obsolete Packages"</li>
+                        <li>Find the list item "Android SDK Tools (Obsolete)" and check it</li>
+                        <li>Find the list item "31.0.0" and check it</li>
+                        <li>Find the list item "30.0.3" and check it</li>
+                        <li>Now hit Apply to install the items.</li>
+                    </ul>
+                </p>
+            </div>
+
+            <h2>Install SDKMan Command Line Tools</h2>
+
+            <div class="csc-textpic-text">
+                <p class="bodytext">
+                    SDKMan is an external SDK Manager that is required for Cordova. Find the installer from the <a href="https://sdkman.io/">official website</a>.
+                </p>
+            </div>
+
+            <h2>Install Gradle Command Line</h2>
+
+            <div class="csc-textpic-text">
+                <p class="bodytext">
+                    Using SDKMan to install the command line version of Gradle that is compatible with Cordova:
+                    <div class="inline_code">sdk install gradle 7.2</div>
+                </p>
+            </div>
+
+            <h2>Install ADB Command Line Tools</h2>
+
+            <div class="csc-textpic-text">
+                <p class="bodytext">
+                    Using your package manager, or other source, install ADB command line tools. For example:
+                    <div class="inline_code">sudo apt install android-sdk-platform-tools-common</div>
+                </p>
+            </div>
+
+            <h2>Add Paths</h2>
+
+            <div class="csc-textpic-text">
+                <p class="bodytext">
+                    Ensure all the tools are in your PATH for your environment. For example:
+                    <div class="inline_code">
+                        export ANDROID_SDK_ROOT=$HOME/Android/Sdk  #recommended setting<br/>
+                        export ANDROID_HOME=$HOME/Android/Sdk   #DEPRECATED, cordova might use<br/>
+                        export PATH=$PATH:$ANDROID_HOME/tools<br/>
+                        export PATH=$PATH:$ANDROID_HOME/platform-tools<br/>
+                    </div>
+                </p>
+            </div>
+
+            <h2>Using Cordova</h2>
+
+            <div class="csc-textpic-text">
+                <p class="bodytext">
+                    Add cordova to a Enyo project folder
+                    <div class="inline_code">cordova platform add android</div>
+                </p>
+ 
+                <p class="bodytext">
+                    Build your project using cordova
+                    <div class="inline_code">cordova build android</div>
+                </p>           
+            </div>
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Actual Content Ends Here -->
+
+    <!-- Content Nav Starts Here -->
+    <div class="col-aside">
+        <div class="sidebox">
+            <h3>Contents</h3>
+
+            <ol class="article-nav">
+                <li class="current last">
+                    <a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/develop/sdk_pdk_download.html" target="_top">SDK-PDK Download</a>
+
+                    <ol class="level-1">
+                        <li><a href="#windows" target="_top">Installing the SDK and PDK on a Windows PC</a></li>
+
+                        <li><a href="#osx" target="_top">Installing the SDK and PDK on a Mac</a></li>
+
+                        <li><a href="#linux" target="_top">Installing the SDK on Ubuntu Linux</a></li>
+
+                        <li><a href="#cUsingSDK" target="_top">Using the SDK</a></li>
+
+                        <li><a href="#cEmulatorNotes" target="_top">Emulator Notes</a></li>
+
+                        <li><a href="#cScreenSize" target="_top">Screen-size Notes</a></li>
+
+                        <li class="last"><a href="#cInstallLocations" target="_top">Install Locations Notes</a></li>
+                    </ol>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <!-- Content Nav Ends Here -->
+</div>
