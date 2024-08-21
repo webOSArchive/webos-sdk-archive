@@ -188,7 +188,7 @@
 
                   <li><a href="https://web.archive.org/web/20130130211140/http://apps.webosroundup.com/" target="_blank"><img src="assets/wayback.png" style="vertical-align:top;"> webOS Roundup</a></li>
                   
-                  <li><a href="https://www.webosnation.com" target="_blank"><img src="assets/check.png" style="vertical-align:top;"> webOS Nation</a></li>
+                  <li><a href="http://forums.webosarchive.org/" target="_blank"><img src="assets/wayback.png" style="vertical-align:top;"> webOS Nation</a></li>
                 </ul>
               </div>
             </div>
