@@ -41,6 +41,8 @@
 
                   <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/develop/third_party_tools.html" target="_top"><img src="assets/wayback.png" style="vertical-align:top;"> Third-party Tools</a></li>
 
+                  <li><a href="index.php?page=cordova" target="_top"><<img src="assets/check.png" style="vertical-align:top;"> Cross Platform (Cordova)</a></li>
+
                   <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/develop/pdk_overview.html" target="_top"><img src="assets/wayback.png" style="vertical-align:top;"> PDK Development</a></li>
 
                   <li style="list-style: none"><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/develop/developing_on_an_unactivated_device.html" target="_top"><img src="assets/wayback.png" style="vertical-align:top;"> Unactivated Devices</a></li>

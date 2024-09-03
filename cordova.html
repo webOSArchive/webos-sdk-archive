@@ -25,62 +25,59 @@
             <a id="c19922"></a>
             <div class="csc-textpic csc-textpic-intext-right">
                 <div class="csc-textpic-imagewrap csc-textpic-single-image"><img
-                        src="https://web.archive.org/web/20121023072434im_/https://developer.palm.com/content/uploads/pics/buildapp_lg.png"
-                        width="269" height="135" alt="" /></div>
+                        src="assets/cordova.jpg"
+                        width="300" alt="" /></div>
                 <div class="csc-textpic-text">
 
                     <!-- cordova content -->
 
                     <div class="csc-textpic-text">
-                        <h2 class="intro">Enyo Apps on Android</h2>
+                        <h2 class="intro">Enyo Apps Cross-Platform</h2>
 
-                        <p class="bodytext"><img src="assets/RTEmagicC_ref-sdk.png" alt="" width="118" height="117"
-                                align="right">
-                            webOS apps written in Enyo can be compiled to run on Android, using Cordova. If you follow
+                        <p class="bodytext">
+                            webOS apps written in Enyo can be compiled to run on Android or deployed on a web server as a PWA, using Cordova. If you follow
                             all of Google's rules, you can even distribute them on Google Play. This page provides brief
-                            notes on how to set up an environment to cross-compile Enyo webOS apps for Android
-                            devices.<br />
-                            These instructions were created on Ubuntu, but should be adaptable to other platforms.
+                            notes on how to set up an environment to cross-compile Enyo webOS apps for Android, and for other platforms that support PWAs when hosted on a web server.<br />
+                        </p>
+			<p>These instructions were created on Ubuntu, but should be adaptable to other development environments.
                         </p>
 
-                        <div class="hr"></div>
                     </div>
 
+		    <a name="c29941" id="c29941"></a>
                     <h2>Install the webOS SDK</h2>
-
                     <div class="csc-textpic-text">
                         <p class="bodytext">
-                            Follow the steps on this site to <a href="sdk-pdk.html">install the SDK</a> on your
-                            Platform.
+                            If you haven't already, follow the steps on this site to <a href="sdk-pdk.html">install the SDK</a> on your development PC.
                         </p>
 
                     </div>
 
+		    <a name="c29942" id="c29942"></a>
                     <h2>Install NodeJS 14 LTS</h2>
-
                     <div class="csc-textpic-text">
                         <p class="bodytext">
                         <h3>Install NVM from the <a href="https://github.com/nvm-sh/nvm">official source</a></h3>
-                        <div class="inline_code">nvm install --lts 14.21.3</div>
+                        <pre>nvm install --lts 14.21.3</pre>
                         <h3>Set NodeJS 14 LTS to default</h3>
-                        <div class="inline_code">nvm use 14.21.3</div>
+                        <pre>nvm use 14.21.3</pre>
                         </p>
                     </div>
 
+		    <a name="c29943" id="c29943"></a>
                     <h2>Install Cordova</h2>
-
                     <div class="csc-textpic-text">
                         <p class="bodytext">
                         <h3>Install Cordova globally using the NPM package manager</h3>
-                        <div class="inline_code">npm install -g cordova</div>
+                        <pre>npm install -g cordova</pre>
                         </p>
                     </div>
 
+		    <a name="c29944" id="c29944"></a>
                     <h2>Install Android Studio</h2>
-
                     <div class="csc-textpic-text">
                         <p class="bodytext">
-                            Follow Google's instructions to install Android Studio.<br />
+                            Follow <a href="https://developer.android.com/studio/install">Google's instructions to install Android Studio.</a><br />
                             You might want to create an empty Android project to initialize the environment. Once
                             installed:
                         <ul>
@@ -90,12 +87,11 @@
                         </p>
                     </div>
 
+		    <a name="c29945" id="c29945"></a>
                     <h2>Add Older Device Support for Android</h2>
-
                     <div class="csc-textpic-text">
                         <p class="bodytext">
-                            Use the SDK Manager to <a
-                                href="https://cordova.apache.org/docs/en/11.x/guide/platforms/android/">install support
+                            Use the SDK Manager to <a href="https://cordova.apache.org/docs/en/11.x/guide/platforms/android/">install support
                                 for older versions</a> of Android<br />
                         <ul>
                             <li>In "SDK Tools" check the box for "Show Package Details"</li>
@@ -108,60 +104,151 @@
                         </p>
                     </div>
 
-                    <h2>Install SDKMan Command Line Tools</h2>
-
+		    <a name="c29946" id="c29946"></a>
+                    <h2>Install SDKMan and Gradle Command Line</h2>
                     <div class="csc-textpic-text">
                         <p class="bodytext">
                             SDKMan is an external SDK Manager that is required for Cordova. Find the installer from the
                             <a href="https://sdkman.io/">official website</a>.
                         </p>
-                    </div>
-
-                    <h2>Install Gradle Command Line</h2>
-
-                    <div class="csc-textpic-text">
                         <p class="bodytext">
-                            Using SDKMan to install the command line version of Gradle that is compatible with Cordova:
-                        <div class="inline_code">sdk install gradle 7.2</div>
+                            Use SDKMan to install the command line version of Gradle that is compatible with Cordova:
+                        <pre>sdk install gradle 7.2</pre>
                         </p>
                     </div>
 
+		    <a name="c29947" id="c29947"></a>
                     <h2>Install ADB Command Line Tools</h2>
-
                     <div class="csc-textpic-text">
                         <p class="bodytext">
                             Using your package manager, or other source, install ADB command line tools. For example:
-                        <div class="inline_code">sudo apt install android-sdk-platform-tools-common</div>
+                        <pre>sudo apt install android-sdk-platform-tools-common</pre>
                         </p>
                     </div>
 
+		    <a name="c29948" id="c29948"></a>
                     <h2>Add Paths</h2>
-
                     <div class="csc-textpic-text">
                         <p class="bodytext">
                             Ensure all the tools are in your PATH for your environment. For example:
-                        <div class="inline_code">
-                            export ANDROID_SDK_ROOT=$HOME/Android/Sdk #recommended setting<br />
-                            export ANDROID_HOME=$HOME/Android/Sdk #DEPRECATED, cordova might use<br />
-                            export PATH=$PATH:$ANDROID_HOME/tools<br />
-                            export PATH=$PATH:$ANDROID_HOME/platform-tools<br />
-                        </div>
+                        <pre>export ANDROID_SDK_ROOT=$HOME/Android/Sdk #recommended setting<br>export ANDROID_HOME=$HOME/Android/Sdk #DEPRECATED, cordova might use<br>export PATH=$PATH:$ANDROID_HOME/tools<br>export PATH=$PATH:$ANDROID_HOME/platform-tools</pre>
                         </p>
                     </div>
 
-                    <h2>Using Cordova</h2>
-
+		    <a name="c29949" id="c29949"></a>
+                    <h2>Cordova Project Structure</h2>
                     <div class="csc-textpic-text">
-                        <p class="bodytext">
-                            Add cordova to a Enyo project folder
-                        <div class="inline_code">cordova platform add android</div>
+			Cordova acts as a "wrapper" around a typical webOS Project. In order to build for both environments, you need follow a folder structure that each set of tools expects:
+			<ul><li>&lt;Project Root&gt;</li>
+				<ul><li>cordova-wrapper</li>
+					<ul><li>&lt;Files and Folders added by Cordova command line tools&gt;</li></ul>
+				    <li>enyo-app</li>
+					<ul><li>appinfo.json</li>
+					    <li>index.html</li>
+					    <li>package.json</li>
+					    <li>&lt;Files and Folders added by webOS SDK command line tools&gt;</li>
+					</ul>
+				</ul>
+			</ul>
+			<p>You can download a "bootplate" project that pre-creates this directory structure for you:</p>
+			<p class="def-button"><a href="https://github.com/webOSArchive/enyo1-bootplate" target="_blank">Download Enyo 1 Bootplate</a></p>
+			<p class="def-button"><a href="https://github.com/webOSArchive/enyo2-bootplate" target="_blank">Download Enyo 2 Bootplate</a></p>
+		    </div>
+
+		    <a name="c29950" id="c29950"></a>
+                    <h2>Cordova Commands</h2>
+                    <div class="csc-textpic-text">
+			<p>Cordova command line tools are typically invoked from the <b>&lt;Project Root&gt;</b> folder -- not from within the cordova-wrapper folder. </p>
+                        <p class="bodytext"> Add Android platform support to your project:
+                        <pre>cordova platform add android</pre>
                         </p>
 
-                        <p class="bodytext">
-                            Build your project using cordova
-                        <div class="inline_code">cordova build android</div>
+                        <p class="bodytext"> Build your project into an Android APK using Cordova:
+                        <pre>cordova build android</pre>
                         </p>
+
+			<p class="bodytext"> If you encounter errors, you can reset Cordova by deleting platform support folders manually, and re-adding them with the command line. Eg:
+			<pre>rm -rf cordova-wrapper/platforms/android<br/>cordova platform add android</pre>
+
                     </div>
+
+		    <a name="c29951" id="c29951"></a>
+                    <h2>Working with Android Studio</h2>
+                    <div class="csc-textpic-text">
+			<p>Since both Enyo and Cordova apps are really just web apps, using Android Studio is not required -- unless you want to distribute with Google Play. Google Play bundling requires signing and a newer bundling format that Cordova can't provide for. You can develop in any environment you wish, but when you're ready to build for Play, you must import the project into Android Studio.</p>
+
+                        <h3>Import Android Platform</h3>
+			<p>When importing to Android Studio, do not import the Project Root. Instead import the android folder:
+			<pre>&lt;Project Root&gt;/platforms/android</pre>
+			<p>Android Studio will prompt you to do some housekeeping -- not all of it is beneficial for legacy code! If prompted:
+			<ul>
+			<li>Upgrade the Gradle Wrapper - <b>Optional</b>, will not break your project.
+			<li>Upgrade the project (AGP Upgrade Assistant) - <b>Skip</b>, doing this will break your project.
+			</ul>
+
+			<h3>Resolve Errors and Update Targets</h3>
+			<p>Once imported, you will need to resolve some errors and do some updates...</p>
+			<ul>
+			<li>If you get an error like <b>Unable to make field private final java.lang.String java.io.File.path accessible</b>
+			you can fix it by opening the file <b>gradle.properties</b> and adding this line:
+			<pre>org.gradle.jvmargs=--add-opens java.base/java.io=ALL-UNNAMED</pre></li>
+			<li>Google requires you target recent API levels, and will not accept your app if you don't. Change the <b>SDK_VERSION</b> in the file <b>cdv-gradle-config.json</b> to meet Google's requirements.<br>&nbsp;<br></li>
+			<li>Add the following to the <b>activity</b> section of <b>AndroidManifest.xml</b>:
+			<pre>android:exported="true"</pre></li>
+			</ul>
+
+			<h3>Version Numbers</h3>
+			<p>Each submission to Google Play requires a unique <b>android:versionCode</b> and <b>andreoid:versionName</b> in the file <b>app/manifests/AndroidManifest.xml</b>.
+
+                    </div>
+		
+		    <a name="c29952" id="c29952"></a>
+		    <h2>Web Servers and PWA Platforms</h2>
+			<p>Your Cordova app can be hosted on a web server and used on other platforms like iOS and Windows as a PWA (Progressive Web App), but even if you only target Android, you'll likely need to make some changes to allow your app to work with web servers (such as data sources). See the notes below for content to consider including in the specified file.</p>
+			<p class="infobox"><b>Note:</b> Note: This section does not cover how to deal with CORS, but suffice it to say, webOS didn't have CORS protections and modern platforms do. Make sure your data source is configured (or proxied) to allow cross origin requests.</p>
+			<p><b>&lt;Platform Root&gt;/cordova-wrapper/config.xml</b>
+<pre>
+&lt;allow-intent href="*" /&gt;
+&lt;allow-navigation href="http://*/*" /&gt;
+&lt;allow-navigation href="https://*/*" /&gt;
+&lt;allow-navigation href="data:*" /&gt;
+&lt;access origin="*" /&gt;
+&lt;preference name="Scheme" value="http" /&gt;
+&lt;platform name="android"&gt;
+ &lt;edit-config file="AndroidManifest.xml" mode="merge" target="/manifest/application"&gt;
+   &lt;application android:usesCleartextTraffic="true" /&gt;
+ &lt;/edit-config&gt;
+&lt;/platform&gt;
+</pre>
+</p>
+			<p><b>&lt;Platform Root&gt;/enyo-app/index.html</b>
+<pre>&lt;meta http-equiv="Content-Security-Policy" content="default-src *; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'"&gt;</pre>
+On iOS devices, scroll behavior can cause problems. Over-ride it by adding this to a <b>&lt;script&gt;</b> block:
+<pre>
+//Stop iOS bouncy overscroll
+function onTouchStart(e) {
+ // Save position of touch
+ console.log("touchstart");
+ const touch = e.touches[0] || e.changedTouches[0];
+ window.lastY = touch.pageY;
+}
+function onTouchMove(e) {
+ console.log("touchmove");
+ // Check user isn't scrolling past content. If so, cancel move to prevent ios bouncing
+ const touch = e.touches[0] || e.changedTouches[0];
+ y = touch.pageY;
+ if (y < window.lastY && e.srcElement.scrollTop == (e.srcElement.scrollHeight - e.srcElement.clientHeight)) {
+  console.log("user is trying to scroll down without anywhere to scroll to. Canceling propagation.");
+  e.preventDefault();
+ } else if (y > window.lastY && e.srcElement.scrollTop == 0) {
+  console.log("user is trying to scroll up without anywhere to scroll to. Canceling propagation.");
+  e.preventDefault();
+ }
+};
+document.addEventListener("touchstart", onTouchStart, { passive: false });
+document.addEventListener("touchmove", onTouchMove, { passive: false });
+</pre>
+</p>
                     <!-- /cordova-->
                 </div>
             </div>
@@ -174,8 +261,18 @@
             <ol class="article-nav">
                 <li class="current last"><a href="" target="_top">Building With Cordova</a>
                     <ol class="level-1">
-                        <li><a href="#c19932" target="_top">Enyo Apps on Android</a></li>
-                        <li><a href="#c19942" target="_top">Install the webOS SDK</a></li>
+                        <li><a href="#c29941" target="_top">Install the webOS SDK</a></li>
+                        <li><a href="#c29942" target="_top">Install NodeJS</a></li>
+                        <li><a href="#c29943" target="_top">Install Cordova</a></li>
+                        <li><a href="#c29944" target="_top">Install Android Studio</a></li>
+                        <li><a href="#c29945" target="_top">Add Older Device Support</a></li>
+                        <li><a href="#c29946" target="_top">Install SDKMan and Gradle</a></li>
+                        <li><a href="#c29947" target="_top">Install ADB Command Line</a></li>
+                        <li><a href="#c29948" target="_top">Add PATHs</a></li>
+                        <li><a href="#c29949" target="_top">Cordova Project Structure</a></li>
+                        <li><a href="#c29950" target="_top">Cordova Commands</a></li>
+                        <li><a href="#c29951" target="_top">Working with Android Studio</a></li>
+                        <li class="last"><a href="#c29952" target="_top">Web Servers and PWA Platforms</a></li>
                     </ol>
                 </li>
             </ol>
