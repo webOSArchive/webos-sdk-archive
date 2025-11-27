@@ -349,13 +349,14 @@
                 <h3>Update the Package Repository Information</h3>
                 <pre>sudo apt-get update</pre>
 
-                <h4>Modernized Install</h4>
+                <h3>Modernized Install</h3>
                 <br/>
                 <p><b>Note:</b> The SDK and drivers have been re-built for modern, 64-bit Linux, along with an install script that should work on most distros. If, for some reason, these don't work for you, legacy instructions for 32-bit and 64-bit with backward compatibility are below.</p>
 
-                <h3>Install Java JDK</h3>
+                <h4>Install Java JDK</h4>
                 <pre>sudo apt install default-jdk</pre>
 
+                <h4>Install Drivers and SDK</h4>
                 <p class="bodytext">Download and install a release of the source:</p>
 
                 <p class="def-button"><a href="https://github.com/webOSArchive/webos-sdk-redux/releases" target="_blank">Modernized SDK Releases</a></p>
@@ -368,11 +369,11 @@
 
                 <p class="bodytext">Follow the prompts to install any missing dependencies (standard build tools and libusb).</p>
 
-                <h4>Legacy Install</h4>
+                <h3>Legacy Install</h3>
                 <br/>
                 <p class="bodytext">These instructions were originally written for Ubuntu 14.04.5 LTS (Trusty Tahr), notes have been added where the installation process differs for more modern releases, and have been tested on Ubuntu 20.04 LTS.</p>
 
-                <h3>Install Java&trade;</h3>
+                <h4>Install Java&trade;</h4>
 
                 <p><b>Note:</b> The following steps for installing Java no longer work and have been preserved for archival purposes only. Instead, <a href="https://www.fosstechnix.com/install-oracle-java-8-on-ubuntu-20-04/">install Oracle Java 8 by following these instructions</a>.</p>
 
@@ -384,7 +385,7 @@
                     <pre>sudo apt install oracle-java8-set-default</pre> On Ubuntu systems, oracle-java8-set-default is most probably installed automatically with this package.
                 </p>
 
-                <h3>Install ia32-libs (on 64-bit systems only)</h3>
+                <h4>Install ia32-libs (on 64-bit systems only)</h4>
 
                 <div class="padding">
                     <p class="nomargin">If you are installing on a 64-bit system, perform the following additional step before installation:</p>
@@ -400,7 +401,7 @@
                     <p class="nomargin"><b>Note:</b> This approach to managing novacomd no longer works on modern Linux, since it depends on systemd. See below for notes on how to manage with systemd instead.
                 </div>
 
-                <h3>Install Drivers</h3>
+                <h4>Install Drivers</h4>
 
                 <p class="nomargin"><b>Note:</b> On modern Linux you will need to install pre-requisites for both 64-bit and 32-bit architectures:
                     <pre>sudo apt install libusb-0.1-4<br>sudo apt install libusb-0.1-4:i386</pre>
@@ -443,7 +444,7 @@ WantedBy=multi-user.target</pre>
                     <pre>sudo systemctl enable palm-novacomd.service</pre>
                 </div>
 
-                <h3>Install VirtualBox (No longer supported)</h3>
+                <h4>Install VirtualBox (No longer supported)</h4>
 
                 <p class="bodytext">The webOS emulator is built on VirtualBox&trade;, virtual machine software that you can download free from Oracle. VirtualBox is required before installing the HP webOS SDK. <b>Note:</b> The webOS emulator now works with Virtualbox 4.0.36
                     r71416 and 4.1.0 r73009.</p>
