@@ -356,7 +356,7 @@
                 </p>
 
                 <h4>Modernized Install</h4>
-
+                <br/>
                 <p><b>Note:</b> The SDK and drivers have been re-built for modern, 64-bit Linux, along with an install script that should work on most distros. If, for some reason, these don't work for you, legacy instructions for 32-bit and 64-bit with backward compatibility are below.</p>
 
                 <p class="bodytext">Download and install a release of the modernized SDK: <a href="https://github.com/webOSArchive/webos-sdk-redux/releases">https://github.com/webOSArchive/webos-sdk-redux/releases</a></p>
@@ -369,13 +369,9 @@
 
                 <p class="bodytext">Follow the prompts to install any missing dependencies (standard build tools and libusb)</p>
 
-                <h3>Install VirtualBox (No longer supported)</h3>
-
-                <p class="bodytext">The webOS emulator is built on VirtualBox&trade;, virtual machine software that you can download free from Oracle. VirtualBox is required before installing the HP webOS SDK. <b>Note:</b> The webOS emulator now works with Virtualbox 4.0.36
-                    r71416 and 4.1.0 r73009.</p>
-
                 <h4>Legacy Install</h4>
-                These instructions were originally written for Ubuntu 14.04.5 LTS (Trusty Tahr), notes have been added where the installation process differs for more modern releases, and have been tested on Ubuntu 20.04 LTS.</p>
+                <br/>
+                <p class="bodytext">These instructions were originally written for Ubuntu 14.04.5 LTS (Trusty Tahr), notes have been added where the installation process differs for more modern releases, and have been tested on Ubuntu 20.04 LTS.</p>
 
                 <h3>Install ia32-libs (on 64-bit systems only)</h3>
 
@@ -435,6 +431,11 @@ WantedBy=multi-user.target</pre>
                     <p class="nomargin">Finally, call this command to auto-start the service on boot:</p>
                     <pre>sudo systemctl enable palm-novacomd.service</pre>
                 </div>
+
+                <h3>Install VirtualBox (No longer supported)</h3>
+
+                <p class="bodytext">The webOS emulator is built on VirtualBox&trade;, virtual machine software that you can download free from Oracle. VirtualBox is required before installing the HP webOS SDK. <b>Note:</b> The webOS emulator now works with Virtualbox 4.0.36
+                    r71416 and 4.1.0 r73009.</p>
 
                 <h5>Installing or Upgrading VirtualBox</h5>
 
