@@ -343,8 +343,6 @@
             <a id="c28542" name="c28542"></a>
 
             <div class="csc-textpic-text">
-                <p class="infobox"><b>A note about PDK development on Linux:</b> The current SDK for Linux includes headers and libraries needed to do PDK development for the device and for the emulator. It also includes an arm-gcc toolchain for compiling applications for
-                    the device. If you are running a 32-bit i686 Linux desktop, you should be able to use the standard&nbsp;g++ compiler. (On x64 Linux, the native desktop toolchain will generate x64 code, which will not work in the emulator.)</p>
 
                 <h3>Update the Package Repository Information</h3>
                 <pre>sudo apt-get update</pre>
@@ -370,7 +368,10 @@
                 <p class="bodytext">Follow the prompts to install any missing dependencies (standard build tools and libusb).</p>
 
                 <h3>Legacy Install</h3>
-                <br/>
+                
+                <p class="infobox"><b>A note about PDK development on Linux:</b> The current SDK for Linux includes headers and libraries needed to do PDK development for the device and for the emulator. It also includes an arm-gcc toolchain for compiling applications for
+                    the device. If you are running a 32-bit i686 Linux desktop, you should be able to use the standard&nbsp;g++ compiler. (On x64 Linux, the native desktop toolchain will generate x64 code, which will not work in the emulator.)</p>
+
                 <p class="bodytext">These instructions were originally written for Ubuntu 14.04.5 LTS (Trusty Tahr), notes have been added where the installation process differs for more modern releases, and have been tested on Ubuntu 20.04 LTS.</p>
 
                 <h4>Install Java&trade;</h4>
