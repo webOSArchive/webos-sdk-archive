@@ -262,7 +262,7 @@
                 <p class="def-button"><a href="https://www.webosarchive.org/sdk/Palm_webOS_SDK.3.0.5.676.dmg" target="_blank">SDK/PDK for OSX (32-bit)</a></p>
 
                 <p class="bodytext">Unfortunately, the installer will not run on macOS 11 and higher, due to changes filesystem permissions. Instead, you can install it by downloading a modernized Source Code release Zip file. Exract it and run:
-                   <br><b>./install.sh</b> 
+                   <pre>./install.sh</pre> 
                    <br>from Terminal in the unzipped directory.
                 </p>
 
@@ -343,17 +343,8 @@
                 <h3>Update the Package Repository Information</h3>
                 <pre>sudo apt-get update</pre>
 
-                <h3>Install Java&trade;</h3>
-
-                <p><b>Note:</b> The following steps for installing Java no longer work and have been preserved for archival purposes only. Instead, <a href="https://www.fosstechnix.com/install-oracle-java-8-on-ubuntu-20-04/">install Oracle Java 8 by following these instructions</a>.</p>
-
-                <p class="bodytext">Download and install the OpenJRE Java Runtime Environment (JRE). The SDK is incompatible with the default Ubuntu GNU Compiler for Java (GCJ), and the Java JRE is no longer available. Example:</p>
-
-                <pre>sudo apt-get install openjdk-8-jre</pre>
-
-                <p class="bodytext">To set Oracle JDK8 as default, install the "oracle-java8-set-default" package.
-                    <pre>sudo apt install oracle-java8-set-default</pre> On Ubuntu systems, oracle-java8-set-default is most probably installed automatically with this package.
-                </p>
+                <h3>Install Java JDK</h3>
+                <pre>sudo apt install default-jdk</pre>
 
                 <h4>Modernized Install</h4>
                 <br/>
@@ -372,6 +363,18 @@
                 <h4>Legacy Install</h4>
                 <br/>
                 <p class="bodytext">These instructions were originally written for Ubuntu 14.04.5 LTS (Trusty Tahr), notes have been added where the installation process differs for more modern releases, and have been tested on Ubuntu 20.04 LTS.</p>
+
+                <h3>Install Java&trade;</h3>
+
+                <p><b>Note:</b> The following steps for installing Java no longer work and have been preserved for archival purposes only. Instead, <a href="https://www.fosstechnix.com/install-oracle-java-8-on-ubuntu-20-04/">install Oracle Java 8 by following these instructions</a>.</p>
+
+                <p class="bodytext">Download and install the OpenJRE Java Runtime Environment (JRE). The SDK is incompatible with the default Ubuntu GNU Compiler for Java (GCJ), and the Java JRE is no longer available. Example:</p>
+
+                <pre>sudo apt-get install openjdk-8-jre</pre>
+
+                <p class="bodytext">To set Oracle JDK8 as default, install the "oracle-java8-set-default" package.
+                    <pre>sudo apt install oracle-java8-set-default</pre> On Ubuntu systems, oracle-java8-set-default is most probably installed automatically with this package.
+                </p>
 
                 <h3>Install ia32-libs (on 64-bit systems only)</h3>
 
