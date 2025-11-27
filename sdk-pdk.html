@@ -358,6 +358,20 @@
                     <pre>sudo apt install oracle-java8-set-default</pre> On Ubuntu systems, oracle-java8-set-default is most probably installed automatically with this package.
                 </p>
 
+                <h3>Modernized Install</h3>
+
+                <p><b>Note:</b> The SDK and drivers have been re-built for modern, 64-bit Linux, along with an install script that should work on most distros. If, for some reason, these don't work for you, legacy instructions for 32-bit and 64-bit with backward compatibility are below.</p>
+
+                <p class="bodytext">Download and install a release of the modernized SDK: <a href="https://github.com/webOSArchive/webos-sdk-redux/releases">https://github.com/webOSArchive/webos-sdk-redux/releases</a></p>
+
+                <p class="bodytext">Extract the Source code zip</p>
+
+                <p class="bodytext">Open a Terminal window and change directory to the unzipped folder, then run</p>
+
+                <pre>./install.sh</pre>
+
+                <p class="bodytext">Follow the prompts to install any missing dependencies (standard build tools and libusb)</p>
+
                 <h3>Install VirtualBox (No longer supported)</h3>
 
                 <p class="bodytext">The webOS emulator is built on VirtualBox&trade;, virtual machine software that you can download free from Oracle. VirtualBox is required before installing the HP webOS SDK. <b>Note:</b> The webOS emulator now works with Virtualbox 4.0.36
