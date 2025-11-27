@@ -131,7 +131,7 @@
                 <p class="bodytext">The Novacom drivers are available for both 32-bit and 64-bit Windows (7-10).</p>
                 <p class="def-button"><a href="https://www.webosarchive.org/activation/drivers/" target="_blank">Supported Platform Drivers</a>
 
-                <h3>Install VirtualBox (Optional)</h3>
+                <h3>Install VirtualBox (No longer supported)</h3>
 
                 <p class="bodytext">The webOS emulator is built on VirtualBox&trade;, virtual machine software that you can download free from Oracle&reg;. VirtualBox is required before installing the HP webOS SDK. <b>Note:</b> The webOS emulator now runs on Virtualbox
                     4.0.36 r71416 and 4.1.0 r73009.</p>
@@ -239,43 +239,34 @@
                 <h3>Install Drivers</h3>
 
                 <p class="bodytext">The official Novacom drivers are available for all supported 32-bit OS X/macOS versions.</p>
-                <p class="def-button"><a href="https://www.webosarchive.org/activation/drivers/" target="_blank">Download Drivers</a>
+                <p class="def-button"><a href="https://www.webosarchive.org/activation/drivers/novacom-osx-32/" target="_blank">Download Drivers</a>
 
-                <p class="bodytext">Unfortunately, 64-bit macOS was not a supported platform. However, hobby developer <a href="https://github.com/incidentist/">Dan Kurtz</a> has compiled a set of drivers that work with macOS Catalina and beyond, in 64-bit clean
-                    mode.<br/>
-                    Note that you will need to explictly grant permission for these unsigned binaries to run in System Preferences.
+                <p class="bodytext">Unfortunately, 64-bit macOS was not a supported platform. However, the community has compiled a set of drivers that work with macOS Catalina and beyond, in 64-bit clean
+                    mode for both Intel and Apple Silicon.<br/>
+                    Note that you will need to explictly grant permission for these unsigned Installers to run in System Preferences.
                 </p>
-                <p class="def-button"><a href="https://github.com/incidentist/novacomd/releases/tag/macos64" target="_blank">64-bit macOS Drivers</a>
+                <p class="def-button"><a href="https://www.webosarchive.org/activation/drivers/novacom-macos-64/" target="_blank">64-bit macOS Drivers</a>
 
-                <p class="bodytext">Instructions for installation can be found on <a href="https://www.webosarchive.org/docs/macos-install/" target="_blank">webOS Archive's Docs site.</a></p>
+                <p class="bodytext">If you run into trouble installing, more details can be found on <a href="https://www.webosarchive.org/docs/macos-install/" target="_blank">webOS Archive's Docs site.</a></p>
 
-                <p class="bodytext">
-                    <b>Note:</b> Apple Silicon based Macs (eg: M1) can use the 64-bit macOS drivers above via Rosetta, but you'll need to to install libusb with <a href="https://brew.sh/">brew</a> in <a href="https://gist.github.com/progrium/b286cd8c82ce0825b2eb3b0b3a0720a0">forced x86 compatibility mode</a>.
-<pre>
-arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-arch -x86_64 /usr/local/bin/brew install libusb-compat
-</pre>
-                </p>
-
-                <h3>Install VirtualBox (Optional)</h3>
+                <h3>Install VirtualBox (No longer supported)</h3>
 
                 <p class="bodytext">The webOS emulator is built on VirtualBox, virtual machine software that you can download free from Oracle&reg;. VirtualBox is required before installing the HP webOS SDK. <b>Note:</b> The emulator now supports Virtualbox 4.0.36
                     r71416 and 4.1.0 r73009.</p>
 
                 <p class="def-button"><a href="https://www.virtualbox.org/wiki/Download_Old_Builds" target="_blank">Download VirtualBox</a></p>
 
-                <h3>Download the SDK/PDK disk image file</h3>
+                <h3>Download the SDK/PDK</h3>
 
                 <br/>
-                <p class="def-button"><a href="https://www.webosarchive.org/sdk/Palm_webOS_SDK.3.0.5.676.dmg" target="_blank">Download SDK/PDK</a></p>
+                <p class="def-button"><a href="https://www.webosarchive.org/sdk/Palm_webOS_SDK.3.0.5.676.dmg" target="_blank">SDK/PDK for OSX (32-Bit)</a></p>
 
-                <p class="bodytext">Unfortunately, the installer will not run on macOS 11 and higher, due to changes filesystem permissions. However, you can still run the key SDK binaries via Rosetta 2, by extracting this archive into your $PATH.<br>
-                    Note that you will need to explictly grant permission for these unsigned binaries to run in System Preferences.
+                <p class="bodytext">Unfortunately, the installer will not run on macOS 11 and higher, due to changes filesystem permissions. Instead, you can install it by downloading a modernized Source Code release Zip file. Exract it and run `./install.sh` from Terminal in unzipped directory:
                 </p>
 
-                <p class="def-button"><a href="https://stacks.webosarchive.org/sdk/PalmSDK.zip" target="_blank">SDK Binaries for macOS</a>
+                <p class="def-button"><a href="https://github.com/webOSArchive/webos-sdk-redux/releases" target="_blank">SDK Releases for macOS</a>
 
-                <h3><br> Uninstall any existing SDK/PDK installations</h3>
+                <h3><br>Uninstall any existing SDK/PDK installations</h3>
 
             </div>
             <a id="c23382" name="c23382"></a>
@@ -368,7 +359,7 @@ arch -x86_64 /usr/local/bin/brew install libusb-compat
                     <pre>sudo apt install oracle-java8-set-default</pre> On Ubuntu systems, oracle-java8-set-default is most probably installed automatically with this package.
                 </p>
 
-                <h3>Install VirtualBox (Optional)</h3>
+                <h3>Install VirtualBox (No longer supported)</h3>
 
                 <p class="bodytext">The webOS emulator is built on VirtualBox&trade;, virtual machine software that you can download free from Oracle. VirtualBox is required before installing the HP webOS SDK. <b>Note:</b> The webOS emulator now works with Virtualbox 4.0.36
                     r71416 and 4.1.0 r73009.</p>
