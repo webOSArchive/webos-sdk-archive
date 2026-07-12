@@ -606,6 +606,7 @@ this.controller.serviceRequest('palm://com.palm.downloadmanager/', {
           </td>
           <td>
             Sets the cookie header for the request, i.e., &quot;foo=bar&quot;, or, for multiple cookies, &quot;foo=bar;red=blue;night=day&quot;.
+            <br><span style="color:#8a6d00;">&#9888; <em>Editor's note (2026):</em> with <code>downloadmgr-tls13</code> installed, this field can also carry arbitrary request headers (e.g. a Bearer JWT) &mdash; see the highlighted note below the parameter table.</span>
           </td>
         </tr>
         <tr>
@@ -708,6 +709,31 @@ this.controller.serviceRequest('palm://com.palm.downloadmanager/', {
         </tr>
       </tbody>
     </table>
+    <!-- ================================================================= -->
+    <!-- EDITOR'S NOTE added 2026 by the OpenSSL-legacyWebOS /             -->
+    <!-- OpenSSL-legacyWebOS project. NOT part of the original HP webOS SDK   -->
+    <!-- documentation; describes behavior of the re-linked LunaDownloadMgr.-->
+    <!-- ================================================================= -->
+    <div style="border:2px solid #b58900; background:#fff8e1; color:#333; padding:12px 16px; margin:16px 0; border-radius:4px;">
+      <p style="margin:0 0 8px; font-weight:bold; color:#8a6d00;">
+        &#9888; Editor's note &mdash; added 2026 by the <code>OpenSSL-legacyWebOS</code> project (not part of the original HP webOS SDK documentation)
+      </p>
+      <p style="margin:0 0 8px;">
+        On a device running <code>downloadmgr-tls13</code> (which re-links <code>LunaDownloadMgr</code> onto a modern libcurl for TLS&nbsp;1.2/1.3), the <code>cookieHeader</code> parameter also lets a download send <strong>arbitrary request headers</strong> &mdash; e.g. <code>Authorization: Bearer &lt;JWT&gt;</code> or <code>X-Auth-Token</code>, which the stock <code>download</code> API otherwise cannot set (it only exposes <code>cookieHeader</code> and the App-Catalog-specific <code>authToken</code>/<code>deviceId</code>). The underlying libcurl sends the <em>first</em> line of <code>cookieHeader</code> as the <code>Cookie:</code> header and <strong>every subsequent line (split on <code>\r\n</code> or <code>\n</code>) as a raw request header</strong>.
+      </p>
+      <ul style="margin:0 0 8px 20px;">
+        <li>Headers only, no cookie &mdash; begin the value with a newline:
+          <pre style="margin:4px 0;">cookieHeader: "\r\nAuthorization: Bearer " + jwt + "\r\nX-Auth-Token: " + tok</pre>
+        </li>
+        <li>A cookie <em>and</em> extra headers &mdash; cookie on the first line, headers after:
+          <pre style="margin:4px 0;">cookieHeader: "session=" + sid + "\r\nAuthorization: Bearer " + jwt</pre>
+        </li>
+        <li>A single line with no newline is still treated as a plain cookie, so existing callers are unaffected.</li>
+      </ul>
+      <p style="margin:0;">
+        For <strong>uploads</strong>, use the native <code>customHttpHeaders</code> array on the <a href="#upload"><code>upload</code></a> method instead. This behavior is a stable property of the exact libcurl the package ships and requires no change to the <code>LunaDownloadMgr</code> binary.
+      </p>
+    </div>
     <h3 id="returns-2">
       Returns
     </h3>
@@ -2849,6 +2875,7 @@ resumeDownload failure, results=
           <td>
             Values to include in the HTTP headers, in the format:<br>
             customHttpHeaders: [ &quot;val1&quot;, &quot;val2&quot;, ...]
+            <br><span style="color:#8a6d00;">&#9888; <em>Editor's note (2026):</em> use this array to send arbitrary request headers (e.g. a Bearer JWT) on uploads &mdash; see the highlighted note below the parameter table.</span>
           </td>
         </tr>
         <tr>
@@ -2867,6 +2894,23 @@ resumeDownload failure, results=
         </tr>
       </tbody>
     </table>
+    <!-- ================================================================= -->
+    <!-- EDITOR'S NOTE added 2026 by the OpenSSL-legacyWebOS /             -->
+    <!-- downloadmgr-tls13 project. NOT part of the original HP webOS SDK   -->
+    <!-- documentation; describes behavior of the re-linked LunaDownloadMgr.-->
+    <!-- ================================================================= -->
+    <div style="border:2px solid #b58900; background:#fff8e1; color:#333; padding:12px 16px; margin:16px 0; border-radius:4px;">
+      <p style="margin:0 0 8px; font-weight:bold; color:#8a6d00;">
+        &#9888; Editor's note &mdash; added 2026 by the <code>downloadmgr-tls13</code> project (not part of the original HP webOS SDK documentation)
+      </p>
+      <p style="margin:0 0 8px;">
+        On a device running <code>downloadmgr-tls13</code> (which re-links <code>LunaDownloadMgr</code> onto a modern libcurl for TLS&nbsp;1.2/1.3), uploads reach today's HTTPS servers, and the native <code>customHttpHeaders</code> array is the supported way to send <strong>arbitrary request headers</strong> &mdash; e.g. <code>Authorization: Bearer &lt;JWT&gt;</code> or <code>X-Auth-Token</code>. Each array entry is a full <code>&quot;Name: value&quot;</code> header line:
+      </p>
+      <pre style="margin:4px 0;">customHttpHeaders: [ "Authorization: Bearer " + jwt, "X-Auth-Token: " + tok ]</pre>
+      <p style="margin:8px 0 0;">
+        The <a href="#download"><code>download</code></a> method has no <code>customHttpHeaders</code> field; to attach arbitrary headers to a <em>download</em>, use the multi-line <code>cookieHeader</code> convention described in the note under that method. This behavior is a stable property of the exact libcurl the package ships and requires no change to the <code>LunaDownloadMgr</code> binary.
+      </p>
+    </div>
     <h3 id="returns-7">
       Returns
     </h3>
