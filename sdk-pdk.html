@@ -349,7 +349,9 @@
 
                 <h3>Modernized Install</h3>
                 <br/>
-                <p><b>Note:</b> The SDK and drivers have been re-built for modern, 64-bit Linux, along with an install script that should work on most distros that use systemd. If, for some reason, these don't work for you, legacy instructions for 32-bit and 64-bit with backward compatibility are below.</p>
+                <p><b>Note:</b> The SDK and drivers have been re-built for modern, 64-bit Linux, along with an install script that should work on most distros that use systemd.<br/>
+                <p>If you're on a Linux distro that doesn't use systemd, the install script won't work, but the drivers will. Start novacomd (use cron or your distros service daemon to have it run at boot), then use novacom or SDK commands as usual.<br/>
+                For older versions of Ubuntu, legacy instructions for 32-bit and 64-bit with backward compatibility are below.</p>
 
                 <h4>Install Java JDK</h4>
                 <pre>sudo apt install default-jdk</pre>
