@@ -17,14 +17,15 @@
                     This document describes efforts to restore and update the webOS SDK and PDK originally created by Palm, and updated by HP for the mobile (phone and tablet) webOS.<br>
                     These efforts expand the scope of the toolset to webOS descendants like webOS CE, LuneOS (Open webOS), and Lunacy, while maintaining support for the legacy devices on newer development platforms.<br>
                     <br>
-                    The updated SDK tools, call the "SDK Redux" are available on GitHub: <a href="https://www.github.com/webosarchive/webos-sdk-redux">github.com/webOSArchive/webos-sdk-redux</a><br>
+                    The updated SDK tools, call the "SDK Redux" are available on GitHub:<br> <a href="https://www.github.com/webosarchive/webos-sdk-redux">github.com/webOSArchive/webos-sdk-redux</a><br>
+                    <br>
                     The original HP webOS 3.0.5 SDK documents, which had been patched and modified to keep things functional, are <a href="sdk-pdk.html">available here</a> for historical purposes, but are no longer maintained, and in most cases, should not be used.
                 </p>
 
-                <p class="bodytext">You can install the SDK on Windows, mac OS, and Ubuntu Linux host PCs. For C/C++ development, the PDK contains toolchains that can be used on Linux environments.
+                <p class="bodytext">You can install the SDK on Windows, mac OS, and Linux host PCs. For C/C++ development, the PDK contains toolchains that can be used on Linux environments.
                 </p>
 
-                <p class="infobox"><b>Note:</b> PDK development is now supported for Linux. See the Linux download section below for more information.</p>
+                <p class="infobox"><b>Note:</b> PDK development is now <i>only</i> supported on Linux.</p>
 
                 <p class="bodytext">The SDK tools are also command-line based, but if you prefer to use an integrated development environment (IDE) there are some options:
                     <ul>
@@ -56,13 +57,6 @@
             <a id="c28502" name="c28502"></a>
 
             <div class="csc-textpic-text">
-                <ol>
-                    <li>Uninstall any previous SDK (if present) using the Windows <i>Add/Remove Programs</i> control panel.
-                        <ul class="def-list">
-                            <li>If prompted, make sure you also un-install the Novacom driver.</li>
-                        </ul>
-                    </li>
-                </ol>
 
                 <h3>Install Java 8</h3>
 
@@ -89,7 +83,7 @@
 
                 <p class="def-button"><a href="https://www.webosarchive.org/sdk/HP_webOS_SDK-Win-3.0.5-676-x86.exe" target="_blank">SDK for Windows 32-bit</a></p>
 
-                <p class="bodytext">On macOS 11 and higher, download the latest SDK Redux release Zip from GitHub:
+                <p class="bodytext">On Windows 10 and higher, download the latest SDK Redux release Zip from GitHub:
 
                 <p class="def-button"><a href="https://github.com/webOSArchive/webos-sdk-redux/releases" target="_blank">Modernized SDK Releases</a></p>
 
@@ -105,7 +99,7 @@
 
                 <p class="bodytext">Once the SDK is installed the webOS command-line tools become available from the Terminal.</p>
 
-                <p class="bodytext">If you have issues with the install, see <a href="https://github.com/webOSArchive/webos-sdk-redux/blob/main/WINDOWS.m"></a>Windows documentation</a> on GitHub.d</p>
+                <p class="bodytext">If you have issues with the install, see <a href="https://github.com/webOSArchive/webos-sdk-redux/blob/main/WINDOWS.md">Windows documentation</a> on GitHub.d</p>
 
                 <div class="hr"></div>
             </div>
@@ -129,16 +123,16 @@
 
                 <p class="nomargin">Download and install the latest version of Java&trade; supported on your operating system.<br>
 
-                <p class="def-button"><a href="https://support.apple.com/en-us/106384" target="_blank">Download Java for OS X</a> (legacy)</p>
+                <p class="def-button"><a href="https://support.apple.com/en-us/106384" target="_blank">Download Java for legacy OSX</a></p>
 
-                <p class="def-button"><a href="https://www.java.com/en/download/manual.jsp" target="_blank">Download Java (JRE 8) for macOS</a> (modern)</p>
+                <p class="def-button"><a href="https://www.java.com/en/download/manual.jsp" target="_blank">Download Java (JRE 8) for macOS</a></p>
 
                 <h3>Install Drivers</h3>
 
-                <p class="bodytext">The official Novacom drivers are available for supported 32-bit OS X versions.</p>
+                <p class="bodytext">The official Novacom drivers are still available for legacy 32-bit OS X versions.</p>
                 <p class="def-button"><a href="https://www.webosarchive.org/activation/drivers/novacom-osx-32/" target="_blank">OSX 32-Bit Device Drivers</a>
 
-                <p class="bodytext">The community compiled Novacom drivers are available, signed and stapled for Intel and Apple Silicon macOS versions.</p>
+                <p class="bodytext">The community-compiled Novacom drivers are available, signed and stapled for Intel and Apple Silicon macOS versions.</p>
                 <p class="def-button"><a href="https://www.webosarchive.org/activation/drivers/novacom-macos-64/" target="_blank">macOS 64-Bit Device Drivers</a>
 
                 <p class="bodytext">If you run into trouble installing, more details can be found on <a href="https://github.com/webosarchive/webos-sdk-redux" target="_blank">webOS Archive's Docs site.</a></p>
@@ -195,6 +189,8 @@
                 <div class="padding">
                     <p class="nomargin">If you are installing on a 64-bit system, perform the following additional step before installation:</p>
                     <pre>sudo apt-get install ia32-libs</pre>
+                    or
+                    <pre>sudo dnf install ia32-libs</pre>
 
                     <p class="nomargin"><b>Note:</b> On newer Linux distros, <a href="https://stackoverflow.com/a/25576918">this Stack Overflow answer</a> provides working instructions if the above does not work. You may also need to install libc6-i386:
                         <pre>sudo apt-get install libc6-i386</pre>
@@ -227,12 +223,10 @@
 
                 <h3>Install Drivers and SDK (legacy instructions)</h3>
 
-                <p><b>Note:</b> If the Modernized Install steps above do not work for you, these original install steps, updated with notes and work-arounds, may help. If the Modernized Install was successful, you do not need to do these steps...</p>
+                <br>
+                <p><i>If the Modernized Install steps above do not work for you, these original install steps, updated with notes and work-arounds, may help. If the Modernized Install was successful, you do not need to do these steps...</i></p>
 
-                <p class="infobox"><b>A note about PDK development on Linux:</b> The current SDK for Linux includes headers and libraries needed to do PDK development for the device and for the emulator. It also includes an arm-gcc toolchain for compiling applications for
-                    the device. If you are running a 32-bit i686 Linux desktop, you should be able to use the standard&nbsp;g++ compiler. (On x64 Linux, the native desktop toolchain will generate x64 code, which will not work in the emulator.)</p>
-
-                <p class="bodytext">These instructions were originally written for Ubuntu 14.04.5 LTS (Trusty Tahr), notes have been added where the installation process differs for more modern releases, and have been tested on Ubuntu 20.04 LTS.</p>
+                <p class="infobox"><b>Note:</b> These instructions were originally written for Ubuntu 14.04.5 LTS (Trusty Tahr), notes have been added where the installation process differs for more modern releases, and have been tested on Ubuntu 20.04 LTS.</p>
 
                 <h4>Install Java&trade; 8</h4>
 
@@ -280,7 +274,8 @@ WantedBy=multi-user.target</pre>
                 </div>
 
                 <h4>Install the SDK</h4>
-
+                
+                <br>
                 <p class="def-button"><a href="https://www.webosarchive.org/sdk/palm-sdk_3.0.5-svn528736-pho676_i386.deb" target="_blank">Download SDK</a></p>
                 <p class="nomargin">
                     If you are installing on a 32-bit system, perform the following steps to install the SDK:
@@ -289,7 +284,7 @@ WantedBy=multi-user.target</pre>
                 <p class="nomargin">If you are installing on a 64-bit system, perform the following steps to install the SDK:</p>
                     <pre>sudo dpkg -i --force-architecture palm-sdk_3.0.5-svn528736-pho676_i386.deb<br>sudo dpkg -i --force-architecture palm-novacom_1.0.76_amd64.deb</pre>
             
-                <div class="hr"><hr></div>
+                <div class="hr"></div>
 
                 <div style="height:20px;">
                     <!-- -->
@@ -463,7 +458,6 @@ WantedBy=multi-user.target</pre>
 
             </div>
         </div>
-    </div>
     <!-- Actual Content Ends Here -->
 
     <!-- Content Nav Starts Here -->
@@ -476,11 +470,11 @@ WantedBy=multi-user.target</pre>
                     <a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/develop/sdk_pdk_download.html" target="_top">SDK-PDK Download</a>
 
                     <ol class="level-1">
-                        <li><a href="#windows" target="_top">Installing the SDK and PDK on a Windows PC</a></li>
+                        <li><a href="#windows" target="_top">Installing the SDK on Windows</a></li>
 
-                        <li><a href="#osx" target="_top">Installing the SDK and PDK on a Mac</a></li>
+                        <li><a href="#osx" target="_top">Installing the SDK on a Mac</a></li>
 
-                        <li><a href="#linux" target="_top">Installing the SDK on Ubuntu Linux</a></li>
+                        <li><a href="#linux" target="_top">Installing the SDK/PDK on Linux</a></li>
 
                         <li><a href="#cUsingSDK" target="_top">Using the SDK</a></li>
 
