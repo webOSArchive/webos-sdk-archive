@@ -1832,6 +1832,7 @@ h2+.modified {
 .page-title {
     font-size: 36px;
     line-height: 40px;
+    padding-top:14px;
     color: #fff;
     margin: 0 0 10px;
     float: left

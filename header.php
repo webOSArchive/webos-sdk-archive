@@ -168,7 +168,7 @@
                 <ul class="nav-list last">
                   <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/community/certified_developer_list.html" target="_top"><img src="assets/wayback.png" style="vertical-align:top;"> Certified Developers</a></li>
 
-                  <li><a href="https://github.com/search?q=webos" target="_blank"><img src="assets/check.png" style="vertical-align:top;"> webOS on github</a></li>
+                  <li><a href="https://github.com/webosarchive" target="_blank"><img src="assets/check.png" style="vertical-align:top;"> webOS Archive on github</a></li>
 
                   <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/distribute/custom_feeds/custom_feeds.html" target="_top"><img src="assets/wayback.png" style="vertical-align:top;"> Guide to Custom Feeds</a></li>
 
@@ -242,16 +242,7 @@
         </ul>
 
         <div class="attachment">
-          <div class="signup">
-            <a class="account-text ctx-first" href="https://web.archive.org/web/20130130211140/https://developer.palm.com/index.php?option=com_user&amp;view=login&amp;login">Sign In</a> <a class="account-text" href=
-            "https://web.archive.org/web/20130130211140/https://developer.palm.com/index.php?option=com_user&amp;view=login&amp;signup">Sign Up</a>
-          </div>
-
-          <form class="hp-search" action="googlesearch.php" method="get">
-            <fieldset>
-              <legend><span>Search Form</span></legend> <button class="sifr ext-sifr-search" type="submit"><span>Search</span></button> <input class="search-txt" name="search" placeholder="Just Search" /> <input value="all" id="basic-search-collection" type="hidden" />
-            </fieldset>
-          </form>
+          &nbsp;<br>
         </div>
       </div>
     </div>

@@ -13,7 +13,7 @@ $theContent = $theContent . ".html";
 <head>
 
 <meta name="generator" content="TYPO3 4.5 CMS">
-<meta name="viewport" content="width=1024, initial-scale=0.5, maximum-scale=2, user-scalable=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=1">
 <meta name="description" content="SDK-PDK Download">
 <meta name="keywords" content="Develop, Tools, SDK, PDK">
 <meta name="created" content="15.09.2011 20:35:27">
@@ -61,6 +61,8 @@ function includeHTML() {
       return;
     }
   }
+  /* nothing left to include, so the page content is all in place now */
+  sdkAsideInit();
 }
 
 function toggleSection(contentId, signId) {
@@ -72,6 +74,176 @@ function toggleSection(contentId, signId) {
   if (sign) { sign.innerHTML = isHidden ? "[- hide]" : "[+ show]"; }
   return false;
 }
+
+/* --- SDK top nav: hamburger + tap-to-open submenus on small screens ---
+   The original nav opens its megamenus on :hover, which touch devices never
+   fire, so the dropdowns were unreachable on phones and tablets in portrait.
+   On small screens the nav collapses to a Menu button and the submenus stack
+   as an accordion. Wide screens, including a TouchPad in landscape, keep the
+   original hover behaviour untouched. ES5 only, no jQuery, no classList.
+   Names are prefixed sdkNav* so they cannot clash with the shared
+   webosarchive.org menu, which owns toggleMenu/redrawMenu. */
+
+function sdkNavHasClass(el, name) {
+  return (" " + el.className + " ").indexOf(" " + name + " ") > -1;
+}
+
+function sdkNavAddClass(el, name) {
+  if (!sdkNavHasClass(el, name)) {
+    el.className += (el.className ? " " : "") + name;
+  }
+}
+
+function sdkNavRemoveClass(el, name) {
+  var parts = el.className.split(/\s+/), kept = [], i;
+  for (i = 0; i < parts.length; i++) {
+    if (parts[i] && parts[i] != name) { kept.push(parts[i]); }
+  }
+  el.className = kept.join(" ");
+}
+
+/* The stylesheet is the only source of truth for which layout is active:
+   the button is display:none until the small-screen media query shows it. */
+function sdkNavCollapsed() {
+  var btn = document.getElementById("sdk-nav-btn");
+  return !!(btn && btn.offsetHeight > 0);
+}
+
+function sdkNavChild(el, test) {
+  var kids = el.childNodes, i;
+  for (i = 0; i < kids.length; i++) {
+    if (kids[i].nodeType == 1 && test(kids[i])) { return kids[i]; }
+  }
+  return null;
+}
+
+function sdkNavCloseAll(nav) {
+  var kids = nav.childNodes, i;
+  for (i = 0; i < kids.length; i++) {
+    if (kids[i].nodeType == 1 && sdkNavHasClass(kids[i], "sdk-nav-open")) {
+      sdkNavRemoveClass(kids[i], "sdk-nav-open");
+    }
+  }
+}
+
+function sdkNavToggle() {
+  var nav = document.getElementById("nav");
+  if (!nav) { return false; }
+  if (sdkNavHasClass(nav, "sdk-nav-open")) {
+    sdkNavRemoveClass(nav, "sdk-nav-open");
+    sdkNavCloseAll(nav);
+  } else {
+    sdkNavAddClass(nav, "sdk-nav-open");
+  }
+  return false;
+}
+
+function sdkNavItemClick() {
+  /* On a wide screen do nothing and let the original hover styling stand. */
+  if (!sdkNavCollapsed()) { return true; }
+  var li = this.parentNode;
+  var wasOpen = sdkNavHasClass(li, "sdk-nav-open");
+  sdkNavCloseAll(li.parentNode);
+  if (!wasOpen) { sdkNavAddClass(li, "sdk-nav-open"); }
+  return false;
+}
+
+function sdkNavInit() {
+  var nav = document.getElementById("nav");
+  if (!nav || document.getElementById("sdk-nav-btn")) { return; }
+
+  var btn = document.createElement("a");
+  btn.id = "sdk-nav-btn";
+  btn.href = "javascript:;";
+  btn.title = "Menu";
+  btn.innerHTML = '<span class="sdk-nav-bars"><span></span><span></span>' +
+                  '<span></span></span>Menu';
+  btn.onclick = sdkNavToggle;
+  nav.parentNode.insertBefore(btn, nav);
+
+  /* Only hide the nav behind the button once this script has run, so the
+     nav stays visible if scripting is off. */
+  sdkNavAddClass(document.documentElement, "sdk-nav-ready");
+
+  var kids = nav.childNodes, i, li, link;
+  for (i = 0; i < kids.length; i++) {
+    li = kids[i];
+    if (li.nodeType != 1 || li.tagName.toLowerCase() != "li") { continue; }
+    /* Top-level items that are plain links keep working as links. */
+    if (!sdkNavChild(li, function (el) { return sdkNavHasClass(el, "megamenu"); })) { continue; }
+    link = sdkNavChild(li, function (el) { return el.tagName.toLowerCase() == "a"; });
+    if (link) { link.onclick = sdkNavItemClick; }
+  }
+}
+
+/* --- Contents sidebar: collapse it on small screens ---
+   The article layout is a fixed 990px two-column float, so on a narrow
+   screen the 227px Contents rail is what pushes the page sideways. The
+   stylesheet unfloats both columns; this turns the Contents heading into a
+   toggle so the list does not take a screenful before the article starts.
+   Wired here rather than in each page fragment, because all of the content
+   pages share the same .col-aside > .sidebox > h3 + ol.article-nav shape. */
+
+function sdkNavFindByClass(root, tag, name) {
+  var els = root.getElementsByTagName(tag), i;
+  for (i = 0; i < els.length; i++) {
+    if (sdkNavHasClass(els[i], name)) { return els[i]; }
+  }
+  return null;
+}
+
+function sdkAsideClick(e) {
+  /* On a wide screen the sidebar is always open, so leave it alone. */
+  if (!sdkNavCollapsed()) { return true; }
+  e = e || window.event;
+  var target = e ? (e.target || e.srcElement) : null;
+  /* a real link inside the heading stays a link */
+  if (target && target.tagName && target.tagName.toLowerCase() == "a") { return true; }
+  var box = this.parentNode;
+  var sign = sdkNavFindByClass(box, "span", "sdk-aside-sign");
+  if (sdkNavHasClass(box, "sdk-aside-open")) {
+    sdkNavRemoveClass(box, "sdk-aside-open");
+    if (sign) { sign.innerHTML = "[+ show]"; }
+  } else {
+    sdkNavAddClass(box, "sdk-aside-open");
+    if (sign) { sign.innerHTML = "[- hide]"; }
+  }
+  return false;
+}
+
+function sdkAsideInit() {
+  var main = document.getElementById("main");
+  if (!main) { return; }
+  var aside = sdkNavChild(main, function (el) { return sdkNavHasClass(el, "col-aside"); });
+  if (!aside || sdkNavHasClass(aside, "sdk-aside-done")) { return; }
+  sdkNavAddClass(aside, "sdk-aside-done");
+
+  var kids = aside.childNodes, i, box, heads, sign;
+  for (i = 0; i < kids.length; i++) {
+    box = kids[i];
+    if (box.nodeType != 1 || !sdkNavHasClass(box, "sidebox")) { continue; }
+    if (!sdkNavFindByClass(box, "ol", "article-nav")) { continue; }
+    heads = box.getElementsByTagName("h3");
+    if (!heads.length) { continue; }
+    sdkNavAddClass(box, "sdk-aside-box");
+    sign = document.createElement("span");
+    sign.className = "section-toggle-sign sdk-aside-sign";
+    sign.innerHTML = "[+ show]";
+    heads[0].appendChild(document.createTextNode(" "));
+    heads[0].appendChild(sign);
+    heads[0].onclick = sdkAsideClick;
+  }
+
+  /* Collapsed, a contents list at the foot of a long article is no use as
+     navigation, so move the rail above the article on small screens only.
+     The wide layout is left exactly as it was. */
+  if (sdkNavCollapsed()) {
+    var content = document.getElementById("content");
+    if (content && content.parentNode == main) {
+      main.insertBefore(aside, content);
+    }
+  }
+}
 </script> 
 </head>
 <body class="PageArticle">
@@ -80,25 +252,9 @@ function toggleSection(contentId, signId) {
 <div class="page-bg-ext"></div>
 
 <?php include("header.php")?>
-
-<?php
-/* detect Mobile Safari */
-$browserAsString = $_SERVER['HTTP_USER_AGENT'];
-if (strstr($browserAsString, " Mobi"))
-{
-  echo("<br><div style='margin:auto; width:60%; padding: 25px; border: 1px solid red;background: white;'><p align='center'><b><em>Note: ");
-  if (strstr($browserAsString, " AppleWebKit/"))
-  {
-    echo("Due to the age of this site, some menus may not work with mobile Safari, and a significant portion of the site content may be unaccessible to you. You may need to switch to a Desktop environment.");
-  }
-  else
-  {
-    echo("Due to the age of this site, the menus may not work on your mobile device in portrait orientation. Please make sure you rotate your device to landscape mode, or switch to a Desktop environment.");
-  }
-  echo("</em></b></p></div><br>");
-}
-
-?>
+<script>
+  sdkNavInit();
+</script>
 
 <div w3-include-html="<?php echo($theContent);?>"></div>
 <!--Footer starts here-->

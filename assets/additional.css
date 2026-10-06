@@ -36,3 +36,236 @@ span.section-toggle-sign {
     font-weight: normal;
     color: #767676;
 }
+
+/* the Contents toggle marker is meaningless while the sidebar is always open */
+.sdk-aside-sign {
+    display: none;
+}
+
+/* ---- SDK top nav on small screens: hamburger + stacked submenus ----
+   Scoped to #nav / #header_inner, which belong to the SDK header only.
+   The shared webosarchive.org menu uses .wosaMenu / #navbar / #menu-ul and
+   has its own hamburger, so nothing here can reach it. These rules apply
+   only inside the media query, so desktop and a TouchPad in landscape keep
+   the original hover megamenu exactly as it was. */
+
+#sdk-nav-btn {
+    display: none;
+}
+
+/* 989px is one pixel under the 990px fixed layout, so the page reflows
+   exactly when the window is too narrow to show that layout. This tracks the
+   real layout viewport, so it follows orientation and works in a desktop
+   browser's responsive-design mode, which deprecated device-width does not. */
+@media only screen and (max-width: 989px) {
+
+    html.sdk-nav-ready #sdk-nav-btn {
+        display: block;
+        float: right;
+        margin: 11px 0 0 0;
+        padding: 9px 16px;
+        font-size: 20px;
+        line-height: 24px;
+        color: #5e5e5e;
+        text-decoration: none;
+        border: 1px solid #c3c3c3;
+        background: #f1f1f1;
+        cursor: pointer;
+    }
+
+    .sdk-nav-bars {
+        display: inline-block;
+        width: 20px;
+        margin: 0 9px 0 0;
+        vertical-align: middle;
+    }
+
+    .sdk-nav-bars span {
+        display: block;
+        height: 3px;
+        margin: 3px 0;
+        background: #5e5e5e;
+    }
+
+    /* The panel was clipped because #header_inner is locked to 58px inside an
+       overflow:hidden #header. Let the inner box grow instead of unclipping
+       the header, so #header keeps containing its floats. min-height keeps
+       the header bar at full height while the menu is closed. */
+    #header_inner {
+        height: auto;
+        min-height: 58px;
+    }
+
+    /* contain the floated logo, Menu button and panel */
+    #header_inner .hp-center {
+        overflow: hidden;
+    }
+
+    html.sdk-nav-ready #nav {
+        display: none;
+    }
+
+    html.sdk-nav-ready #nav.sdk-nav-open {
+        display: block;
+    }
+
+    #header_inner #nav {
+        float: none;
+        clear: both;
+        max-width: none;
+        height: auto;
+        overflow: visible;
+        margin: 0;
+        padding: 0 0 8px;
+        background: #fff;
+        border-top: 2px solid #3a98b0;
+    }
+
+    #nav li {
+        float: none;
+        margin: 0;
+        border-bottom: 1px solid #e4e4e4;
+    }
+
+    #nav .top {
+        margin: 0;
+        padding: 14px 18px;
+        font-size: 20px;
+        line-height: 24px;
+        background: none;
+        cursor: pointer;
+    }
+
+    /* Submenus stack in the flow instead of floating out of the page.
+       margin is !important because the archived jQuery megamenu plugin
+       sets an inline off-screen margin on hover. */
+    #nav li .megamenu {
+        display: none;
+        position: static;
+        float: none;
+        width: auto;
+        margin: 0 !important;
+        padding: 4px 0 10px 18px;
+        border-top: 0;
+        background: #fff;
+        -moz-box-shadow: none;
+        -webkit-box-shadow: none;
+        -o-box-shadow: none;
+        box-shadow: none;
+    }
+
+    #nav li.sdk-nav-open .megamenu {
+        display: block;
+    }
+
+    #nav .nav-child {
+        float: none;
+        width: auto;
+        margin: 0;
+    }
+
+    #nav .nav-list {
+        margin: 0 0 10px;
+    }
+
+    #nav .nav-list li {
+        border-bottom: 0;
+    }
+
+    #nav .nav-list a {
+        padding: 7px 0;
+        font-size: 17px;
+        line-height: 21px;
+    }
+
+    /* nowrap is fine for a floating dropdown, but in the stacked panel these
+       long labels would push the page wider than the screen */
+    #nav .nav-list a,
+    #nav .menu-heading,
+    #nav .menu-heading a {
+        white-space: normal;
+    }
+
+    /* keep the header's trailing attachment block out of the panel's way */
+    #header_inner .attachment {
+        float: none;
+        clear: both;
+    }
+
+    /* ---- stop the fixed 990px layout forcing horizontal scroll ---- */
+
+    #header,
+    #footer {
+        min-width: 0;
+    }
+
+    /* .hp-center is the 990px centring box in both the header and the footer */
+    #header_inner .hp-center,
+    #footer .hp-center {
+        width: auto;
+    }
+
+    #main {
+        width: auto;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    /* the two columns stack instead of sitting side by side in 990px */
+    .two-columns-right .col-content,
+    .two-columns-left .col-content {
+        float: none;
+        width: auto;
+    }
+
+    .two-columns-right .col-aside,
+    .two-columns-left .col-aside {
+        float: none;
+    }
+
+    .col-aside {
+        width: auto;
+    }
+
+    /* long shell commands and wide screenshots scroll or wrap on their own
+       rather than widening the whole page */
+    #main pre {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        overflow-x: auto;
+    }
+
+    #main img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* long URLs and paths break instead of widening the page */
+    #main,
+    #footer {
+        word-wrap: break-word;
+    }
+
+    #main table {
+        width: auto;
+        max-width: 100%;
+    }
+
+    /* ---- Contents sidebar collapses, like the page sections ---- */
+
+    .sdk-aside-sign {
+        display: inline;
+    }
+
+    #main .sdk-aside-box h3 {
+        cursor: pointer;
+    }
+
+    #main .sdk-aside-box .article-nav {
+        display: none;
+    }
+
+    #main .sdk-aside-box.sdk-aside-open .article-nav {
+        display: block;
+    }
+}
