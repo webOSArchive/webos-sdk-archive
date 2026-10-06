@@ -62,6 +62,16 @@ function includeHTML() {
     }
   }
 }
+
+function toggleSection(contentId, signId) {
+  var content = document.getElementById(contentId);
+  if (!content) { return false; }
+  var isHidden = (content.style.display == "none");
+  content.style.display = isHidden ? "block" : "none";
+  var sign = document.getElementById(signId);
+  if (sign) { sign.innerHTML = isHidden ? "[- hide]" : "[+ show]"; }
+  return false;
+}
 </script> 
 </head>
 <body class="PageArticle">

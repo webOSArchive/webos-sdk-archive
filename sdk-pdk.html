@@ -15,11 +15,11 @@
 
                 <p class="bodytext"><img src="assets/RTEmagicC_ref-sdk.png" alt="" width="118" height="117" align="right">
                     This document describes efforts to restore and update the webOS SDK and PDK originally created by Palm, and updated by HP for the mobile (phone and tablet) webOS.<br>
-                    These efforts expand the scope of the toolset to webOS descendants like webOS CE, LuneOS (Open webOS), and Lunacy, while maintaining support for the legacy devices on newer development platforms.<br>
+                    These efforts expand the scope of the toolset to webOS descendants like <a href="https://www.webosarchive.org/pivot/2026/09/08/webos-3.1.0-community-edition-is-here/">webOS CE</a>, <a href="https://www.luneos.org">LuneOS</a> (Open webOS), and <a href="http://www.github.com/webosarchive/Lunacy">Lunacy</a>, while maintaining support for the legacy devices on newer development platforms.<br>
                     <br>
-                    The updated SDK tools, call the "SDK Redux" are available on GitHub:<br> <a href="https://www.github.com/webosarchive/webos-sdk-redux">github.com/webOSArchive/webos-sdk-redux</a><br>
+                    The updated SDK tools (called the "SDK Redux") are available on GitHub:<br> <a href="https://www.github.com/webosarchive/webos-sdk-redux">github.com/webOSArchive/webos-sdk-redux</a><br>
                     <br>
-                    The original HP webOS 3.0.5 SDK documents, which had been patched and modified to keep things functional, are <a href="sdk-pdk.html">available here</a> for historical purposes, but are no longer maintained, and in most cases, should not be used.
+                    The original HP webOS 3.0.5 SDK documents, which had been patched and modified to keep things functional, are <a href="index.php?page=sdk-pdk-legacy.html">available here</a> for historical purposes, but are no longer maintained, and in most cases, should not be used.
                 </p>
 
                 <p class="bodytext">You can install the SDK on Windows, mac OS, and Linux host PCs. For C/C++ development, the PDK contains toolchains that can be used on Linux environments.
@@ -27,11 +27,13 @@
 
                 <p class="infobox"><b>Note:</b> PDK development is now <i>only</i> supported on Linux.</p>
 
-                <p class="bodytext">The SDK tools are also command-line based, but if you prefer to use an integrated development environment (IDE) there are some options:
-                    <ul>
-                        <li>HP provided a <a href="/?page=eclipse">webOS plug-in for the Eclipse IDE (no longer maintained)</a>.
-                        <li>Hobby developer <a href="http://appcatalog.webosarchive.org/author/codepoet" target="_blank">codepoet</a> has developed <a href="https://github.com/codepoet80/webos-vscode-extensions" target="_blank">VisualStudio Code extensions for webOS</a>.
-                </p>
+                <p class="bodytext">The SDK tools are also command-line based, but if you prefer to use an integrated development environment (IDE) there are some options:</p>
+
+                <ul>
+                    <li>HP provided a <a href="/?page=eclipse">webOS plug-in for the Eclipse IDE (no longer maintained)</a>.</li>
+
+                    <li>Hobby developer <a href="http://appcatalog.webosarchive.org/author/codepoet" target="_blank">codepoet</a> has developed <a href="https://github.com/codepoet80/webos-vscode-extensions" target="_blank">VisualStudio Code extensions for webOS</a>.</li>
+                </ul>
 
 
                 <p class="bodytext">Ready to get to work? Click below on your platform of choice to download:</p>
@@ -99,7 +101,7 @@
 
                 <p class="bodytext">Once the SDK is installed the webOS command-line tools become available from the Terminal.</p>
 
-                <p class="bodytext">If you have issues with the install, see <a href="https://github.com/webOSArchive/webos-sdk-redux/blob/main/WINDOWS.md">Windows documentation</a> on GitHub.d</p>
+                <p class="bodytext">If you have issues with the install, see <a href="https://github.com/webOSArchive/webos-sdk-redux/blob/main/WINDOWS.md">Windows documentation</a> on GitHub</p>
 
                 <div class="hr"></div>
             </div>
@@ -221,8 +223,10 @@
 
                 <p style="border-bottom: 1px dotted dimgray; margin-bottom: 10px;"></p>
 
-                <h3>Install Drivers and SDK (legacy instructions)</h3>
+                <h3><a class="section-toggle" href="javascript:;" onclick="return toggleSection('linux-legacy','linux-legacy-sign');">Install Drivers and SDK (legacy Linux instructions) <span class="section-toggle-sign" id="linux-legacy-sign">[+ show]</span></a></h3>
 
+                <!-- collapsible: legacy Linux instructions, collapsed by default -->
+                <div id="linux-legacy" style="display:none;">
                 <br>
                 <p><i>If the Modernized Install steps above do not work for you, these original install steps, updated with notes and work-arounds, may help. If the Modernized Install was successful, you do not need to do these steps...</i></p>
 
@@ -271,7 +275,6 @@ WantedBy=multi-user.target</pre>
                     <pre>sudo service palm-novacomd start</pre>
                     <p class="nomargin">Finally, call this command to auto-start the service on boot:</p>
                     <pre>sudo systemctl enable palm-novacomd.service</pre>
-                </div>
 
                 <h4>Install the SDK</h4>
                 
@@ -283,8 +286,11 @@ WantedBy=multi-user.target</pre>
 
                 <p class="nomargin">If you are installing on a 64-bit system, perform the following steps to install the SDK:</p>
                     <pre>sudo dpkg -i --force-architecture palm-sdk_3.0.5-svn528736-pho676_i386.deb<br>sudo dpkg -i --force-architecture palm-novacom_1.0.76_amd64.deb</pre>
-            
+                </div>
+                <!-- end collapsible: legacy Linux instructions -->
+
                 <div class="hr"></div>
+            </div>
 
                 <div style="height:20px;">
                     <!-- -->
@@ -399,7 +405,6 @@ WantedBy=multi-user.target</pre>
                 <h2>Screen-size Notes</h2>
 
                 <div class="csc-textpic-text">
-                    <p class="bodytext">
                         <h3>SDK Apps (Mojo and Enyo)</h3>
                         <ul>
                             <li><b>Pre3: </b>To avoid the letterbox bar that will show on the Pre<sup>3</sup>&nbsp;if your app retains it's Pre/Pre2-based aspect ratio, add the following to your <em>index.html</em>:
@@ -416,7 +421,6 @@ WantedBy=multi-user.target</pre>
                             </li>
                         </ul>
                          <p class="infobox"><b>Note:</b> This file can be added to applications already installed on a device to improve compatibility. Copy the file to /media/cryptofs/apps/usr/palm/applications/&lt;pdk-app-folder&gt;<br/>A reboot will be required for the change to take effect.</p>
-                    </p>
                     <div class="hr"></div>
                 </div>
 
@@ -430,7 +434,8 @@ WantedBy=multi-user.target</pre>
                 <div class="csc-textpic-text">
                     <p class="bodytext">
                         One of the easiest ways to learn about developing SDK apps is to examine other SDK apps that are installed on your device.<br/> Using a tool like <a href="https://preware.pivotce.com/package/ca.canucksoftware.internalz">Internalz Pro</a>,
-                        you can navigate to the install location, and copy the deployed App folder to a location accessible from USB Disk Mode (such as /media/internal/).<br/> Here are some common install locations:
+                        you can navigate to the install location, and copy the deployed App folder to a location accessible from USB Disk Mode (such as /media/internal/).<br/> Here are some common install locations:</p>
+
                         <ul>
                             <li><b>webOS Pre-Installed Apps: </b>
                                 <pre>/usr/palm/ipkgs/</pre>
@@ -452,7 +457,6 @@ WantedBy=multi-user.target</pre>
                                 </div>
                             </div>
                         </div>
-                    </p>
                 </div>
 
 
