@@ -1,32 +1,9 @@
 <!-- Actual Content Starts Here -->
 <div id="main" class="clearfix two-columns-right">
     <div id="intro">
-        <ol class="hp-breadcrumbs">
-            <li><a href="/" target="_top" onfocus="blurLink(this);">Home</a></li>
 
-            <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources.html" target="_top" onfocus="blurLink(this);">Resources</a></li>
+        <h1 class="page-title">SDK-PDK Redux</h1>
 
-            <li class="ctx-last">SDK-PDK Download</li>
-        </ol>
-
-        <h1 class="page-title">SDK-PDK Download</h1>
-
-        <ul class="inline-icon-list">
-            <li><a onclick="window.print(); return false;" href="javascript:%20void(0);" class="icon-print">Print</a></li>
-
-            <li><a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/develop/sdk_pdk_download.html" target="_top" class="icon-mail addthis_button_email at300b" title="Email"><span class="at16nc at300bs at15nc at15t_email at16t_email"><span class=
-        "at_a11y"></span></span>Email</a></li>
-
-            <li class="last">
-                <div class="addthis_toolbox addthis_default_style">
-                    <a class="icon-share addthis_button_compact at300m" href="#"><span class=
-            "at16nc at300bs at15nc at15t_compact at16t_compact"><span class=
-            "at_a11y"></span></span>Share</a>
-
-                    <div class="atclear"></div>
-                </div>
-            </li>
-        </ul>
     </div>
 
     <div id="content" class="col-content">
@@ -34,24 +11,25 @@
             <a id="c23262" name="c23262"></a>
 
             <div class="csc-textpic-text">
-                <h2 class="intro">Downloading and Installing the 3.0.5&nbsp;SDK and PDK</h2>
+                <h2 class="intro">Downloading and Installing webOS SDK and PDK</h2>
 
-                <p class="bodytext"><img src="assets/RTEmagicC_ref-sdk.png" alt="" width="118" height="117" align="right">The HP webOS 3.0.5 SDK (<a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/api/release-notes.html">release
-            notes here</a>)&nbsp;contains the libraries necessary to do both JavaScript development and C/C++ development. For JavaScript development, the SDK includes the command line tools needed to package, download, and debug applications, as well
-                    as sample code, reference code, and reference documentation. For C/C++ development, the SDK also includes the Plug-in Development Kit (PDK), which includes a GCC compiler, SDL and OpenGL code libraries, project templates, sample source
-                    code, scripts, utilities, documents. You will be given an opportunity to opt out of installing the PDK during the installation process.
+                <p class="bodytext"><img src="assets/RTEmagicC_ref-sdk.png" alt="" width="118" height="117" align="right">
+                    This document describes efforts to restore and update the webOS SDK and PDK originally created by Palm, and updated by HP for the mobile (phone and tablet) webOS.<br>
+                    These efforts expand the scope of the toolset to webOS descendants like webOS CE, LuneOS (Open webOS), and Lunacy, while maintaining support for the legacy devices on newer development platforms.<br>
+                    <br>
+                    The updated SDK tools, call the "SDK Redux" are available on GitHub: <a href="https://www.github.com/webosarchive/webos-sdk-redux">github.com/webOSArchive/webos-sdk-redux</a><br>
+                    The original HP webOS 3.0.5 SDK documents, which had been patched and modified to keep things functional, are <a href="sdk-pdk.html">available here</a> for historical purposes, but are no longer maintained, and in most cases, should not be used.
                 </p>
 
-                <p class="bodytext">You can install the SDK on Windows, OS X, and Ubuntu Linux host PCs. For C/C++ development, the SDK integrates with Visual Studio on Windows, and Xcode on OS X, although you can use command-line tools if you prefer. (App templates are
-                    currently only available for Xcode 3.6 and earlier.)
+                <p class="bodytext">You can install the SDK on Windows, mac OS, and Ubuntu Linux host PCs. For C/C++ development, the PDK contains toolchains that can be used on Linux environments.
                 </p>
 
                 <p class="infobox"><b>Note:</b> PDK development is now supported for Linux. See the Linux download section below for more information.</p>
 
                 <p class="bodytext">The SDK tools are also command-line based, but if you prefer to use an integrated development environment (IDE) there are some options:
                     <ul>
-                        <li>HP provided a <a href="/?page=eclipse">webOS plug-in for the Eclipse IDE</a>.
-                            <li>Hobby developer <a href="http://appcatalog.webosarchive.org/author/codepoet" target="_blank">codepoet</a> has developed <a href="https://github.com/codepoet80/webos-vscode-extensions" target="_blank">VisualStudio Code extensions for webOS</a>.
+                        <li>HP provided a <a href="/?page=eclipse">webOS plug-in for the Eclipse IDE (no longer maintained)</a>.
+                        <li>Hobby developer <a href="http://appcatalog.webosarchive.org/author/codepoet" target="_blank">codepoet</a> has developed <a href="https://github.com/codepoet80/webos-vscode-extensions" target="_blank">VisualStudio Code extensions for webOS</a>.
                 </p>
 
 
@@ -75,45 +53,20 @@
 
             <h2>Installing the SDK and PDK on a Windows PC</h2>
 
-            <div class="csc-textpic-text">
-                <p class="bodytext">
-                    
-                </p>
-
-                <h3>Uninstall any existing SDK or PDK installations</h3>
-            </div>
-            <a id="c23292" name="c23292"></a>
-
-            <div class="note important">
-                <div class="inner">
-                    <div class="content">
-                        <h4>Warning:</h4>
-
-                        <p><strong>SAVE YOUR DATA!</strong>&mdash;Uninstalling the SDK and PDK will delete the directories in which they are installed. If you have project source code in those directories <strong>it will be deleted!</strong></p>
-
-                        <p>Your project source should <strong>not</strong> be stored in the SDK or PDK installation directories.</p>
-                    </div>
-                </div>
-            </div>
             <a id="c28502" name="c28502"></a>
 
             <div class="csc-textpic-text">
                 <ol>
-                    <li>Uninstall the previous SDK (if present) using the Windows <i>Add/Remove
-              Program</i> control panel.</li>
-
-                    <li>Uninstall the previous PDK (if present) by running <i>c:\Program
-              Files\Palm\PDK\uninstallpdk.exe.</i>
-
+                    <li>Uninstall any previous SDK (if present) using the Windows <i>Add/Remove Programs</i> control panel.
                         <ul class="def-list">
-                            <li>When prompted, make sure you also un-install the Novacom driver.</li>
+                            <li>If prompted, make sure you also un-install the Novacom driver.</li>
                         </ul>
                     </li>
                 </ol>
 
-                <h3>Install Java</h3>
+                <h3>Install Java 8</h3>
 
-                <p class="nomargin">Download and install the latest version of Java&trade;.<br> To verify that Java is installed, go to the Command Prompt and type:</p>
+                <p class="nomargin">Download and install the latest version of Java&trade;8.<br> To verify that Java is installed, go to the Command Prompt and type:</p>
 
                 <pre>java -version</pre>
 
@@ -123,92 +76,36 @@
 
                 <h4>Note:</h4>
 
-                <p class="bodytext">If you are using a 64-bit version of Windows, you will need to download Java&nbsp;from <a href="https://www.java.com/en/download/" target="_blank">https://www.java.com/en/download/</a>. Ensure you download the 64-bit Java Runtime Environment installer. From here, follow the instructions for&nbsp;"Windows 7, XP Offline (64-bit)". You can also download it directly from&nbsp;<a href="https://www.java.com/en/download/faq/java_win64bit.xml"
-                        target="_blank">https://www.java.com/en/download/faq/java_win64bit.xml</a>.</p>
+                <p class="bodytext">On legacy systems, the Windows installer does a Java version check, so you must use a version it recognizes for the install. For a modern system, use any recent version of Java JRE.</p>
 
                 <h3>Install Drivers</h3>
 
-                <p class="bodytext">The Novacom drivers are available for both 32-bit and 64-bit Windows (7-10).</p>
-                <p class="def-button"><a href="https://www.webosarchive.org/activation/drivers/" target="_blank">Supported Platform Drivers</a>
+                <p class="bodytext">The legacy Novacom drivers for both 32-bit and 64-bit Windows (7-11) are still usable.</p>
+                <p class="def-button"><a href="https://www.webosarchive.org/activation/drivers/" target="_blank">Windows Devices Drivers</a>
 
-                <h3>Install VirtualBox (No longer supported)</h3>
+                <h3>Install the SDK</h3>
 
-                <p class="bodytext">The webOS emulator is built on VirtualBox&trade;, virtual machine software that you can download free from Oracle&reg;. VirtualBox is required before installing the HP webOS SDK. <b>Note:</b> The webOS emulator now runs on Virtualbox
-                    4.0.36 r71416 and 4.1.0 r73009.</p>
+                <p class="bodytext">On legacy Windows 7 or 32-bit systems, download and run the original SDK installer:</p>
 
-                <p class="def-button"><a href="https://www.virtualbox.org/wiki/Download_Old_Builds" target="_blank">Download
-                VirtualBox</a></p>
+                <p class="def-button"><a href="https://www.webosarchive.org/sdk/HP_webOS_SDK-Win-3.0.5-676-x86.exe" target="_blank">SDK for Windows 32-bit</a></p>
 
-                <h3>Install the HP webOS SDK for Windows</h3>
+                <p class="bodytext">On macOS 11 and higher, download the latest SDK Redux release Zip from GitHub:
 
-                <ol>
-                    <li>Download the appropriate Windows SDK installer (Windows Vista and higher only):
+                <p class="def-button"><a href="https://github.com/webOSArchive/webos-sdk-redux/releases" target="_blank">Modernized SDK Releases</a></p>
 
-                        <p><a class="def-button" href="https://www.webosarchive.org/sdk/HP_webOS_SDK-Win-3.0.5-676-x86.exe" target="_tab">Download</a>&nbsp; SDK/PDK for 32-bit machines.</p>
+                <p class="bodytext">Extract the Source code zip.</p>
+            
+                <p class="bodytext">Open a Terminal window and change directory to the unzipped folder, then run:</p>
 
-                        <p><a class="def-button" href="https://www.webosarchive.org/sdk/HP_webOS_SDK-Win-3.0.5-676-x64.exe" target="_tab">Download</a>&nbsp; SDK/PDK for 64-bit machines.</p>
-                    </li>
+                <pre>./install.sh</pre>
 
-                    <li>Ensure VirtualBox is not running before starting the webOS SDK Installer.
-                    </li>
+                <p class="bodytext">Follow the prompts to install any missing dependencies (standard build tools and libusb). If you receive a warning about installing along-side a previous version of the SDK, press Y to accept (this is usually due to the previous driver installation)</p>
 
-                    <li>Double-click the webOS SDK Installer file.</li>
+                <p class="bodytext">Note that the installer will re-install the drivers, but this step is harmless if you've already installed them.</p>
 
-                    <li>Proceed through the licensing agreements.</li>
+                <p class="bodytext">Once the SDK is installed the webOS command-line tools become available from the Terminal.</p>
 
-                    <li>Click "Finish" to complete the installation.</li>
-                </ol>
-
-                <h3>Download the CodeSourcery Toolchain (PDK only)</h3>
-
-                <p class="bodytext">Perform this step only if you intend to do plug-in or other C/C++ development.</p>
-
-                <p class="bodytext">If not already installed, download the CodeSourcery Toolchain&mdash;Sourcery G++ Lite for ARM GNU/Linux.&nbsp;You can download this from the <a href="http://www.codesourcery.com/" target="_blank">CodeSourcery</a>&nbsp;website.</p>
-
-                <p class="bodytext">To download the CodeSourcery Toolchain, go to:</p>
-
-                <p class="bodytext"><a href="https://sourcery.mentor.com/sgpp/lite/arm/portal/subscription3057" target="_blank">https://sourcery.mentor.com/sgpp/lite/arm/portal/subscription3057</a></p>
-
-                <p class="bodytext">Click on the "Sourcery G++ Lite 2009q1-203" link, and download the&nbsp;Windows Installer.</p>
-
-                <p class="bodytext">If you have problems with this version, you can also try version 2007q3-51.&nbsp;This is an older version for developers who&nbsp;run into the following problems:</p>
-
-                <ul class="def-list">
-                    <li>C++ exception handling &mdash; Unresolved links to versioned symbols.
-                    </li>
-
-                    <li><span class="inline_code">_libc_csu_init/fini</span> calls &mdash; Unresolved links to versioned symbols.</li>
-
-                    <li><span class="inline_code">__isoc99_sscanf</span> &mdash; Symbol added in GLIBC 2.7 that gets used for calls to <span class="inline_code">sscanf</span> unless you use <span class="inline_code">_USE_GNU</span> in your code. This
-                        issue also requires a header file change and can not be fixed with just changing libraries. This is also true of other <span class="inline_code">__isoc99</span> calls.</li>
-                </ul>
-
-                <h3>Verify the SDK Installation</h3>
-
-                <ol>
-                    <li>Start the webOS emulator.</li>
-
-                    <li>Click OK to dismiss the dialog boxes.</li>
-
-                    <li>Create or choose a directory to use as your development workspace.</li>
-
-                    <li>Open a Command Prompt window, and then type:
-                        <pre>palm-generate</pre>
-
-                        <p>to verify that the tools are installed:</p>
-
-                        <ul class="def-list">
-                            <li>If help information appears, the tools are correctly installed.</li>
-
-                            <li>If palm-generate is not recognized as a command, the tools are not correctly installed.</li>
-
-                            <li>If java is not recognized as a command, Java is not correctly installed
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>Exit both the Command Prompt window and the emulator.</li>
-                </ol>
+                <p class="bodytext">If you have issues with the install, see <a href="https://github.com/webOSArchive/webos-sdk-redux/blob/main/WINDOWS.m"></a>Windows documentation</a> on GitHub.d</p>
 
                 <div class="hr"></div>
             </div>
@@ -232,39 +129,27 @@
 
                 <p class="nomargin">Download and install the latest version of Java&trade; supported on your operating system.<br>
 
-                <p class="def-button"><a href="https://support.apple.com/en-us/106384" target="_blank">Download Java for OS X</a></p>
+                <p class="def-button"><a href="https://support.apple.com/en-us/106384" target="_blank">Download Java for OS X</a> (legacy)</p>
 
-                <p class="def-button"><a href="https://www.java.com/en/download/manual.jsp" target="_blank">Download Java (JRE 8) for macOS</a></p>
+                <p class="def-button"><a href="https://www.java.com/en/download/manual.jsp" target="_blank">Download Java (JRE 8) for macOS</a> (modern)</p>
 
                 <h3>Install Drivers</h3>
 
-                <p class="bodytext">The official Novacom drivers are available for all supported 32-bit OS X/macOS versions.</p>
-                <p class="def-button"><a href="https://www.webosarchive.org/activation/drivers/novacom-osx-32/" target="_blank">Download Drivers</a>
+                <p class="bodytext">The official Novacom drivers are available for supported 32-bit OS X versions.</p>
+                <p class="def-button"><a href="https://www.webosarchive.org/activation/drivers/novacom-osx-32/" target="_blank">OSX 32-Bit Device Drivers</a>
 
-                <p class="bodytext">Unfortunately, 64-bit macOS was not a supported platform. However, the community has compiled a set of drivers that work with macOS Catalina and beyond, in 64-bit clean
-                    mode for both Intel and Apple Silicon.<br/>
-                    Note that you will need to explictly grant permission for these unsigned Installers to run in System Preferences.
-                </p>
-                <p class="def-button"><a href="https://www.webosarchive.org/activation/drivers/novacom-macos-64/" target="_blank">64-bit macOS Drivers</a>
+                <p class="bodytext">The community compiled Novacom drivers are available, signed and stapled for Intel and Apple Silicon macOS versions.</p>
+                <p class="def-button"><a href="https://www.webosarchive.org/activation/drivers/novacom-macos-64/" target="_blank">macOS 64-Bit Device Drivers</a>
 
-                <p class="bodytext">If you run into trouble installing, more details can be found on <a href="https://www.webosarchive.org/docs/macos-install/" target="_blank">webOS Archive's Docs site.</a></p>
+                <p class="bodytext">If you run into trouble installing, more details can be found on <a href="https://github.com/webosarchive/webos-sdk-redux" target="_blank">webOS Archive's Docs site.</a></p>
 
-                <h3>Install VirtualBox (No longer supported)</h3>
+                <h3>Install the SDK</h3>
 
-                <p class="bodytext">The webOS emulator is built on VirtualBox, virtual machine software that you can download free from Oracle&reg;. VirtualBox is required before installing the HP webOS SDK. <b>Note:</b> The emulator now supports Virtualbox 4.0.36
-                    r71416 and 4.1.0 r73009.</p>
+                <p class="bodytext">On legacy 32-bit capable Mac OS X, download the original SDK disk image and run the installer:</p>
 
-                <p class="def-button"><a href="https://www.virtualbox.org/wiki/Download_Old_Builds" target="_blank">Download VirtualBox</a></p>
+                <p class="def-button"><a href="https://www.webosarchive.org/sdk/Palm_webOS_SDK.3.0.5.676.dmg" target="_blank">SDK/PDK for OSX 32-bit</a></p>
 
-                <h3>Download the SDK/PDK</h3>
-
-                <br/>
-
-                <p class="bodytext">On 32-bit capable Mac OS X, download the SDK disk image and run the installer:</p>
-
-                <p class="def-button"><a href="https://www.webosarchive.org/sdk/Palm_webOS_SDK.3.0.5.676.dmg" target="_blank">SDK/PDK for OSX (32-bit)</a></p>
-
-                <p class="bodytext">Unfortunately, the installer will not run on macOS 11 and higher, due to changes filesystem permissions. Instead, you can install it by downloading a modernized Source Code release Zip file.
+                <p class="bodytext">On macOS 11 and higher, download the latest SDK Redux release Zip from GitHub:
 
                 <p class="def-button"><a href="https://github.com/webOSArchive/webos-sdk-redux/releases" target="_blank">Modernized SDK Releases</a></p>
 
@@ -276,54 +161,9 @@
 
                 <p class="bodytext">Follow the prompts to install any missing dependencies (standard build tools and libusb). If you receive a warning about installing along-side a previous version of the SDK, press Y to accept (this is usually due to the previous driver installation)</p>
 
+                <p class="bodytext">Note that the installer will re-install the drivers, but this step is harmless if you've already installed them.</p>
+
                 <p class="bodytext">Once the SDK is installed the webOS command-line tools become available from the Terminal.</p>
-
-        <!-- Legacy Docs ...
-
-                <h3><br>Uninstall any existing SDK/PDK installations</h3>
-
-            </div>
-            <a id="c23382" name="c23382"></a>
-
-            <div class="note important">
-                <div class="inner">
-                    <div class="content">
-                        <h4>Warning:</h4>
-
-                        <p><strong>SAVE YOUR DATA!</strong> &mdash;Uninstalling the SDK and PDK will delete the directories in which they are installed. If you have project source code in those directories <strong>it will be
-                deleted!</strong></p>
-
-                        <p>Your project source should <strong>not</strong> be stored in the SDK or PDK installation directories.</p>
-                    </div>
-                </div>
-            </div>
-            <a id="c23392" name="c23392"></a>
-
-            <div class="csc-textpic-text">
-                <ol>
-                    <li>Open the Mac disk image file.</li>
-
-                    <li>Double click the <i>uninstall-previous-sdk.command</i> script.</li>
-
-                    <li>Answer &ldquo;yes&rdquo; when prompted.</li>
-
-                    <li>Enter your admin password when prompted.</li>
-                </ol>
-
-                <h3><br> Install the HP webOS SDK/PDK for Mac</h3>
-
-                <ol>
-                    <li>Ensure VirtualBox is not running before starting the webOS SDK Installer.
-                    </li>
-
-                    <li>Open the Mac disk image file if you haven't already.</li>
-
-                    <li>Double-click the webOS SDK Installer file and follow the instructions.
-                    </li>
-
-                    <li>During installation, you will be given the option to install the PDK as well. <i>Note that this option is selected by default.</i></li>
-                </ol>
-        -->
                     
                 <div class="hr"></div>
             </div>
@@ -333,33 +173,42 @@
             </div>
             <a name="linux" id="linux"></a>
 
-            <h2>Installing the SDK on Ubuntu Linux</h2>
+            <h2>Installing the SDK on Linux</h2>
 
-            <div class="csc-textpic-text">
-                <p class="bodytext">
-                    
-                </p>
-            </div>
+            <p class="infobox"><b>Note:</b> Palm/HP only supported Ubuntu-based Linux, and the modernized installer script still expects it -- largely for the systemd requirement.<br/>
+                The drivers and tools will work on other distros, but you'll need a service unit, cron job, or some other mechanism to get novacomd running persistently. The installer script will only set this up if systemd is present.<br>
+                If you can help expand the installer to your preferred distro, please <a href="https://github.com/webOSArchive/webos-sdk-redux">send a PR here</a>!</p>
+
             <a id="c28542" name="c28542"></a>
 
             <div class="csc-textpic-text">
 
-                <h3>Update the Package Repository Information</h3>
-                <pre>sudo apt-get update</pre>
+                <h3>Update your Package Repository Information</h3>
+                <pre>sudo apt-get update</pre> or <pre>dnf check-update</pre>
 
-                <h3>Modernized Install</h3>
-                <br/>
-                <p><b>Note:</b> The SDK and drivers have been re-built for modern, 64-bit Linux, along with an install script that should work on most distros that use systemd.<br/>
-                <p>If you're on a Linux distro that doesn't use systemd, the install script won't work, but the drivers will. Start novacomd (use cron or your distros service daemon to have it run at boot), then use novacom or SDK commands as usual.<br/>
-                For older versions of Ubuntu, legacy instructions for 32-bit and 64-bit with backward compatibility are below.</p>
+                <h3>Install Java</h3>
 
-                <h4>Install Java JDK</h4>
-                <pre>sudo apt install default-jdk</pre>
+                <pre>sudo apt install default-jre</pre> or <pre>sudo dnf install java-latest-openjdk</pre>
 
-                <h4>Development Tools</h4>
+                <h4>Install ia32-libs (on 64-bit systems only)</h4>
+
+                <div class="padding">
+                    <p class="nomargin">If you are installing on a 64-bit system, perform the following additional step before installation:</p>
+                    <pre>sudo apt-get install ia32-libs</pre>
+
+                    <p class="nomargin"><b>Note:</b> On newer Linux distros, <a href="https://stackoverflow.com/a/25576918">this Stack Overflow answer</a> provides working instructions if the above does not work. You may also need to install libc6-i386:
+                        <pre>sudo apt-get install libc6-i386</pre>
+                    </p>
+                </div>
+
+                <h3>Development Tools</h3>
+
                 <pre>sudo apt install build-essential libusb-dev</pre>
+                or
+                <pre>sudo dnf group install "C Development Tools and Libraries" "Development Tools" "libusb1-devel"</pre>
 
-                <h4>Install Drivers and SDK</h4>
+                <h3>Install Drivers and SDK (modern Linux)</h3>
+                
                 <p class="bodytext">Download and install a release of the source:</p>
 
                 <p class="def-button"><a href="https://github.com/webOSArchive/webos-sdk-redux/releases" target="_blank">Modernized SDK Releases</a></p>
@@ -376,8 +225,8 @@
 
                 <p style="border-bottom: 1px dotted dimgray; margin-bottom: 10px;"></p>
 
-                <h3>Legacy Install</h3>
-                <br/>
+                <h3>Install Drivers and SDK (legacy instructions)</h3>
+
                 <p><b>Note:</b> If the Modernized Install steps above do not work for you, these original install steps, updated with notes and work-arounds, may help. If the Modernized Install was successful, you do not need to do these steps...</p>
 
                 <p class="infobox"><b>A note about PDK development on Linux:</b> The current SDK for Linux includes headers and libraries needed to do PDK development for the device and for the emulator. It also includes an arm-gcc toolchain for compiling applications for
@@ -385,9 +234,9 @@
 
                 <p class="bodytext">These instructions were originally written for Ubuntu 14.04.5 LTS (Trusty Tahr), notes have been added where the installation process differs for more modern releases, and have been tested on Ubuntu 20.04 LTS.</p>
 
-                <h4>Install Java&trade;</h4>
+                <h4>Install Java&trade; 8</h4>
 
-                <p><b>Note:</b> The following steps for installing Java no longer work and have been preserved for archival purposes only. Instead, <a href="https://www.fosstechnix.com/install-oracle-java-8-on-ubuntu-20-04/">install Oracle Java 8 by following these instructions</a>.</p>
+                <p>Follow these instructions: <a href="https://www.fosstechnix.com/install-oracle-java-8-on-ubuntu-20-04/">install Oracle Java 8</a>.</p>
 
                 <p class="bodytext">Download and install the OpenJRE Java Runtime Environment (JRE). The SDK is incompatible with the default Ubuntu GNU Compiler for Java (GCJ), and the Java JRE is no longer available. Example:</p>
 
@@ -397,42 +246,16 @@
                     <pre>sudo apt install oracle-java8-set-default</pre> On Ubuntu systems, oracle-java8-set-default is most probably installed automatically with this package.
                 </p>
 
-                <h4>Install ia32-libs (on 64-bit systems only)</h4>
-
-                <div class="padding">
-                    <p class="nomargin">If you are installing on a 64-bit system, perform the following additional step before installation:</p>
-                    <pre>sudo apt-get install ia32-libs</pre>
-
-                    <p class="nomargin"><b>Note:</b> On newer Linux distros, <a href="https://stackoverflow.com/a/25576918">this Stack Overflow answer</a> provides working instructions if the above does not work. You may also need to install libc6-i386:
-                        <pre>sudo apt-get install libc6-i386</pre>
-                    </p>
-
-                    <p class="nomargin">If you happen to have installed palm-novacom before installing ia32-libs, then you must restart palm-novacomd:</p>
-                    <pre>sudo stop palm-novacomd<br>sudo start palm-novacomd</pre>
-
-                    <p class="nomargin"><b>Note:</b> This approach to managing novacomd no longer works on modern Linux, since it depends on systemd. See below for notes on how to manage with systemd instead.
-                </div>
-
                 <h4>Install Drivers</h4>
 
                 <p class="nomargin"><b>Note:</b> On modern Linux you will need to install pre-requisites for both 64-bit and 32-bit architectures:
                     <pre>sudo apt install libusb-0.1-4<br>sudo apt install libusb-0.1-4:i386</pre>
                 </p>
 
-                <p class="bodytext">The Novacom drivers are available for all supported platforms.</p>
+                <p class="bodytext">The Novacom drivers are available for supported Linux platforms.</p>
                     <p class="def-button"><a href="https://www.webosarchive.org/activation/drivers/" target="_blank">Download Drivers</a>
 
-                <h4>Install the SDK for Linux</h4>
-                <br/>
-                <p class="def-button"><a href="https://www.webosarchive.org/sdk/palm-sdk_3.0.5-svn528736-pho676_i386.deb" target="_blank">Download SDK</a></p>
-
-                <div class="padding">
-                    If you are installing on a 32-bit system, perform the following steps to install the SDK:
-                    <pre>sudo dpkg -i palm-sdk_3.0.5-svn528736-pho676_i386.deb<br>sudo dpkg -i palm-novacom_1.0.76_i386.deb</pre>
-
-                    <p class="nomargin">If you are installing on a 64-bit system, perform the following steps to install the SDK:</p>
-                    <pre>sudo dpkg -i --force-architecture palm-sdk_3.0.5-svn528736-pho676_i386.deb<br>sudo dpkg -i --force-architecture palm-novacom_1.0.76_amd64.deb</pre>
-                    <p class="nomargin"><b>Note:</b> On modern Linux you will get an error after installing novacom. Community member <a href="https://github.com/Herrie82">Herrie</a> describes how to <a href="https://forums.webosnation.com/hp-touchpad/331153-novacom-drivers-ubuntu-64bits.html#post3449178">resolve on the forums by setting up a systemd service</a>...</p>
+                <p class="nomargin"><b>Note:</b> On modern Linux you will get an error after installing novacom. Community member <a href="https://github.com/Herrie82">Herrie</a> describes how to setup a systemd service unit</a>...</p>
                         Paste the following into the file: /etc/systemd/system/palm-novacomd.service<br>
                         <pre>
 [Unit]
@@ -456,32 +279,17 @@ WantedBy=multi-user.target</pre>
                     <pre>sudo systemctl enable palm-novacomd.service</pre>
                 </div>
 
-                <h4>Install VirtualBox (No longer supported)</h4>
+                <h4>Install the SDK</h4>
 
-                <p class="bodytext">The webOS emulator is built on VirtualBox&trade;, virtual machine software that you can download free from Oracle. VirtualBox is required before installing the HP webOS SDK. <b>Note:</b> The webOS emulator now works with Virtualbox 4.0.36
-                    r71416 and 4.1.0 r73009.</p>
+                <p class="def-button"><a href="https://www.webosarchive.org/sdk/palm-sdk_3.0.5-svn528736-pho676_i386.deb" target="_blank">Download SDK</a></p>
+                <p class="nomargin">
+                    If you are installing on a 32-bit system, perform the following steps to install the SDK:
+                    <pre>sudo dpkg -i palm-sdk_3.0.5-svn528736-pho676_i386.deb<br>sudo dpkg -i palm-novacom_1.0.76_i386.deb</pre>
 
-                <h5>Installing or Upgrading VirtualBox</h5>
-
-                <ol>
-                    <li>
-                        <p>If you are upgrading from a previous version of VirtualBox, follow the instructions to "Uninstall the webOS Emulator and Virtual Machine" on
-                            <a href="https://web.archive.org/web/20130130211140/https://developer.palm.com/content/resources/develop/uninstalling_the_sdk_and_pdk.html">
-                this page</a>.</p>
-                    </li>
-                    <li>
-                        <p><b>Note:</b> While VirtualBox 4.1 won't run on newer distros, you'll need it to create emulator images. Install 4.1 and create the images, then uninstall. Install a newer VirtualBox to actually run the emulator from the VirtualBox
-                            UI.
-                    </li>
-                </ol>
-                <p class="bodytext">Download and install VirtualBox 4 manually here:&nbsp;
-                    <span style="color: blue; text-decoration: underline;"><a href=
-            "https://www.virtualbox.org/wiki/Download_Old_Builds_4_1"
-            target="_blank">https://www.virtualbox.org/wiki/Download_Old_Builds_4_1</a></span>.</p>
-
-                <p class="bodytext">Download recent VirtualBox versions <a href="https://www.virtualbox.org/wiki/Linux_Downloads" target="_blank">here</a> to go directly to the VirtualBox Linux page.</p>
-
-                <div class="hr"></div>
+                <p class="nomargin">If you are installing on a 64-bit system, perform the following steps to install the SDK:</p>
+                    <pre>sudo dpkg -i --force-architecture palm-sdk_3.0.5-svn528736-pho676_i386.deb<br>sudo dpkg -i --force-architecture palm-novacom_1.0.76_amd64.deb</pre>
+            
+                <div class="hr"><hr></div>
 
                 <div style="height:20px;">
                     <!-- -->
