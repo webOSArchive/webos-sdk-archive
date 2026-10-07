@@ -119,6 +119,15 @@ span.section-toggle-sign {
         padding: 0 0 8px;
         background: #fff;
         border-top: 2px solid #3a98b0;
+        /* .page-bg-ext is an absolutely positioned decorative panel running
+           from y=163 for 500px. The stacked menu opens straight into that
+           band, and because the panel is positioned while the submenu links
+           are not, it sat on top of them and swallowed every tap. The
+           top-level items escaped only because .hp-nav .top is already
+           position:relative with a z-index. Give the whole open menu its own
+           stacking position so all of it stays tappable. */
+        position: relative;
+        z-index: 20;
     }
 
     #nav li {
