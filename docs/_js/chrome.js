@@ -263,6 +263,12 @@ function handleDocClick( e ) {
 }
 
 // Work out the hash that shows the target of an in-document link.
+//
+// Links inside a loaded page have already been through adjustPath(), which
+// rewrites them relative to the docs root and leaves only "#..." and "../..."
+// untouched. A plain path arriving here is therefore ALREADY root-relative
+// and must not be resolved against the current document a second time, or it
+// picks up the current directory twice and points at a page that is not there.
 function hashForLink( href ) {
 	var currentPath = ( G.doc || "" ).split( "#" )[ 0 ];
 
@@ -278,7 +284,16 @@ function hashForLink( href ) {
 	if ( !/\.html$/i.test( path ) ) {
 		return null;
 	}
-	return "#" + resolvePath( currentPath, path ) + anchor;
+
+	if ( path.indexOf( "../" ) === 0 ) {
+		// adjustPath leaves these alone, so they are still relative to the
+		// page that contains them.
+		path = resolvePath( currentPath, path );
+	} else {
+		// Already root-relative: just tidy up "/" and "./" segments.
+		path = resolvePath( "", path );
+	}
+	return "#" + path + anchor;
 }
 
 // Resolve a relative link against the document holding it. The previous
