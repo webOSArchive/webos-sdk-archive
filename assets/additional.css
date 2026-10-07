@@ -42,6 +42,19 @@ span.section-toggle-sign {
     display: none;
 }
 
+/* The shared webosarchive.org menu sits in its own stacking context at
+   z-index 3 (.wosaMenu), but the SDK nav's tabs are z-index 4/5 and the
+   open stacked menu is 20, so they painted over its dropdowns. Lift the
+   menu's outer wrapper above all of them. This only positions the wrapper;
+   the remote menu's own rules are untouched. It stays below fancybox
+   (1100+) so lightboxes still cover the page. The SDK header itself can't
+   be lowered instead: positioning #header or #header_inner would make the
+   overflow:hidden header clip the megamenus. */
+.menu-wrapper {
+    position: relative;
+    z-index: 50;
+}
+
 /* ---- SDK top nav on small screens: hamburger + stacked submenus ----
    Scoped to #nav / #header_inner, which belong to the SDK header only.
    The shared webosarchive.org menu uses .wosaMenu / #navbar / #menu-ul and
