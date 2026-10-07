@@ -1,12 +1,25 @@
 <?php
-//Figure out which page to load
-$theContent = "sdk-pdk";
-if (isset($_GET['page']) && $_GET['page'] != "") {
-  $thePage = $_GET['page'];
-  $thePage = str_replace(".html", "", $thePage);
-  $theContent = $thePage;
+//Figure out which page to load. Only the known content pages are allowed:
+//the name ends up in the page's HTML, so anything else falls back to the
+//download page rather than being echoed back
+$pageTitles = array(
+  "sdk-pdk" => "SDK-PDK Download",
+  "sdk-pdk-legacy" => "SDK-PDK Download (Legacy)",
+  "firstapp" => "Building Your First App",
+  "enyobasics" => "Enyo Basics",
+  "enyogroundup" => "Enyo from the Ground Up",
+  "eclipse" => "Developing with the Eclipse IDE",
+  "cordova" => "Building With Cordova"
+);
+$thePage = "sdk-pdk";
+if (isset($_GET['page']) && is_string($_GET['page'])) {
+  $requested = str_replace(".html", "", $_GET['page']);
+  if (isset($pageTitles[$requested])) {
+    $thePage = $requested;
+  }
 }
-$theContent = $theContent . ".html";
+$theContent = $thePage . ".html";
+$theTitle = $pageTitles[$thePage];
 ?>
 <!DOCTYPE html>
 <html class="js" lang="en-US">
@@ -14,7 +27,7 @@ $theContent = $theContent . ".html";
 
 <meta name="generator" content="TYPO3 4.5 CMS">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=1">
-<meta name="description" content="SDK-PDK Download">
+<meta name="description" content="<?php echo(htmlspecialchars($theTitle));?>">
 <meta name="keywords" content="Develop, Tools, SDK, PDK">
 <meta name="created" content="15.09.2011 20:35:27">
 <meta name="modified" content="15.09.2011 21:16:29">
@@ -31,7 +44,7 @@ $theContent = $theContent . ".html";
 <!--[if !IE]><!--> <link rel="stylesheet" type="text/css" href="assets/common.css" media="all"> <!--<![endif]-->
 <link rel="stylesheet" type="text/css" href="assets/additional.css" media="screen">
 
-<title>webOS Dev Center - SDK-PDK Download</title>			
+<title>webOS Dev Center - <?php echo(htmlspecialchars($theTitle));?></title>			
 <link rel="shortcut icon" href="favicon.ico" type="application/x-empty; charset=binary">
 <link rel="icon" href="favicon.ico" type="application/x-empty; charset=binary">
 <script>
@@ -63,6 +76,20 @@ function includeHTML() {
   }
   /* nothing left to include, so the page content is all in place now */
   sdkAsideInit();
+  sdkScrollToHash();
+}
+
+/* The content arrives after the browser has already tried to jump to the
+   URL's #section and found nothing, so do that jump again now it exists. */
+function sdkScrollToHash() {
+  var name = window.location.hash.substring(1);
+  if (!name) { return; }
+  var target = document.getElementById(name);
+  if (!target) {
+    var named = document.getElementsByName(name);
+    target = named.length ? named[0] : null;
+  }
+  if (target && target.scrollIntoView) { target.scrollIntoView(true); }
 }
 
 function toggleSection(contentId, signId) {
