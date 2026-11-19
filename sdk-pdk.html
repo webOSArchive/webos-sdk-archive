@@ -17,7 +17,7 @@
                     This document describes efforts to restore and update the webOS SDK and PDK originally created by Palm, and updated by HP for the mobile (phone and tablet) webOS.<br>
                     These efforts expand the scope of the toolset to webOS descendants like <a href="https://www.webosarchive.org/pivot/2026/09/08/webos-3.1.0-community-edition-is-here/">webOS CE</a>, <a href="https://www.luneos.org">LuneOS</a> (Open webOS), and <a href="http://www.github.com/webosarchive/Lunacy">Lunacy</a>, while maintaining support for the legacy devices on newer development platforms.<br>
                     <br>
-                    The updated SDK tools (called the "SDK Redux") are available on GitHub:<br> <a href="https://www.github.com/webosarchive/webos-sdk-redux">github.com/webOSArchive/webos-sdk-redux</a><br>
+                    <b>The updated SDK tools (called the "SDK Redux") are available on GitHub:<br> <a href="https://www.github.com/webosarchive/webos-sdk-redux">github.com/webOSArchive/webos-sdk-redux</a> which includes a new simulator (Luna Desktop Environment) that replaces the old SDK emulator.</b><br>
                     <br>
                     The original HP webOS 3.0.5 SDK documents, which had been patched and modified to keep things functional, are <a href="index.php?page=sdk-pdk-legacy.html">available here</a> for historical purposes, but are no longer maintained, and in most cases, should not be used.
                 </p>
@@ -344,7 +344,23 @@ WantedBy=multi-user.target</pre>
                 <h2>Emulator Notes</h2>
 
                 <div class="csc-textpic-text">
-                    <p class="bodytext">It is sometimes necessary to test your software on other versions of webOS. Use the links below to download VMDKs for these versions. </p>
+                    <p class="bodytext">Legacy images are linked below, but exhibit a number of challenges on modern devices. A new simulator, Luna Desktop Environment (Luna DE), implements the webOS application control for Mojo and Enyo apps, and runs in an Electron container on modern Windows, Mac and Linux.</p>
+
+                    <h3>Installing Luna DE</h3>
+
+                    Download a release for your host environment at: <a href="https://github.com/webOSArchive/webOS-SDK-Redux/releases">github.com/webOSArchive/webOS-SDK-Redux/releases</a>.
+
+                    Use the standard install process for your computer.
+
+                    Mac OS executables are signed, stapled and notarized by Apple and should run without warning on macOS 11 and up.
+
+                    Windows executables are not signed, and may throw a Smart Screen warning. It is safe to bypass.
+
+                    Linux users can integrate an AppImage or run from code directly.
+
+                    <h3>Legacy Emulator Images</h3>
+
+                    These VMDKs have been modernized to run in VirtualBox or compatible hypervisors. 
 
                     <ul class="def-list">
                         <li><a href="https://archive.org/download/web-os-3.0.5.676-virtual-appliance/SDK%201.3.5.368.vmdk.zip" target="_blank">1.3.5</a></li>
