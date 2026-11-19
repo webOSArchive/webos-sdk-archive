@@ -17,7 +17,9 @@
                     This document describes efforts to restore and update the webOS SDK and PDK originally created by Palm, and updated by HP for the mobile (phone and tablet) webOS.<br>
                     These efforts expand the scope of the toolset to webOS descendants like <a href="https://www.webosarchive.org/pivot/2026/09/08/webos-3.1.0-community-edition-is-here/">webOS CE</a>, <a href="https://www.luneos.org">LuneOS</a> (Open webOS), and <a href="http://www.github.com/webosarchive/Lunacy">Lunacy</a>, while maintaining support for the legacy devices on newer development platforms.<br>
                     <br>
-                    <b>The updated SDK tools (called the "SDK Redux") are available on GitHub:<br> <a href="https://www.github.com/webosarchive/webos-sdk-redux">github.com/webOSArchive/webos-sdk-redux</a> which includes a new simulator (Luna Desktop Environment) that replaces the old SDK emulator.</b><br>
+                    <b>The updated SDK tools (called the "SDK Redux") are available on GitHub:<br> 
+                        <a href="https://www.github.com/webosarchive/webos-sdk-redux">github.com/webOSArchive/webos-sdk-redux</a><br>
+                        And now includes a new simulator (Luna Desktop Environment) that replaces the old SDK emulator.</b><br>
                     <br>
                     The original HP webOS 3.0.5 SDK documents, which had been patched and modified to keep things functional, are <a href="index.php?page=sdk-pdk-legacy.html">available here</a> for historical purposes, but are no longer maintained, and in most cases, should not be used.
                 </p>
@@ -352,13 +354,13 @@ WantedBy=multi-user.target</pre>
 
                     <p>Use the standard install process for your computer.</p>
 
-                    <p>Mac OS executables are signed, stapled and notarized by Apple and should run without warning on macOS 11 and up.</p>
+                    <ul class="def-list">
+                        <li>Mac OS executables are signed, stapled and notarized by Apple and should run without warning on macOS 11 and up.</li>
 
-                    <p>Windows executables are not signed, and may throw a Smart Screen warning. It is safe to bypass.</p>
+                        <li>Windows executables are not signed, and may throw a Smart Screen warning. It is safe to bypass.</li>
 
-                    <p>Linux users can integrate an AppImage or run from code directly.</p>
-
-                    <br>
+                        <li>Linux users can integrate an AppImage or run from code directly.</li>
+                    </ul>
 
                     <h3>Legacy Emulator Images</h3>
 
